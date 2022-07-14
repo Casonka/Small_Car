@@ -5,9 +5,10 @@
     *   @author RCR group developers - Evgeny Garanin
     *   @date 14/08/2020 - last update version GPIO
     *
-    *       @note This file for configuration main functional properties of GPIO
+    *       @note [FIL:GPIO] Configuration file GPIO
     */
 #pragma once
+#include "FilConfig.h"
 
     #define PORTA 0
     #define PORTB 1
@@ -36,7 +37,7 @@
     #define AF15 15
 
     /*!
-    *   @note Pin mode for register MODER
+    *   @list Pin mode for register MODER
     */
     #define INPUT       0
     #define GENERAL     1
@@ -44,13 +45,13 @@
     #define ANALOG      3
 
     /*!
-    *   @note Type of connection for register OTYPER
+    *   @list Type of connection for register OTYPER
     */
     #define PUSH_PULL   0
     #define OPEN_DRAIN  1
 
     /*!
-    *   @note Speed for configuration on OSPEEDR
+    *   @list Speed for configuration on OSPEEDR
     */
     #define LOW_S       0     //2 MHz
     #define MEDIUM_S    1     //25 MHz
@@ -58,14 +59,14 @@
     #define HIGH_S      3     //100 MHz
 
     /*!
-    *   @note pull up/pull down for register PUPDR
+    *   @list pull up/pull down for register PUPDR
     */
     #define NO_PULL_UP 0
     #define PULL_UP    1
     #define PULL_DOWN  2
 
     /*!
-    *   @note Base address General Purpose Input/Output (GPIO) in memory map
+    *   @list Base address General Purpose Input/Output (GPIO) in memory map
     */
     #define GPIO_BASE  (AHB1PERIPH_BASE + 0x0000)
     #define GPIO       ((unsigned char *) GPIO_BASE)
@@ -78,7 +79,7 @@
     #define pin_id(PIN_PORT, PIN) ( (PIN_PORT<<4)|PIN )
 
     /*!
-    *   @note Offset in local memory map for GPIO
+    *   @list Offset in local memory map for GPIO
     */
     #define GPIO_offset           ((uint32_t)0x00000400)
     #define GPIO_base(pin)        (GPIO_BASE +(pin>>4)*GPIO_offset )

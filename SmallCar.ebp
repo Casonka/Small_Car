@@ -145,14 +145,30 @@
 		<Unit filename="ebmon.h">
 			<Option target="Debug" />
 		</Unit>
+		<Unit filename="Fil_lib\ADC.h" />
+		<Unit filename="Fil_lib\DMA.h" />
 		<Unit filename="Fil_lib\FilConfig.h" />
 		<Unit filename="Fil_lib\GPIO.h" />
+		<Unit filename="Fil_lib\INTERRUPTS.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Fil_lib\RCC.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Fil_lib\RCC.h" />
+		<Unit filename="Fil_lib\TIM.c">
+			<Option compilerVar="CC" />
+		</Unit>
 		<Unit filename="Fil_lib\TIM.h" />
+		<Unit filename="Fil_lib\USART.c">
+			<Option compilerVar="CC" />
+		</Unit>
 		<Unit filename="Fil_lib\USART.h" />
 		<Unit filename="inc\main.h" />
 		<Unit filename="inc\stm32f4xx.h" />
 		<Unit filename="inc\system_stm32f4xx.h" />
-		<Unit filename="RCR\RCR_DevBoard_3.h" />
+		<Unit filename="RCR\DevBoard#3\RCR_DevBoard_3.h" />
+		<Unit filename="RCR\DevBoard#3\RCR_DevBoard_3_Setup.h" />
 		<Unit filename="src\main.c">
 			<Option compilerVar="CC" />
 		</Unit>
@@ -170,13 +186,13 @@
 			<code_completion />
 			<debugger>
 				<target_debugging_settings target="Debug">
-					<debug_interface description="STM32F401.svd" options="2" reg_filter="0" probe="stlink" device="stm32-auto" speed="" bus_address="" serial="" defines="" scripts="" flash_size="" ram_size="" vcc_voltage="" verbose="4" unwind="2" rstType="0" use_jtag="false" disable_cache="false" enable_semi="false" close_eblink="false" gdb_reset="" gdb_reset_remote="" gdb_before_conn="" gdb_after_conn="" use_remote="false" ip_address="" ip_port="" path="" executable="" start_server="false" arguments="" flash_verify="false" flash_run="false" />
+					<debug_interface description="STM32F401.svd" options="2" reg_filter="0" probe="stlink" device="stm32-auto" speed="" bus_address="" serial="" defines="" scripts="" flash_size="" ram_size="" vcc_voltage="" verbose="4" unwind="2" rstType="0" use_jtag="false" disable_cache="false" enable_semi="false" close_eblink="false" gdb_reset="" gdb_reset_remote="reset" gdb_before_conn="" gdb_after_conn="" use_remote="false" ip_address="" ip_port="" path="" executable="" start_server="false" arguments="" flash_verify="false" flash_run="false" />
 				</target_debugging_settings>
 				<target_debugging_settings target="DebugRAM">
-					<debug_interface description="STM32F401.svd" options="2" reg_filter="0" probe="stlink" device="stm32-auto" speed="" bus_address="" serial="" defines="" scripts="" flash_size="" ram_size="" vcc_voltage="" verbose="4" unwind="2" rstType="0" use_jtag="false" disable_cache="false" enable_semi="false" close_eblink="false" gdb_reset="reg sp = (0x20000000);reg pc = (0x20000004);writeu32 0xE000ED08 = 0x20000000;" gdb_reset_remote="" gdb_before_conn="" gdb_after_conn="" use_remote="false" ip_address="" ip_port="" path="" executable="" start_server="false" arguments="" flash_verify="false" flash_run="false" />
+					<debug_interface description="STM32F401.svd" options="2" reg_filter="0" probe="stlink" device="stm32-auto" speed="" bus_address="" serial="" defines="" scripts="" flash_size="" ram_size="" vcc_voltage="" verbose="4" unwind="2" rstType="0" use_jtag="false" disable_cache="false" enable_semi="false" close_eblink="false" gdb_reset="reg sp = (0x20000000);reg pc = (0x20000004);writeu32 0xE000ED08 = 0x20000000;" gdb_reset_remote="reset" gdb_before_conn="" gdb_after_conn="" use_remote="false" ip_address="" ip_port="" path="" executable="" start_server="false" arguments="" flash_verify="false" flash_run="false" />
 				</target_debugging_settings>
 				<target_debugging_settings target="Release">
-					<debug_interface description="STM32F401.svd" options="2" reg_filter="0" probe="stlink" device="stm32-auto" speed="" bus_address="" serial="" defines="" scripts="" flash_size="" ram_size="" vcc_voltage="" verbose="4" unwind="2" rstType="0" use_jtag="false" disable_cache="false" enable_semi="false" close_eblink="false" gdb_reset="" gdb_reset_remote="" gdb_before_conn="" gdb_after_conn="" use_remote="false" ip_address="" ip_port="" path="" executable="" start_server="false" arguments="" flash_verify="false" flash_run="false" />
+					<debug_interface description="STM32F401.svd" options="2" reg_filter="0" probe="stlink" device="stm32-auto" speed="" bus_address="" serial="" defines="" scripts="" flash_size="" ram_size="" vcc_voltage="" verbose="4" unwind="2" rstType="0" use_jtag="false" disable_cache="false" enable_semi="false" close_eblink="false" gdb_reset="" gdb_reset_remote="reset" gdb_before_conn="" gdb_after_conn="" use_remote="false" ip_address="" ip_port="" path="" executable="" start_server="false" arguments="" flash_verify="false" flash_run="false" />
 				</target_debugging_settings>
 			</debugger>
 			<envvars />

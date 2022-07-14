@@ -1,129 +1,80 @@
-
+    /*!
+    *   --------------------------------------------------------------------------
+    *                       ///UART&USART initialization\\\
+    *   --------------------------------------------------------------------------
+    *   @author RCR group developers - Caska
+    *   @date 13/07/2022 - last update version UART/USART
+    *
+    *       @note [FIL:UART/USART] Configuration file UART/USART
+    */
 #pragma once
-#include <FilConfig.h>
-        #define usart1  64
-        #define usart2  17
-        #define usart3  18
-        #define usart4  19
-        #define usart5  20
-        #define usart6  65
-        #define usart7  34
-        #define usart8  35
+#include "FilConfig.h"
 
-        //статусы регистра SR
-        #define transmitter_data_empty  ((uint32_t)(1 << 7))
-        #define transmission_complete  ((uint32_t)(1 << 6))
-        #define receiver_data_notEmpty  ((uint32_t)(1 << 5))
-        #define overrun_error  ((uint32_t)(1 << 3))
-        #define framing_error   ((uint32_t)(1 << 1))
-        #define parity_error   ((uint32_t)(1))
+#if (configUSE_USART == 1)
 
-        #define usart_offset        ((uint32_t)0x00400)
-        #define usart_base(usart)   (PERIPH_BASE +(0x00004000 * ((usart&0x10)>>4)) + (0x00007000 * ((usart&0x20)>>5)) + (0x00011000 * ((usart&0x40) >> 6)))
-        #define usart_id(usart)     ((uint32_t)((usart&0xF)*usart_offset))
+    /*!
+    *   @brief USARTReceiverConfigure() - configuration timer with encoder interface
+    *       @arg
+    */
+    #define USARTReceiverConfigure(USART,BAUD,RXInterrupt){\
+        ConfUSARTBaud(USART,BAUD);                         \
+        SetUSARTReceiver(USART);                           \
+        if(RXInterrupt == 1) SetUSARTRXInterrupt(USART);   \
+        USARTStart(USART);                                 }
 
-        //адрес значения
-        #define usart_enable(ue)                      ((uint16_t)((ue) << 13))
-        #define usart_word_length(m)                  ((uint16_t)((m) << 12))
-        #define usart_stop_bits(stop)                 ((uint16_t)((stop) << 12))
-        #define usart_dmat(dmat)                      ((uint16_t)((dmat) << 7))
-        #define usart_dmar(dmar)                      ((uint16_t)((dmar) << 6))
-        #define usart_baud(baud)                      ((uint16_t)(baud))
-        #define usart_transmitter(te)                 ((uint16_t)((te) << 3))
-        #define usart_receiver(re)                    ((uint16_t)((re) << 2))
-        #define usart_data(dr)                        ((uint8_t)(dr))
-        #define usart_rxneie(rxneie)                  ((uint16_t)((rxneie) << 5))
-        #define usart_txneie(txneie)                  ((uint16_t)((txneie) << 7))
-        #define usart_over8(over8)                    ((uint16_t)((over8) << 15))
+    /*!
+    *   @brief USARTTransmitterConfigure() - configuration timer with encoder interface
+    *       @arg
+    */
+    #define USARTTransmitterConfigure(USART,BAUD,TXInterrupt){\
+        ConfUSARTBaud(USART,BAUD);                            \
+        SetUSARTTransmitter(USART);                           \
+        if(TXInterrupt == 1) SetUSARTRXInterrupt(USART);      \
+        USARTStart(USART);                                    }
 
-        //вычисление адреса и установление значения
-        #define set_usart_baud(usart,baud)           (* (uint32_t *)((usart_base(usart) + usart_id(usart)) + 0x08) |= usart_baud(baud))
-        #define set_usart_ue(usart,ue)               (* (uint32_t *)((usart_base(usart) + usart_id(usart)) + 0x0C) |= usart_enable(ue))
-        #define set_usart_mbit(usart,m)              (* (uint32_t *)((usart_base(usart) + usart_id(usart)) + 0x0C) |= usart_word_length(m))
-        #define set_usart_stopbit(usart,stop)        (* (uint32_t *)((usart_base(usart) + usart_id(usart)) + 0x10) |= usart_stop_bits(stop))
-        #define set_usart_dmat(dmat)                 (* (uint32_t *)((usart_base(usart) + usart_id(usart)) + 0x14) |= usart_dmat(dmat))
-        #define set_usart_dmar(dmar)                 (* (uint32_t *)((usart_base(usart) + usart_id(usart)) + 0x14) |= usart_dmar(dmar))
-        #define set_usart_transmitter(te)            (* (uint32_t *)((usart_base(usart) + usart_id(usart)) + 0x0C) |= usart_transmitter(te))
-        #define set_usart_receiver(re)               (* (uint32_t *)((usart_base(usart) + usart_id(usart)) + 0x0C) |= usart_receiver(re))
-        #define set_usart_rxneie(rxneie)             (* (uint32_t *)((usart_base(usart) + usart_id(usart)) + 0x0C) |= usart_rxneie(rxneie))
-        #define set_usart_txneie(txneie)             (* (uint32_t *)((usart_base(usart) + usart_id(usart)) + 0x0C) |= usart_txneie(txneie))
-        #define set_usart_over8(usart,over8)               ((* (uint32_t *)((usart_base(usart) + usart_id(usart)) + 0x0C)) |= usart_over8(over8))
+    /*!
+    *   @brief USARTBothConfigure() - configuration timer with encoder interface
+    *       @arg
+    */
+    #define USARTBothConfigure(USART,BAUD,TXInterrupt, RXInterrupt){\
+        ConfUSARTBaud(USART,BAUD);                                  \
+        SetUSARTTransmitter(USART);                                 \
+        SetUSARTReceiver(USART);                                    \
+        if(RXInterrupt == 1) SetUSARTRXInterrupt(USART);            \
+        if(TXInterrupt == 1) SetUSARTRXInterrupt(USART);            \
+        USARTStart(USART);                                          }
+//----------------------------------------Set state-------------------------------------------------------------------------------------------//
+    #define USARTStart(USART)                   (USART->CR1 |= USART_CR1_UE)
+    #define SetUSARTMbit(USART)                 (USART->CR1 |= USART_CR1_M)
+    #define SetUSARTDMATransmitter(USART)       (USART->CR3 |= USART_CR3_DMAT)
+    #define SetUSARTDMAReceiver(USART)          (USART->CR3 |= USART_CR3_DMAR)
+    #define SetUSARTTransmitter(USART)          (USART->CR1 |= USART_CR1_TE)
+    #define SetUSARTReceiver(USART)             (USART->CR1 |= USART_CR1_RE)
+    #define SetUSARTRXInterrupt(USART)          (USART->CR1 |= USART_CR1_RXNEIE)
+    #define SetUSARTTXInterrupt(USART)          (USART->CR1 |= USART_CR1_TCIE)
+    #define SetUSARTOver8(USART)                (USART->CR1 |= USART_CR1_OVER8)
+    #define SetUSART_DR(USART,Data)             (USART->DR = ((uint8_t)(Data)))
+//-----------------------Simple commands reset and set the state------------------------------------------------------------------------------//
+#if (_configCALC_USART == 0)
+    #define ConfUSARTBaud(USART,BAUD)           {USART->BRR = ((uint32_t)((USART->BRR)&(~0xFFFF))|((uint16_t)(BAUD)));}
+#elif (_configCALC_USART == 1)
+    #define ConfUSARTBaud(USART,BAUD)           {USART->BRR = CalcUSARTBaudrate(USART, BAUD);}
+#else
+#error Invalid arg Calc USART
+#endif
+    #define ConfUSARTStop(USART,STOP)           {USART->CR2 = ((uint32_t)((USART->CR2)&(~USART_CR2_STOP))|((uint16_t)(STOP)));}
+//----------------------------------------Get state----------------------------------------------------//
+    #define GetUSARTSR(USART)                        ((uint16_t)(USART->SR))
+    #define CheckUSARTReceiver(USART)                (USART->SR & USART_SR_RXNE)
+    #define CheckUSARTTransmiter(USART)              (USART->SR & USART_SR_TXE)
+    #define CheckUSARTCompleteTransmission(USART)    (USART->SR & USART_SR_TC)
+    #define GetUSARTData(USART)                      ((uint8_t)(USART->DR))
+    #define GetUSARTFramingError(USART)              (USART->SR & USART_SR_FE)
+    #define GetUSARTParityError(USART)               (USART->SR & USART_SR_PE)
+#if (_configCALC_USART == 1)
+//---------------------------------------Calculating---------------------------------------------------//
 
-        #define SetUSART_DR(USART,DR)                (* ((uint32_t *)((usart_base(USART) + usart_id(USART)) + 0x04)) = usart_data(DR))
+uint16_t CalcUSARTBaudrate(USART_TypeDef *USARTx, uint16_t BaudRate);
 
-        #define ResetUSART_DR(USART,DR)
-
-        #define ResetUSART_SR(USART)                 (* (uint32_t *)(usart_base(USART) + usart_id(USART)) &= (~0x3FF))
-        //вычисление адреса, очистка и установка значения
-        #define conf_usart_baud(usart,baud)         {* ((uint32_t *)(usart_base(usart) + usart_id(usart) + 0x08)) = \
-                                                    ((* ((uint32_t *)(usart_base(usart) + usart_id(usart) + 0x08))&(~usart_baud(0xFFFF)))|usart_baud(baud));}
-
-        #define conf_usart_ue(usart,ue)             {* ((uint32_t *)(usart_base(usart) + usart_id(usart) + 0x0C)) = \
-                                                    ((* ((uint32_t *)(usart_base(usart) + usart_id(usart) + 0x0C))&(~usart_enable(0x1)))|usart_enable(ue));}
-
-        #define conf_usart_mbit(usart,m)            {* ((uint32_t *)(usart_base(usart) + usart_id(usart) + 0x0C)) = \
-                                                    ((* ((uint32_t *)(usart_base(usart) + usart_id(usart) + 0x0C))&(~usart_word_length(0x1)))|usart_word_length(m));}
-
-        #define conf_usart_stop(usart,stop)         {* ((uint32_t *)(usart_base(usart) + usart_id(usart) + 0x10)) = \
-                                                    ((* ((uint32_t *)(usart_base(usart) + usart_id(usart) + 0x10))&(~usart_stop_bits(stop)))|usart_stop_bits(stop));}
-
-        #define conf_usart_dmat(usart,dmat)         {* ((uint32_t *)(usart_base(usart) + usart_id(usart) + 0x14)) = \
-                                                    ((* ((uint32_t *)(usart_base(usart) + usart_id(usart) + 0x14))&(~usart_dmat(0x1)))|usart_dmat(dmat));}
-
-        #define conf_usart_dmar(usart,dmar)         {* ((uint32_t *)(usart_base(usart) + usart_id(usart) + 0x14)) = \
-                                                    ((* ((uint32_t *)(usart_base(usart) + usart_id(usart) + 0x14))&(~usart_dmar(0x1)))|usart_dmar(dmar));}
-
-        #define conf_usart_transmitter(usart,te)    {* ((uint32_t *)(usart_base(usart) + usart_id(usart) + 0x0C)) = \
-                                                    ((* ((uint32_t *)(usart_base(usart) + usart_id(usart) + 0x0C))&(~usart_transmitter(0x1)))|usart_transmitter(te));}
-
-        #define conf_usart_receiver(usart,re)       {* ((uint32_t *)(usart_base(usart) + usart_id(usart) + 0x0C)) = \
-                                                    ((* ((uint32_t *)(usart_base(usart) + usart_id(usart) + 0x0C))&(~usart_receiver(0x1)))|usart_receiver(re));}
-
-        #define conf_usart_rxneie(usart,rxneie)       {* ((uint32_t *)(usart_base(usart) + usart_id(usart) + 0x0C)) = \
-                                                    ((* ((uint32_t *)(usart_base(usart) + usart_id(usart) + 0x0C))&(~usart_rxneie(0x1)))|usart_rxneie(rxneie));}
-
-        #define conf_usart_txneie(usart,txneie)       {* ((uint32_t *)(usart_base(usart) + usart_id(usart) + 0x0C)) = \
-                                                    ((* ((uint32_t *)(usart_base(usart) + usart_id(usart) + 0x0C))&(~usart_txneie(0x1)))|usart_txneie(txneie));}
-
-        //вычисление адреса и проверка статуса
-        #define ReceiveRegNotEmpty                    ((uint16_t)(0x20))
-
-        #define TransmitRegEmpty                      ((uint16_t)(0x80))
-
-        #define TransmitComplete                      ((uint16_t)(0x80))
-
-        #define USARTGetData(USART)                 ((uint8_t)(*((uint32_t *)(usart_base(USART) + usart_id(USART) + 0x04))))
-
-        #define USARTGetStatus(usart,state)             (( (* (uint32_t *)((usart_base(usart) + usart_id(usart)) + 0x00)))&((uint32_t)state))
-
-        #define get_usart_over8(usart)              ((uint32_t)((*((uint32_t *)(usart_base(usart) + usart_id(usart) + 0x0C)))&((uint16_t)0x8000)))
-
-        //расчеты
-        #define divider_over8(usart)                ((get_usart_over8(usart)*4)+((!get_usart_over8(usart)*2)))
-        #define integer_divider(usart,baud)         ((uint32_t)((25*sourse_calc(usart))/((divider_over8(usart)*2)*baud)))
-        #define tmpreg(usart,baud)                  ((uint32_t)((integer_divider(usart,baud)/100) << 4))
-        #define fractional_divider(usart,baud)      ((uint32_t)(integer_divider(usart,baud) - (100*(tmpreg(usart,baud) >> 4))))
-        #define calc_baud(usart,baud)               ((uint16_t)(tmpreg(usart,baud)|((((fractional_divider(usart,baud)*(4*divider_over8(usart))) + 50) / 100) & ((uint8_t)((0x07*get_usart_over8(usart)) + (0x0F*(~get_usart_over8(usart))))))))
-        #define sourse_calc(usart)                  ((uint32_t)((((usart&0x40) >> 6)*current_APB1)+((((usart&0x20)>>5)+((usart&0x30)>>4))*current_APB2)))
-        #define callc_baud(usart,baud)              ((uint16_t)(sourse_calc(usart)/baud))
-
-
-        #define usartReceiverConfigure(usart,baud)   {     \
-            conf_usart_baud(usart,baud);  \
-            conf_usart_receiver(usart,0x1);                \
-            conf_usart_rxneie(usart,0x1);                  \
-            conf_usart_ue(usart,0x1);                }
-
-        #define usartTransmitterConfigure(usart,baud)   {   \
-            conf_usart_baud(usart,baud);  \
-            conf_usart_transmitter(usart,0x1);      \
-            conf_usart_txneie(usart,0x1);           \
-            conf_usart_ue(usart,0x1);             }
-
-        #define USARTBothConfigure(usart,baud,TX_INTERRUPT_EN, RX_INTERRUPT_EN){\
-            conf_usart_baud(usart,baud);       \
-            conf_usart_transmitter(usart,0x1);                  \
-            conf_usart_receiver(usart,0x1);                     \
-            conf_usart_rxneie(usart,RX_INTERRUPT_EN);           \
-            conf_usart_txneie(usart,TX_INTERRUPT_EN);           \
-            conf_usart_ue(usart,0x1);}
+#endif /*_configCALC_USART*/
+#endif /*configUSE_USART*/

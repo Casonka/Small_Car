@@ -10,20 +10,20 @@
 /*!
 *   FIL STM32 Driver
 *   @file <FilConfig.h>
-*   @note This file include driver Fast Initialization Library(FIL) for STM32 controllers
+*   @note [FIL:Configuration] This file include driver Fast Initialization Library(FIL) for STM32 controllers
 */
 
 #pragma once
-#include <main.h>
+#include "main.h"
 
 /*!
 *   @arg 1 - RCR Development Board #1
 *   @arg 2 - RCR Development Board #2
 *   @arg 3 - RCR Development Board #3
 */
-#define _configUSEBoards                3   // access for Basic functions FIL
+#define _configUSEBoards                3
 
-#define configUSE_RCC                   0
+#define configUSE_RCC                   1
 #define configUSE_GPIO                  1
 #define configUSE_TIM                   1
 #define configUSE_I2C                   0
@@ -31,9 +31,12 @@
 #define configUSE_ADC                   0
 #define configUSE_EXTI                  0
 #define configUSE_RTC                   0
-#define configUSE_USART                 0
+#define configUSE_USART                 1
 #define configUSE_FREERTOS              0
 
+#define _configCALC_RCC                 1
+#define _configCALC_TIM                 1
+#define _configCALC_USART               1
 /*!
 *   Version control
 *
@@ -54,6 +57,7 @@
     #endif /*Development Board ¹2*/
     #if (_configUSEBoards == 3) // Development Board ¹3
         #include "RCR_DevBoard_3.h"
+        #include "RCR_DevBoard_3_Setup.h"
     #endif /*Development Board ¹3*/
     #if ((_configUSEBoards < 0) || (_configUSEBoards > 3))
         #error Invalid argument of Development Board

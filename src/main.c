@@ -3,8 +3,10 @@
 
 int main(void)
 {
+Board_Config;
 
     while(1)
     {
+
     }
 }

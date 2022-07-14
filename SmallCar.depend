@@ -1,0 +1,171 @@
+# depslib dependency file v1.0
+1657632135 source:c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\smallcar\src\startup_stm32f401xc.s
+
+1657633864 source:c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\smallcar\src\main.c
+	"main.h"
+
+1657633858 c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\smallcar\inc\main.h
+	"stm32f4xx.h"
+	"FilConfig.h"
+
+1657632135 c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\smallcar\inc\stm32f4xx.h
+	"core_cm4.h"
+	"system_stm32f4xx.h"
+	<stdint.h>
+	"stm32f4xx_conf.h"
+
+1657632135 c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\smallcar\cmsis\core_cm4.h
+	<stdint.h>
+	"cmsis_version.h"
+	"cmsis_compiler.h"
+	"mpu_armv7.h"
+
+1657632135 c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\smallcar\cmsis\cmsis_version.h
+
+1657632135 c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\smallcar\cmsis\cmsis_compiler.h
+	<stdint.h>
+	"cmsis_armcc.h"
+	"cmsis_armclang_ltm.h"
+	"cmsis_armclang.h"
+	"cmsis_gcc.h"
+	<cmsis_iccarm.h>
+	<cmsis_ccs.h>
+	<cmsis_csm.h>
+
+1657632135 c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\smallcar\cmsis\cmsis_gcc.h
+
+1657632135 c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\smallcar\cmsis\mpu_armv7.h
+
+1657632135 c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\smallcar\inc\system_stm32f4xx.h
+
+1657633907 c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\smallcar\fil_lib\filconfig.h
+	<main.h>
+	"RCR_DevBoard_3.h"
+	"FreeRTOS.h"
+	"FreeRTOSConfig.h"
+	"task.h"
+	"queue.h"
+	"semphr.h"
+	"croutine.h"
+	"timers.h"
+	"event_groups.h"
+	"stream_buffer.h"
+	"robot_tasks.h"
+	"RCC.h"
+	"GPIO.h"
+	"TIM.h"
+	"I2C.h"
+	"USART.h"
+
+1657689650 c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\smallcar\rcr\rcr_devboard_3.h
+
+1655441001 c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\smallcar\fil_lib\gpio.h
+
+1657633585 c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\smallcar\fil_lib\tim.h
+	"FilConfig.h"
+
+1655443229 c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\smallcar\fil_lib\usart.h
+	<FilConfig.h>
+
+1657632135 source:c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\smallcar\src\system_stm32f4xx.c
+	"stm32f4xx.h"
+
+1657633617 source:c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\smallcar\ebmon.c
+	"ebmon.h"
+
+1657633617 c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\smallcar\ebmon.h
+	<stdint.h>
+	<stdio.h>
+
+1657632135 source:c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car\src\startup_stm32f401xc.s
+
+1657633864 source:c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car\src\main.c
+	"main.h"
+
+1657633858 c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car\inc\main.h
+	"stm32f4xx.h"
+	"FilConfig.h"
+
+1657632135 c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car\inc\stm32f4xx.h
+	"core_cm4.h"
+	"system_stm32f4xx.h"
+	<stdint.h>
+	"stm32f4xx_conf.h"
+
+1657632135 c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car\cmsis\core_cm4.h
+	<stdint.h>
+	"cmsis_version.h"
+	"cmsis_compiler.h"
+	"mpu_armv7.h"
+
+1657632135 c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car\cmsis\cmsis_version.h
+
+1657632135 c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car\cmsis\cmsis_compiler.h
+	<stdint.h>
+	"cmsis_armcc.h"
+	"cmsis_armclang_ltm.h"
+	"cmsis_armclang.h"
+	"cmsis_gcc.h"
+	<cmsis_iccarm.h>
+	<cmsis_ccs.h>
+	<cmsis_csm.h>
+
+1657632135 c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car\cmsis\cmsis_gcc.h
+
+1657632135 c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car\cmsis\mpu_armv7.h
+
+1657632135 c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car\inc\system_stm32f4xx.h
+
+1657719066 c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car\fil_lib\filconfig.h
+	"main.h"
+	"RCR_DevBoard_3.h"
+	"RCR_DevBoard_3_Setup.h"
+	"FreeRTOS.h"
+	"FreeRTOSConfig.h"
+	"task.h"
+	"queue.h"
+	"semphr.h"
+	"croutine.h"
+	"timers.h"
+	"event_groups.h"
+	"stream_buffer.h"
+	"robot_tasks.h"
+	"RCC.h"
+	"GPIO.h"
+	"TIM.h"
+	"I2C.h"
+	"USART.h"
+
+1657709997 c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car\rcr\devboard#3\rcr_devboard_3.h
+
+1657720142 c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car\fil_lib\rcc.h
+	"FilConfig.h"
+
+1657718033 c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car\fil_lib\gpio.h
+	"FilConfig.h"
+
+1657716091 c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car\fil_lib\tim.h
+	"FilConfig.h"
+
+1657717991 c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car\fil_lib\usart.h
+	"FilConfig.h"
+
+1657632135 source:c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car\src\system_stm32f4xx.c
+	"stm32f4xx.h"
+
+1657633617 source:c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car\ebmon.c
+	"ebmon.h"
+
+1657633617 c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car\ebmon.h
+	<stdint.h>
+	<stdio.h>
+
+1657720184 source:c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car\fil_lib\rcc.c
+	"RCC.h"
+
+1657718099 c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car\rcr\devboard#3\rcr_devboard_3_setup.h
+	"FilConfig.h"
+
+1657710960 source:c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car\fil_lib\interrupts.c
+	"stm32f4xx.h"
+

@@ -58,9 +58,9 @@
 #if (_configCALC_USART == 0)
     #define ConfUSARTBaud(USART,BAUD)           {USART->BRR = ((uint32_t)((USART->BRR)&(~0xFFFF))|((uint16_t)(BAUD)));}
 #elif (_configCALC_USART == 1)
-    #define ConfUSARTBaud(USART,BAUD)           {USART->BRR = CalcUSARTBaudrate(USART, BAUD);}
+    #define ConfUSARTBaud(USART,BAUD)           {USART->BRR = ((uint32_t)CalcUSARTBaudrate(USART, BAUD));}
 #else
-#error Invalid arg Calc USART
+#error [FIL:UART/USART] Invalid arg Calc USART
 #endif
     #define ConfUSARTStop(USART,STOP)           {USART->CR2 = ((uint32_t)((USART->CR2)&(~USART_CR2_STOP))|((uint16_t)(STOP)));}
 //----------------------------------------Get state----------------------------------------------------//
@@ -69,12 +69,12 @@
     #define CheckUSARTTransmiter(USART)              (USART->SR & USART_SR_TXE)
     #define CheckUSARTCompleteTransmission(USART)    (USART->SR & USART_SR_TC)
     #define GetUSARTData(USART)                      ((uint8_t)(USART->DR))
-    #define GetUSARTFramingError(USART)              (USART->SR & USART_SR_FE)
-    #define GetUSARTParityError(USART)               (USART->SR & USART_SR_PE)
+    #define CheckUSARTFramingError(USART)            (USART->SR & USART_SR_FE)
+    #define CheckUSARTParityError(USART)             (USART->SR & USART_SR_PE)
 #if (_configCALC_USART == 1)
 //---------------------------------------Calculating---------------------------------------------------//
 
-uint16_t CalcUSARTBaudrate(USART_TypeDef *USARTx, uint16_t BaudRate);
+uint16_t CalcUSARTBaudrate(USART_TypeDef *USARTx, uint32_t BaudRate);
 
 #endif /*_configCALC_USART*/
 #endif /*configUSE_USART*/

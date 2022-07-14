@@ -1,9 +1,9 @@
 #include "USART.h"
 
-uint16_t CalcUSARTBaudrate(USART_TypeDef *USARTx, uint16_t BaudRate)
+uint16_t CalcUSARTBaudrate(USART_TypeDef *USARTx, uint32_t BaudRate)
 {
     uint32_t BAUD, REGISTER = 0;
-    CalcClocksRCC();
+    CalcRCCClocks();
 #if defined(STM32F40_41xxx) /*--------------STM32F407------------------*/
     if( USARTx == USART2 || USARTx == USART3 || USARTx == USART4 || USARTx == USART5)
     {

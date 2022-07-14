@@ -114,14 +114,14 @@
      *
      *       @arg name - the part name of the peripheral
      */
-    #define GetSWS     ((uint32_t)((RCC->CFGR) & RCC_CFGR_SWS))
-    #define GetPLLSRC  ((uint32_t)((RCC->PLLCFGR) & RCC_PLLCFGR_PLLSRC))
+    #define GetSWS     ((uint32_t)((RCC->CFGR & RCC_CFGR_SWS) >> 2))
+    #define GetPLLSRC  ((uint32_t)((RCC->PLLCFGR & RCC_PLLCFGR_PLLSRC) >> 22))
     #define GetPLLM    ((uint32_t)(RCC->PLLCFGR & RCC_PLLCFGR_PLLM))
-    #define GetPLLN    ((uint32_t)(RCC->PLLCFGR & RCC_PLLCFGR_PLLN))
-    #define GetPLLP    ((uint32_t)(RCC->PLLCFGR & RCC_PLLCFGR_PLLP))
-    #define GetHPRE    ((uint32_t)(RCC->PLLCFGR & RCC_CFGR_HPRE))
-    #define GetPPRE1   ((uint32_t)(RCC->PLLCFGR & RCC_CFGR_PPRE1))
-    #define GetPPRE2   ((uint32_t)(RCC->PLLCFGR & RCC_CFGR_PPRE2))
+    #define GetPLLN    ((uint32_t)((RCC->PLLCFGR & RCC_PLLCFGR_PLLN) >> 6))
+    #define GetPLLP    ((uint32_t)((RCC->PLLCFGR & RCC_PLLCFGR_PLLP) >> 16))
+    #define GetHPRE    ((uint32_t)((RCC->CFGR & RCC_CFGR_HPRE) >> 4))
+    #define GetPPRE1   ((uint32_t)((RCC->CFGR & RCC_CFGR_PPRE1) >> 10))
+    #define GetPPRE2   ((uint32_t)((RCC->CFGR & RCC_CFGR_PPRE2) >> 13))
 
     __attribute__((unused)) static uint8_t PrescalerTable[16] =   {0, 0, 0, 0, 1, 2, 3, 4, 1, 2, 3, 4, 6, 7, 8, 9};
     /*!
@@ -142,7 +142,7 @@
         uint32_t CurrentAPB2;
     }Clocks;
 
-    void CalcClocksRCC(void);
+    void CalcRCCClocks(void);
 
 #endif /*_configCALC_RCC*/
 #endif /*configUSE_RCC */

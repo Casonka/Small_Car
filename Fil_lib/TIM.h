@@ -31,14 +31,29 @@
     *   @brief TimPIDConfigure(TIM,frequency) - configuration timer in calculating mode
     *   (P-regulation, PI - regulation, PID - regulation and other regulations)
     *       @arg TIM - number of timer
-    *       @arg freq - target frequency for calculating
+    *       @arg PRECALER - psc timer
+    *       @arg AUTORESET - arr timer
     */
     #define TimPIDConfigure(TIM,PRESCALER,AUTORESET)   {\
         ResetTimCNT(TIM);                               \
-        ConfPIDFreq(TIM,PRESCALER,AUTORESET);           \
+        ConfTimPSC(TIM,PRESCALER);                      \
+        ConfTimARR(TIM,AUTORESET);                      \
         SetTimUpdateInterrupt(TIM);                     \
         TimStart(TIM);                                  }
+#if (_configCALC_TIM == 1)
 
+    /*!
+    *   @brief TimPIDConfigureAutomatic(TIM,frequency) - configuration timer in calculating mode (auto-mode)
+    *   (P-regulation, PI - regulation, PID - regulation and other regulations)
+    *       @arg TIM - number of timer
+    *       @arg freq - target frequency for calculating
+    */
+    #define TimPIDConfigureAutomatic(TIM,FREQUENCY)    {\
+        ResetTimCNT(TIM);                               \
+        CalcTimPIDFrequency(TIM,FREQUENCY);             \
+        SetTimUpdateInterrupt(TIM);                     \
+        TimStart(TIM);                                  }
+#endif
     /*!
     *   @brief TimEncoderConfigure(TIM) - configuration timer with encoder interface
     *       @arg TIM - number of timer
@@ -90,10 +105,6 @@
         ConfTimCompareFast1(TIM,1,1,ch1,ch2);                             \
         ConfTimCompareFast2(TIM,1,1,ch3,ch4);                             \
         ConfTimCapture(TIM,1,1,1,1,ch1,ch2,ch3,ch4);                      }
-
-    #define ConfPIDFreq(TIM,PSC,ARR)       {\
-        ConfTimPSC(TIM,PSC);                \
-        ConfTimARR(TIM,ARR);                }
 
 //-----------------------Simple commands reset and set the state-------------------------------------------------------------------------------------------------------------//
     #define ConfTimPSC(TIM,PRESCALER)                               { TIM->PSC = ((uint32_t)(TIM->PSC & ((uint32_t)(~0xFFFFFFFF))) | ((uint32_t)PRESCALER));}
@@ -172,12 +183,33 @@
 #if (_configCALC_TIM == 1)
 //---------------------------------------Calculating---------------------------------------------------//
 struct {
-    uint32_t DutyCH1;
-    uint32_t DutyCH2;
-    uint32_t DutyCH3;
-    uint32_t DutyCH4;
+    uint32_t SourseClock;
+    float DutyCH1;
+    float DutyCH2;
+    float DutyCH3;
+    float DutyCH4;
     uint32_t Frequency;
 }TIMStatus;
+    /*!
+    *   @brief CalcTimClockSourse(TIM_TypeDef *TIMx) - Calculating Timer Clock Sourse
+    *       @arg TIMx - number of timer
+    *
+    */
+void CalcTimClockSourse(TIM_TypeDef *TIMx);
 
+    /*!
+    *   @brief CalcTimStatus(TIM_TypeDef *TIMx) - Calculating Timer Clock Sourse
+    *       @arg TIMx - number of timer
+    *
+    */
 void CalcTimStatus(TIM_TypeDef *TIMx);
+
+    /*!
+    *   @brief CalcTimPIDFrequency(TIM_TypeDef *TIMx, uint16_t freq) - Calculating Timer Clock Sourse
+    *       @arg TIMx - number of timer
+    *       @arg freq - necessary frequency
+    *
+    */
+void CalcTimPIDFrequency(TIM_TypeDef *TIMx, uint16_t freq);
+
 #endif /*_configCALC_TIM*/

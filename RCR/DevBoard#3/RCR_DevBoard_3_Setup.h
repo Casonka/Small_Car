@@ -11,7 +11,6 @@
 */
 
 #if defined(STM32F401xx)
-#pragma message "Configurating Dev Board #3....."
 /*!
 *   @note [RCR] Configuration Development Board #3
 */
@@ -28,7 +27,8 @@
     SetUSART6;          \
     SetI2C1;            \
     InitPeriph;         \
-    InitTimers;         }
+    InitTimers;         \
+    InitUSART;          }
 
 #define InitPeriph {\
     conf_pin(BTN1_DIR_PIN, GENERAL, PUSH_PULL, FAST_S, NO_PULL_UP);\
@@ -62,4 +62,9 @@
 #define InitInterrupts {\
     NVIC_EnableIRQ(TIM3_IRQn);}
 
-#endif
+#define InitUSART {\
+    USARTBothConfigure(USART1,9600, 0, 1); \
+    USARTTransmitterConfigure(USART6, 115200, 0);}
+
+
+#endif /*STM32F401xx*/

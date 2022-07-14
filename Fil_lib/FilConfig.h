@@ -27,12 +27,13 @@
 #define configUSE_GPIO                  1
 #define configUSE_TIM                   1
 #define configUSE_I2C                   0
-#define configUSE_DMA                   0
+#define configUSE_DMA                   1
 #define configUSE_ADC                   0
 #define configUSE_EXTI                  0
 #define configUSE_RTC                   0
 #define configUSE_USART                 1
 #define configUSE_FREERTOS              0
+#define configUSE_DeprecatedFunctions   0
 
 #define _configCALC_RCC                 1
 #define _configCALC_TIM                 1
@@ -64,8 +65,15 @@
     #endif /*_configUSEBoards*/
 #endif /*_configUSEBoards*/
 
+/*!
+*   @note [FIL:FreeRTOS] Include FreeRTOS in project
+*/
 #if(configUSE_FREERTOS == 1)
-    //FreeRTOS files
+    /*!
+    *   @note [FIL:FreeRTOS] Настройка отвечает за подключение операционной системы в проект
+    *   Содержит все файлы необходимые для работы многопоточного приложения
+    *   Только для опытных пользователей
+    */
     #include "FreeRTOS.h"       // main FreeRTOS kernel file
     #include "FreeRTOSConfig.h" // main configuration file
     #include "task.h"           //file for initialization tasks
@@ -83,17 +91,20 @@
 
 #if(configUSE_RCC == 1)
     #include "RCC.h"
-#endif
+#endif /*configUSE_RCC*/
 #if(configUSE_GPIO == 1)
     #include "GPIO.h"
-#endif
+#endif /*configUSE_GPIO*/
 #if(configUSE_TIM == 1)
     #include "TIM.h"
-#endif
+#endif /*configUSE_TIM*/
 #if(configUSE_I2C == 1)
     #include "I2C.h"
-#endif
+#endif /*configUSE_I2C*/
 #if(configUSE_USART == 1)
     #include "USART.h"
-#endif
-
+#endif /*configUSE_USART*/
+#if(configUSE_DMA == 1)
+    #include "DMA.h"
+    #include "DMA_FIFOBuffers.h"
+#endif /*configUSE_DMA*/

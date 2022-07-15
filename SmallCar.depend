@@ -79,7 +79,7 @@
 
 1657632135 source:c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car\src\startup_stm32f401xc.s
 
-1657804549 source:c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car\src\main.c
+1657889951 source:c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car\src\main.c
 	"main.h"
 
 1657721688 c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car\inc\main.h
@@ -116,7 +116,7 @@
 
 1657632135 c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car\inc\system_stm32f4xx.h
 
-1657794299 c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car\fil_lib\filconfig.h
+1657882841 c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car\fil_lib\filconfig.h
 	"main.h"
 	"RCR_DevBoard_3.h"
 	"RCR_DevBoard_3_Setup.h"
@@ -133,10 +133,11 @@
 	"RCC.h"
 	"GPIO.h"
 	"TIM.h"
-	"I2C.h"
 	"USART.h"
 	"DMA.h"
 	"DMA_FIFOBuffers.h"
+	"ADC.h"
+	"I2C.h"
 
 1657774625 c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car\rcr\devboard#3\rcr_devboard_3.h
 
@@ -177,9 +178,17 @@
 1657777584 source:c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car\fil_lib\usart.c
 	"USART.h"
 
-1657804491 c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car\fil_lib\dma.h
+1657889623 c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car\fil_lib\dma.h
 	"FilConfig.h"
 
-1657803942 c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car\fil_lib\dma_fifobuffers.h
+1657873891 c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car\fil_lib\dma_fifobuffers.h
 	"FilConfig.h"
+
+1657890702 c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car\fil_lib\adc.h
+	<FilConfig.h>
+
+1657883835 source:c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car\fil_lib\dma.c
+	"stm32f4xx.h"
+	"DMA.h"
+	"DMA_FIFOBuffers.h"
 

@@ -29,10 +29,10 @@
 #if defined(STM32F40_41xxx)
 #define USART3RX_NUMB  8
 #define USART3TX_NUMB  8
-#define USART4RX_NUMB  8
-#define USART4TX_NUMB  8
-#define USART5RX_NUMB  8
-#define USART5TX_NUMB  8
+#define UART4RX_NUMB   8
+#define UART4TX_NUMB   8
+#define UART5RX_NUMB   8
+#define UART5TX_NUMB   8
 #endif /*STM32F40_41xxx*/
 
 #define USART6RX_NUMB  8
@@ -82,18 +82,18 @@ extern uint8_t USART3RX_Data[USART3RX_NUMB];
 extern uint8_t USART3TX_Data[USART3TX_NUMB];
 
 /*!
-*   @brief  USART4XX_Data[USART_NUMB] - UART/USART FIFO buffer RX/TX
-*   @list  USART4XX_Data
+*   @brief  UART4XX_Data[USART_NUMB] - UART/USART FIFO buffer RX/TX
+*   @list  UART4XX_Data
 */
-extern uint8_t USART4RX_Data[USART4RX_NUMB];
-extern uint8_t USART4TX_Data[USART4TX_NUMB];
+extern uint8_t UART4RX_Data[UART4RX_NUMB];
+extern uint8_t UART4TX_Data[UART4TX_NUMB];
 
 /*!
-*   @brief  USART5XX_Data[USART_NUMB] - UART/USART FIFO buffer RX/TX
-*   @list  USART5XX_Data
+*   @brief  UART5XX_Data[USART_NUMB] - UART/USART FIFO buffer RX/TX
+*   @list  UART5XX_Data
 */
-extern uint8_t USART5RX_Data[USART5RX_NUMB];
-extern uint8_t USART5TX_Data[USART5TX_NUMB];
+extern uint8_t UART5RX_Data[UART5RX_NUMB];
+extern uint8_t UART5TX_Data[UART5TX_NUMB];
 #endif /*STM32F40_41xxx*/
 
 /*!

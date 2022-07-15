@@ -26,18 +26,20 @@
 #define configUSE_RCC                   1
 #define configUSE_GPIO                  1
 #define configUSE_TIM                   1
+#define configUSE_USART                 1
+#define configUSE_DMA                   0
 #define configUSE_I2C                   0
-#define configUSE_DMA                   1
-#define configUSE_ADC                   0
+#define configUSE_ADC                   1
 #define configUSE_EXTI                  0
 #define configUSE_RTC                   0
-#define configUSE_USART                 1
 #define configUSE_FREERTOS              0
 #define configUSE_DeprecatedFunctions   0
 
 #define _configCALC_RCC                 1
 #define _configCALC_TIM                 1
 #define _configCALC_USART               1
+#define _configCALC_Regulators          0
+#define _configCALC_Matrix              0
 /*!
 *   Version control
 *
@@ -98,9 +100,6 @@
 #if(configUSE_TIM == 1)
     #include "TIM.h"
 #endif /*configUSE_TIM*/
-#if(configUSE_I2C == 1)
-    #include "I2C.h"
-#endif /*configUSE_I2C*/
 #if(configUSE_USART == 1)
     #include "USART.h"
 #endif /*configUSE_USART*/
@@ -108,3 +107,11 @@
     #include "DMA.h"
     #include "DMA_FIFOBuffers.h"
 #endif /*configUSE_DMA*/
+#if(configUSE_ADC == 1)
+    #include "ADC.h"
+#endif /*configUSE_ADC*/
+#if(configUSE_I2C == 1)
+    #include "I2C.h"
+#endif /*configUSE_I2C*/
+
+

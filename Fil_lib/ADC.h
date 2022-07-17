@@ -3,7 +3,7 @@
     *                       ///ADC initialization\\\
     *   --------------------------------------------------------------------------
     *   @author RCR group developers - Caska
-    *   @date 15/07/2022 - last update version ADC
+    *   @date 17/07/2022 - last update version ADC
     *
     *       @note [FIL:ADC] Configuration file ADC
     */
@@ -12,22 +12,31 @@
 
 #if(configUSE_ADC == 1)
 
+//----------------------------------------ADC Length-------------------------------------------------------------//
+#define ADC_3_CYCLES    0
+#define ADC_15_CYCLES   1
+#define ADC_28_CYCLES   2
+#define ADC_56_CYCLES   3
+#define ADC_84_CYCLES   4
+#define ADC_112_CYCLES  5
+#define ADC_144_CYCLES  6
+#define ADC_480_CYCLES  7
 //----------------------------------------ADC Functions----------------------------------------------------------//
 
     /*!
     *   @brief  ADCScanConfigure(ADC,LENGTH,
     *           CH1,CH2,CH3,CH4,CH5,CH6,CH7,CH8,CH9,CH10,CH11,CH12,CH13,CH14,CH15,CH16,
-    *           NUMBER,CYCLES) - Simple configuration ADC (Scan mode)
+    *           CYCLES) - Configuration ADC (Scan mode)
     *       @arg ADC - Number of ADC
     *       @arg LENGTH - Regular channel sequence length
-    *       @arg CHx - Connect ADC Channel to ADC_IN pins
+    *       @arg CHx - Connect ADC_IN pins to conversion queue
     *       @arg NUMBER - NUMBER of ADC_IN active pins
     *       @arg CYCLES - Sample time selection
     *
     */
     #define ADCScanConfigure(ADC,LENGTH,                                            \
             CH1,CH2,CH3,CH4,CH5,CH6,CH7,CH8,CH9,CH10,CH11,CH12,CH13,CH14,CH15,CH16, \
-            NUMBER,CYCLES)                                                         {\
+            CYCLES)                                                                {\
         SetADCLength(ADC,LENGTH);                                                   \
         ConfADCSQ1(ADC,CH1,CH2,CH3,CH4);                                            \
         ConfADCSQ2(ADC,CH5,CH6,CH7,CH8,CH9,CH10);                                   \
@@ -36,7 +45,30 @@
         SetADCScan(ADC);                                                            \
         SetADCDDS(ADC);                                                             \
         SetADCDMA(ADC);                                                             \
+        SetADCCont(ADC);                                                            \
+        SetADCAdon(ADC);                                                            \
+        SetADCSWStart(ADC);                                                         }
+
+#if (configUSE_ADC_Manually == 1)
+
+    /*!
+    *   @brief  ADCScanConfigure(ADC,LENGTH,CYCLES) - Configuration ADC (Scan mode without adding channels)
+    *       @arg ADC - Number of ADC
+    *       @arg LENGTH - Regular channel sequence length
+    *       @arg NUMBER - NUMBER of ADC_IN active pins
+    *       @arg CYCLES - Sample time selection
+    *
+    */
+    #define ADCScanConfigure(ADC,LENGTH,CYCLES)                                    {\
+        SetADCLength(ADC,LENGTH);                                                   \
+        ConfADCSmpr(ADC,NUMBER,CYCLES);                                             \
+        SetADCScan(ADC);                                                            \
+        SetADCDDS(ADC);                                                             \
+        SetADCDMA(ADC);                                                             \
         SetADCCont(ADC);                                                            }
+
+
+#endif /*configUSE_ADC_Manually*/
 
 //----------------------------------------ADC ID Selection----------------------------------------------------------//
 #if defined(STM32F40_41xxx)
@@ -44,50 +76,31 @@
 #elif defined (STM32F401xx)
 #define ADCID(ADC)      {(ADC == ADC1) ? ADC1_BASE : 0x00;}
 #endif /*STM32F40_41xxx, STM32F401xx*/
-
+//----------------------------------------Set state----------------------------------------------------------------------------------------------------------------------------//
     #define SetADCSMP1(ADC,CYCLES)          (* (uint32_t *)(((ADCID(ADC)) + 0x0C)) |= ADCSmpr1(CYCLES))
-
     #define SetADCSMP2(ADC,CYCLES)          (* (uint32_t *)(((ADCID(ADC)) + 0x10)) |= ADCSmpr2(CYCLES))
-
     #define SetADCLength(ADC,LENGTH)        (* (uint32_t *)(((ADCID(ADC)) + 0x2C)) |= (LENGTH << 20))
-
     #define SetADCSQ1(ADC,CH1,CH2,CH3,CH4)  (* (uint32_t *)(((ADCID(ADC)) + 0x2C)) |= ADCSQ1(CH1,CH2,CH3,CH4))
-
     #define SetADCSQ2(ADC,CH5,CH6,CH7,CH8,CH9,CH10) (* (uint32_t *)(((ADCID(ADC)) + 0x30)) |= ADCSQ2(CH5,CH6,CH7,CH8,CH9,CH10))
-
     #define SetADCSQ3(ADC,CH11,CH12,CH13,CH14,CH15,CH16) (* (uint32_t *)(((ADCID(ADC)) + 0x34)) |= ADCSQ3(CH11,CH12,CH13,CH14,CH15,CH16))
-
     #define SetADCScan(ADC)                 (* (uint32_t *)(((ADCID(ADC)) + 0x04)) |= ADCScan(0x1))
-
     #define SetADCResolution(ADC,RES)       (* (uint32_t *)(((ADCID(ADC)) + 0x04)) |= ADCResolution(0x00))
-
     #define SetADCDMA(ADC)                  (* (uint32_t *)(((ADCID(ADC)) + 0x08)) |= ADCDMA(0x1))
-
     #define SetADCCont(ADC)                 (* (uint32_t *)(((ADCID(ADC)) + 0x08)) |= ADCCont(0x1))
-
     #define SetADCDDS(ADC)                  (* (uint32_t *)(((ADCID(ADC)) + 0x08)) |= ADCDDS(0x1))
-
     #define SetADCAdon(ADC)                 (* (uint32_t *)(((ADCID(ADC)) + 0x08)) |= ADCAdon(0x1))
-
     #define SetADCSWStart(ADC)              (* (uint32_t *)(((ADCID(ADC)) + 0x08)) |= ADCSWStart(0x1))
 
-    #define ConfADCLength(ADC,LENGTH)                       {* ((uint32_t *)(((ADCID(ADC)) + 0x2C))) = \
-                                                            ((* ((uint32_t *)(((ADCID(ADC)) + 0x2C)))&(~(0xF)))|ADCLength(LENGTH));}
+//---------------------------Simple commands reset and set the state-------------------------------------------------------------------------------------------------------------//
+    #define ConfADCLength(ADC,LENGTH)                       {* ((uint32_t *)(((ADCID(ADC)) + 0x2C))) = ((* ((uint32_t *)(((ADCID(ADC)) + 0x2C)))&(~(0xF)))|ADCLength(LENGTH));}
 
-    #define ConfADCSQ1(ADC,CH1,CH2,CH3,CH4)                 {* ((uint32_t *)(((ADCID(ADC)) + 0x2C))) = \
-                                                            ((* ((uint32_t *)(((ADCID(ADC)) + 0x2C)))&(~(0xFFFFF)))|ADCSQ1(CH1,CH2,CH3,CH4));}
 
-    #define ConfADCSQ2(ADC,CH5,CH6,CH7,CH8,CH9,CH10)        {* ((uint32_t *)(((ADCID(ADC)) + 0x30))) = \
-                                                            ((* ((uint32_t *)(((ADCID(ADC)) + 0x30)))&(~(0x3FFFFFFF)))|ADCSQ2(CH5,CH6,CH7,CH8,CH9,CH10));}
+    #define ConfADCSQ1(ADC,CH1,CH2,CH3,CH4)                 {* ((uint32_t *)(((ADCID(ADC)) + 0x2C))) = ((* ((uint32_t *)(((ADCID(ADC)) + 0x2C)))&(~(0xFFFFF)))|ADCSQ1(CH1,CH2,CH3,CH4));}
+    #define ConfADCSQ2(ADC,CH5,CH6,CH7,CH8,CH9,CH10)        {* ((uint32_t *)(((ADCID(ADC)) + 0x30))) = ((* ((uint32_t *)(((ADCID(ADC)) + 0x30)))&(~(0x3FFFFFFF)))|ADCSQ2(CH5,CH6,CH7,CH8,CH9,CH10));}
+    #define ConfADCSQ3(ADC,CH11,CH12,CH13,CH14,CH15,CH16)   {* ((uint32_t *)(((ADCID(ADC)) + 0x34))) = ((* ((uint32_t *)(((ADCID(ADC)) + 0x34)))&(~(0x3FFFFFFF)))|ADCSQ3(CH11,CH12,CH13,CH14,CH15,CH16));}
 
-    #define ConfADCSQ3(ADC,CH11,CH12,CH13,CH14,CH15,CH16)   {* ((uint32_t *)(((ADCID(ADC)) + 0x34))) = \
-                                                            ((* ((uint32_t *)(((ADCID(ADC)) + 0x34)))&(~(0x3FFFFFFF)))|ADCSQ3(CH11,CH12,CH13,CH14,CH15,CH16));}
-
-    #define ConfADCSmpr1(ADC,CYCLES)                        {* ((uint32_t *)(((ADCID(ADC)) + 0x0C))) = \
-                                                            ((* ((uint32_t *)(((ADCID(ADC)) + 0x0C)))&(~(0x7FFFFFF)))|ADCSmpr1(CYCLES));}
-
-    #define ConfADCSmpr2(ADC,CYCLES)                        {* ((uint32_t *)(((ADCID(ADC)) + 0x10))) = \
-                                                            ((* ((uint32_t *)(((ADCID(ADC)) + 0x10)))&(~(0x3FFFFFFF)))|ADCSmpr2(CYCLES));}
+    #define ConfADCSmpr1(ADC,CYCLES)                        {* ((uint32_t *)(((ADCID(ADC)) + 0x0C))) = ((* ((uint32_t *)(((ADCID(ADC)) + 0x0C)))&(~(0x7FFFFFF)))|ADCSmpr1(CYCLES));}
+    #define ConfADCSmpr2(ADC,CYCLES)                        {* ((uint32_t *)(((ADCID(ADC)) + 0x10))) = ((* ((uint32_t *)(((ADCID(ADC)) + 0x10)))&(~(0x3FFFFFFF)))|ADCSmpr2(CYCLES));}
 
     #define ConfADCSmpr(ADC,NUMBER,CYCLES) {        \
         if(NUMBER > 0) ConfADCSmpr2(ADC,CYCLES);    \

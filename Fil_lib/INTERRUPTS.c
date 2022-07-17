@@ -1,27 +1,24 @@
-#include "stm32f4xx.h"
-//---------------------------------------------------------//
-//----------------------USART Interrupts-------------------//
-//---------------------------------------------------------//
-void USART3_IRQHandler(void)
-{
+#include "FilConfig.h"
 
-}
 //---------------------------------------------------------//
 //----------------------Timer Interrupts-------------------//
 //---------------------------------------------------------//
 
 void TIM1_IRQHandler(void)
 {
+
 TIM1->SR = 0;
 }
 
 void TIM2_IRQHandler(void)
 {
+
 TIM2->SR = 0;
 }
 
 void TIM3_IRQHandler(void)
 {
+
 TIM3->SR = 0;
 }
 
@@ -40,7 +37,6 @@ TIM5->SR = 0;
 void TIM6_DAC_IRQHandler(void)
 {
 
-
 TIM6->SR = 0;
 }
 
@@ -48,12 +44,12 @@ TIM6->SR = 0;
 void TIM7_IRQHandler(void)
 {
 
-
 TIM7->SR = 0;
 }
 
 void TIM8_UP_TIM13_IRQHandler(void)
 {
+
 TIM13->SR = 0;
 }
 

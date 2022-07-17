@@ -1,6 +1,6 @@
     /*!
     *   --------------------------------------------------------------------------
-    *                       ///TIM initialization\\\
+    *                       ///RCC initialization\\\
     *   --------------------------------------------------------------------------
     *   @author RCR group developers - Caska
     *   @date 13/07/2022 - last update version RCC
@@ -108,7 +108,7 @@
     */
     #define SetSYSCFG       (RCC->APB2ENR |= ((uint32_t)(1 << 14)))
 
-#if (_configCALC_RCC != 0)
+#if (_configCALC_RCC == 1)
     /*!
      *   @brief Get{name} - get clock part of the peripheral
      *

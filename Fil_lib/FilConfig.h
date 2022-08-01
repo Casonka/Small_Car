@@ -3,7 +3,7 @@
     *                ///Fast Initialization Library Configuration File\\\
     *   --------------------------------------------------------------------------
     *   @author RCR group developers - Caska, Evgeny Garanin.
-    *   @date 12/06/2022 - last update version FIL STM32
+    *   @date 28/06/2022 - last update version FIL STM32
     *
     */
 
@@ -16,13 +16,6 @@
 #pragma once
 #include "main.h"
 
-/*!
-*   @arg 1 - RCR Development Board #1
-*   @arg 2 - RCR Development Board #2
-*   @arg 3 - RCR Development Board #3
-*/
-#define _configUSEBoards                3
-
 #define configUSE_RCC                   1
 #define configUSE_GPIO                  1
 #define configUSE_TIM                   1
@@ -31,9 +24,9 @@
 #define configUSE_I2C                   0
 #define configUSE_ADC                   1
 #define configUSE_ADC_Manually          0
-#define configUSE_EXTI                  0
+#define configUSE_EXTI                  1
 #define configUSE_RTC                   0
-#define configUSE_FREERTOS              0
+#define configUSE_FREERTOS              1
 #define configUSE_DeprecatedFunctions   0
 
 #define _configCALC_RCC                 1
@@ -51,22 +44,6 @@
     #pragma message "STM32F407VGT6, STM32F407VET6"
     #pragma message "STM32F401CCU6"
 #endif /*Supporting device securing end*/
-
-#if (_configUSEBoards != 0 )
-    #if (_configUSEBoards == 1) // Development Board ¹1
-// none
-    #endif /*Development Board ¹1*/
-    #if (_configUSEBoards == 2) // Development Board ¹2
-// none
-    #endif /*Development Board ¹2*/
-    #if (_configUSEBoards == 3) // Development Board ¹3
-        #include "RCR_DevBoard_3.h"
-        #include "RCR_DevBoard_3_Setup.h"
-    #endif /*Development Board ¹3*/
-    #if ((_configUSEBoards < 0) || (_configUSEBoards > 3))
-        #error Invalid argument of Development Board
-    #endif /*_configUSEBoards*/
-#endif /*_configUSEBoards*/
 
 /*!
 *   @note [FIL:FreeRTOS] Include FreeRTOS in project
@@ -114,5 +91,7 @@
 #if(configUSE_I2C == 1)
     #include "I2C.h"
 #endif /*configUSE_I2C*/
-
+#if(configUSE_EXTI == 1)
+    #include "EXTI.h"
+#endif /*configUSE_EXTI*/
 

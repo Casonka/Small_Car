@@ -151,15 +151,49 @@
 		</Unit>
 		<Unit filename="Fil_lib\DMA.h" />
 		<Unit filename="Fil_lib\DMA_FIFOBuffers.h" />
-		<Unit filename="Fil_lib\FilConfig.h" />
-		<Unit filename="Fil_lib\GPIO.h" />
-		<Unit filename="Fil_lib\INTERRUPTS.c">
+		<Unit filename="Fil_lib\EXTI.c">
 			<Option compilerVar="CC" />
 		</Unit>
+		<Unit filename="Fil_lib\EXTI.h" />
+		<Unit filename="Fil_lib\FilConfig.h" />
+		<Unit filename="Fil_lib\freertos_lib\atomic.h" />
+		<Unit filename="Fil_lib\freertos_lib\croutine.h" />
+		<Unit filename="Fil_lib\freertos_lib\deprecated_definitions.h" />
+		<Unit filename="Fil_lib\freertos_lib\event_groups.h" />
+		<Unit filename="Fil_lib\freertos_lib\FreeRTOS.h" />
+		<Unit filename="Fil_lib\freertos_lib\FreeRTOSConfig.h" />
+		<Unit filename="Fil_lib\freertos_lib\list.h" />
+		<Unit filename="Fil_lib\freertos_lib\message_buffer.h" />
+		<Unit filename="Fil_lib\freertos_lib\mpu_prototypes.h" />
+		<Unit filename="Fil_lib\freertos_lib\mpu_wrappers.h" />
+		<Unit filename="Fil_lib\freertos_lib\portable.h" />
+		<Unit filename="Fil_lib\freertos_lib\portmacro.h" />
+		<Unit filename="Fil_lib\freertos_lib\projdefs.h" />
+		<Unit filename="Fil_lib\freertos_lib\queue.h" />
+		<Unit filename="Fil_lib\freertos_lib\semphr.h" />
+		<Unit filename="Fil_lib\freertos_lib\stack_macros.h" />
+		<Unit filename="Fil_lib\freertos_lib\StackMacros.h" />
+		<Unit filename="Fil_lib\freertos_lib\stdint.readme" />
+		<Unit filename="Fil_lib\freertos_lib\stream_buffer.h" />
+		<Unit filename="Fil_lib\freertos_lib\task.h" />
+		<Unit filename="Fil_lib\freertos_lib\timers.h" />
+		<Unit filename="Fil_lib\GPIO.h" />
+		<Unit filename="Fil_lib\Matrix.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Fil_lib\Matrix.h" />
 		<Unit filename="Fil_lib\RCC.c">
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="Fil_lib\RCC.h" />
+		<Unit filename="Fil_lib\Regulators.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Fil_lib\Regulators.h" />
+		<Unit filename="Fil_lib\Robot_tasks.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Fil_lib\Robot_tasks.h" />
 		<Unit filename="Fil_lib\TIM.c">
 			<Option compilerVar="CC" />
 		</Unit>
@@ -173,6 +207,7 @@
 		<Unit filename="inc\system_stm32f4xx.h" />
 		<Unit filename="RCR\DevBoard#3\RCR_DevBoard_3.h" />
 		<Unit filename="RCR\DevBoard#3\RCR_DevBoard_3_Setup.h" />
+		<Unit filename="RCR\RCR_BoardSelection.h" />
 		<Unit filename="src\main.c">
 			<Option compilerVar="CC" />
 		</Unit>
@@ -192,11 +227,11 @@
 				<target_debugging_settings target="DebugRAM">
 					<debug_interface description="STM32F401.svd" options="2" reg_filter="0" probe="stlink" device="stm32-auto" speed="" bus_address="" serial="" defines="" scripts="" flash_size="" ram_size="" vcc_voltage="" verbose="4" unwind="2" rstType="0" use_jtag="false" disable_cache="false" enable_semi="false" close_eblink="false" gdb_reset="reg sp = (0x20000000);reg pc = (0x20000004);writeu32 0xE000ED08 = 0x20000000;" gdb_reset_remote="reset" gdb_before_conn="" gdb_after_conn="" use_remote="false" ip_address="" ip_port="" path="" executable="" start_server="false" arguments="" flash_verify="false" flash_run="false" />
 				</target_debugging_settings>
-				<target_debugging_settings target="Release">
-					<debug_interface description="STM32F401.svd" options="2" reg_filter="0" probe="stlink" device="stm32-auto" speed="" bus_address="" serial="" defines="" scripts="" flash_size="" ram_size="" vcc_voltage="" verbose="4" unwind="2" rstType="0" use_jtag="false" disable_cache="false" enable_semi="false" close_eblink="false" gdb_reset="" gdb_reset_remote="reset" gdb_before_conn="" gdb_after_conn="" use_remote="false" ip_address="" ip_port="" path="" executable="" start_server="false" arguments="" flash_verify="false" flash_run="false" />
-				</target_debugging_settings>
 				<target_debugging_settings target="Debug">
 					<debug_interface description="STM32F401.svd" options="2" reg_filter="0" probe="STlink" device="stm32-auto" speed="" bus_address="" serial="" defines="" scripts="" flash_size="" ram_size="" vcc_voltage="" verbose="4" unwind="2" rstType="0" use_jtag="false" disable_cache="false" enable_semi="false" close_eblink="true" gdb_reset="" gdb_reset_remote="reset;" gdb_before_conn="" gdb_after_conn="" use_remote="false" ip_address="" ip_port="" path="" executable="" start_server="false" arguments="" flash_verify="false" flash_run="false" />
+				</target_debugging_settings>
+				<target_debugging_settings target="Release">
+					<debug_interface description="STM32F401.svd" options="2" reg_filter="0" probe="stlink" device="stm32-auto" speed="" bus_address="" serial="" defines="" scripts="" flash_size="" ram_size="" vcc_voltage="" verbose="4" unwind="2" rstType="0" use_jtag="false" disable_cache="false" enable_semi="false" close_eblink="false" gdb_reset="" gdb_reset_remote="reset" gdb_before_conn="" gdb_after_conn="" use_remote="false" ip_address="" ip_port="" path="" executable="" start_server="false" arguments="" flash_verify="false" flash_run="false" />
 				</target_debugging_settings>
 			</debugger>
 			<envvars />

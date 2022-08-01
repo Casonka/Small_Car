@@ -1,0 +1,13 @@
+#pragma once
+#if (configUSE_FREERTOS == 1)
+
+#include "FilConfig.h"
+/*!
+*   @brief vBlinkTest(void *pvParameters) - тест нормальной работы операционной системы FreeRTOS
+*       @arg nothing
+*       @note [FIL:FreeRTOS] Перед запуском ознакомиться с документацией на ОСРВ https://www.freertos.org/features.html
+*/
+xTaskHandle xBlinkHandle;
+void vBlinkTest(void *pvParameters);
+
+#endif /*configUSE_FREERTOS*/

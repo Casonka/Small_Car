@@ -2,7 +2,7 @@
     *   --------------------------------------------------------------------------
     *                       ///TIM initialization\\\
     *   --------------------------------------------------------------------------
-    *   @author RCR group developers - Caska
+    *   @author RCR group developers - Caska, Evgeny Garanin
     *   @date 13/07/2022 - last update version TIM
     *
     *       @note [FIL:TIM] Configuration file TIM
@@ -190,6 +190,7 @@ struct {
     float DutyCH4;
     uint32_t Frequency;
 }TIMStatus;
+
     /*!
     *   @brief CalcTimClockSourse(TIM_TypeDef *TIMx) - Calculating Timer Clock Sourse
     *       @arg TIMx - number of timer
@@ -211,5 +212,25 @@ void CalcTimStatus(TIM_TypeDef *TIMx);
     *
     */
 void CalcTimPIDFrequency(TIM_TypeDef *TIMx, uint16_t freq);
+
+bool SetVoltage(float Duty);
+
+#define BIG_BLACK_SERVA   0
+#define SMALL_BLUE_SERVA  1
+
+typedef struct
+{
+    uint32_t *CCR,
+              ARR;
+    uint16_t  ms;
+    float     min_ms,
+              max_ms;
+    uint8_t maxAngle;
+} Servomotor;
+
+Servomotor Servo1;
+void SetServo(Servomotor* Servo, char servoType, uint8_t maxAngle, uint32_t CCR, uint32_t ARR, uint16_t ms);
+
+void SetServoAngle(Servomotor* Servo, uint8_t angle);
 
 #endif /*_configCALC_TIM*/

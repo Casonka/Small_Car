@@ -2,7 +2,7 @@
     *   --------------------------------------------------------------------------
     *                ///Fast Initialization Library Configuration File\\\
     *   --------------------------------------------------------------------------
-    *   @author RCR group developers - Caska, Evgeny Garanin.
+    *   @author RCR group developers - Caska.
     *   @date 28/06/2022 - last update version FIL STM32
     *
     */
@@ -26,14 +26,15 @@
 #define configUSE_ADC_Manually          0
 #define configUSE_EXTI                  1
 #define configUSE_RTC                   0
-#define configUSE_FREERTOS              1
-#define configUSE_DeprecatedFunctions   0
+#define configUSE_FREERTOS              0
+#define configUSE_DeprecatedFunctions   0   // !Deprecated
 
 #define _configCALC_RCC                 1
 #define _configCALC_TIM                 1
 #define _configCALC_USART               1
-#define _configCALC_Regulators          0
+#define _configCALC_Regulators          1
 #define _configCALC_Matrix              0
+
 /*!
 *   Version control
 *
@@ -94,4 +95,9 @@
 #if(configUSE_EXTI == 1)
     #include "EXTI.h"
 #endif /*configUSE_EXTI*/
-
+#if(_configCALC_Matrix == 1)
+    #include "Matrix.h"
+#endif /*configCALC_Matrix*/
+#if(_configCALC_Regulators == 1)
+    #include "Regulators.h"
+#endif /*configCALC_Regulators*/

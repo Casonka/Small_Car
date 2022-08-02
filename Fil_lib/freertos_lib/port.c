@@ -27,7 +27,7 @@
 /*-----------------------------------------------------------
 * Implementation of functions defined in portable.h for the ARM CM4F port.
 *----------------------------------------------------------*/
-
+#if(configUSE_FREERTOS == 1)
 /* Scheduler includes. */
 #include "FreeRTOS.h"
 #include "task.h"
@@ -781,3 +781,5 @@ static void vPortEnableVFP( void )
     }
 
 #endif /* configASSERT_DEFINED */
+
+#endif /*configUSE_FREERTOS*/

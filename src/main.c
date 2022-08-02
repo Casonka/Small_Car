@@ -3,7 +3,7 @@
 int main(void)
 {
     Board_Config;
-    SetVoltage(0.2);
+    init_PID_Regulator();
     while(1)
     {
 

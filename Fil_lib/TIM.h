@@ -10,6 +10,7 @@
 #pragma once
 #include "FilConfig.h"
 
+#if (configUSE_TIM == 1)
     /*!
     *   @brief TimPWMConfigure(TIM,prescaler,autoreset,ch1,ch2,ch3,ch4) - configuration timer in PWM mode
     *       @arg TIM - number of timer
@@ -234,3 +235,5 @@ void SetServo(Servomotor* Servo, char servoType, uint8_t maxAngle, uint32_t CCR,
 void SetServoAngle(Servomotor* Servo, uint8_t angle);
 
 #endif /*_configCALC_TIM*/
+
+#endif /*configUSE_TIM*/

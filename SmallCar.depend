@@ -79,7 +79,7 @@
 
 1658119829 source:c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car\src\startup_stm32f401xc.s
 
-1659341248 source:c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car\src\main.c
+1659447939 source:c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car\src\main.c
 	"main.h"
 
 1658992532 c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car\inc\main.h
@@ -118,7 +118,7 @@
 
 1658119829 c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car\inc\system_stm32f4xx.h
 
-1659341185 c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car\fil_lib\filconfig.h
+1659446176 c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car\fil_lib\filconfig.h
 	"main.h"
 	"FreeRTOS.h"
 	"FreeRTOSConfig.h"
@@ -139,8 +139,10 @@
 	"ADC.h"
 	"I2C.h"
 	"EXTI.h"
+	"Matrix.h"
+	"Regulators.h"
 
-1658984965 c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car\rcr\devboard#3\rcr_devboard_3.h
+1659423089 c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car\rcr\devboard#3\rcr_devboard_3.h
 
 1658119829 c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car\fil_lib\rcc.h
 	"FilConfig.h"
@@ -148,7 +150,7 @@
 1658119829 c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car\fil_lib\gpio.h
 	"FilConfig.h"
 
-1659341016 c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car\fil_lib\tim.h
+1659416733 c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car\fil_lib\tim.h
 	"FilConfig.h"
 
 1658119829 c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car\fil_lib\usart.h
@@ -167,13 +169,15 @@
 1658119829 source:c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car\fil_lib\rcc.c
 	"RCC.h"
 
-1659342122 c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car\rcr\devboard#3\rcr_devboard_3_setup.h
+1659448720 c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car\rcr\devboard#3\rcr_devboard_3_setup.h
 	"FilConfig.h"
+	"RCR_DevBoard_3.h"
 
 1658985435 source:c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car\fil_lib\interrupts.c
 	"FilConfig.h"
 
-1659340260 source:c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car\fil_lib\tim.c
+1659448836 source:c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car\fil_lib\tim.c
+	"FilConfig.h"
 	"TIM.h"
 
 1658119829 source:c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car\fil_lib\usart.c
@@ -196,18 +200,17 @@
 1658123304 c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car\fil_lib\exti.h
 	"FilConfig.h"
 
-1658985077 c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car\rcr\rcr_boardselection.h
+1659430811 c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car\rcr\rcr_boardselection.h
 	"stm32f4xx.h"
 	"RCR_DevBoard_1.h"
 	"RCR_DevBoard_1_Setup.h"
 	"RCR_DevBoard_2.h"
 	"RCR_DevBoard_2_Setup.h"
-	"RCR_DevBoard_3.h"
 	"RCR_DevBoard_3_Setup.h"
 	"RCR_DevBoard_4.h"
 	"RCR_DevBoard_4_Setup.h"
 
-1659012090 source:c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car\fil_lib\exti.c
+1659350171 source:c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car\fil_lib\exti.c
 	"EXTI.h"
 
 1658119829 source:c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car\fil_lib\src\dma.c
@@ -226,7 +229,7 @@
 	"portable.h"
 	<reent.h>
 
-1656862812 c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car\fil_lib\freertos_lib\freertosconfig.h
+1659438008 c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car\fil_lib\freertos_lib\freertosconfig.h
 	"stm32f4xx.h"
 	<stdint.h>
 
@@ -379,11 +382,82 @@
 
 1659334755 c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car\fil_lib\matrix.h
 
-1659334914 source:c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car\fil_lib\regulators.c
+1659448706 source:c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car\fil_lib\regulators.c
+	"FilConfig.h"
 	"Regulators.h"
 
-1659334722 c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car\fil_lib\regulators.h
+1659448725 c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car\fil_lib\regulators.h
+	"RCR_DevBoard_3_Setup.h"
 
 1659339123 source:c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car\fil_lib\robot_tasks.c
 	"Robot_tasks.h"
+
+1659442159 c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car\fil_lib\i2c.h
+	"FilConfig.h"
+
+1659442499 source:c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car\fil_lib\i2c.c
+	"I2C.h"
+
+1655441001 source:c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car\fil_lib\freertos_lib\croutine.c
+	"FreeRTOS.h"
+	"task.h"
+	"croutine.h"
+
+1655441001 source:c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car\fil_lib\freertos_lib\event_groups.c
+	<stdlib.h>
+	"FreeRTOS.h"
+	"task.h"
+	"timers.h"
+	"event_groups.h"
+
+1655441001 source:c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car\fil_lib\freertos_lib\heap_2.c
+	<stdlib.h>
+	"FreeRTOS.h"
+	"task.h"
+
+1655441001 source:c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car\fil_lib\freertos_lib\list.c
+	<stdlib.h>
+	"FreeRTOS.h"
+	"list.h"
+
+1659438208 source:c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car\fil_lib\freertos_lib\port.c
+	"FreeRTOS.h"
+	"task.h"
+
+1655441001 source:c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car\fil_lib\freertos_lib\queue.c
+	<stdlib.h>
+	<string.h>
+	"FreeRTOS.h"
+	"task.h"
+	"queue.h"
+	"croutine.h"
+
+1655441001 source:c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car\fil_lib\freertos_lib\stream_buffer.c
+	<stdint.h>
+	<string.h>
+	"FreeRTOS.h"
+	"task.h"
+	"stream_buffer.h"
+
+1659438153 source:c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car\fil_lib\freertos_lib\tasks.c
+	<stdlib.h>
+	<string.h>
+	"FreeRTOS.h"
+	"task.h"
+	"timers.h"
+	"stack_macros.h"
+	<stdio.h>
+	"tasks_test_access_functions.h"
+	"freertos_tasks_c_additions.h"
+
+1655441001 c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car\fil_lib\freertos_lib\stack_macros.h
+
+1655441001 source:c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car\fil_lib\freertos_lib\timers.c
+	<stdlib.h>
+	"FreeRTOS.h"
+	"task.h"
+	"queue.h"
+	"timers.h"
+
+1659445831 source:c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car\dev\dev.c
 

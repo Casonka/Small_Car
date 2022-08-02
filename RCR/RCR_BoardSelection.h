@@ -20,22 +20,21 @@
 #define _configUSEBoards                3
 
 #if (_configUSEBoards != 0 )
-    #if (_configUSEBoards == 1) // Development Board ¹1(Custom project - STM32F407 big)
+    #if (_configUSEBoards == 1) // Development Board â„–1(Custom project - STM32F407 big)
         #include "RCR_DevBoard_1.h"
         #include "RCR_DevBoard_1_Setup.h"
-    #endif /*Development Board ¹1*/
-    #if (_configUSEBoards == 2) // Development Board ¹2 (Blue pill board - STM32F103)
+    #endif /*Development Board â„–1*/
+    #if (_configUSEBoards == 2) // Development Board â„–2 (Blue pill board - STM32F103)
         #include "RCR_DevBoard_2.h"
         #include "RCR_DevBoard_2_Setup.h"
-    #endif /*Development Board ¹2*/
-    #if (_configUSEBoards == 3) // Development Board ¹3 (Green pill board - STM32F401)
-        #include "RCR_DevBoard_3.h"
+    #endif /*Development Board â„–2*/
+    #if (_configUSEBoards == 3) // Development Board â„–3 (Green pill board - STM32F401)
         #include "RCR_DevBoard_3_Setup.h"
-    #endif /*Development Board ¹3*/
-    #if (_configUSEBoards == 4) // Development Board ¹4 (Coming soon - new project in this list)
+    #endif /*Development Board â„–3*/
+    #if (_configUSEBoards == 4) // Development Board â„–4 (Coming soon - new project in this list)
         #include "RCR_DevBoard_4.h"
         #include "RCR_DevBoard_4_Setup.h"
-    #endif /*Development Board ¹4*/
+    #endif /*Development Board â„–4*/
     #if ((_configUSEBoards < 0) || (_configUSEBoards > 4))
         #error Invalid argument of Development Board
     #endif /*_configUSEBoards*/

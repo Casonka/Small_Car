@@ -8,13 +8,29 @@
     *
     *       @note [FIL:TIM] TIM Source file.
     */
+#include "FilConfig.h"
 
 #include "TIM.h"
+uint32_t *encoderData = ENCODER1_CNT;
+int32_t data = 0;
+uint32_t globalTime = 0;
+
+/*!
+*    @brief void SysTick_Handler(void) - System 24-bit timer, increment the time value in 1Hz to 1000
+*       @note [FIL:TIM] ћожно использовать дл€ отчета времени, 1000 единиц соответствуют 1 секунде
+*/
+
+void SysTick_Handler(void)
+{
+    SetVoltage(EnginePWM);
+    data = *encoderData;
+    //PID_Low_Level();
+    globalTime++;
+}
 
 //---------------------------------------------------------//
 //----------------------Timer Interrupts-------------------//
 //---------------------------------------------------------//
-
 void TIM1_IRQHandler(void)
 {
 
@@ -65,7 +81,7 @@ void TIM8_UP_TIM13_IRQHandler(void)
 ResetTimSR(TIM13);
 }
 #endif /*STM32F40_41xxx*/
-
+#if (_configCALC_TIM == 1)
     /*!
     *   @brief CalcTimStatus(TIM_TypeDef *TIMx) - Calculating Timer Status
     *       @arg TIMx - number of timer
@@ -203,4 +219,4 @@ void CalcTimClockSourse(TIM_TypeDef *TIMx)
         *(*Servo).CCR = (uint32_t)(angle * ((max_PWM - min_PWM) / (*Servo).maxAngle) + min_PWM);
     }
 
-
+#endif /*_configCALC_TIM*/

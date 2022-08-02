@@ -2,16 +2,19 @@
     *   --------------------------------------------------------------------------
     *                       ///Regulators\\\
     *   --------------------------------------------------------------------------
-    *   @author RCR group developers - Evgeny Garanin, Caska
-    *   @date 18/07/2022 - last update version Regulators
+    *   @author RCR group developers - Evgeny Garanin
+    *   @date 02/08/2022 - last update version Regulators
     *
     *       @note [RCR:Regulators] Configuration file Regulators
     */
+#pragma once
+#include "RCR_DevBoard_3_Setup.h"
 #if(_configCALC_Regulators == 1)
+
     /*!
-    *   @list P_Regulator Configuration
+    *   @list P_Regulator Settings
     */
-    struct
+    typedef struct
     {
           float p_k; //П коэфициент
           float target; //Целевое значение
@@ -24,14 +27,14 @@
           float error_dir;
           float p_error_end;
           float p_output_end;
-    }Regulator;
+    }P_Regulator;
 
-    void P_Calc(Regulator *P_control);
-#elif (_configCALC_Regulators == 2)
+void init_P_Regulator(P_Regulator Regulator);
+
     /*!
-    *   @list PI_Regulator Configuration
+    *   @list PI_Regulator Settings
     */
-    struct
+    typedef struct
     {
           float p_k; //П коэфициент
           float i_k; //И коэфициент
@@ -48,14 +51,14 @@
           float error_dir;
           float pi_error_end;
           float pi_output_end;
-    }Regulator;
+    }PI_Regulator;
 
-    void PI_Calc(Regulator *PI_control);
-#elif (_configCALC_Regulators == 3)
+void init_PI_Regulator(PI_Regulator Regulator);
+
     /*!
-    *   @list PID_Regulator Configuration
+    *   @list PID_Regulator Settings
     */
-    struct
+    typedef struct
     {
           float p_k; //П коэфициент
           float i_k; //И коэфициент
@@ -74,7 +77,12 @@
           float error_dir;
           float pid_error_end;
           float pid_output_end;
-    }Regulator;
+    }PID_Regulator;
 
-    void PID_Calc(Regulator *PID_control);
+    float EnginePWM;
+    PID_Regulator EngineReg;
+    void init_PID_Regulator(void);
+
+    void PID_Low_Level(void);
+
 #endif /*_configCALC_Regulators*/

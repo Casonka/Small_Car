@@ -43,6 +43,11 @@ void init_PID_Regulator(void)  // инициализация регуляторов
     Motor_Coord = 0.0;
 }
 
+/*!
+*   @attention Static function
+*   @attention Speed must be less then 0.85 (sum error will upper that max_sum_error)
+*   @brief PID_Parse_EncoderData(int32_t encoderdata) - check value from encoder and calculate speed
+*/
 static void PID_Calc(PID_Regulator *pid_control)
 {
   pid_control->error = pid_control->target - pid_control->current;
@@ -93,11 +98,10 @@ static void PID_Parse_EncoderData(int32_t encoderdata)
 }
 
 
-/*!
-*   @brief PID_Low_Level(int32_t input) - General PID calculating engine
-*/
 int16_t EncData;
-
+/*!
+*   @brief PID_Low_Level(void) - General PID calculating engine
+*/
 void PID_Low_Level(void)
 {
     EncData = ((int16_t)*ENCODER1_CNT);

@@ -1,14 +1,16 @@
+/*!
+    *   --------------------------------------------------------------------------
+    *                       ///RCR Main Board Configuration file #3\\
+    *   --------------------------------------------------------------------------
+    *   @file RCR_DevBoard_3_Setup.h
+    *   @note [RCR] Setup pins, interfaces for Development Board #3
+    *   @author RCR group developers - Caska, Evgeny Garanin
+    *   @date   02/08/2022 - last update
+    *
+*/
 #pragma once
 #include "FilConfig.h"
 #include "RCR_DevBoard_3.h"
-/*!
-*
-*   @file RCR_DevBoard_3_Setup.h
-*   @note [RCR] Setup pins, interfaces for Development Board #3
-*   @author RCR group developers - Caska, Evgeny Garanin
-*   @date   02/08/2022 - last update
-*
-*/
 
 #if defined(STM32F401xx)
 //-----------------------------------------------------------------//
@@ -59,27 +61,40 @@
 #define R_WHEEL                         (0.048)
 #define WHEEL_LENGTH                    (PI2 * R_WHEEL)
 #define DISKETS_ON_ROTATE               (41000.0)
-#define K_ERRORS                        (0.9)
-#define DISK_TO_REAL                    ((float)(WHEEL_LENGTH / DISKETS_ON_ROTATE * K_ERRORS))
+#define COMPENSATE_VALUE                (0.9)
+#define DISK_TO_REAL                    ((float)(WHEEL_LENGTH / DISKETS_ON_ROTATE * COMPENSATE_VALUE))
 #define TIME                            ((float)(1.0 / __config_Regulator_FREQ))
 /*!
 *   @note [RCR] UART/USART configuration
 */
 #define __config_USART1_Baudrate    (9600)
 #define __config_USART6_Baudrate    (115200)
+
+#define __configUSE_ModBus          (0)
+#if(__configUSE_ModBus == 1)
+    #include "ModBus_conf.h"
+    #include "ModBus.h"
+#endif /*__configUSE_ModBus*/
 /*!
 *   @note [RCR] ADC configuration
+*       @warning ADC Modes: 0 - ADC Off
+*                           1 - ADC Simple single channel parsing
+*                           2 - ADC Simple multi channel parsing
+*                           3 - ADC one Multiplexer parsing
+*                           4 - ADC two Multiplexer parsing
 */
+#define __configADC_Mode                (3)
 #define __configUSE_Battery_Charging    (0)
 #define __configUSE_Temperature_Sensor  (0)
-#define __configUSE_SENSOR_1            (1)
-#define __configUSE_SENSOR_2            (1)
-#define __configUSE_SENSOR_3            (1)
-#define __configUSE_SENSOR_4            (1)
-#define __configUSE_SENSOR_5            (1)
-#define __configUSE_SENSOR_6            (1)
-#define __configUSE_SENSOR_7            (1)
-#define __configUSE_SENSOR_8            (1)
+#define __configUSE_Potentiometer       (0)
+#define __configUSE_SENSOR_1            (0)
+#define __configUSE_SENSOR_2            (0)
+#define __configUSE_SENSOR_3            (0)
+#define __configUSE_SENSOR_4            (0)
+#define __configUSE_SENSOR_5            (0)
+#define __configUSE_SENSOR_6            (0)
+#define __configUSE_SENSOR_7            (0)
+#define __configUSE_SENSOR_8            (0)
 /*!
 *   @note [RCR] IIC(I2C) configuration
 */

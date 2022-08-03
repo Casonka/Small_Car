@@ -48,7 +48,6 @@ void init_P_Regulator(P_Regulator Regulator);
           float output; //Поправка, результат работы ПИ
           char pi_on; //Вкл/Выкл ПИ если выкл то output всегда равен 0, однако все остальное продолжает расчитываться
           char pi_finish;
-          float error_dir;
           float pi_error_end;
           float pi_output_end;
     }PI_Regulator;
@@ -65,16 +64,16 @@ void init_PI_Regulator(PI_Regulator Regulator);
           float d_k; //Д коэфициент
           float target; //Целевое значение
           float current; //Текущее (необходимо обновлять извне перед каждым расчетом)
-          float prev_error; //Предыдущее значение ошибки (для Д регелятора)
+          float prev_error; //Предыдущее значение ошибки (для Д регулятора)
+          float error;  // обычная ошибка
           float sum_error; //Суммарная ошибка (для И регулятора)
           float max_sum_error; //Максимальная суммарная ошибка (что бы И регулятор не уходил до максимума если невозможно добиться требуемого значения)
+          float dif_error; // ошибка для дифференциальной составляющей регулятора
           float max_output; //Максимальный выход, что бы поправка не выходила за рамки
           float min_output;
-          float cut_output;
           float output; //Поправка, результат работы ПИД
           char pid_on; //Вкл/Выкл ПИД если выкл то output всегда равен 0, однако все остальное продолжает расчитываться
           char pid_finish;
-          float error_dir;
           float pid_error_end;
           float pid_output_end;
     }PID_Regulator;

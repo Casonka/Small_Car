@@ -14,10 +14,13 @@ d:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/../../../../arm-none-eab
 Allocating common symbols
 Common symbol       size              file
 
-xBlinkHandle        0x4               obj\release\fil_lib\exti.o (symbol from plugin)
-Servo1              0x18              obj\release\fil_lib\exti.o (symbol from plugin)
-TIMStatus           0x18              obj\release\fil_lib\exti.o (symbol from plugin)
-Clocks              0x14              obj\release\fil_lib\exti.o (symbol from plugin)
+Servo1              0x18              obj\release\fil_lib\dma.o (symbol from plugin)
+xQueueRegistry      0x40              obj\release\fil_lib\freertos_lib\queue.o (symbol from plugin)
+TIMStatus           0x18              obj\release\fil_lib\dma.o (symbol from plugin)
+Motor_Coord         0x4               obj\release\fil_lib\regulators.o (symbol from plugin)
+EncData             0x2               obj\release\fil_lib\regulators.o (symbol from plugin)
+EngineReg           0x40              obj\release\fil_lib\dma.o (symbol from plugin)
+Clocks              0x14              obj\release\fil_lib\dma.o (symbol from plugin)
 
 Discarded input sections
 
@@ -35,38 +38,80 @@ Discarded input sections
  .text          0x00000000       0x14 obj\release\src\startup_stm32f401xc.o
  .data          0x00000000        0x0 obj\release\src\startup_stm32f401xc.o
  .bss           0x00000000        0x0 obj\release\src\startup_stm32f401xc.o
- .text          0x00000000        0x0 C:\Users\Caska\AppData\Local\Temp\SmallCar.elf.HJEWuT.ltrans0.ltrans.o
- .data          0x00000000        0x0 C:\Users\Caska\AppData\Local\Temp\SmallCar.elf.HJEWuT.ltrans0.ltrans.o
- .bss           0x00000000        0x0 C:\Users\Caska\AppData\Local\Temp\SmallCar.elf.HJEWuT.ltrans0.ltrans.o
+ .text          0x00000000        0x0 C:\Users\Caska\AppData\Local\Temp\SmallCar.elf.HAfemL.ltrans0.ltrans.o
+ .data          0x00000000        0x0 C:\Users\Caska\AppData\Local\Temp\SmallCar.elf.HAfemL.ltrans0.ltrans.o
+ .bss           0x00000000        0x0 C:\Users\Caska\AppData\Local\Temp\SmallCar.elf.HAfemL.ltrans0.ltrans.o
  .data.AHBPrescTable
-                0x00000000       0x10 C:\Users\Caska\AppData\Local\Temp\SmallCar.elf.HJEWuT.ltrans0.ltrans.o
- .comment       0x00000000       0x4d C:\Users\Caska\AppData\Local\Temp\cc1RzeGK.debug.temp.o
- .comment       0x00000000       0x4d C:\Users\Caska\AppData\Local\Temp\ccQrYcsS.debug.temp.o
- .debug_info    0x00000000       0x1d C:\Users\Caska\AppData\Local\Temp\cc14aDi0.debug.temp.o
- .debug_abbrev  0x00000000       0x10 C:\Users\Caska\AppData\Local\Temp\cc14aDi0.debug.temp.o
- .debug_line    0x00000000       0x1e C:\Users\Caska\AppData\Local\Temp\cc14aDi0.debug.temp.o
- .debug_str     0x00000000      0x105 C:\Users\Caska\AppData\Local\Temp\cc14aDi0.debug.temp.o
- .comment       0x00000000       0x4d C:\Users\Caska\AppData\Local\Temp\cc14aDi0.debug.temp.o
- .comment       0x00000000       0x4d C:\Users\Caska\AppData\Local\Temp\ccqB8Kd8.debug.temp.o
- .debug_info    0x00000000       0x1d C:\Users\Caska\AppData\Local\Temp\ccjp3Cdg.debug.temp.o
- .debug_abbrev  0x00000000       0x10 C:\Users\Caska\AppData\Local\Temp\ccjp3Cdg.debug.temp.o
- .debug_line    0x00000000       0x1e C:\Users\Caska\AppData\Local\Temp\ccjp3Cdg.debug.temp.o
- .debug_str     0x00000000      0x109 C:\Users\Caska\AppData\Local\Temp\ccjp3Cdg.debug.temp.o
- .comment       0x00000000       0x4d C:\Users\Caska\AppData\Local\Temp\ccjp3Cdg.debug.temp.o
- .debug_info    0x00000000       0x1d C:\Users\Caska\AppData\Local\Temp\ccUjk8ho.debug.temp.o
- .debug_abbrev  0x00000000       0x10 C:\Users\Caska\AppData\Local\Temp\ccUjk8ho.debug.temp.o
- .debug_line    0x00000000       0x1e C:\Users\Caska\AppData\Local\Temp\ccUjk8ho.debug.temp.o
- .debug_str     0x00000000      0x10a C:\Users\Caska\AppData\Local\Temp\ccUjk8ho.debug.temp.o
- .comment       0x00000000       0x4d C:\Users\Caska\AppData\Local\Temp\ccUjk8ho.debug.temp.o
- .comment       0x00000000       0x4d C:\Users\Caska\AppData\Local\Temp\cc7FB7qw.debug.temp.o
- .comment       0x00000000       0x4d C:\Users\Caska\AppData\Local\Temp\ccMe86tD.debug.temp.o
- .comment       0x00000000       0x4d C:\Users\Caska\AppData\Local\Temp\ccNEqaEK.debug.temp.o
- .debug_info    0x00000000      0x2eb C:\Users\Caska\AppData\Local\Temp\ccQFPTSR.debug.temp.o
- .debug_abbrev  0x00000000       0xd9 C:\Users\Caska\AppData\Local\Temp\ccQFPTSR.debug.temp.o
- .debug_line    0x00000000      0x12e C:\Users\Caska\AppData\Local\Temp\ccQFPTSR.debug.temp.o
- .debug_str     0x00000000      0x34a C:\Users\Caska\AppData\Local\Temp\ccQFPTSR.debug.temp.o
- .comment       0x00000000       0x4d C:\Users\Caska\AppData\Local\Temp\ccQFPTSR.debug.temp.o
- .comment       0x00000000       0x4d C:\Users\Caska\AppData\Local\Temp\cct5X6bZ.debug.temp.o
+                0x00000000       0x10 C:\Users\Caska\AppData\Local\Temp\SmallCar.elf.HAfemL.ltrans0.ltrans.o
+ .comment       0x00000000       0x4d C:\Users\Caska\AppData\Local\Temp\ccfXmSd1.debug.temp.o
+ .comment       0x00000000       0x4d C:\Users\Caska\AppData\Local\Temp\cc0215XF.debug.temp.o
+ .debug_info    0x00000000       0xc0 C:\Users\Caska\AppData\Local\Temp\ccBVCPMk.debug.temp.o
+ .debug_abbrev  0x00000000       0x62 C:\Users\Caska\AppData\Local\Temp\ccBVCPMk.debug.temp.o
+ .debug_line    0x00000000       0xcf C:\Users\Caska\AppData\Local\Temp\ccBVCPMk.debug.temp.o
+ .debug_str     0x00000000      0x1ec C:\Users\Caska\AppData\Local\Temp\ccBVCPMk.debug.temp.o
+ .comment       0x00000000       0x4d C:\Users\Caska\AppData\Local\Temp\ccBVCPMk.debug.temp.o
+ .debug_info    0x00000000      0xf13 C:\Users\Caska\AppData\Local\Temp\cccOdzBZ.debug.temp.o
+ .debug_abbrev  0x00000000      0x27c C:\Users\Caska\AppData\Local\Temp\cccOdzBZ.debug.temp.o
+ .debug_line    0x00000000      0x1be C:\Users\Caska\AppData\Local\Temp\cccOdzBZ.debug.temp.o
+ .debug_str     0x00000000      0x9d1 C:\Users\Caska\AppData\Local\Temp\cccOdzBZ.debug.temp.o
+ .comment       0x00000000       0x4d C:\Users\Caska\AppData\Local\Temp\cccOdzBZ.debug.temp.o
+ .debug_info    0x00000000      0xb66 C:\Users\Caska\AppData\Local\Temp\ccVcFkxE.debug.temp.o
+ .debug_abbrev  0x00000000      0x2a8 C:\Users\Caska\AppData\Local\Temp\ccVcFkxE.debug.temp.o
+ .debug_line    0x00000000      0x19c C:\Users\Caska\AppData\Local\Temp\ccVcFkxE.debug.temp.o
+ .debug_str     0x00000000      0x783 C:\Users\Caska\AppData\Local\Temp\ccVcFkxE.debug.temp.o
+ .comment       0x00000000       0x4d C:\Users\Caska\AppData\Local\Temp\ccVcFkxE.debug.temp.o
+ .debug_info    0x00000000      0xb4d C:\Users\Caska\AppData\Local\Temp\ccQrANxj.debug.temp.o
+ .debug_abbrev  0x00000000      0x20f C:\Users\Caska\AppData\Local\Temp\ccQrANxj.debug.temp.o
+ .debug_line    0x00000000      0x1a4 C:\Users\Caska\AppData\Local\Temp\ccQrANxj.debug.temp.o
+ .debug_str     0x00000000      0x70d C:\Users\Caska\AppData\Local\Temp\ccQrANxj.debug.temp.o
+ .comment       0x00000000       0x4d C:\Users\Caska\AppData\Local\Temp\ccQrANxj.debug.temp.o
+ .debug_info    0x00000000       0x1d C:\Users\Caska\AppData\Local\Temp\ccVrhesX.debug.temp.o
+ .debug_abbrev  0x00000000       0x10 C:\Users\Caska\AppData\Local\Temp\ccVrhesX.debug.temp.o
+ .debug_line    0x00000000       0x1e C:\Users\Caska\AppData\Local\Temp\ccVrhesX.debug.temp.o
+ .debug_str     0x00000000      0x110 C:\Users\Caska\AppData\Local\Temp\ccVrhesX.debug.temp.o
+ .comment       0x00000000       0x4d C:\Users\Caska\AppData\Local\Temp\ccVrhesX.debug.temp.o
+ .debug_info    0x00000000     0x16e5 C:\Users\Caska\AppData\Local\Temp\ccM8larB.debug.temp.o
+ .debug_abbrev  0x00000000      0x2a4 C:\Users\Caska\AppData\Local\Temp\ccM8larB.debug.temp.o
+ .debug_line    0x00000000      0x1ba C:\Users\Caska\AppData\Local\Temp\ccM8larB.debug.temp.o
+ .debug_str     0x00000000      0xdbe C:\Users\Caska\AppData\Local\Temp\ccM8larB.debug.temp.o
+ .comment       0x00000000       0x4d C:\Users\Caska\AppData\Local\Temp\ccM8larB.debug.temp.o
+ .debug_info    0x00000000     0x1333 C:\Users\Caska\AppData\Local\Temp\ccDPq6pf.debug.temp.o
+ .debug_abbrev  0x00000000      0x2ae C:\Users\Caska\AppData\Local\Temp\ccDPq6pf.debug.temp.o
+ .debug_line    0x00000000      0x189 C:\Users\Caska\AppData\Local\Temp\ccDPq6pf.debug.temp.o
+ .debug_str     0x00000000      0xc17 C:\Users\Caska\AppData\Local\Temp\ccDPq6pf.debug.temp.o
+ .comment       0x00000000       0x4d C:\Users\Caska\AppData\Local\Temp\ccDPq6pf.debug.temp.o
+ .debug_info    0x00000000      0x919 C:\Users\Caska\AppData\Local\Temp\ccqYMHtT.debug.temp.o
+ .debug_abbrev  0x00000000      0x1b1 C:\Users\Caska\AppData\Local\Temp\ccqYMHtT.debug.temp.o
+ .debug_line    0x00000000       0xea C:\Users\Caska\AppData\Local\Temp\ccqYMHtT.debug.temp.o
+ .debug_str     0x00000000      0x58c C:\Users\Caska\AppData\Local\Temp\ccqYMHtT.debug.temp.o
+ .comment       0x00000000       0x4d C:\Users\Caska\AppData\Local\Temp\ccqYMHtT.debug.temp.o
+ .debug_info    0x00000000     0x11e0 C:\Users\Caska\AppData\Local\Temp\ccRDt4Bx.debug.temp.o
+ .debug_abbrev  0x00000000      0x277 C:\Users\Caska\AppData\Local\Temp\ccRDt4Bx.debug.temp.o
+ .debug_line    0x00000000      0x1c7 C:\Users\Caska\AppData\Local\Temp\ccRDt4Bx.debug.temp.o
+ .debug_str     0x00000000      0xbce C:\Users\Caska\AppData\Local\Temp\ccRDt4Bx.debug.temp.o
+ .comment       0x00000000       0x4d C:\Users\Caska\AppData\Local\Temp\ccRDt4Bx.debug.temp.o
+ .comment       0x00000000       0x4d C:\Users\Caska\AppData\Local\Temp\cc4v44Ob.debug.temp.o
+ .debug_info    0x00000000       0x1d C:\Users\Caska\AppData\Local\Temp\cchoF51P.debug.temp.o
+ .debug_abbrev  0x00000000       0x10 C:\Users\Caska\AppData\Local\Temp\cchoF51P.debug.temp.o
+ .debug_line    0x00000000       0x1e C:\Users\Caska\AppData\Local\Temp\cchoF51P.debug.temp.o
+ .debug_str     0x00000000      0x105 C:\Users\Caska\AppData\Local\Temp\cchoF51P.debug.temp.o
+ .comment       0x00000000       0x4d C:\Users\Caska\AppData\Local\Temp\cchoF51P.debug.temp.o
+ .comment       0x00000000       0x4d C:\Users\Caska\AppData\Local\Temp\ccuizDju.debug.temp.o
+ .comment       0x00000000       0x4d C:\Users\Caska\AppData\Local\Temp\ccpjPOF8.debug.temp.o
+ .debug_info    0x00000000       0x1d C:\Users\Caska\AppData\Local\Temp\ccgiTN6M.debug.temp.o
+ .debug_abbrev  0x00000000       0x10 C:\Users\Caska\AppData\Local\Temp\ccgiTN6M.debug.temp.o
+ .debug_line    0x00000000       0x1e C:\Users\Caska\AppData\Local\Temp\ccgiTN6M.debug.temp.o
+ .debug_str     0x00000000      0x10a C:\Users\Caska\AppData\Local\Temp\ccgiTN6M.debug.temp.o
+ .comment       0x00000000       0x4d C:\Users\Caska\AppData\Local\Temp\ccgiTN6M.debug.temp.o
+ .comment       0x00000000       0x4d C:\Users\Caska\AppData\Local\Temp\cc7gXMxr.debug.temp.o
+ .comment       0x00000000       0x4d C:\Users\Caska\AppData\Local\Temp\ccIdw8w9.debug.temp.o
+ .comment       0x00000000       0x4d C:\Users\Caska\AppData\Local\Temp\cc9W0ZAR.debug.temp.o
+ .debug_info    0x00000000       0x1d C:\Users\Caska\AppData\Local\Temp\cccE2tJz.debug.temp.o
+ .debug_abbrev  0x00000000       0x10 C:\Users\Caska\AppData\Local\Temp\cccE2tJz.debug.temp.o
+ .debug_line    0x00000000       0x1e C:\Users\Caska\AppData\Local\Temp\cccE2tJz.debug.temp.o
+ .debug_str     0x00000000       0xfe C:\Users\Caska\AppData\Local\Temp\cccE2tJz.debug.temp.o
+ .comment       0x00000000       0x4d C:\Users\Caska\AppData\Local\Temp\cccE2tJz.debug.temp.o
+ .comment       0x00000000       0x4d C:\Users\Caska\AppData\Local\Temp\cc592KWh.debug.temp.o
  .text          0x00000000        0x0 d:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-exit.o)
  .data          0x00000000        0x0 d:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-exit.o)
  .bss           0x00000000        0x0 d:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(lib_a-exit.o)
@@ -142,7 +187,7 @@ LOAD d:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/../../../../arm-non
                 0x08000000                g_pfnVectors
                 0x08000194                . = ALIGN (0x4)
 
-.text           0x08000194      0x718
+.text           0x08000194      0xac8
                 0x08000194                . = ALIGN (0x4)
  *(.text)
  .text          0x08000194       0x40 d:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/thumb/v7e-m+fp/hard/crtbegin.o
@@ -159,7 +204,6 @@ LOAD d:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/../../../../arm-non
                 0x08000220                DMA2_Stream5_IRQHandler
                 0x08000220                HardFault_Handler
                 0x08000220                DMA1_Stream5_IRQHandler
-                0x08000220                SysTick_Handler
                 0x08000220                PVD_IRQHandler
                 0x08000220                SDIO_IRQHandler
                 0x08000220                TAMP_STAMP_IRQHandler
@@ -203,130 +247,133 @@ LOAD d:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/../../../../arm-non
                 0x08000220                DMA1_Stream3_IRQHandler
  *fill*         0x08000222        0x2 
  .text.CalcRCCClocks
-                0x08000224       0xe8 C:\Users\Caska\AppData\Local\Temp\SmallCar.elf.HJEWuT.ltrans0.ltrans.o
+                0x08000224       0xe8 C:\Users\Caska\AppData\Local\Temp\SmallCar.elf.HAfemL.ltrans0.ltrans.o
  .text.SystemInit
-                0x0800030c       0xf8 C:\Users\Caska\AppData\Local\Temp\SmallCar.elf.HJEWuT.ltrans0.ltrans.o
+                0x0800030c       0xf8 C:\Users\Caska\AppData\Local\Temp\SmallCar.elf.HAfemL.ltrans0.ltrans.o
                 0x0800030c                SystemInit
  .text.startup.main
-                0x08000404      0x3bc C:\Users\Caska\AppData\Local\Temp\SmallCar.elf.HJEWuT.ltrans0.ltrans.o
+                0x08000404      0x43c C:\Users\Caska\AppData\Local\Temp\SmallCar.elf.HAfemL.ltrans0.ltrans.o
                 0x08000404                main
  .text.TIM5_IRQHandler
-                0x080007c0        0xc C:\Users\Caska\AppData\Local\Temp\SmallCar.elf.HJEWuT.ltrans0.ltrans.o
-                0x080007c0                TIM5_IRQHandler
+                0x08000840        0xc C:\Users\Caska\AppData\Local\Temp\SmallCar.elf.HAfemL.ltrans0.ltrans.o
+                0x08000840                TIM5_IRQHandler
  .text.TIM4_IRQHandler
-                0x080007cc        0xc C:\Users\Caska\AppData\Local\Temp\SmallCar.elf.HJEWuT.ltrans0.ltrans.o
-                0x080007cc                TIM4_IRQHandler
+                0x0800084c      0x268 C:\Users\Caska\AppData\Local\Temp\SmallCar.elf.HAfemL.ltrans0.ltrans.o
+                0x0800084c                TIM4_IRQHandler
  .text.TIM3_IRQHandler
-                0x080007d8        0xc C:\Users\Caska\AppData\Local\Temp\SmallCar.elf.HJEWuT.ltrans0.ltrans.o
-                0x080007d8                TIM3_IRQHandler
+                0x08000ab4        0xc C:\Users\Caska\AppData\Local\Temp\SmallCar.elf.HAfemL.ltrans0.ltrans.o
+                0x08000ab4                TIM3_IRQHandler
  .text.TIM2_IRQHandler
-                0x080007e4        0xc C:\Users\Caska\AppData\Local\Temp\SmallCar.elf.HJEWuT.ltrans0.ltrans.o
-                0x080007e4                TIM2_IRQHandler
+                0x08000ac0        0xc C:\Users\Caska\AppData\Local\Temp\SmallCar.elf.HAfemL.ltrans0.ltrans.o
+                0x08000ac0                TIM2_IRQHandler
+ .text.SysTick_Handler
+                0x08000acc       0xd4 C:\Users\Caska\AppData\Local\Temp\SmallCar.elf.HAfemL.ltrans0.ltrans.o
+                0x08000acc                SysTick_Handler
  .text.I2C3_ER_IRQHandler
-                0x080007f0        0x4 C:\Users\Caska\AppData\Local\Temp\SmallCar.elf.HJEWuT.ltrans0.ltrans.o
-                0x080007f0                I2C3_ER_IRQHandler
+                0x08000ba0        0x4 C:\Users\Caska\AppData\Local\Temp\SmallCar.elf.HAfemL.ltrans0.ltrans.o
+                0x08000ba0                I2C3_ER_IRQHandler
  .text.I2C1_EV_IRQHandler
-                0x080007f4        0x4 C:\Users\Caska\AppData\Local\Temp\SmallCar.elf.HJEWuT.ltrans0.ltrans.o
-                0x080007f4                I2C1_EV_IRQHandler
+                0x08000ba4        0x4 C:\Users\Caska\AppData\Local\Temp\SmallCar.elf.HAfemL.ltrans0.ltrans.o
+                0x08000ba4                I2C1_EV_IRQHandler
  .text.I2C3_EV_IRQHandler
-                0x080007f8        0x4 C:\Users\Caska\AppData\Local\Temp\SmallCar.elf.HJEWuT.ltrans0.ltrans.o
-                0x080007f8                I2C3_EV_IRQHandler
+                0x08000ba8        0x4 C:\Users\Caska\AppData\Local\Temp\SmallCar.elf.HAfemL.ltrans0.ltrans.o
+                0x08000ba8                I2C3_EV_IRQHandler
  .text.I2C2_ER_IRQHandler
-                0x080007fc        0x4 C:\Users\Caska\AppData\Local\Temp\SmallCar.elf.HJEWuT.ltrans0.ltrans.o
-                0x080007fc                I2C2_ER_IRQHandler
+                0x08000bac        0x4 C:\Users\Caska\AppData\Local\Temp\SmallCar.elf.HAfemL.ltrans0.ltrans.o
+                0x08000bac                I2C2_ER_IRQHandler
  .text.I2C2_EV_IRQHandler
-                0x08000800        0x4 C:\Users\Caska\AppData\Local\Temp\SmallCar.elf.HJEWuT.ltrans0.ltrans.o
-                0x08000800                I2C2_EV_IRQHandler
+                0x08000bb0        0x4 C:\Users\Caska\AppData\Local\Temp\SmallCar.elf.HAfemL.ltrans0.ltrans.o
+                0x08000bb0                I2C2_EV_IRQHandler
  .text.I2C1_ER_IRQHandler
-                0x08000804        0x4 C:\Users\Caska\AppData\Local\Temp\SmallCar.elf.HJEWuT.ltrans0.ltrans.o
-                0x08000804                I2C1_ER_IRQHandler
+                0x08000bb4        0x4 C:\Users\Caska\AppData\Local\Temp\SmallCar.elf.HAfemL.ltrans0.ltrans.o
+                0x08000bb4                I2C1_ER_IRQHandler
  .text.EXTI15_10_IRQHandler
-                0x08000808       0x14 C:\Users\Caska\AppData\Local\Temp\SmallCar.elf.HJEWuT.ltrans0.ltrans.o
-                0x08000808                EXTI15_10_IRQHandler
+                0x08000bb8       0x14 C:\Users\Caska\AppData\Local\Temp\SmallCar.elf.HAfemL.ltrans0.ltrans.o
+                0x08000bb8                EXTI15_10_IRQHandler
  .text.EXTI9_5_IRQHandler
-                0x0800081c       0x3c C:\Users\Caska\AppData\Local\Temp\SmallCar.elf.HJEWuT.ltrans0.ltrans.o
-                0x0800081c                EXTI9_5_IRQHandler
+                0x08000bcc       0x3c C:\Users\Caska\AppData\Local\Temp\SmallCar.elf.HAfemL.ltrans0.ltrans.o
+                0x08000bcc                EXTI9_5_IRQHandler
  .text.EXTI4_IRQHandler
-                0x08000858        0xc C:\Users\Caska\AppData\Local\Temp\SmallCar.elf.HJEWuT.ltrans0.ltrans.o
-                0x08000858                EXTI4_IRQHandler
+                0x08000c08        0xc C:\Users\Caska\AppData\Local\Temp\SmallCar.elf.HAfemL.ltrans0.ltrans.o
+                0x08000c08                EXTI4_IRQHandler
  .text.EXTI3_IRQHandler
-                0x08000864        0xc C:\Users\Caska\AppData\Local\Temp\SmallCar.elf.HJEWuT.ltrans0.ltrans.o
-                0x08000864                EXTI3_IRQHandler
+                0x08000c14        0xc C:\Users\Caska\AppData\Local\Temp\SmallCar.elf.HAfemL.ltrans0.ltrans.o
+                0x08000c14                EXTI3_IRQHandler
  .text.EXTI2_IRQHandler
-                0x08000870        0xc C:\Users\Caska\AppData\Local\Temp\SmallCar.elf.HJEWuT.ltrans0.ltrans.o
-                0x08000870                EXTI2_IRQHandler
+                0x08000c20        0xc C:\Users\Caska\AppData\Local\Temp\SmallCar.elf.HAfemL.ltrans0.ltrans.o
+                0x08000c20                EXTI2_IRQHandler
  .text.EXTI1_IRQHandler
-                0x0800087c        0xc C:\Users\Caska\AppData\Local\Temp\SmallCar.elf.HJEWuT.ltrans0.ltrans.o
-                0x0800087c                EXTI1_IRQHandler
+                0x08000c2c        0xc C:\Users\Caska\AppData\Local\Temp\SmallCar.elf.HAfemL.ltrans0.ltrans.o
+                0x08000c2c                EXTI1_IRQHandler
  .text.EXTI0_IRQHandler
-                0x08000888        0xc C:\Users\Caska\AppData\Local\Temp\SmallCar.elf.HJEWuT.ltrans0.ltrans.o
-                0x08000888                EXTI0_IRQHandler
+                0x08000c38        0xc C:\Users\Caska\AppData\Local\Temp\SmallCar.elf.HAfemL.ltrans0.ltrans.o
+                0x08000c38                EXTI0_IRQHandler
  *(.glue_7)
- .glue_7        0x08000894        0x0 linker stubs
+ .glue_7        0x08000c44        0x0 linker stubs
  *(.glue_7t)
- .glue_7t       0x08000894        0x0 linker stubs
+ .glue_7t       0x08000c44        0x0 linker stubs
  *(.eh_frame)
- .eh_frame      0x08000894        0x0 d:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/thumb/v7e-m+fp/hard/crtbegin.o
+ .eh_frame      0x08000c44        0x0 d:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/thumb/v7e-m+fp/hard/crtbegin.o
  *(.init)
- .init          0x08000894        0x4 d:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/thumb/v7e-m+fp/hard/crti.o
-                0x08000894                _init
- .init          0x08000898        0x8 d:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/thumb/v7e-m+fp/hard/crtn.o
+ .init          0x08000c44        0x4 d:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/thumb/v7e-m+fp/hard/crti.o
+                0x08000c44                _init
+ .init          0x08000c48        0x8 d:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/thumb/v7e-m+fp/hard/crtn.o
  *(.fini)
- .fini          0x080008a0        0x4 d:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/thumb/v7e-m+fp/hard/crti.o
-                0x080008a0                _fini
- .fini          0x080008a4        0x8 d:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/thumb/v7e-m+fp/hard/crtn.o
-                0x080008ac                . = ALIGN (0x4)
-                0x080008ac                _etext = .
+ .fini          0x08000c50        0x4 d:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/thumb/v7e-m+fp/hard/crti.o
+                0x08000c50                _fini
+ .fini          0x08000c54        0x8 d:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/thumb/v7e-m+fp/hard/crtn.o
+                0x08000c5c                . = ALIGN (0x4)
+                0x08000c5c                _etext = .
 
-.vfp11_veneer   0x080008ac        0x0
- .vfp11_veneer  0x080008ac        0x0 linker stubs
+.vfp11_veneer   0x08000c5c        0x0
+ .vfp11_veneer  0x08000c5c        0x0 linker stubs
 
-.v4_bx          0x080008ac        0x0
- .v4_bx         0x080008ac        0x0 linker stubs
+.v4_bx          0x08000c5c        0x0
+ .v4_bx         0x08000c5c        0x0 linker stubs
 
-.iplt           0x080008ac        0x0
- .iplt          0x080008ac        0x0 d:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/thumb/v7e-m+fp/hard/crtbegin.o
+.iplt           0x08000c5c        0x0
+ .iplt          0x08000c5c        0x0 d:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/thumb/v7e-m+fp/hard/crtbegin.o
 
-.rodata         0x080008ac       0x10
-                0x080008ac                . = ALIGN (0x4)
+.rodata         0x08000c5c       0x10
+                0x08000c5c                . = ALIGN (0x4)
  *(.rodata)
  *(.rodata*)
  .rodata.PrescalerTable
-                0x080008ac       0x10 C:\Users\Caska\AppData\Local\Temp\SmallCar.elf.HJEWuT.ltrans0.ltrans.o
-                0x080008bc                . = ALIGN (0x4)
+                0x08000c5c       0x10 C:\Users\Caska\AppData\Local\Temp\SmallCar.elf.HAfemL.ltrans0.ltrans.o
+                0x08000c6c                . = ALIGN (0x4)
 
-.rel.dyn        0x080008bc        0x0
- .rel.iplt      0x080008bc        0x0 d:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/thumb/v7e-m+fp/hard/crtbegin.o
+.rel.dyn        0x08000c6c        0x0
+ .rel.iplt      0x08000c6c        0x0 d:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/thumb/v7e-m+fp/hard/crtbegin.o
 
 .ARM.extab
  *(.ARM.extab* .gnu.linkonce.armextab.*)
 
-.ARM            0x080008bc        0x0
-                0x080008bc                __exidx_start = .
+.ARM            0x08000c6c        0x0
+                0x08000c6c                __exidx_start = .
  *(.ARM.exidx*)
-                0x080008bc                __exidx_end = .
+                0x08000c6c                __exidx_end = .
 
-.preinit_array  0x080008bc        0x0
-                0x080008bc                PROVIDE (__preinit_array_start = .)
+.preinit_array  0x08000c6c        0x0
+                0x08000c6c                PROVIDE (__preinit_array_start = .)
  *(.preinit_array*)
-                0x080008bc                PROVIDE (__preinit_array_end = .)
+                0x08000c6c                PROVIDE (__preinit_array_end = .)
 
-.init_array     0x080008bc        0x4
-                0x080008bc                PROVIDE (__init_array_start = .)
+.init_array     0x08000c6c        0x4
+                0x08000c6c                PROVIDE (__init_array_start = .)
  *(SORT_BY_NAME(.init_array.*))
  *(.init_array*)
- .init_array    0x080008bc        0x4 d:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/thumb/v7e-m+fp/hard/crtbegin.o
-                0x080008c0                PROVIDE (__init_array_end = .)
+ .init_array    0x08000c6c        0x4 d:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/thumb/v7e-m+fp/hard/crtbegin.o
+                0x08000c70                PROVIDE (__init_array_end = .)
 
-.fini_array     0x080008c0        0x4
+.fini_array     0x08000c70        0x4
                 [!provide]                PROVIDE (__fini_array_start = .)
  *(SORT_BY_NAME(.fini_array.*))
  *(.fini_array*)
- .fini_array    0x080008c0        0x4 d:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/thumb/v7e-m+fp/hard/crtbegin.o
+ .fini_array    0x08000c70        0x4 d:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/thumb/v7e-m+fp/hard/crtbegin.o
                 [!provide]                PROVIDE (__fini_array_end = .)
-                0x080008c4                _sidata = LOADADDR (.data)
+                0x08000c74                _sidata = LOADADDR (.data)
 
-.data           0x20000000        0x0 load address 0x080008c4
+.data           0x20000000        0x0 load address 0x08000c74
                 0x20000000                . = ALIGN (0x4)
                 0x20000000                _sdata = .
  *(.data)
@@ -334,32 +381,40 @@ LOAD d:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/../../../../arm-non
                 0x20000000                . = ALIGN (0x4)
                 0x20000000                _edata = .
 
-.igot.plt       0x20000000        0x0 load address 0x080008c4
+.igot.plt       0x20000000        0x0 load address 0x08000c74
  .igot.plt      0x20000000        0x0 d:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/thumb/v7e-m+fp/hard/crtbegin.o
                 0x20000000                . = ALIGN (0x4)
 
-.bss            0x20000000       0x48 load address 0x080008c4
+.bss            0x20000000       0x94 load address 0x08000c74
                 0x20000000                _sbss = .
                 0x20000000                __bss_start__ = _sbss
  *(.bss)
  .bss           0x20000000       0x1c d:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/thumb/v7e-m+fp/hard/crtbegin.o
  *(.bss*)
- .bss.Clocks    0x2000001c       0x14 C:\Users\Caska\AppData\Local\Temp\SmallCar.elf.HJEWuT.ltrans0.ltrans.o
+ .bss.Clocks    0x2000001c       0x14 C:\Users\Caska\AppData\Local\Temp\SmallCar.elf.HAfemL.ltrans0.ltrans.o
+ .bss.EnginePWM
+                0x20000030        0x4 C:\Users\Caska\AppData\Local\Temp\SmallCar.elf.HAfemL.ltrans0.ltrans.o
+ .bss.EngineReg
+                0x20000034       0x40 C:\Users\Caska\AppData\Local\Temp\SmallCar.elf.HAfemL.ltrans0.ltrans.o
+ .bss.Motor_Coord
+                0x20000074        0x4 C:\Users\Caska\AppData\Local\Temp\SmallCar.elf.HAfemL.ltrans0.ltrans.o
  .bss.TIMStatus
-                0x20000030       0x18 C:\Users\Caska\AppData\Local\Temp\SmallCar.elf.HJEWuT.ltrans0.ltrans.o
+                0x20000078       0x18 C:\Users\Caska\AppData\Local\Temp\SmallCar.elf.HAfemL.ltrans0.ltrans.o
+ .bss.globalTime
+                0x20000090        0x4 C:\Users\Caska\AppData\Local\Temp\SmallCar.elf.HAfemL.ltrans0.ltrans.o
  *(COMMON)
-                0x20000048                . = ALIGN (0x4)
-                0x20000048                _ebss = .
-                0x20000048                __bss_end__ = _ebss
+                0x20000094                . = ALIGN (0x4)
+                0x20000094                _ebss = .
+                0x20000094                __bss_end__ = _ebss
 
-.heap           0x20000048        0x0 load address 0x080008c4
-                0x20000048                . = ALIGN (0x4)
+.heap           0x20000094        0x0 load address 0x08000c74
+                0x20000094                . = ALIGN (0x4)
                 [!provide]                PROVIDE (end = .)
                 [!provide]                PROVIDE (_end = .)
  *(.heap*)
-                0x20000048                . = (. + _Min_Heap_Size)
-                0x20000048                __HeapLimit = .
-                0x20000048                . = ALIGN (0x4)
+                0x20000094                . = (. + _Min_Heap_Size)
+                0x20000094                __HeapLimit = .
+                0x20000094                . = ALIGN (0x4)
 
 .ARM.attributes
                 0x00000000       0x30
@@ -371,25 +426,45 @@ LOAD d:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/../../../../arm-non
  .ARM.attributes
                 0x00000052       0x21 obj\release\src\startup_stm32f401xc.o
  .ARM.attributes
-                0x00000073       0x32 C:\Users\Caska\AppData\Local\Temp\SmallCar.elf.HJEWuT.ltrans0.ltrans.o
+                0x00000073       0x32 C:\Users\Caska\AppData\Local\Temp\SmallCar.elf.HAfemL.ltrans0.ltrans.o
  .ARM.attributes
                 0x000000a5       0x1e d:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/thumb/v7e-m+fp/hard/crtn.o
                 0x2000ff00                __StackLimit = (_estack - _Min_Stack_Size)
                 0x00000001                ASSERT ((__StackLimit >= __HeapLimit), Region RAM overflowed with stack)
 LOAD obj\release\src\startup_stm32f401xc.o
+LOAD obj\release\fil_lib\dma.o
+LOAD C:\Users\Caska\AppData\Local\Temp\SmallCar.elf.HAfemL.ltrans0.ltrans.o
+LOAD C:\Users\Caska\AppData\Local\Temp\ccfXmSd1.debug.temp.o
+LOAD C:\Users\Caska\AppData\Local\Temp\cc0215XF.debug.temp.o
+LOAD C:\Users\Caska\AppData\Local\Temp\ccBVCPMk.debug.temp.o
+LOAD C:\Users\Caska\AppData\Local\Temp\cccOdzBZ.debug.temp.o
+LOAD C:\Users\Caska\AppData\Local\Temp\ccVcFkxE.debug.temp.o
+LOAD C:\Users\Caska\AppData\Local\Temp\ccQrANxj.debug.temp.o
+LOAD C:\Users\Caska\AppData\Local\Temp\ccVrhesX.debug.temp.o
+LOAD C:\Users\Caska\AppData\Local\Temp\ccM8larB.debug.temp.o
+LOAD C:\Users\Caska\AppData\Local\Temp\ccDPq6pf.debug.temp.o
+LOAD C:\Users\Caska\AppData\Local\Temp\ccqYMHtT.debug.temp.o
+LOAD C:\Users\Caska\AppData\Local\Temp\ccRDt4Bx.debug.temp.o
+LOAD C:\Users\Caska\AppData\Local\Temp\cc4v44Ob.debug.temp.o
+LOAD C:\Users\Caska\AppData\Local\Temp\cchoF51P.debug.temp.o
+LOAD C:\Users\Caska\AppData\Local\Temp\ccuizDju.debug.temp.o
+LOAD C:\Users\Caska\AppData\Local\Temp\ccpjPOF8.debug.temp.o
+LOAD C:\Users\Caska\AppData\Local\Temp\ccgiTN6M.debug.temp.o
+LOAD C:\Users\Caska\AppData\Local\Temp\cc7gXMxr.debug.temp.o
+LOAD C:\Users\Caska\AppData\Local\Temp\ccIdw8w9.debug.temp.o
+LOAD C:\Users\Caska\AppData\Local\Temp\cc9W0ZAR.debug.temp.o
+LOAD C:\Users\Caska\AppData\Local\Temp\cccE2tJz.debug.temp.o
+LOAD C:\Users\Caska\AppData\Local\Temp\cc592KWh.debug.temp.o
 LOAD obj\release\fil_lib\exti.o
-LOAD C:\Users\Caska\AppData\Local\Temp\SmallCar.elf.HJEWuT.ltrans0.ltrans.o
-LOAD C:\Users\Caska\AppData\Local\Temp\cc1RzeGK.debug.temp.o
-LOAD C:\Users\Caska\AppData\Local\Temp\ccQrYcsS.debug.temp.o
-LOAD C:\Users\Caska\AppData\Local\Temp\cc14aDi0.debug.temp.o
-LOAD C:\Users\Caska\AppData\Local\Temp\ccqB8Kd8.debug.temp.o
-LOAD C:\Users\Caska\AppData\Local\Temp\ccjp3Cdg.debug.temp.o
-LOAD C:\Users\Caska\AppData\Local\Temp\ccUjk8ho.debug.temp.o
-LOAD C:\Users\Caska\AppData\Local\Temp\cc7FB7qw.debug.temp.o
-LOAD C:\Users\Caska\AppData\Local\Temp\ccMe86tD.debug.temp.o
-LOAD C:\Users\Caska\AppData\Local\Temp\ccNEqaEK.debug.temp.o
-LOAD C:\Users\Caska\AppData\Local\Temp\ccQFPTSR.debug.temp.o
-LOAD C:\Users\Caska\AppData\Local\Temp\cct5X6bZ.debug.temp.o
+LOAD obj\release\fil_lib\freertos_lib\croutine.o
+LOAD obj\release\fil_lib\freertos_lib\event_groups.o
+LOAD obj\release\fil_lib\freertos_lib\heap_2.o
+LOAD obj\release\fil_lib\freertos_lib\list.o
+LOAD obj\release\fil_lib\freertos_lib\port.o
+LOAD obj\release\fil_lib\freertos_lib\queue.o
+LOAD obj\release\fil_lib\freertos_lib\stream_buffer.o
+LOAD obj\release\fil_lib\freertos_lib\tasks.o
+LOAD obj\release\fil_lib\freertos_lib\timers.o
 LOAD obj\release\fil_lib\i2c.o
 LOAD obj\release\fil_lib\matrix.o
 LOAD obj\release\fil_lib\rcc.o
@@ -398,7 +473,7 @@ LOAD obj\release\fil_lib\robot_tasks.o
 LOAD obj\release\fil_lib\tim.o
 LOAD obj\release\fil_lib\usart.o
 LOAD obj\release\src\main.o
-LOAD obj\release\fil_lib\dma.o
+LOAD obj\release\dev\dev.o
 LOAD obj\release\src\system_stm32f4xx.o
 START GROUP
 LOAD d:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/thumb/v7e-m+fp/hard\libgcc.a
@@ -420,81 +495,93 @@ LOAD d:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/thumb/v7e-m+fp/hard
 OUTPUT(bin\Release\SmallCar.elf elf32-littlearm)
 LOAD linker stubs
 
-.debug_line     0x00000000      0xf9b
+.debug_line     0x00000000     0x154a
  .debug_line    0x00000000       0x77 obj\release\src\startup_stm32f401xc.o
- .debug_line    0x00000077      0x70d C:\Users\Caska\AppData\Local\Temp\SmallCar.elf.HJEWuT.ltrans0.ltrans.o
- .debug_line    0x00000784      0x132 C:\Users\Caska\AppData\Local\Temp\cc1RzeGK.debug.temp.o
- .debug_line    0x000008b6      0x122 C:\Users\Caska\AppData\Local\Temp\ccQrYcsS.debug.temp.o
- .debug_line    0x000009d8      0x131 C:\Users\Caska\AppData\Local\Temp\ccqB8Kd8.debug.temp.o
- .debug_line    0x00000b09      0x131 C:\Users\Caska\AppData\Local\Temp\cc7FB7qw.debug.temp.o
- .debug_line    0x00000c3a      0x133 C:\Users\Caska\AppData\Local\Temp\ccMe86tD.debug.temp.o
- .debug_line    0x00000d6d      0x136 C:\Users\Caska\AppData\Local\Temp\ccNEqaEK.debug.temp.o
- .debug_line    0x00000ea3       0xf8 C:\Users\Caska\AppData\Local\Temp\cct5X6bZ.debug.temp.o
+ .debug_line    0x00000077      0xb56 C:\Users\Caska\AppData\Local\Temp\SmallCar.elf.HAfemL.ltrans0.ltrans.o
+ .debug_line    0x00000bcd      0x10e C:\Users\Caska\AppData\Local\Temp\ccfXmSd1.debug.temp.o
+ .debug_line    0x00000cdb      0x112 C:\Users\Caska\AppData\Local\Temp\cc0215XF.debug.temp.o
+ .debug_line    0x00000ded      0x102 C:\Users\Caska\AppData\Local\Temp\cc4v44Ob.debug.temp.o
+ .debug_line    0x00000eef      0x111 C:\Users\Caska\AppData\Local\Temp\ccuizDju.debug.temp.o
+ .debug_line    0x00001000      0x118 C:\Users\Caska\AppData\Local\Temp\ccpjPOF8.debug.temp.o
+ .debug_line    0x00001118      0x111 C:\Users\Caska\AppData\Local\Temp\cc7gXMxr.debug.temp.o
+ .debug_line    0x00001229      0x113 C:\Users\Caska\AppData\Local\Temp\ccIdw8w9.debug.temp.o
+ .debug_line    0x0000133c      0x116 C:\Users\Caska\AppData\Local\Temp\cc9W0ZAR.debug.temp.o
+ .debug_line    0x00001452       0xf8 C:\Users\Caska\AppData\Local\Temp\cc592KWh.debug.temp.o
 
-.debug_info     0x00000000     0x2a0e
+.debug_info     0x00000000     0x3ab5
  .debug_info    0x00000000       0x22 obj\release\src\startup_stm32f401xc.o
- .debug_info    0x00000022      0x30f C:\Users\Caska\AppData\Local\Temp\SmallCar.elf.HJEWuT.ltrans0.ltrans.o
- .debug_info    0x00000331      0x31f C:\Users\Caska\AppData\Local\Temp\cc1RzeGK.debug.temp.o
-                0x00000331                EXTI.c.e2b99ec9
- .debug_info    0x00000650      0x2a7 C:\Users\Caska\AppData\Local\Temp\ccQrYcsS.debug.temp.o
-                0x00000650                I2C.c.9f42276c
- .debug_info    0x000008f7      0x476 C:\Users\Caska\AppData\Local\Temp\ccqB8Kd8.debug.temp.o
-                0x000008f7                RCC.c.8b6ff126
- .debug_info    0x00000d6d      0x628 C:\Users\Caska\AppData\Local\Temp\cc7FB7qw.debug.temp.o
-                0x00000d6d                TIM.c.ee7447e8
- .debug_info    0x00001395      0x39d C:\Users\Caska\AppData\Local\Temp\ccMe86tD.debug.temp.o
-                0x00001395                USART.c.4eade99f
- .debug_info    0x00001732      0xcbb C:\Users\Caska\AppData\Local\Temp\ccNEqaEK.debug.temp.o
-                0x00001732                main.c.c742e5b6
- .debug_info    0x000023ed      0x621 C:\Users\Caska\AppData\Local\Temp\cct5X6bZ.debug.temp.o
-                0x000023ed                system_stm32f4xx.c.7cf01943
+ .debug_info    0x00000022      0x4e0 C:\Users\Caska\AppData\Local\Temp\SmallCar.elf.HAfemL.ltrans0.ltrans.o
+ .debug_info    0x00000502      0x3cc C:\Users\Caska\AppData\Local\Temp\ccfXmSd1.debug.temp.o
+                0x00000502                DMA.c.608c953e
+ .debug_info    0x000008ce      0x400 C:\Users\Caska\AppData\Local\Temp\cc0215XF.debug.temp.o
+                0x000008ce                EXTI.c.b292f4ea
+ .debug_info    0x00000cce      0x388 C:\Users\Caska\AppData\Local\Temp\cc4v44Ob.debug.temp.o
+                0x00000cce                I2C.c.3f3fe61a
+ .debug_info    0x00001056      0x557 C:\Users\Caska\AppData\Local\Temp\ccuizDju.debug.temp.o
+                0x00001056                RCC.c.aa693b0d
+ .debug_info    0x000015ad      0x5e8 C:\Users\Caska\AppData\Local\Temp\ccpjPOF8.debug.temp.o
+                0x000015ad                Regulators.c.bfe1806f
+ .debug_info    0x00001b95      0x6ed C:\Users\Caska\AppData\Local\Temp\cc7gXMxr.debug.temp.o
+                0x00001b95                TIM.c.774d5f3d
+ .debug_info    0x00002282      0x47e C:\Users\Caska\AppData\Local\Temp\ccIdw8w9.debug.temp.o
+                0x00002282                USART.c.eaafce6a
+ .debug_info    0x00002700      0xd94 C:\Users\Caska\AppData\Local\Temp\cc9W0ZAR.debug.temp.o
+                0x00002700                main.c.223ea410
+ .debug_info    0x00003494      0x621 C:\Users\Caska\AppData\Local\Temp\cc592KWh.debug.temp.o
+                0x00003494                system_stm32f4xx.c.7cf01943
 
-.debug_abbrev   0x00000000      0xa4b
+.debug_abbrev   0x00000000      0xc13
  .debug_abbrev  0x00000000       0x12 obj\release\src\startup_stm32f401xc.o
- .debug_abbrev  0x00000012       0xe7 C:\Users\Caska\AppData\Local\Temp\SmallCar.elf.HJEWuT.ltrans0.ltrans.o
- .debug_abbrev  0x000000f9      0x12a C:\Users\Caska\AppData\Local\Temp\cc1RzeGK.debug.temp.o
- .debug_abbrev  0x00000223       0xea C:\Users\Caska\AppData\Local\Temp\ccQrYcsS.debug.temp.o
- .debug_abbrev  0x0000030d      0x128 C:\Users\Caska\AppData\Local\Temp\ccqB8Kd8.debug.temp.o
- .debug_abbrev  0x00000435      0x192 C:\Users\Caska\AppData\Local\Temp\cc7FB7qw.debug.temp.o
- .debug_abbrev  0x000005c7      0x14c C:\Users\Caska\AppData\Local\Temp\ccMe86tD.debug.temp.o
- .debug_abbrev  0x00000713      0x1e7 C:\Users\Caska\AppData\Local\Temp\ccNEqaEK.debug.temp.o
- .debug_abbrev  0x000008fa      0x151 C:\Users\Caska\AppData\Local\Temp\cct5X6bZ.debug.temp.o
+ .debug_abbrev  0x00000012       0xe5 C:\Users\Caska\AppData\Local\Temp\SmallCar.elf.HAfemL.ltrans0.ltrans.o
+ .debug_abbrev  0x000000f7       0xd0 C:\Users\Caska\AppData\Local\Temp\ccfXmSd1.debug.temp.o
+ .debug_abbrev  0x000001c7      0x121 C:\Users\Caska\AppData\Local\Temp\cc0215XF.debug.temp.o
+ .debug_abbrev  0x000002e8       0xe1 C:\Users\Caska\AppData\Local\Temp\cc4v44Ob.debug.temp.o
+ .debug_abbrev  0x000003c9      0x11f C:\Users\Caska\AppData\Local\Temp\ccuizDju.debug.temp.o
+ .debug_abbrev  0x000004e8      0x141 C:\Users\Caska\AppData\Local\Temp\ccpjPOF8.debug.temp.o
+ .debug_abbrev  0x00000629      0x189 C:\Users\Caska\AppData\Local\Temp\cc7gXMxr.debug.temp.o
+ .debug_abbrev  0x000007b2      0x143 C:\Users\Caska\AppData\Local\Temp\ccIdw8w9.debug.temp.o
+ .debug_abbrev  0x000008f5      0x1cd C:\Users\Caska\AppData\Local\Temp\cc9W0ZAR.debug.temp.o
+ .debug_abbrev  0x00000ac2      0x151 C:\Users\Caska\AppData\Local\Temp\cc592KWh.debug.temp.o
 
-.debug_aranges  0x00000000       0xb8
+.debug_aranges  0x00000000       0xc0
  .debug_aranges
                 0x00000000       0x28 obj\release\src\startup_stm32f401xc.o
  .debug_aranges
-                0x00000028       0x90 C:\Users\Caska\AppData\Local\Temp\SmallCar.elf.HJEWuT.ltrans0.ltrans.o
+                0x00000028       0x98 C:\Users\Caska\AppData\Local\Temp\SmallCar.elf.HAfemL.ltrans0.ltrans.o
 
-.debug_str      0x00000000      0xd61
+.debug_str      0x00000000      0xe99
  .debug_str     0x00000000       0x66 obj\release\src\startup_stm32f401xc.o
- .debug_str     0x00000066      0x112 C:\Users\Caska\AppData\Local\Temp\SmallCar.elf.HJEWuT.ltrans0.ltrans.o
+ .debug_str     0x00000066      0x112 C:\Users\Caska\AppData\Local\Temp\SmallCar.elf.HAfemL.ltrans0.ltrans.o
                                 0x15d (size before relaxing)
- .debug_str     0x00000178      0x2dd C:\Users\Caska\AppData\Local\Temp\cc1RzeGK.debug.temp.o
-                                0x387 (size before relaxing)
- .debug_str     0x00000455       0x80 C:\Users\Caska\AppData\Local\Temp\ccQrYcsS.debug.temp.o
-                                0x35e (size before relaxing)
- .debug_str     0x000004d5      0x138 C:\Users\Caska\AppData\Local\Temp\ccqB8Kd8.debug.temp.o
-                                0x41b (size before relaxing)
- .debug_str     0x0000060d      0x1b5 C:\Users\Caska\AppData\Local\Temp\cc7FB7qw.debug.temp.o
-                                0x4e7 (size before relaxing)
- .debug_str     0x000007c2       0x53 C:\Users\Caska\AppData\Local\Temp\ccMe86tD.debug.temp.o
-                                0x377 (size before relaxing)
- .debug_str     0x00000815      0x491 C:\Users\Caska\AppData\Local\Temp\ccNEqaEK.debug.temp.o
-                                0x942 (size before relaxing)
- .debug_str     0x00000ca6       0xbb C:\Users\Caska\AppData\Local\Temp\cct5X6bZ.debug.temp.o
+ .debug_str     0x00000178      0x2f1 C:\Users\Caska\AppData\Local\Temp\ccfXmSd1.debug.temp.o
+                                0x3c0 (size before relaxing)
+ .debug_str     0x00000469       0xa9 C:\Users\Caska\AppData\Local\Temp\cc0215XF.debug.temp.o
+                                0x3fd (size before relaxing)
+ .debug_str     0x00000512       0x80 C:\Users\Caska\AppData\Local\Temp\cc4v44Ob.debug.temp.o
+                                0x3d4 (size before relaxing)
+ .debug_str     0x00000592      0x138 C:\Users\Caska\AppData\Local\Temp\ccuizDju.debug.temp.o
+                                0x491 (size before relaxing)
+ .debug_str     0x000006ca      0x125 C:\Users\Caska\AppData\Local\Temp\ccpjPOF8.debug.temp.o
+                                0x4c7 (size before relaxing)
+ .debug_str     0x000007ef      0x11b C:\Users\Caska\AppData\Local\Temp\cc7gXMxr.debug.temp.o
+                                0x555 (size before relaxing)
+ .debug_str     0x0000090a       0x53 C:\Users\Caska\AppData\Local\Temp\ccIdw8w9.debug.temp.o
+                                0x3ed (size before relaxing)
+ .debug_str     0x0000095d      0x481 C:\Users\Caska\AppData\Local\Temp\cc9W0ZAR.debug.temp.o
+                                0x9a8 (size before relaxing)
+ .debug_str     0x00000dde       0xbb C:\Users\Caska\AppData\Local\Temp\cc592KWh.debug.temp.o
                                 0x416 (size before relaxing)
 
-.debug_ranges   0x00000000      0x150
+.debug_ranges   0x00000000      0x3c0
  .debug_ranges  0x00000000       0x20 obj\release\src\startup_stm32f401xc.o
- .debug_ranges  0x00000020      0x130 C:\Users\Caska\AppData\Local\Temp\SmallCar.elf.HJEWuT.ltrans0.ltrans.o
+ .debug_ranges  0x00000020      0x3a0 C:\Users\Caska\AppData\Local\Temp\SmallCar.elf.HAfemL.ltrans0.ltrans.o
 
-.debug_loc      0x00000000      0x1e7
- .debug_loc     0x00000000      0x1e7 C:\Users\Caska\AppData\Local\Temp\SmallCar.elf.HJEWuT.ltrans0.ltrans.o
+.debug_loc      0x00000000      0x440
+ .debug_loc     0x00000000      0x440 C:\Users\Caska\AppData\Local\Temp\SmallCar.elf.HAfemL.ltrans0.ltrans.o
 
 .comment        0x00000000       0x4c
- .comment       0x00000000       0x4c C:\Users\Caska\AppData\Local\Temp\SmallCar.elf.HJEWuT.ltrans0.ltrans.o
+ .comment       0x00000000       0x4c C:\Users\Caska\AppData\Local\Temp\SmallCar.elf.HAfemL.ltrans0.ltrans.o
                                  0x4d (size before relaxing)
 
-.debug_frame    0x00000000      0x178
- .debug_frame   0x00000000      0x178 C:\Users\Caska\AppData\Local\Temp\SmallCar.elf.HJEWuT.ltrans0.ltrans.o
+.debug_frame    0x00000000      0x194
+ .debug_frame   0x00000000      0x194 C:\Users\Caska\AppData\Local\Temp\SmallCar.elf.HAfemL.ltrans0.ltrans.o

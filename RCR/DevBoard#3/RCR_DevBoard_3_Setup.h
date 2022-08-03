@@ -43,29 +43,43 @@
 */
 #define __config_Regulator_ON           (1)
 #define __config_Regulator_FREQ         (100)
-#define __config_Regulator_P_K          (0.0)
-#define __config_Regulator_I_K          (0.0)
-#define __config_Regulator_D_K          (0.0)
-#define __config_MAX_SUM_ERROR          (0.0)
+#define __config_Regulator_P_K          (5.0)
+#define __config_Regulator_I_K          (1.5)
+#define __config_Regulator_D_K          (0.5)
+#define __config_MAX_SUM_ERROR          (6.0)
 #define __config_OUTPUT_END             (50.0)
 #define __config_Regulator_ERROR_END    (0.0)
 #define __config_MAX_OUTPUT             (1.0)
-#define __config_MIN_OUTPUT             (0.01)
+#define __config_MIN_OUTPUT             (0.08)
 
-#define PI                              (3.14157)
+#define PI2                             (6.28314)
 #define REDUCTION_ENGINE                (150)
 #define REDUCTION_DIFF                  (1.2)
 #define REDUCTION_SUM                   (REDUCTION_ENGINE + REDUCTION_DIFF)
-#define R_WHEEL                         (0.09)
-#define DISKETS_ON_ROTATE               (32400)
-#define WHEEL_LENGTH                    (2 * PI * R_WHEEL)
-#define TIME                            (1 / __config_Regulator_FREQ)
+#define R_WHEEL                         (0.048)
+#define WHEEL_LENGTH                    (PI2 * R_WHEEL)
+#define DISKETS_ON_ROTATE               (41000.0)
+#define K_ERRORS                        (0.9)
+#define DISK_TO_REAL                    ((float)(WHEEL_LENGTH / DISKETS_ON_ROTATE * K_ERRORS))
+#define TIME                            ((float)(1.0 / __config_Regulator_FREQ))
 /*!
 *   @note [RCR] UART/USART configuration
 */
 #define __config_USART1_Baudrate    (9600)
 #define __config_USART6_Baudrate    (115200)
-
+/*!
+*   @note [RCR] ADC configuration
+*/
+#define __configUSE_Battery_Charging    (0)
+#define __configUSE_Temperature_Sensor  (0)
+#define __configUSE_SENSOR_1            (1)
+#define __configUSE_SENSOR_2            (1)
+#define __configUSE_SENSOR_3            (1)
+#define __configUSE_SENSOR_4            (1)
+#define __configUSE_SENSOR_5            (1)
+#define __configUSE_SENSOR_6            (1)
+#define __configUSE_SENSOR_7            (1)
+#define __configUSE_SENSOR_8            (1)
 /*!
 *   @note [RCR] IIC(I2C) configuration
 */

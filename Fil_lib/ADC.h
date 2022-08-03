@@ -66,6 +66,21 @@
                         *(&ADC->SMPR2 - (CH / 10)) |= CYCLES << ((CH * 3) % 30);            \
                         CH++;                                                               }
     /*!
+    *   @brief  AddADCSingleChannel(ADC,CHANNEL,CYCLES) - Adding single channel to conversions ADC
+    *       @arg ADC - Number of ADC
+    *       @arg CHANNEL - Number of target channel
+    *       @arg CYCLES - Sample time selection
+    *           @attention This function delete old channel from ADC list before writing new target channel
+    */
+    #define AddADCSingleChannel(ADC,CHANNEL,CYCLES)                                        {\
+                        ADC->CR2 &= ~ADC_CR2_ADON;                                          \
+                        ADC->SQ3 &= ~(0x1F);                                                \
+                        ADC->SMPR2 &= ~(0x7);                                               \
+                        ADC->SQ3 |= CHANNEL;                                                \
+                        ADC->SMP2 |= CYCLES;                                                \
+                        ADC->CR1 &= ~ADC_CR1_SCAN;                                          \
+                        ADC->CR2 |= (ADC_CR2_ADON | ADC_CR2_CONT);                          }
+    /*!
     *   @brief  ADCScanConfigure(ADC,IsDMA) - Configuration ADC (Scan mode without adding channels)
     *       @arg ADC - Number of ADC
     *       @arg IsDMA - DMA mode: 0 - DMA off
@@ -121,4 +136,38 @@
     #define ADCSmpr1(CYCLES)                                    ((uint32_t)(CYCLES << 24) | (CYCLES << 21) | (CYCLES << 18) | (CYCLES << 15) | (CYCLES << 12) | (CYCLES << 9) | (CYCLES << 6) | (CYCLES << 3) | (CYCLES))
     #define ADCSmpr2(CYCLES)                                    ((uint32_t)(CYCLES << 27) | (CYCLES << 24) | (CYCLES << 21) | (CYCLES << 18) | (CYCLES << 15) | (CYCLES << 12) | (CYCLES << 9) | (CYCLES << 6) | (CYCLES << 3) | (CYCLES))
 #endif /*configUSE_ADC_Manually*/
+#if (_configUSE_ADCManag_Multiplexor == 1)
+
+struct {
+    uint32_t ADCSource;
+    uint16_t BATTERY;
+    uint16_t TEMPERATURE;
+    uint16_t CHANNEL_1;
+    uint16_t CHANNEL_2;
+    uint16_t CHANNEL_3;
+    uint16_t CHANNEL_4;
+    uint16_t CHANNEL_5;
+    uint16_t CHANNEL_6;
+    uint16_t CHANNEL_7;
+    uint16_t CHANNEL_8;
+    uint16_t CHANNEL_9;
+    uint16_t CHANNEL_10;
+    uint16_t CHANNEL_11;
+    uint16_t CHANNEL_12;
+    uint16_t CHANNEL_13;
+    uint16_t CHANNEL_14;
+    uint16_t CHANNEL_15;
+    uint16_t CHANNEL_16;
+}ADCStatus;
+
+    /*!
+    *   @brief ADC_Multiplexor_Get(ADC_TypeDef *ADCx) - Calculating ADC Data from multiplexor
+    *       @arg TIMx - number of timer
+    *
+    */
+void ADC_Multiplexor_Get(ADC_TypeDef *ADCx);
+
+#endif /*_configUSE_ADCManag_Multiplexor*/
+
+
 #endif /*_DefaultSectorIncludeHandler*/

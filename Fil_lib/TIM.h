@@ -200,14 +200,14 @@ struct {
 void CalcTimClockSourse(TIM_TypeDef *TIMx);
 
     /*!
-    *   @brief CalcTimStatus(TIM_TypeDef *TIMx) - Calculating Timer Clock Sourse
+    *   @brief CalcTimStatus(TIM_TypeDef *TIMx) - Calculating Timer Status
     *       @arg TIMx - number of timer
     *
     */
 void CalcTimStatus(TIM_TypeDef *TIMx);
 
     /*!
-    *   @brief CalcTimPIDFrequency(TIM_TypeDef *TIMx, uint16_t freq) - Calculating Timer Clock Sourse
+    *   @brief CalcTimPIDFrequency(TIM_TypeDef *TIMx, uint16_t freq) - Calculating Timer frequency to do PID
     *       @arg TIMx - number of timer
     *       @arg freq - necessary frequency
     *

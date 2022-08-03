@@ -1,7 +1,4 @@
 #pragma once
-
-#include "stm32f4xx.h"
-
 /*!
 *
 *   @file RCR_BoardSelection.h
@@ -29,6 +26,7 @@
         #include "RCR_DevBoard_2_Setup.h"
     #endif /*Development Board №2*/
     #if (_configUSEBoards == 3) // Development Board №3 (Green pill board - STM32F401)
+        #include "RCR_DevBoard_3.h"
         #include "RCR_DevBoard_3_Setup.h"
     #endif /*Development Board №3*/
     #if (_configUSEBoards == 4) // Development Board №4 (Coming soon - new project in this list)

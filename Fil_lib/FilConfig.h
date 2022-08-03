@@ -34,6 +34,7 @@
 #define _configCALC_USART               1
 #define _configCALC_Regulators          1
 #define _configCALC_Matrix              0
+#define _configUSE_ADCManag_Multiplexor 1
 
 /*!
 *   Version control

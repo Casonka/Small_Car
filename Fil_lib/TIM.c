@@ -11,8 +11,6 @@
 #include "FilConfig.h"
 
 #include "TIM.h"
-uint32_t *encoderData = ENCODER1_CNT;
-int32_t data = 0;
 uint32_t globalTime = 0;
 
 /*!
@@ -22,9 +20,8 @@ uint32_t globalTime = 0;
 
 void SysTick_Handler(void)
 {
-    SetVoltage(EnginePWM);
-    data = *encoderData;
-    //PID_Low_Level();
+
+    CalcTimStatus(TIM1);
     globalTime++;
 }
 
@@ -51,7 +48,8 @@ ResetTimSR(TIM3);
 
 void TIM4_IRQHandler(void)
 {
-
+    //SetVoltage(EnginePWM);
+    PID_Low_Level();
 ResetTimSR(TIM4);
 }
 

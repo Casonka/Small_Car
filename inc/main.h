@@ -8,8 +8,8 @@ extern "C" {
 #include "stm32f4xx.h"
 #include <stdbool.h>
 
-#include "RCR_BoardSelection.h"
 #include "FilConfig.h"
+#include "RCR_BoardSelection.h"
 
 #ifdef __cplusplus
 }

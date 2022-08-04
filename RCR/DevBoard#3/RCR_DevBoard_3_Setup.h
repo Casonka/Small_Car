@@ -9,6 +9,7 @@
     *
 */
 #pragma once
+
 #include "FilConfig.h"
 #include "RCR_DevBoard_3.h"
 
@@ -71,6 +72,10 @@
 #define __config_USART6_Baudrate    (115200)
 
 #define __configUSE_ModBus          (0)
+/*!
+*   @info ModBus binary - 1; ModBus ASCII - 2
+*/
+#define __configMODBUS_Type         (0)
 #if(__configUSE_ModBus == 1)
     #include "ModBus_conf.h"
     #include "ModBus.h"
@@ -81,9 +86,10 @@
 *                           1 - ADC Simple single channel parsing
 *                           2 - ADC Simple multi channel parsing
 *                           3 - ADC one Multiplexer parsing
-*                           4 - ADC two Multiplexer parsing
+*                           4 - ADC two Multiplexer parsing(or 4 custom inputs)
+*                           5 - Developer Mode (All Manually)
 */
-#define __configADC_Mode                (3)
+#define __configADC_Mode                (4)
 #define __configUSE_Battery_Charging    (0)
 #define __configUSE_Temperature_Sensor  (0)
 #define __configUSE_Potentiometer       (0)
@@ -91,15 +97,18 @@
 #define __configUSE_SENSOR_2            (0)
 #define __configUSE_SENSOR_3            (0)
 #define __configUSE_SENSOR_4            (0)
-#define __configUSE_SENSOR_5            (0)
+#define __configUSE_SENSOR_5            (1)
 #define __configUSE_SENSOR_6            (0)
 #define __configUSE_SENSOR_7            (0)
 #define __configUSE_SENSOR_8            (0)
+
+#define __configADC_InterruptRequest    (1)
+#define __configADC_RESOLUTION          (12)        // 12-bit resolution
 /*!
 *   @note [RCR] IIC(I2C) configuration
 */
 #define MPU9250_ADDR                (0x34)     // Gyro Accelerometer Magnetometer
-#define SSD1305_ADDR                (0x00)
+#define SSD1305_ADDR                (0x00)     // LCD monitor
 //-----------------------------------------------------------------//
 /*!
 *   @brief General Initialization
@@ -130,13 +139,12 @@
 */
 #define InitPeriph {\
     conf_pin(BTN1_DIR_PIN, GENERAL, PUSH_PULL, FAST_S, NO_PULL_UP);\
-    conf_pin(MULPLXA_PIN,  GENERAL, PUSH_PULL, FAST_S, NO_PULL_UP);\
-    conf_pin(MULPLXB_PIN,  GENERAL, PUSH_PULL, FAST_S, NO_PULL_UP);\
-    conf_pin(MULPLXC_PIN,  GENERAL, PUSH_PULL, FAST_S, NO_PULL_UP);\
+    conf_pin(MULPLXA_PIN,  GENERAL, PUSH_PULL, FAST_S, PULL_DOWN);\
+    conf_pin(MULPLXB_PIN,  GENERAL, PUSH_PULL, FAST_S, PULL_DOWN);\
+    conf_pin(MULPLXC_PIN,  GENERAL, PUSH_PULL, FAST_S, PULL_DOWN);\
     conf_pin(INT_PIN,  GENERAL, PUSH_PULL, FAST_S, NO_PULL_UP);\
     conf_pin(LED_PIN,  GENERAL, PUSH_PULL, FAST_S, NO_PULL_UP);\
     conf_pin(ADC_TOP, ANALOG, PUSH_PULL, FAST_S, NO_PULL_UP);\
-    conf_pin(POT_PIN, ANALOG, PUSH_PULL, FAST_S, NO_PULL_UP);\
     conf_pin(EXTI1_PIN, INPUT, PUSH_PULL, FAST_S, PULL_DOWN);\
     conf_pin(EXTI2_PIN, INPUT, PUSH_PULL, FAST_S, PULL_DOWN);\
     conf_pin(EXTI3_PIN, INPUT, PUSH_PULL, FAST_S, PULL_DOWN);\
@@ -174,7 +182,8 @@
 *   @brief Initialization interrupts
 */
 #define InitInterrupts {\
-    NVIC_EnableIRQ(TIM4_IRQn);}
+    NVIC_EnableIRQ(TIM4_IRQn);\
+    NVIC_EnableIRQ(ADC_IRQn);}
 
 /*!
 *   @brief Initialization uart/usart

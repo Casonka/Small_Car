@@ -29,8 +29,7 @@
         #include "RCR_DevBoard_3_Setup.h"
     #endif /*Development Board №3*/
     #if (_configUSEBoards == 4) // Development Board №4 (Coming soon - new project in this list)
-        #include "RCR_DevBoard_4.h"
-        #include "RCR_DevBoard_4_Setup.h"
+
     #endif /*Development Board №4*/
     #if ((_configUSEBoards < 0) || (_configUSEBoards > 4))
         #error Invalid argument of Development Board

@@ -1,4 +1,3 @@
-
     /*!
     *   --------------------------------------------------------------------------
     *                       ///TIM Source file\\\
@@ -8,8 +7,6 @@
     *
     *       @note [FIL:TIM] TIM Source file.
     */
-#include "FilConfig.h"
-
 #include "TIM.h"
 uint32_t globalTime = 0;
 
@@ -49,7 +46,7 @@ ResetTimSR(TIM3);
 void TIM4_IRQHandler(void)
 {
     //SetVoltage(EnginePWM);
-    PID_Low_Level();
+    //PID_Low_Level();
 ResetTimSR(TIM4);
 }
 

@@ -3,7 +3,8 @@
 int main(void)
 {
     Board_Config;
-    init_PID_Regulator();
+    ADC_Init(ADC1);
+    //init_PID_Regulator();
     while(1)
     {
 

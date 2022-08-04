@@ -9,7 +9,6 @@ extern "C" {
 #include <stdbool.h>
 
 #include "FilConfig.h"
-#include "RCR_BoardSelection.h"
 
 #ifdef __cplusplus
 }

@@ -15,6 +15,7 @@
 
 #pragma once
 #include "main.h"
+#include "RCR_BoardSelection.h"
 
 #define configUSE_RCC                   1
 #define configUSE_GPIO                  1
@@ -23,7 +24,7 @@
 #define configUSE_DMA                   0
 #define configUSE_I2C                   0
 #define configUSE_ADC                   1
-#define configUSE_ADC_Manually          0
+#define configUSE_ADC_Manually          1
 #define configUSE_EXTI                  1
 #define configUSE_RTC                   0
 #define configUSE_FREERTOS              0

@@ -1,4 +1,4 @@
-cscope 15 $HOME\Desktop\projects\RCR\4. RCR_SmallCar\small-car"               0001517524
+cscope 15 $HOME\Desktop\projects\RCR\4. RCR_SmallCar\small-car"               0001521978
 	@C:\Users\Caska\Desktop\projects\RCR\48531~1.RCR\SMALL-~1\DEV_EX~1\dev_ws.h
 
 1 #´agm¨
@@ -8,6 +8,196 @@ cscope 15 $HOME\Desktop\projects\RCR\4. RCR_SmallCar\small-car"               00
 3 
 	~"FžCÚfig.h
 "
+
+	@C:\Users\Caska\Desktop\projects\RCR\48531~1.RCR\SMALL-~1\Fil_lib\ADC.c
+
+10 
+	~"ADC.h
+"
+
+15 
+	$ADC_IRQHªdËr
+()
+
+17 if(
+	`ADCInjeùedEndEv’t
+(
+ADC1
+))
+
+21 
+	}
+}
+
+22 #if(
+cÚfigUSE_ADC
+ == 1)
+
+27 
+	$ADC_MuÉËx”_G‘
+(
+ADC_Ty³Def
+ *
+ADCx
+)
+
+30 
+	}
+}
+
+32 #if(
+__cÚfigADC_IÁ”ru±Reque¡
+ == 1)
+
+33 
+	$ADC_In™
+(
+ADC_Ty³Def
+ *
+ADCx
+)
+
+35 #if(
+__cÚfigADC_Mode
+ == 4)
+
+36 if(
+ADCx
+ =ð
+ADC1
+è
+ADCStus
+.
+ADCSourû
+ = 
+AÇlog1_¡ršg
+;
+
+37 if(
+ADCx
+ =ð
+ADC2
+è
+ADCStus
+.
+ADCSourû
+ = 
+AÇlog2_¡ršg
+;
+
+38 
+	`ADCAddInjeùedGroups
+(
+ADCx
+,0x1, 0, 4, 0, 0);
+
+39 #if(
+__cÚfigUSE_B©‹ry_Ch¬gšg
+ == 1)
+
+40 
+ADCx
+->
+JSQR
+ = ((ADCx->JSQR & 
+ADC_JSQR_JL
+) + 1);
+
+41 
+ADCx
+->
+JSQR
+ |= (18 << 15);
+
+42 
+ADC_CommÚ_Ty³Def
+ 
+VB©
+;
+
+43 
+VB©
+->
+CCR
+ |= (0x1 << 22);
+
+45 #if(
+__cÚfigUSE_B©‹ry_Ch¬gšg
+ =ð0 && 
+__cÚfigUSE_Tem³¿tu»_S’sÜ
+ == 1)
+
+46 
+ADCx
+->
+JSQR
+ = ((ADCx->JSQR & 
+ADC_JSQR_JL
+) + 1);
+
+47 
+ADCx
+->
+JSQR
+ |= (18 << 15);
+
+48 
+ADC_CommÚ_Ty³Def
+ 
+VTemp
+;
+
+49 
+VTemp
+->
+CCR
+ |= (0x1 << 23);
+
+51 
+	`ADCSÿnCÚfigu»
+(
+ADCx
+);
+
+52 
+	`ADCInjeùedS¹Ev’t
+(
+ADCx
+)) {}
+
+53 
+ADCx
+->
+CR1
+ |ð
+ADC_CR1_JEOCIE
+;
+
+54 
+	`NVIC_EÇbËIRQ
+(
+ADC_IRQn
+);
+
+58 
+	}
+}
+
+60 #if(
+__cÚfigADC_IÁ”ru±Reque¡
+ == 0)
+
+61 
+	$ADC_In™
+(
+ADC_Ty³Def
+ *
+ADCx
+)
+
+64 
+	}
+}
 
 	@C:\Users\Caska\Desktop\projects\RCR\48531~1.RCR\SMALL-~1\Fil_lib\ADC.h
 
@@ -23,59 +213,59 @@ cscope 15 $HOME\Desktop\projects\RCR\4. RCR_SmallCar\small-car"               00
 cÚfigUSE_ADC
  == 1)
 
-16 
+15 
 	#ADC_3_CYCLES
  0
 
 	)
 
-17 
+16 
 	#ADC_15_CYCLES
  1
 
 	)
 
-18 
+17 
 	#ADC_28_CYCLES
  2
 
 	)
 
-19 
+18 
 	#ADC_56_CYCLES
  3
 
 	)
 
-20 
+19 
 	#ADC_84_CYCLES
  4
 
 	)
 
-21 
+20 
 	#ADC_112_CYCLES
  5
 
 	)
 
-22 
+21 
 	#ADC_144_CYCLES
  6
 
 	)
 
-23 
+22 
 	#ADC_480_CYCLES
  7
 
 	)
 
-25 #ià(
+24 #if(
 cÚfigUSE_ADC_Mªu®ly
  == 0)
 
-37 
+36 
 	#ADCSÿnCÚfigu»
 (
 ADC
@@ -83,7 +273,7 @@ ADC
 LENGTH
 , \
 
-38 
+37 
 CH1
 ,
 CH2
@@ -117,11 +307,11 @@ CH15
 CH16
 , \
 
-39 
+38 
 CYCLES
 ) {\
 
-40 
+39 
 	`S‘ADCL’gth
 (
 ADC
@@ -129,7 +319,7 @@ ADC
 LENGTH
 ); \
 
-41 
+40 
 	`CÚfADCSQ1
 (
 ADC
@@ -143,7 +333,7 @@ CH3
 CH4
 ); \
 
-42 
+41 
 	`CÚfADCSQ2
 (
 ADC
@@ -161,7 +351,7 @@ CH9
 CH10
 ); \
 
-43 
+42 
 	`CÚfADCSQ3
 (
 ADC
@@ -179,7 +369,7 @@ CH15
 CH16
 ); \
 
-44 
+43 
 	`CÚfADCSm´
 (
 ADC
@@ -189,46 +379,50 @@ LENGTH
 CYCLES
 ); \
 
-45 
+44 
 	`S‘ADCSÿn
 (
 ADC
 ); \
 
-46 
+45 
 	`S‘ADCDDS
 (
 ADC
 ); \
 
-47 
+46 
 	`S‘ADCDMA
 (
 ADC
 ); \
 
-48 
+47 
 	`S‘ADCCÚt
 (
 ADC
 ); \
 
-49 
+48 
 	`S‘ADCAdÚ
 (
 ADC
 ); \
 
-50 
-	`S‘ADCSWS¹
+49 
+	`ADCS¹ReguÏr
 (
 ADC
 ); }
 
 	)
 
+53 #if(
+__cÚfigADC_Mode
+ == 2)
+
 61 
-	#AddADCChªÃl
+	#ADCAddChªÃl
 (
 ADC
 ,
@@ -281,7 +475,7 @@ CH
 
 	)
 
-75 
+76 
 	#ADCSÿnCÚfigu»
 (
 ADC
@@ -289,13 +483,13 @@ ADC
 IsDMA
 ) {\
 
-76 
+77 
 	`S‘ADCSÿn
 (
 ADC
 ); \
 
-77 ià(
+78 ià(
 IsDMA
  =ð1è
 	`S‘ADCDMA
@@ -303,13 +497,13 @@ IsDMA
 ADC
 ); \
 
-78 
+79 
 	`S‘ADCCÚt
 (
 ADC
 ); \
 
-79 
+80 
 	`S‘ADCAdÚ
 (
 ADC
@@ -317,13 +511,165 @@ ADC
 
 	)
 
-85 #ià
+82 #–if(
+__cÚfigADC_Mode
+ == 1 || __configADC_Mode == 3)
+
+90 
+	#ADCAddSšgËChªÃl
+(
+ADC
+,
+CHANNEL
+,
+CYCLES
+) {\
+
+91 
+ADC
+->
+CR2
+ &ð~
+ADC_CR2_ADON
+; \
+
+92 
+ADC
+->
+SQ3
+ &= ~(0x1F); \
+
+93 
+ADC
+->
+SMPR2
+ &= ~(0x7); \
+
+94 
+ADC
+->
+SQ3
+ |ð
+CHANNEL
+; \
+
+95 
+ADC
+->
+SMP2
+ |ð
+CYCLES
+; \
+
+96 
+ADC
+->
+CR1
+ &ð~
+ADC_CR1_SCAN
+; \
+
+97 
+ADC
+->
+CR2
+ |ð(
+ADC_CR2_ADON
+ | 
+ADC_CR2_CONT
+); }
+
+	)
+
+99 #–if(
+__cÚfigADC_Mode
+ == 4)
+
+105 
+	#ADCAddInjeùedGroups
+(
+ADC
+,
+NUMBER
+,
+J1
+,
+J2
+,
+J3
+,
+J4
+) {\
+
+106 
+ADC
+->
+JSQR
+ &= ~(0x3FFFFF); \
+
+107 
+ADC
+->
+JSQR
+ |ð(
+NUMBER
+ << 20); \
+
+108 
+ADC
+->
+JSQR
+ |ð((
+J1
+è| (
+J2
+ << 5è| (
+J3
+ << 10è| (
+J4
+ << 15)); }
+
+	)
+
+115 
+	#ADCSÿnCÚfigu»
+(
+ADC
+) {\
+
+116 
+	`Re£tADCCÚt
+(
+ADC
+); \
+
+117 
+	`S‘ADCSÿn
+(
+ADC
+); \
+
+118 
+	`S‘ADCCÚt
+(
+ADC
+); \
+
+119 
+	`ADCS¹Injeùed
+(
+ADC
+); }
+
+	)
+
+124 #ià
 defšed
 (
 STM32F40_41xxx
 )
 
-86 
+125 
 	#ADCID
 (
 ADC
@@ -343,13 +689,13 @@ ADC3_BASE
 
 	)
 
-87 #–ià
+126 #–ià
 defšed
  (
 STM32F401xx
 )
 
-88 
+127 
 	#ADCID
 (
 ADC
@@ -361,7 +707,7 @@ ADC1_BASE
 
 	)
 
-91 
+130 
 	#S‘ADCSMP1
 (
 ADC
@@ -377,7 +723,7 @@ ušt32_t
 
 	)
 
-92 
+131 
 	#S‘ADCSMP2
 (
 ADC
@@ -393,7 +739,7 @@ ušt32_t
 
 	)
 
-93 
+132 
 	#S‘ADCL’gth
 (
 ADC
@@ -407,7 +753,7 @@ ušt32_t
 
 	)
 
-94 
+133 
 	#S‘ADCSQ1
 (
 ADC
@@ -429,7 +775,7 @@ ušt32_t
 
 	)
 
-95 
+134 
 	#S‘ADCSQ2
 (
 ADC
@@ -455,7 +801,7 @@ ušt32_t
 
 	)
 
-96 
+135 
 	#S‘ADCSQ3
 (
 ADC
@@ -481,7 +827,7 @@ ušt32_t
 
 	)
 
-97 
+136 
 	#S‘ADCSÿn
 (
 ADC
@@ -493,21 +839,7 @@ ušt32_t
 
 	)
 
-98 
-	#S‘ADCResÞutiÚ
-(
-ADC
-,
-RES
-è(* (
-ušt32_t
- *)(((
-	`ADCID
-(ADC)è+ 0x04)è|ð(RES << 28))
-
-	)
-
-99 
+137 
 	#S‘ADCDMA
 (
 ADC
@@ -515,11 +847,13 @@ ADC
 ušt32_t
  *)(((
 	`ADCID
-(ADC)è+ 0x08)è|ð(1 << 8))
+(ADC)è+ 0x08)è|ð(
+ADC_CR2_DMA
+))
 
 	)
 
-100 
+138 
 	#S‘ADCCÚt
 (
 ADC
@@ -527,11 +861,13 @@ ADC
 ušt32_t
  *)(((
 	`ADCID
-(ADC)è+ 0x08)è|ð(1 << 1))
+(ADC)è+ 0x08)è|ð(
+ADC_CR2_CONT
+))
 
 	)
 
-101 
+139 
 	#S‘ADCDDS
 (
 ADC
@@ -539,11 +875,13 @@ ADC
 ušt32_t
  *)(((
 	`ADCID
-(ADC)è+ 0x08)è|ð(1 << 9))
+(ADC)è+ 0x08)è|ð(
+ADC_CR2_DDS
+))
 
 	)
 
-102 
+140 
 	#S‘ADCAdÚ
 (
 ADC
@@ -551,27 +889,161 @@ ADC
 ušt32_t
  *)(((
 	`ADCID
-(ADC)è+ 0x08)è|ð(1))
+(ADC)è+ 0x08)è|ð(
+ADC_CR2_ADON
+))
 
 	)
 
-103 
-	#S‘ADCSWS¹
+141 
+	#ADCS¹ReguÏr
 (
 ADC
 è(* (
 ušt32_t
  *)(((
 	`ADCID
-(ADC)è+ 0x08)è|ð(1 << 30))
+(ADC)è+ 0x08)è|ð(
+ADC_CR2_SWSTART
+))
 
 	)
 
-106 #ià(
-cÚfigUSE_ADC_Mªu®ly
- == 0)
+142 
+	#ADCS¹Injeùed
+(
+ADC
+è(* (
+ušt32_t
+ *)(((
+	`ADCID
+(ADC)è+ 0x08)è|ð(
+ADC_CR2_JSWSTART
+))
 
-108 
+	)
+
+144 
+	#Re£tADCCÚt
+(
+ADC
+è(* (
+ušt32_t
+ *)(((
+	`ADCID
+(ADC)è+ 0x08)è&ð(~
+ADC_CR2_CONT
+))
+
+	)
+
+145 
+	#ADCStÝReguÏr
+(
+ADC
+è(* (
+ušt32_t
+ *)(((
+	`ADCID
+(ADC)è+ 0x08)è&ð(~
+ADC_CR2_SWSTART
+))
+
+	)
+
+147 
+	#ADCAÇlogW©chdogEv’t
+(
+ADC
+è(((ADC->
+SR
+è& (
+ADC_SR_AWD
+)))
+
+	)
+
+148 
+	#ADCReguÏrEndEv’t
+(
+ADC
+è(((ADC->
+SR
+è& (
+ADC_SR_EOC
+)è>> 1)
+
+	)
+
+149 
+	#ADCInjeùedEndEv’t
+(
+ADC
+è(((ADC->
+SR
+è& (
+ADC_SR_JEOC
+)è>> 2)
+
+	)
+
+150 
+	#ADCInjeùedS¹Ev’t
+(
+ADC
+è(((ADC->
+SR
+è& (
+ADC_SR_JSTRT
+)è>> 3)
+
+	)
+
+151 
+	#ADCReguÏrS¹Ev’t
+(
+ADC
+è(((ADC->
+SR
+è& (
+ADC_SR_STRT
+)è>> 4)
+
+	)
+
+152 
+	#ADCOv”runEv’t
+(
+ADC
+è(((ADC->
+SR
+è& (
+ADC_SR_OVR
+)è>> 5)
+
+	)
+
+154 
+	#CÚfADCResÞutiÚ
+(
+ADC
+,
+RESOLUTION
+è{* ((
+ušt32_t
+ *)(((
+	`ADCID
+(ADC)è+ 0x04))èð((* ((ušt32_ˆ*)(((ADCID(ADC)è+ 0x04)))&(~(
+ADC_CR1_RES
+)))|
+	`ADCResÞutiÚ
+(
+RES
+));}
+
+	)
+
+155 
 	#CÚfADCL’gth
 (
 ADC
@@ -587,7 +1059,7 @@ ušt32_t
 
 	)
 
-109 
+156 
 	#CÚfADCSQ1
 (
 ADC
@@ -609,7 +1081,7 @@ ušt32_t
 
 	)
 
-110 
+157 
 	#CÚfADCSQ2
 (
 ADC
@@ -635,7 +1107,7 @@ ušt32_t
 
 	)
 
-111 
+158 
 	#CÚfADCSQ3
 (
 ADC
@@ -661,7 +1133,7 @@ ušt32_t
 
 	)
 
-112 
+159 
 	#CÚfADCSm´1
 (
 ADC
@@ -677,7 +1149,7 @@ ušt32_t
 
 	)
 
-113 
+160 
 	#CÚfADCSm´2
 (
 ADC
@@ -693,7 +1165,7 @@ ušt32_t
 
 	)
 
-114 
+161 
 	#CÚfADCSm´
 (
 ADC
@@ -703,7 +1175,7 @@ NUMBER
 CYCLES
 ) {\
 
-115 if(
+162 if(
 NUMBER
  > 0è
 	`CÚfADCSm´2
@@ -713,7 +1185,7 @@ ADC
 CYCLES
 ); \
 
-116 if(
+163 if(
 NUMBER
  > 10è
 	`CÚfADCSm´1
@@ -725,7 +1197,7 @@ CYCLES
 
 	)
 
-118 
+165 
 	#ADCSQ1
 (
 CH1
@@ -741,7 +1213,7 @@ ušt32_t
 
 	)
 
-119 
+166 
 	#ADCSQ2
 (
 CH5
@@ -761,7 +1233,7 @@ ušt32_t
 
 	)
 
-120 
+167 
 	#ADCSQ3
 (
 CH11
@@ -781,7 +1253,7 @@ ušt32_t
 
 	)
 
-121 
+168 
 	#ADCSm´1
 (
 CYCLES
@@ -791,7 +1263,7 @@ ušt32_t
 
 	)
 
-122 
+169 
 	#ADCSm´2
 (
 CYCLES
@@ -800,6 +1272,138 @@ ušt32_t
 )(CYCLES << 27è| (CYCLES << 24è| (CYCLES << 21è| (CYCLES << 18è| (CYCLES << 15è| (CYCLES << 12è| (CYCLES << 9è| (CYCLES << 6è| (CYCLES << 3è| (CYCLES))
 
 	)
+
+170 
+	#ADCResÞutiÚ
+(
+RES
+è((
+ušt32_t
+)(RES << 24))
+
+	)
+
+172 #ià(
+__cÚfigADC_Mode
+ == 3 || __configADC_Mode == 4)
+
+174 
+	#AÇlog1_¡ršg
+ {'A','D','C','1'}
+
+	)
+
+175 
+	#AÇlog2_¡ršg
+ {'A','D','C','2'}
+
+	)
+
+177 
+	mADCSourû
+[3];
+
+178 
+ušt16_t
+ 
+	mBATTERY
+;
+
+179 
+ušt16_t
+ 
+	mTEMPERATURE
+;
+
+180 
+ušt16_t
+ 
+	mMuÉËx”_1
+[8];
+
+181 #if(
+__cÚfigADC_Mode
+ == 4)
+
+182 
+ušt16_t
+ 
+	mMuÉËx”_2
+[8];
+
+184 }
+	gADCStus
+;
+
+191 
+ADC_MuÉËx”_G‘
+(
+ADC_Ty³Def
+ *
+ADCx
+);
+
+193 
+ADC_In™
+(
+ADC_Ty³Def
+ *
+ADCx
+);
+
+194 #–ià(
+__cÚfigADC_Mode
+ == 1 || __configADC_Mode == 2 || __configADC_Mode == 5)
+
+197 
+ušt32_t
+ 
+	mADCSourû
+;
+
+198 
+ušt16_t
+ 
+	mBATTERY
+;
+
+199 
+ušt16_t
+ 
+	mTEMPERATURE
+;
+
+200 
+ušt16_t
+ 
+	mReguÏr_D©a
+[16];
+
+201 
+ušt16_t
+ 
+	mInjeùed_D©a
+[4];
+
+202 }
+	gADCStus
+;
+
+209 
+ADC_Sim¶e_G‘
+(
+ADC_Ty³Def
+ *
+ADCx
+);
+
+211 
+ADC_In™
+(
+ADC_Ty³Def
+ *
+ADCx
+);
 
 	@C:\Users\Caska\Desktop\projects\RCR\48531~1.RCR\SMALL-~1\Fil_lib\DMA.c
 
@@ -3489,7 +4093,13 @@ PIN
 
 	)
 
-42 #ià !
+37 
+	#_cÚfigUSE_ADCMªag_MuÉËxÜ
+ 1
+
+	)
+
+43 #ià !
 defšed
 (
 STM32F40_41xxx
@@ -3497,7 +4107,7 @@ STM32F40_41xxx
 STM32F401xx
 )
 
-43 #”rÜ 
+44 #”rÜ 
 NÙ
  
 suµÜ‹d
@@ -3509,143 +4119,143 @@ suµÜ‹d
 deviûs
 
 
-44 #´agm¨
+45 #´agm¨
 mes§ge
  "Supported devices:"
 
-45 #´agm¨
+46 #´agm¨
 mes§ge
  "STM32F407VGT6, STM32F407VET6"
 
-46 #´agm¨
+47 #´agm¨
 mes§ge
  "STM32F401CCU6"
 
-52 #if(
+53 #if(
 cÚfigUSE_FREERTOS
  == 1)
 
-58 
+59 
 	~"F»eRTOS.h
 "
 
-59 
+60 
 	~"F»eRTOSCÚfig.h
 "
 
-60 
+61 
 	~"sk.h
 "
 
-61 
+62 
 	~"queue.h
 "
 
-62 
+63 
 	~"£mphr.h
 "
 
-63 
+64 
 	~"üoutše.h
 "
 
-64 
+65 
 	~"tim”s.h
 "
 
-65 
+66 
 	~"ev’t_groups.h
 "
 
-66 
+67 
 	~"¡»am_bufãr.h
 "
 
-69 
+70 
 	~"robÙ_sks.h
 "
 
-73 #if(
+74 #if(
 cÚfigUSE_RCC
  == 1)
 
-74 
+75 
 	~"RCC.h
 "
 
-76 #if(
+77 #if(
 cÚfigUSE_GPIO
  == 1)
 
-77 
+78 
 	~"GPIO.h
 "
 
-79 #if(
+80 #if(
 cÚfigUSE_TIM
  == 1)
 
-80 
+81 
 	~"TIM.h
 "
 
-82 #if(
+83 #if(
 cÚfigUSE_USART
  == 1)
 
-83 
+84 
 	~"USART.h
 "
 
-85 #if(
+86 #if(
 cÚfigUSE_DMA
  == 1)
 
-86 
+87 
 	~"DMA.h
 "
 
-87 
+88 
 	~"DMA_FIFOBufãrs.h
 "
 
-89 #if(
+90 #if(
 cÚfigUSE_ADC
  == 1)
 
-90 
+91 
 	~"ADC.h
 "
 
-92 #if(
+93 #if(
 cÚfigUSE_I2C
  == 1)
 
-93 
+94 
 	~"I2C.h
 "
 
-95 #if(
+96 #if(
 cÚfigUSE_EXTI
  == 1)
 
-96 
+97 
 	~"EXTI.h
 "
 
-98 #if(
+99 #if(
 _cÚfigCALC_M©rix
  == 1)
 
-99 
+100 
 	~"M©rix.h
 "
 
-101 #if(
+102 #if(
 _cÚfigCALC_ReguÏtÜs
  == 1)
 
-102 
+103 
 	~"ReguÏtÜs.h
 "
 
@@ -52825,7 +53435,7 @@ MÙÜ_CoÜd
 	}
 }
 
-46 
+51 
 	$PID_C®c
 (
 PID_ReguÏtÜ
@@ -52833,7 +53443,7 @@ PID_ReguÏtÜ
 pid_cÚŒÞ
 )
 
-48 
+53 
 pid_cÚŒÞ
 ->
 ”rÜ
@@ -52843,7 +53453,7 @@ pid_cÚŒÞ
 cu¼’t
 ;
 
-49 
+54 
 pid_cÚŒÞ
 ->
 dif_”rÜ
@@ -52853,7 +53463,7 @@ dif_”rÜ
 ´ev_”rÜ
 ;
 
-50 
+55 
 pid_cÚŒÞ
 ->
 ´ev_”rÜ
@@ -52861,7 +53471,7 @@ pid_cÚŒÞ
 ”rÜ
 ;
 
-51 
+56 
 pid_cÚŒÞ
 ->
 sum_”rÜ
@@ -52869,7 +53479,7 @@ sum_”rÜ
 ”rÜ
 ;
 
-53 ià(
+58 ià(
 pid_cÚŒÞ
 ->
 sum_”rÜ
@@ -52877,7 +53487,7 @@ sum_”rÜ
 max_sum_”rÜ
 )
 
-54 
+59 
 pid_cÚŒÞ
 ->
 sum_”rÜ
@@ -52885,7 +53495,7 @@ sum_”rÜ
 max_sum_”rÜ
 ;
 
-55 ià(
+60 ià(
 pid_cÚŒÞ
 ->
 sum_”rÜ
@@ -52893,7 +53503,7 @@ sum_”rÜ
 max_sum_”rÜ
 )
 
-56 
+61 
 pid_cÚŒÞ
 ->
 sum_”rÜ
@@ -52901,13 +53511,13 @@ sum_”rÜ
 max_sum_”rÜ
 ;
 
-58 ià(
+63 ià(
 pid_cÚŒÞ
 ->
 pid_Ú
 )
 
-60 
+65 
 pid_cÚŒÞ
 ->
 ouut
@@ -52921,7 +53531,7 @@ i_k
 sum_”rÜ
 )+
 
-61 (
+66 (
 pid_cÚŒÞ
 ->
 d_k
@@ -52929,7 +53539,7 @@ d_k
 dif_”rÜ
 ));
 
-63 ià(
+68 ià(
 pid_cÚŒÞ
 ->
 ouut
@@ -52937,7 +53547,7 @@ ouut
 max_ouut
 )
 
-64 
+69 
 pid_cÚŒÞ
 ->
 ouut
@@ -52945,7 +53555,7 @@ ouut
 max_ouut
 ;
 
-65 ià(
+70 ià(
 pid_cÚŒÞ
 ->
 ouut
@@ -52953,7 +53563,7 @@ ouut
 max_ouut
 )
 
-66 
+71 
 pid_cÚŒÞ
 ->
 ouut
@@ -52961,7 +53571,7 @@ ouut
 max_ouut
 ;
 
-68 ià(
+73 ià(
 pid_cÚŒÞ
 ->
 ouut
@@ -52969,13 +53579,13 @@ ouut
 mš_ouut
  &&…id_control->output > -pid_control->min_output)
 
-69 
+74 
 pid_cÚŒÞ
 ->
 ouut
  = 0;
 
-71 ià((
+76 ià((
 pid_cÚŒÞ
 ->
 ouut
@@ -52983,7 +53593,7 @@ ouut
 pid_ouut_’d
 ) &&(
 
-72 
+77 
 pid_cÚŒÞ
 ->
 ouut
@@ -52991,7 +53601,7 @@ ouut
 pid_ouut_’d
 ) &&(
 
-73 
+78 
 pid_cÚŒÞ
 ->
 ”rÜ
@@ -52999,23 +53609,11 @@ pid_cÚŒÞ
 pid_”rÜ_’d
 ) && (pid_control->error >= -pid_control->pid_error_end))
 
-74 
+79 
 pid_cÚŒÞ
 ->
 pid_fšish
  = 1;
-
-76 
-pid_cÚŒÞ
-->
-pid_fšish
- = 0;
-
-80 
-pid_cÚŒÞ
-->
-ouut
- = 0;
 
 81 
 pid_cÚŒÞ
@@ -53023,11 +53621,23 @@ pid_cÚŒÞ
 pid_fšish
  = 0;
 
-83 
+85 
+pid_cÚŒÞ
+->
+ouut
+ = 0;
+
+86 
+pid_cÚŒÞ
+->
+pid_fšish
+ = 0;
+
+88 
 	}
 }
 
-89 
+94 
 	$PID_P¬£_Encod”D©a
 (
 št32_t
@@ -53035,7 +53645,7 @@ pid_fšish
 ’cod”d©a
 )
 
-91 
+96 
 EngšeReg
 .
 cu¼’t
@@ -53047,7 +53657,7 @@ DISK_TO_REAL
 TIME
 );
 
-92 
+97 
 MÙÜ_CoÜd
  +ð
 EngšeReg
@@ -53057,21 +53667,21 @@ cu¼’t
 TIME
 ;
 
-93 
+98 
 	}
 }
 
-99 
+101 
 št16_t
  
 	gEncD©a
 ;
 
-101 
+105 
 	$PID_Low_Lev–
 ()
 
-103 
+107 
 EncD©a
  = ((
 št16_t
@@ -53079,15 +53689,15 @@ EncD©a
 ENCODER1_CNT
 );
 
-104 if(
+108 if(
 EngšePWM
  > 1.0) EnginePWM = 1.0;
 
-105 if(
+109 if(
 EngšePWM
  < -1.0) EnginePWM = -1.0;
 
-106 
+110 
 EngšeReg
 .
 rg‘
@@ -53095,23 +53705,23 @@ EngšeReg
 EngšePWM
 ;
 
-107 
+111 
 	`PID_P¬£_Encod”D©a
 (
 EncD©a
 );
 
-108 *
+112 *
 ENCODER1_CNT
  = 0;
 
-109 
+113 
 	`PID_C®c
 (&
 EngšeReg
 );
 
-110 
+114 
 	`S‘VÞge
 (
 EngšeReg
@@ -53119,7 +53729,7 @@ EngšeReg
 ouut
 );
 
-111 
+115 
 	}
 }
 
@@ -53443,165 +54053,165 @@ pvP¬am‘”s
 
 	@C:\Users\Caska\Desktop\projects\RCR\48531~1.RCR\SMALL-~1\Fil_lib\TIM.c
 
-11 
+10 
 	~"FžCÚfig.h
 "
 
-13 
+12 
 	~"TIM.h
 "
 
-14 
+13 
 ušt32_t
  
 	gglob®Time
  = 0;
 
-21 
+20 
 	$SysTick_HªdËr
 ()
 
-24 
+23 
 	`C®cTimStus
 (
 TIM1
 );
 
-25 
+24 
 glob®Time
 ++;
 
-26 
+25 
 	}
 }
 
-31 
+30 
 	$TIM1_IRQHªdËr
 ()
 
-34 
+33 
 	`Re£tTimSR
 (
 TIM1
 );
 
-35 
+34 
 	}
 }
 
-37 
+36 
 	$TIM2_IRQHªdËr
 ()
 
-40 
+39 
 	`Re£tTimSR
 (
 TIM2
 );
 
-41 
+40 
 	}
 }
 
-43 
+42 
 	$TIM3_IRQHªdËr
 ()
 
-46 
+45 
 	`Re£tTimSR
 (
 TIM3
 );
 
-47 
+46 
 	}
 }
 
-49 
+48 
 	$TIM4_IRQHªdËr
 ()
 
-52 
+51 
 	`PID_Low_Lev–
 ();
 
-53 
+52 
 	`Re£tTimSR
 (
 TIM4
 );
 
-54 
+53 
 	}
 }
 
-56 
+55 
 	$TIM5_IRQHªdËr
 ()
 
-59 
+58 
 	`Re£tTimSR
 (
 TIM5
 );
 
-60 
+59 
 	}
 }
 
-62 #ià
+61 #ià
 defšed
 (
 STM32F40_41xxx
 )
 
-63 
+62 
 	$TIM6_DAC_IRQHªdËr
 ()
 
-66 
+65 
 	`Re£tTimSR
 (
 TIM6
 );
 
-67 
+66 
 	}
 }
 
-70 
+69 
 	$TIM7_IRQHªdËr
 ()
 
-73 
+72 
 	`Re£tTimSR
 (
 TIM7
 );
 
-74 
+73 
 	}
 }
 
-76 
+75 
 	$TIM8_UP_TIM13_IRQHªdËr
 ()
 
-79 
+78 
 	`Re£tTimSR
 (
 TIM13
 );
 
-80 
+79 
 	}
 }
 
-82 #ià(
+81 #ià(
 _cÚfigCALC_TIM
  == 1)
 
-88 
+87 
 	$C®cTimStus
 (
 TIM_Ty³Def
@@ -53609,13 +54219,13 @@ TIM_Ty³Def
 TIMx
 )
 
-90 
+89 
 	`C®cTimClockSour£
 (
 TIMx
 );
 
-92 
+91 
 TIMStus
 .
 DutyCH1
@@ -53629,7 +54239,7 @@ CCR1
 ARR
  * 100));
 
-93 
+92 
 TIMStus
 .
 DutyCH2
@@ -53643,7 +54253,7 @@ CCR2
 ARR
  * 100));
 
-94 
+93 
 TIMStus
 .
 DutyCH3
@@ -53657,7 +54267,7 @@ CCR3
 ARR
  * 100));
 
-95 
+94 
 TIMStus
 .
 DutyCH4
@@ -53671,7 +54281,7 @@ CCR4
 ARR
  * 100));
 
-96 
+95 
 TIMStus
 .
 F»qu’cy
@@ -53685,11 +54295,11 @@ PSC
 ARR
 ));
 
-97 
+96 
 	}
 }
 
-104 
+103 
 	$C®cTimPIDF»qu’cy
 (
 TIM_Ty³Def
@@ -53701,13 +54311,13 @@ ušt16_t
 äeq
 )
 
-106 
+105 
 	`C®cTimClockSour£
 (
 TIMx
 );
 
-108 
+107 
 TIMx
 ->
 PSC
@@ -53721,7 +54331,7 @@ TIMStus
 Sour£Clock
  / 1000000)) :
 
-109 (
+108 (
 äeq
  >ð10000è? ((
 ušt32_t
@@ -53731,7 +54341,7 @@ TIMStus
 Sour£Clock
  / 10000)) : ((uint32_t)(TIMStatus.SourseClock / 100000));
 
-110 
+109 
 TIMx
 ->
 ARR
@@ -53747,17 +54357,17 @@ PSC
 äeq
 )));
 
-111 
+110 
 TIMx
 ->
 PSC
  -= 1;
 
-112 
+111 
 	}
 }
 
-119 
+118 
 	$C®cTimClockSour£
 (
 TIM_Ty³Def
@@ -53765,17 +54375,17 @@ TIM_Ty³Def
 TIMx
 )
 
-121 
+120 
 	`C®cRCCClocks
 ();
 
-122 #ià
+121 #ià
 	`defšed
 (
 STM32F401xx
 )
 
-123 if(
+122 if(
 TIMx
  =ð
 TIM1
@@ -53787,7 +54397,7 @@ TIM10
 TIM11
 )
 
-125 
+124 
 TIMStus
 .
 Sour£Clock
@@ -53797,7 +54407,7 @@ Clocks
 Cu¼’tAPB2
 ;
 
-127 if(
+126 if(
 TIMx
  =ð
 TIM2
@@ -53809,7 +54419,7 @@ TIM4
 TIM5
 )
 
-129 
+128 
 TIMStus
 .
 Sour£Clock
@@ -53819,13 +54429,13 @@ Clocks
 Cu¼’tAPB1
 ;
 
-131 #–ià
+130 #–ià
 	`defšed
 (
 STM32F40_41xxx
 )
 
-132 if(
+131 if(
 TIMx
  =ð
 TIM1
@@ -53839,7 +54449,7 @@ TIM10
 TIM11
 )
 
-134 
+133 
 TIMStus
 .
 Sour£Clock
@@ -53849,7 +54459,7 @@ Clocks
 Cu¼’tAPB2
 ;
 
-136 if(
+135 if(
 TIMx
  =ð
 TIM2
@@ -53871,7 +54481,7 @@ TIM13
 TIM14
 )
 
-138 
+137 
 TIMStus
 .
 Sour£Clock
@@ -53881,11 +54491,11 @@ Clocks
 Cu¼’tAPB1
 ;
 
-141 
+140 
 	}
 }
 
-149 
+148 
 boÞ
  
 	$S‘PWM
@@ -53897,19 +54507,19 @@ CCR_Pš
 Duty
 )
 
-151 if(
+150 if(
 Duty
  > 1.0) Duty = 1.0;
 
-152 if(
+151 if(
 Duty
  < -1.0) Duty = -1.0;
 
-153 if(
+152 if(
 Duty
  >= 0)
 
-155 *
+154 *
 CCR_Pš
  = ((
 št32_t
@@ -53919,11 +54529,11 @@ Duty
 MAX_PWM
 ));
 
-156  
+155  
 Œue
 ;
 
-160 *
+159 *
 CCR_Pš
  = ((
 št32_t
@@ -53933,19 +54543,19 @@ MAX_PWM
 Duty
  * MAX_PWM)));
 
-161  
+160  
 Œue
 ;
 
-163  
+162  
 çl£
 ;
 
-164 
+163 
 	}
 }
 
-172 
+171 
 boÞ
  
 	$S‘VÞge
@@ -53953,17 +54563,17 @@ boÞ
 Duty
 )
 
-174 if(
+173 if(
 Duty
  >= 0)
 
-176 
+175 
 	`»£t_pš
 (
 BTN1_DIR_PIN
 );
 
-177 
+176 
 	`S‘PWM
 (
 BTN1_CCR
@@ -53971,17 +54581,17 @@ BTN1_CCR
 Duty
 );
 
-178  
+177  
 Œue
 ;
 
-182 
+181 
 	`£t_pš
 (
 BTN1_DIR_PIN
 );
 
-183 
+182 
 	`S‘PWM
 (
 BTN1_CCR
@@ -53989,19 +54599,19 @@ BTN1_CCR
 Duty
 );
 
-184  
+183  
 Œue
 ;
 
-186  
+185  
 çl£
 ;
 
-187 
+186 
 	}
 }
 
-189 
+188 
 	$S‘S”vo
 (
 S”vomÙÜ
@@ -54025,7 +54635,7 @@ ušt16_t
 ms
 )
 
-191 
+190 
 S”vo
 ->
 maxAngË
@@ -54033,65 +54643,65 @@ maxAngË
 mAngË
 ;
 
-192 *
+191 *
 S”vo
 ->
 CCR
  = CCR;
 
-193 
+192 
 S”vo
 ->
 ARR
  = ARR;
 
-194 
+193 
 S”vo
 ->
 ms
  = ms;
 
-196 if(
+195 if(
 £rvoTy³
  =ð
 BIG_BLACK_SERVA
 )
 
-198 (*
+197 (*
 S”vo
 ).
 mš_ms
  = 0.8;
 
-199 (*
+198 (*
 S”vo
 ).
 max_ms
  = 2.2;
 
-201 if(
+200 if(
 £rvoTy³
  =ð
 SMALL_BLUE_SERVA
 )
 
-203 (*
+202 (*
 S”vo
 ).
 mš_ms
  = 0.4;
 
-204 (*
+203 (*
 S”vo
 ).
 max_ms
  = 2.45;
 
-206 
+205 
 	}
 }
 
-209 
+208 
 	$S‘S”voAngË
 (
 S”vomÙÜ
@@ -54103,7 +54713,7 @@ ušt8_t
 ªgË
 )
 
-211 if(
+210 if(
 ªgË
  > (*
 S”vo
@@ -54111,11 +54721,11 @@ S”vo
 maxAngË
 )‡ngle = (*Servo).maxAngle;
 
-212 if(
+211 if(
 ªgË
  < 0)‡ngle = 0;
 
-214 
+213 
 mš_PWM
  = ()(((*
 S”vo
@@ -54127,7 +54737,7 @@ mš_ms
 ms
 );
 
-215 
+214 
 max_PWM
  = ()(((*
 S”vo
@@ -54139,7 +54749,7 @@ max_ms
 ms
 );
 
-217 *(*
+216 *(*
 S”vo
 ).
 CCR
@@ -54155,7 +54765,7 @@ mš_PWM
 maxAngË
 ) + min_PWM);
 
-218 
+217 
 	}
 }
 
@@ -56491,105 +57101,97 @@ PORTA
 
 	@C:\Users\Caska\Desktop\projects\RCR\48531~1.RCR\SMALL-~1\RCR\DEVBOA~1\RCR_DE~2.H
 
-1 #´agm¨
+11 #´agm¨
 Úû
 
 
-2 
-	~"FžCÚfig.h
-"
-
-3 
-	~"RCR_DevBßrd_3.h
-"
-
-13 #ià
+12 #ià
 defšed
 (
 STM32F401xx
 )
 
-19 
+18 
 	#__cÚfig_SysTick_CouÁ”
  (84000)
 
-20 
+19 
 
 	)
 
-24 
+23 
 	#__cÚfig_TIM1_PSC
  (84 - 1)
 
 	)
 
-25 
+24 
 	#__cÚfig_TIM1_ARR
  (200)
 
 	)
 
-26 
+25 
 	#__cÚfig_TIM1_CH1
  1
 
 	)
 
-27 
+26 
 	#__cÚfig_TIM1_CH2
  0
 
 	)
 
-28 
+27 
 	#__cÚfig_TIM1_CH3
  0
 
 	)
 
-29 
+28 
 	#__cÚfig_TIM1_CH4
  0
 
 	)
 
-31 
+30 
 	#__cÚfig_TIM2_PSC
  (420 - 1)
 
 	)
 
-32 
+31 
 	#__cÚfig_TIM2_ARR
  (2000)
 
 	)
 
-33 
+32 
 	#__cÚfig_TIM2_CH1
  1
 
 	)
 
-34 
+33 
 	#__cÚfig_TIM2_CH2
  0
 
 	)
 
-35 
+34 
 	#__cÚfig_TIM2_CH3
  0
 
 	)
 
-36 
+35 
 	#__cÚfig_TIM2_CH4
  0
 
 	)
 
-38 
+37 
 	#MAX_PWM
  
 __cÚfig_TIM1_ARR
@@ -56597,7 +57199,7 @@ __cÚfig_TIM1_ARR
 
 	)
 
-39 
+38 
 	#MAX_PWM_SERVO
  
 __cÚfig_TIM2_ARR
@@ -56605,85 +57207,85 @@ __cÚfig_TIM2_ARR
 
 	)
 
-44 
+43 
 	#__cÚfig_ReguÏtÜ_ON
  (1)
 
 	)
 
-45 
+44 
 	#__cÚfig_ReguÏtÜ_FREQ
  (100)
 
 	)
 
-46 
+45 
 	#__cÚfig_ReguÏtÜ_P_K
  (5.0)
 
 	)
 
-47 
+46 
 	#__cÚfig_ReguÏtÜ_I_K
  (1.5)
 
 	)
 
-48 
+47 
 	#__cÚfig_ReguÏtÜ_D_K
  (0.5)
 
 	)
 
-49 
+48 
 	#__cÚfig_MAX_SUM_ERROR
  (6.0)
 
 	)
 
-50 
+49 
 	#__cÚfig_OUTPUT_END
  (50.0)
 
 	)
 
-51 
+50 
 	#__cÚfig_ReguÏtÜ_ERROR_END
  (0.0)
 
 	)
 
-52 
+51 
 	#__cÚfig_MAX_OUTPUT
  (1.0)
 
 	)
 
-53 
+52 
 	#__cÚfig_MIN_OUTPUT
  (0.08)
 
 	)
 
-55 
+54 
 	#PI2
  (6.28314)
 
 	)
 
-56 
+55 
 	#REDUCTION_ENGINE
  (150)
 
 	)
 
-57 
+56 
 	#REDUCTION_DIFF
  (1.2)
 
 	)
 
-58 
+57 
 	#REDUCTION_SUM
  (
 REDUCTION_ENGINE
@@ -56693,13 +57295,13 @@ REDUCTION_DIFF
 
 	)
 
-59 
+58 
 	#R_WHEEL
  (0.048)
 
 	)
 
-60 
+59 
 	#WHEEL_LENGTH
  (
 PI2
@@ -56709,31 +57311,31 @@ R_WHEEL
 
 	)
 
-61 
+60 
 	#DISKETS_ON_ROTATE
  (41000.0)
 
 	)
 
-62 
-	#K_ERRORS
+61 
+	#COMPENSATE_VALUE
  (0.9)
 
 	)
 
-63 
+62 
 	#DISK_TO_REAL
  (()(
 WHEEL_LENGTH
  / 
 DISKETS_ON_ROTATE
  * 
-K_ERRORS
+COMPENSATE_VALUE
 ))
 
 	)
 
-64 
+63 
 	#TIME
  (()(1.0 / 
 __cÚfig_ReguÏtÜ_FREQ
@@ -56741,105 +57343,229 @@ __cÚfig_ReguÏtÜ_FREQ
 
 	)
 
-68 
+67 
 	#__cÚfig_USART1_Baud¿‹
  (9600)
 
 	)
 
-69 
+68 
 	#__cÚfig_USART6_Baud¿‹
  (115200)
 
 	)
 
-74 
-	#MPU9250_ADDR
- (0x34)
-
-75 
-	#SSD1305_ADDR
- (0x00)
+70 
+	#__cÚfigUSE_ModBus
+ (0)
 
 	)
 
-80 
+74 
+	#__cÚfigMODBUS_Ty³
+ (0)
+
+	)
+
+75 #if(
+__cÚfigUSE_ModBus
+ == 1)
+
+76 
+	~"ModBus_cÚf.h
+"
+
+77 
+	~"ModBus.h
+"
+
+88 
+	#__cÚfigADC_Mode
+ (3)
+
+	)
+
+89 
+	#__cÚfigUSE_B©‹ry_Ch¬gšg
+ (0)
+
+	)
+
+90 
+	#__cÚfigUSE_Tem³¿tu»_S’sÜ
+ (0)
+
+	)
+
+91 
+	#__cÚfigUSE_PÙ’tiom‘”
+ (0)
+
+	)
+
+92 
+	#__cÚfigUSE_SENSOR_1
+ (0)
+
+	)
+
+93 
+	#__cÚfigUSE_SENSOR_2
+ (0)
+
+	)
+
+94 
+	#__cÚfigUSE_SENSOR_3
+ (0)
+
+	)
+
+95 
+	#__cÚfigUSE_SENSOR_4
+ (0)
+
+	)
+
+96 
+	#__cÚfigUSE_SENSOR_5
+ (0)
+
+	)
+
+97 
+	#__cÚfigUSE_SENSOR_6
+ (0)
+
+	)
+
+98 
+	#__cÚfigUSE_SENSOR_7
+ (0)
+
+	)
+
+99 
+	#__cÚfigUSE_SENSOR_8
+ (0)
+
+	)
+
+101 
+	#__cÚfigADC_IÁ”ru±Reque¡
+ (1)
+
+	)
+
+102 
+	#__cÚfigADC_RESOLUTION
+ (12)
+
+103 
+
+	)
+
+106 
+	#MPU9250_ADDR
+ (0x34)
+
+107 
+	#SSD1305_ADDR
+ (0x00)
+
+109 
+
+	)
+
+110 
+	~"FžCÚfig.h
+"
+
+111 
+	~"RCR_DevBßrd_3.h
+"
+
+115 
 	#Bßrd_CÚfig
  {\
 
-81 
+116 
 S‘PWR
 ; \
 
-82 
+117 
 S‘GPIOA
 ; \
 
-83 
+118 
 S‘GPIOB
 ; \
 
-84 
+119 
 S‘GPIOC
 ; \
 
-85 
+120 
 S‘TIM1
 ; \
 
-86 
+121 
 S‘TIM2
 ; \
 
-87 
+122 
 S‘TIM3
 ; \
 
-88 
+123 
 S‘TIM4
 ; \
 
-89 
+124 
 S‘DMA2
 ; \
 
-90 
+125 
 S‘ADC1
 ; \
 
-91 
+126 
 S‘USART1
 ; \
 
-92 
+127 
 S‘USART6
 ; \
 
-93 
+128 
 S‘I2C1
 ; \
 
-94 
+129 
 S‘SYSCFG
 ; \
 
-95 
+130 
 In™P”h
 ; \
 
-96 
+131 
 In™Tim”s
 ; \
 
-97 
+132 
 In™USART
 ; \
 
-98 
+133 
 In™IÁ”ru±s
 ; \
 
-99 
+134 
+In™ADC
+; \
+
+135 
 	`SysTick_CÚfig
 (
 __cÚfig_SysTick_CouÁ”
@@ -56847,11 +57573,11 @@ __cÚfig_SysTick_CouÁ”
 
 	)
 
-104 
+140 
 	#In™P”h
  {\
 
-105 
+141 
 	`cÚf_pš
 (
 BTN1_DIR_PIN
@@ -56865,7 +57591,7 @@ FAST_S
 NO_PULL_UP
 );\
 
-106 
+142 
 	`cÚf_pš
 (
 MULPLXA_PIN
@@ -56879,7 +57605,7 @@ FAST_S
 NO_PULL_UP
 );\
 
-107 
+143 
 	`cÚf_pš
 (
 MULPLXB_PIN
@@ -56893,7 +57619,7 @@ FAST_S
 NO_PULL_UP
 );\
 
-108 
+144 
 	`cÚf_pš
 (
 MULPLXC_PIN
@@ -56907,7 +57633,7 @@ FAST_S
 NO_PULL_UP
 );\
 
-109 
+145 
 	`cÚf_pš
 (
 INT_PIN
@@ -56921,7 +57647,7 @@ FAST_S
 NO_PULL_UP
 );\
 
-110 
+146 
 	`cÚf_pš
 (
 LED_PIN
@@ -56935,7 +57661,7 @@ FAST_S
 NO_PULL_UP
 );\
 
-111 
+147 
 	`cÚf_pš
 (
 ADC_TOP
@@ -56949,7 +57675,7 @@ FAST_S
 NO_PULL_UP
 );\
 
-112 
+148 
 	`cÚf_pš
 (
 POT_PIN
@@ -56963,7 +57689,7 @@ FAST_S
 NO_PULL_UP
 );\
 
-113 
+149 
 	`cÚf_pš
 (
 EXTI1_PIN
@@ -56977,7 +57703,7 @@ FAST_S
 PULL_DOWN
 );\
 
-114 
+150 
 	`cÚf_pš
 (
 EXTI2_PIN
@@ -56991,7 +57717,7 @@ FAST_S
 PULL_DOWN
 );\
 
-115 
+151 
 	`cÚf_pš
 (
 EXTI3_PIN
@@ -57005,7 +57731,7 @@ FAST_S
 PULL_DOWN
 );\
 
-116 
+152 
 	`cÚf_pš
 (
 EXTI4_PIN
@@ -57019,7 +57745,7 @@ FAST_S
 PULL_DOWN
 );\
 
-117 
+153 
 	`cÚf_pš
 (
 EXTI5_PIN
@@ -57033,7 +57759,7 @@ FAST_S
 PULL_DOWN
 );\
 
-118 
+154 
 	`cÚf_pš
 (
 BTN1_PWM_PIN
@@ -57047,7 +57773,7 @@ FAST_S
 NO_PULL_UP
 );\
 
-119 
+155 
 	`cÚf_af
 (
 BTN1_PWM_PIN
@@ -57055,7 +57781,7 @@ BTN1_PWM_PIN
 AF1
 );\
 
-120 
+156 
 	`cÚf_pš
 (
 BTN2_PWM_PIN
@@ -57069,7 +57795,7 @@ FAST_S
 NO_PULL_UP
 );\
 
-121 
+157 
 	`cÚf_af
 (
 BTN2_PWM_PIN
@@ -57077,7 +57803,7 @@ BTN2_PWM_PIN
 AF1
 );\
 
-122 
+158 
 	`cÚf_pš
 (
 ENCODER2A_PIN
@@ -57091,7 +57817,7 @@ LOW_S
 PULL_UP
 );\
 
-123 
+159 
 	`cÚf_af
 (
 ENCODER2A_PIN
@@ -57099,7 +57825,7 @@ ENCODER2A_PIN
 AF2
 );\
 
-124 
+160 
 	`cÚf_pš
 (
 ENCODER2B_PIN
@@ -57113,7 +57839,7 @@ LOW_S
 PULL_UP
 );\
 
-125 
+161 
 	`cÚf_af
 (
 ENCODER2B_PIN
@@ -57121,7 +57847,7 @@ ENCODER2B_PIN
 AF2
 );\
 
-126 
+162 
 	`cÚf_pš
 (
 I2C_SDA_PIN
@@ -57135,7 +57861,7 @@ FAST_S
 PULL_UP
 );\
 
-127 
+163 
 	`cÚf_af
 (
 I2C_SDA_PIN
@@ -57143,7 +57869,7 @@ I2C_SDA_PIN
 AF4
 );\
 
-128 
+164 
 	`cÚf_pš
 (
 I2C_SCL_PIN
@@ -57157,7 +57883,7 @@ FAST_S
 PULL_UP
 );\
 
-129 
+165 
 	`cÚf_af
 (
 I2C_SCL_PIN
@@ -57167,11 +57893,11 @@ AF4
 
 	)
 
-140 
+176 
 	#In™Tim”s
  {\
 
-141 
+177 
 	`TimPWMCÚfigu»
 (
 TIM1
@@ -57181,7 +57907,7 @@ __cÚfig_TIM1_PSC
 __cÚfig_TIM1_ARR
 ,1,1,0,0);\
 
-142 
+178 
 	`TimPWMCÚfigu»
 (
 TIM2
@@ -57189,13 +57915,13 @@ TIM2
 __cÚfig_TIM2_PSC
 ,0x1,1,1,1,1);\
 
-143 
+179 
 	`TimEncod”CÚfigu»
 (
 TIM3
 );\
 
-144 
+180 
 	`TimPIDCÚfigu»Autom©ic
 (
 TIM4
@@ -57205,11 +57931,11 @@ __cÚfig_ReguÏtÜ_FREQ
 
 	)
 
-149 
+185 
 	#In™IÁ”ru±s
  {\
 
-150 
+186 
 	`NVIC_EÇbËIRQ
 (
 TIM4_IRQn
@@ -57217,11 +57943,11 @@ TIM4_IRQn
 
 	)
 
-155 
+191 
 	#In™USART
  {\
 
-156 
+192 
 	`USARTBÙhCÚfigu»
 (
 USART1
@@ -57229,7 +57955,7 @@ USART1
 __cÚfig_USART1_Baud¿‹
 , 0, 0); \
 
-157 
+193 
 	`USARTT¿nsm™‹rCÚfigu»
 (
 USART6
@@ -57239,7 +57965,17 @@ __cÚfig_USART6_Baud¿‹
 
 	)
 
-162 
+198 
+	#In™ADC
+ 
+	`ADC_In™
+(
+ADC1
+);
+
+	)
+
+202 
 	#In™S”vo
  
 	`£tS”vo
@@ -57296,30 +58032,18 @@ _cÚfigUSEBßrds
  == 3)
 
 29 
-	~"RCR_DevBßrd_3.h
-"
-
-30 
 	~"RCR_DevBßrd_3_S‘up.h
 "
 
-32 #ià(
+31 #ià(
 _cÚfigUSEBßrds
  == 4)
 
-33 
-	~"RCR_DevBßrd_4.h
-"
-
-34 
-	~"RCR_DevBßrd_4_S‘up.h
-"
-
-36 #ià((
+34 #ià((
 _cÚfigUSEBßrds
  < 0) || (_configUSEBoards > 4))
 
-37 #”rÜ 
+35 #”rÜ 
 Inv®id
  
 ¬gum’t
@@ -157897,9 +158621,10 @@ Bßrd_CÚfig
 1
 .
 0
-73
-5648
+74
+5719
 C:\Users\Caska\Desktop\projects\RCR\48531~1.RCR\SMALL-~1\DEV_EX~1\dev_ws.h
+C:\Users\Caska\Desktop\projects\RCR\48531~1.RCR\SMALL-~1\Fil_lib\ADC.c
 C:\Users\Caska\Desktop\projects\RCR\48531~1.RCR\SMALL-~1\Fil_lib\ADC.h
 C:\Users\Caska\Desktop\projects\RCR\48531~1.RCR\SMALL-~1\Fil_lib\DMA.c
 C:\Users\Caska\Desktop\projects\RCR\48531~1.RCR\SMALL-~1\Fil_lib\DMA.h

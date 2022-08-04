@@ -79,16 +79,13 @@
 
 1658119829 source:c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car\src\startup_stm32f401xc.s
 
-1659529317 source:c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car\src\main.c
+1659616673 source:c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car\src\main.c
 	"main.h"
 
-1659528812 c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car\inc\main.h
+1659602857 c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car\inc\main.h
 	"stm32f4xx.h"
 	<stdbool.h>
 	"FilConfig.h"
-	"RCR_BoardSelection.h"
-	"lv_conf.h"
-	"lvgl.h"
 
 1658119829 c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car\inc\stm32f4xx.h
 	"core_cm4.h"
@@ -120,8 +117,9 @@
 
 1658119829 c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car\inc\system_stm32f4xx.h
 
-1659446176 c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car\fil_lib\filconfig.h
+1659602856 c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car\fil_lib\filconfig.h
 	"main.h"
+	"RCR_BoardSelection.h"
 	"FreeRTOS.h"
 	"FreeRTOSConfig.h"
 	"task.h"
@@ -144,7 +142,7 @@
 	"Matrix.h"
 	"Regulators.h"
 
-1659528406 c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car\rcr\devboard#3\rcr_devboard_3.h
+1659591333 c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car\rcr\devboard#3\rcr_devboard_3.h
 
 1658119829 c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car\fil_lib\rcc.h
 	"FilConfig.h"
@@ -152,7 +150,7 @@
 1658119829 c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car\fil_lib\gpio.h
 	"FilConfig.h"
 
-1659416733 c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car\fil_lib\tim.h
+1659535404 c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car\fil_lib\tim.h
 	"FilConfig.h"
 
 1658119829 c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car\fil_lib\usart.h
@@ -171,15 +169,16 @@
 1658119829 source:c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car\fil_lib\rcc.c
 	"RCC.h"
 
-1659528346 c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car\rcr\devboard#3\rcr_devboard_3_setup.h
+1659617947 c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car\rcr\devboard#3\rcr_devboard_3_setup.h
 	"FilConfig.h"
 	"RCR_DevBoard_3.h"
+	"ModBus_conf.h"
+	"ModBus.h"
 
 1658985435 source:c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car\fil_lib\interrupts.c
 	"FilConfig.h"
 
-1659530601 source:c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car\fil_lib\tim.c
-	"FilConfig.h"
+1659610866 source:c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car\fil_lib\tim.c
 	"TIM.h"
 
 1658119829 source:c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car\fil_lib\usart.c
@@ -191,7 +190,7 @@
 1658119829 c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car\fil_lib\dma_fifobuffers.h
 	"FilConfig.h"
 
-1658122683 c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car\fil_lib\adc.h
+1659617648 c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car\fil_lib\adc.h
 	"FilConfig.h"
 
 1658119829 source:c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car\fil_lib\dma.c
@@ -202,15 +201,12 @@
 1658123304 c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car\fil_lib\exti.h
 	"FilConfig.h"
 
-1659528255 c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car\rcr\rcr_boardselection.h
+1659592353 c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car\rcr\rcr_boardselection.h
 	"RCR_DevBoard_1.h"
 	"RCR_DevBoard_1_Setup.h"
 	"RCR_DevBoard_2.h"
 	"RCR_DevBoard_2_Setup.h"
-	"RCR_DevBoard_3.h"
 	"RCR_DevBoard_3_Setup.h"
-	"RCR_DevBoard_4.h"
-	"RCR_DevBoard_4_Setup.h"
 
 1659350171 source:c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car\fil_lib\exti.c
 	"EXTI.h"
@@ -384,7 +380,7 @@
 
 1659334755 c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car\fil_lib\matrix.h
 
-1659526541 source:c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car\fil_lib\regulators.c
+1659589796 source:c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car\fil_lib\regulators.c
 	"FilConfig.h"
 	"Regulators.h"
 
@@ -1872,4 +1868,7 @@
 1659503482 source:c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car\lvgl\src\hal\lv_hal_tick.c
 	"lv_hal_tick.h"
 	<stddef.h>
+
+1659617890 source:c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car\fil_lib\adc.c
+	"ADC.h"
 

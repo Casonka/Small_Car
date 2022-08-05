@@ -90,17 +90,23 @@
 *                           5 - Developer Mode (All Manually)
 */
 #define __configADC_Mode                (4)
+#define __configCONVERT_Volts           (1)
 #define __configUSE_Battery_Charging    (0)
 #define __configUSE_Temperature_Sensor  (0)
-#define __configUSE_Potentiometer       (0)
-#define __configUSE_SENSOR_1            (0)
-#define __configUSE_SENSOR_2            (0)
-#define __configUSE_SENSOR_3            (0)
-#define __configUSE_SENSOR_4            (0)
-#define __configUSE_SENSOR_5            (1)
-#define __configUSE_SENSOR_6            (0)
-#define __configUSE_SENSOR_7            (0)
-#define __configUSE_SENSOR_8            (0)
+// custom variables
+#define __configMAP_Potentiometer       (4)
+#define __configMAP_Multiplexor         (8)
+/////////////////////////////////////////////////
+#define __configUSE_SENSOR_1            __configMAP_Potentiometer
+#define __configUSE_SENSOR_2            __configMAP_Multiplexor
+#define __configUSE_SENSOR_3            (-1)
+#define __configUSE_SENSOR_4            (-1)
+#define __configUSE_SENSOR_5            (-1)
+#define __configUSE_SENSOR_6            (-1)
+#define __configUSE_SENSOR_7            (-1)
+#define __configUSE_SENSOR_8            (-1)
+#define __configUSE_SENSOR_9            (-1)
+#define __configUSE_SENSOR_10           (-1)
 
 #define __configADC_InterruptRequest    (1)
 #define __configADC_RESOLUTION          (12)        // 12-bit resolution
@@ -145,6 +151,7 @@
     conf_pin(INT_PIN,  GENERAL, PUSH_PULL, FAST_S, NO_PULL_UP);\
     conf_pin(LED_PIN,  GENERAL, PUSH_PULL, FAST_S, NO_PULL_UP);\
     conf_pin(ADC_TOP, ANALOG, PUSH_PULL, FAST_S, NO_PULL_UP);\
+    conf_pin(POT_PIN, ANALOG, PUSH_PULL, FAST_S, NO_PULL_UP);\
     conf_pin(EXTI1_PIN, INPUT, PUSH_PULL, FAST_S, PULL_DOWN);\
     conf_pin(EXTI2_PIN, INPUT, PUSH_PULL, FAST_S, PULL_DOWN);\
     conf_pin(EXTI3_PIN, INPUT, PUSH_PULL, FAST_S, PULL_DOWN);\

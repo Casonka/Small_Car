@@ -24,7 +24,6 @@
 #define configUSE_DMA                   0
 #define configUSE_I2C                   0
 #define configUSE_ADC                   1
-#define configUSE_ADC_Manually          1
 #define configUSE_EXTI                  1
 #define configUSE_RTC                   0
 #define configUSE_FREERTOS              0

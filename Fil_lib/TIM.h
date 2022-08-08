@@ -230,9 +230,11 @@ typedef struct
 } Servomotor;
 
 Servomotor Servo1;
-void SetServo(Servomotor* Servo, char servoType, uint8_t maxAngle, uint32_t CCR, uint32_t ARR, uint16_t ms);
+void SetServo(Servomotor* Servo, char servoType, uint8_t mAngle, uint32_t CCR, uint32_t ARR, uint16_t ms);
 
 void SetServoAngle(Servomotor* Servo, uint8_t angle);
+
+bool delay_ms(uint32_t ticks);
 
 #endif /*_configCALC_TIM*/
 

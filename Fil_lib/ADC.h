@@ -89,10 +89,16 @@
     #define ADCSimpleConfigure(ADC)                                            {\
         SetADCAdon(ADC);                                                        \
         SetADCCont(ADC);                                                        \
-        ADCStartRegular(ADC);                                                   \
-        if(CheckADCJStart(ADC) == 1) ADCStartInjected(ADC);                     \
+        SetADCScan(ADC);                                                        \
         (__configADC_InterruptRequest == 1) ? SetADCRegularInterrupt(ADC) :     \
-                                              ResetADCRegularInterrupt(ADC);    }
+                                              ResetADCRegularInterrupt(ADC);    \
+        (__configADC_InterruptRequest == 1) ? SetADCInjectedInterrupt(ADC) :    \
+                                              ResetADCInjectedInterrupt(ADC);   \
+        ADCStartRegular(ADC);                                                   \
+        while(!(ADC->SR & ADC_SR_EOC)) {}                                       \
+        if(CheckADCJStart(ADC) == 1) ADCStartInjected(ADC);                     \
+        while(!(ADC->SR & ADC_SR_EOC)) {}                                       }
+
 //----------------------------------------REGULAR----------------------------------------------------------------//
     /*!
     *   @brief  ADCAddRegularChannel(ADC,CHANNEL,CYCLES) - Adding new channel to conversions ADC
@@ -101,13 +107,12 @@
     *       @arg CYCLES - Sample time selection
     *
     */
-    #define ADCAddRegularChannel(ADC,CHANNEL,CYCLES)                                       {\
-                        static char CH;                                                     \
+    #define ADCAddRegularChannel(ADC,CHANNEL,CYCLES,RCH)                                   {\
                         ADC->SQR1 &= ~(0xF << 20);                                          \
                         ADC->SQR1 |= CH << 20;                                              \
                         *(&ADC->SQR3 - (CH / 6)) |= CHANNEL << ((CH * 5) % 30);             \
                         *(&ADC->SMPR2 - ((CH / 10)*0x4)) |= CYCLES << ((CH * 3) % 30);      \
-                        CH++;                                                               }
+                        RCH++;                                                              }
 
     /*!
     *   @brief  AddADCSingleChannel(ADC,CHANNEL,CYCLES) - Adding single channel to conversions ADC
@@ -133,13 +138,14 @@
     *       @arg CYCLES - Sample time selection
     *
     */
-    #define ADCAddInjectedChannel(ADCx,CHANNEL,CYCLES)                                             {\
-                        static char JCH;                                                            \
+    #define ADCAddInjectedChannel(ADCx,CHANNEL,CYCLES, JCH)                                        {\
                         ADCx->JSQR &= ~(0xF << 20);                                                 \
                         ADCx->JSQR |= (JCH << 20);                                                  \
-                        ADCx->JSQR |= (CHANNEL << ((JCH * 5) % 30));                                \
+                        ADCx->JSQR |= (CHANNEL << (((JCH + 3) * 5) % 30));                          \
                         *(&ADCx->SMPR2 - ((JCH / 10)*0x4)) |= (CYCLES << (JCH * 3) % 30);           \
+                        if(JCH == 3) JCH = 0;                                                       \
                         JCH++;                                                                      }
+
     /*!
     *   @brief  ADCAddInjectedGroups(ADC,NUMBER,J1,J2,J3,J4) -
     *       @arg ADC - Number of ADC
@@ -150,9 +156,7 @@
                         ADC->JSQR &= ~(0x3FFFFF);                                               \
                         ADC->JSQR |= (NUMBER << 20);                                            \
                         ADC->JSQR |= ((J1) | (J2 << 5) | (J3 << 10) | (J4 << 15));              \
-                        SetADCContInjected(ADC);                                                \
-                        (__configADC_InterruptRequest == 1) ? SetADCInjectedInterrupt(ADC) :    \
-                                                              ResetADCInjectedInterrupt(ADC);   }
+                        SetADCContInjected(ADC);                                                }
 
 //----------------------------------------Set state----------------------------------------------------------------------------------------------------------------------------//
     #define SetADCSMP1(ADC,CYCLES)          ((ADC->SMPR1) |= ADCSmpr1(CYCLES))
@@ -230,21 +234,12 @@ struct {
 
 #if (__configADC_Mode == 3 || __configADC_Mode == 4)
 
-#define Multiplexer_IN_0    0x000
-#define Multiplexer_IN_1    0x001
-#define Multiplexer_IN_2    0x010
-#define Multiplexer_IN_3    0x011
-#define Multiplexer_IN_4    0x100
-#define Multiplexer_IN_5    0x101
-#define Multiplexer_IN_6    0x110
-#define Multiplexer_IN_7    0x111
-
     /*!
     *   @brief ADC_Multiplexer_Get(ADC_TypeDef *ADCx) - Calculating ADC Data from multiplexor
     *       @arg TIMx - number of timer
     *
     */
-    void ADC_Multiplexer_Get(ADC_TypeDef *ADCx);
+    void ADC_Multiplexer_Get(ADC_TypeDef *ADCx, bool isConvert);
 
 #elif (__configADC_Mode == 1 || __configADC_Mode == 2)
 
@@ -261,8 +256,9 @@ struct {
 #else
 #error Invalig argument __configADC_Mode
 #endif /*__configADC_Mode*/
-
     void ADC_Init(ADC_TypeDef *ADCx);
 
-    void AnalogRead(ADC_TypeDef *ADCx);
+    void AnalogReadRegular(void);
+
+    void AnalogReadInjected(ADC_TypeDef *ADCx);
 #endif /*configUSE_ADC*/

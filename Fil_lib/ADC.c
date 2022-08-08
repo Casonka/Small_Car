@@ -12,40 +12,17 @@
 //--------------------------------------------------------------------------------//
 //---------------------------ADC Interrupts---------------------------------------//
 //--------------------------------------------------------------------------------//
+float distance = 0.0;
 /*!
 *   @brief ADC_IRQHandler(void)
 */
 void ADC_IRQHandler(void)
 {
-    if(ADCRegularEndEvent(ADC1))
-    {
-
-    }
-    if(ADCInjectedEndEvent(ADC1))
-    {
-//        ADC_Multiplexer_Get(ADC1);
-
-        //set_pin(MULPLXC_PIN);
-
-        //ADCStatus.BATTERY = ADC1->JDR2;
-    }
+    AnalogReadRegular();
+    AnalogReadInjected(ADC1);
+    ADC1->SR = 0;
 }
 #if(configUSE_ADC == 1)
-//------------------------------------------------------------------------------------//
-/*!
-*   @info Prepare parameters for parsing Multiplexer
-*/
-//------------------------------------------------------------------------------------//
-#if(__configADC_Mode == 3 || __configADC_Mode == 4)
-    __attribute__((unused)) static uint16_t Multi_In[8] =    {Multiplexer_IN_0,
-                                                              Multiplexer_IN_1,
-                                                              Multiplexer_IN_2,
-                                                              Multiplexer_IN_3,
-                                                              Multiplexer_IN_4,
-                                                              Multiplexer_IN_5,
-                                                              Multiplexer_IN_6,
-                                                              Multiplexer_IN_7};
-#endif /*__configADC_Mode*/
     __attribute__((unused)) static uint8_t ADC_CurrentTabs[10] =   {ADC_IN_0,
                                                                     ADC_IN_1,
                                                                     ADC_IN_2,
@@ -61,8 +38,12 @@ void ADC_IRQHandler(void)
 *   @info Main initializing function
 */
 //------------------------------------------------------------------------------------//
+__attribute__((unused)) static char RCH = 0;
+__attribute__((unused)) static char JCH = 0;
 void ADC_Init(ADC_TypeDef *ADCx)
 {
+    //prescaler divided by 8
+    ADC->CCR |= (0x3 << 16);
 ////////////////////////////////////////////
 #if(__configADC_RESOLUTION == 12)
     ConfADCResolution(ADCx,0);
@@ -72,6 +53,8 @@ void ADC_Init(ADC_TypeDef *ADCx)
     ConfADCResolution(ADCx,2);
 #elif(__configADC_RESOLUTION == 6)
     ConfADCResolution(ADCx,3);
+#else
+#error Invalid argument Resolution ADC
 #endif /*__configADC_RESOLUTION*/
 ///////////////////////////////////////////
 #ifdef STM32F401xx
@@ -97,17 +80,15 @@ void ADC_Init(ADC_TypeDef *ADCx)
 #if(__configADC_Mode == 1)
     if(ADC_IN_0 >= 0)
     {
-        ADCAddRegularChannel(ADCx,ADC_IN_0,ADC_480_CYCLES);
+        ADCAddRegularChannel(ADCx,ADC_IN_0,ADC_480_CYCLES,RCH);
         #if(__configUSE_Battery_Charging == 1)
         #undef __configUSE_Temperature_Sensor
         ADCAddInjectedGroup(ADCx,1,18,0,0,0);
-        ADC_Common_TypeDef VBat;
-        VBat->CCR |= (0x1 << 22);
+        ADC->CCR |= (0x1 << 22);
         #endif /*__configUSE_Battery_Charging*/
         #if(__configUSE_Temperature_Sensor == 1)
         ADCAddInjectedGroup(ADCx,1,18,0,0,0);
-        ADC_Common_TypeDef VTemp;
-        VTemp->CCR |= (0x1 << 23);
+        ADC->CCR |= (0x1 << 23);
         #endif /*__configUSE_Temperature_Sensor*/
         ADCSimpleConfigure(ADCx);
     }
@@ -119,98 +100,141 @@ void ADC_Init(ADC_TypeDef *ADCx)
     ADCAddSingleChannel(ADCx,ADC_IN_0,ADC_480_CYCLES);
     if(ADC_CurrentTabs[1] >= 0)
     {
-        ADCAddInjectedChannel(ADCx,ADC_IN_1,ADC_480_CYCLES);
+        ADCAddInjectedChannel(ADCx,ADC_IN_1,ADC_480_CYCLES,JCH);
         #if(__configADC_Mode == 4)
-        if(ADC_CurrentTabs[2] != -1)
+        if(ADC_CurrentTabs[2] <= 16)
         {
-            ADCAddInjectedChannel(ADCx,ADC_IN_2,ADC_480_CYCLES);
+            ADCAddInjectedChannel(ADCx,ADC_IN_2,ADC_480_CYCLES,JCH);
+            if(ADC_CurrentTabs[3] <= 16)
+            {
+                ADCAddInjectedChannel(ADCx,ADC_IN_3,ADC_480_CYCLES,JCH);
+                if(ADC_CurrentTabs[4] <= 16)
+                {
+                    ADCAddInjectedChannel(ADCx,ADC_IN_4,ADC_480_CYCLES,JCH);
+                }
+            }
         }
         #endif /*__configADC_Mode*/
     }
     #if(__configUSE_Battery_Charging == 1)
     #undef __configUSE_Temperature_Sensor
-    ADCAddInjectedChannel(ADCx,18,ADC_480_CYCLES);
-    ADC_Common_TypeDef VBat;
-    VBat->CCR |= (0x1 << 22);
+    ADCAddInjectedChannel(ADCx,18,ADC_480_CYCLES,JCH);
+    ADC->CCR |= (1 << 22);
     #endif /*__configUSE_Battery_Charging*/
     #if(__configUSE_Temperature_Sensor == 1)
-    ADCAddInjectedChannel(ADCx,18,ADC_480_CYCLES);
-    ADC_Common_TypeDef VTemp;
-    VTemp->CCR |= (0x1 << 23);
+    ADCAddInjectedChannel(ADCx,18,ADC_480_CYCLES,JCH);
+    ADC->CCR |= ADC_CCR_VBATE;
     #endif /*__configUSE_Temperature_Sensor*/
     SetADCContInjected(ADCx);
     ADCSimpleConfigure(ADCx);
 #endif /*__configADC_Mode*/
 }
-
-void AnalogRead(ADC_TypeDef *ADCx)
-{
-// Convert in Volts
-#if(__configCONVERT_Volts == 1)
-#if(__configADC_Mode == 1)
-    ADCStatus.adc_data[0] = ((float)ADCx->DR) * 3.3 / K_RESOLUTION;
-    #if(__configUSE_Battery_Charging == 1)
-    ADCStatus.BATTERY = ((float)ADCx->JDR1) * 3.3 / K_RESOLUTION;
-    #endif /*__configUSE_Battery_Charging*/
-    #if(__configUSE_Temperature_Sensor == 1)
-    ADCStatus.TEMPERATURE = ADCx->JDR1;
-    #endif /*__configUSE_Temperature_Sensor*/
-#elif(__configADC_Mode == 2)
-
-#elif(__configADC_Mode == 3)
-
-#elif(__configADC_Mode == 4)
-
-#elif(__configADC_Mode == 5)
-
-#endif /*__configADC_Mode*/
 //////////////////////////////////////////////////////////////////////////
-// Non convert Volts
-#elif(__configCONVERT_Volts == 0)
-#if(__configADC_Mode == 1)
-    ADCStatus.adc_data[0] = ((float)ADCx->DR) * 3.3 / K_RESOLUTION;
-    #if(__configUSE_Battery_Charging == 1)
-    ADCStatus.BATTERY = ((float)ADCx->JDR1) * 3.3 / K_RESOLUTION;
-    #endif /*__configUSE_Battery_Charging*/
-    #if(__configUSE_Temperature_Sensor == 1)
-    ADCStatus.BATTERY = ADCx->JDR1;
-    #endif /*__configUSE_Temperature_Sensor*/
-#elif(__configADC_Mode == 2)
-
-#elif(__configADC_Mode == 3)
-
-#elif(__configADC_Mode == 4)
-
-#elif(__configADC_Mode == 5)
-
-#endif /*__configADC_Mode*/
-#endif /*__configCONVERT_Volts*/
-//////////////////////////////////////////////////////////////////////////
-}
 /**
 *   This Functions necessary for parsing Multiplexer outputs
 */
 //------------------------------------------------------------------------------------//
-#if(__configADC_Mode == 4)
+#if(__configADC_Mode == 3 || __configADC_Mode == 4)
 
 static void SetMulriplexer_State(uint16_t State)
 {
-    if((State&0x100) >> 2) set_pin(MULPLXC_PIN); else reset_pin(MULPLXC_PIN);
-    if((State&0x010) >> 1) set_pin(MULPLXB_PIN); else reset_pin(MULPLXB_PIN);
-    if((State&0x001))      set_pin(MULPLXA_PIN); else reset_pin(MULPLXA_PIN);
+    switch(State)
+    {
+        case 0:
+            reset_pin(MULPLXA_PIN);
+            reset_pin(MULPLXB_PIN);
+            reset_pin(MULPLXC_PIN);
+            break;
+        case 1:
+            set_pin(MULPLXA_PIN);
+            reset_pin(MULPLXB_PIN);
+            reset_pin(MULPLXC_PIN);
+            break;
+        case 2:
+            reset_pin(MULPLXA_PIN);
+            set_pin(MULPLXB_PIN);
+            reset_pin(MULPLXC_PIN);
+            break;
+        case 3:
+            set_pin(MULPLXA_PIN);
+            set_pin(MULPLXB_PIN);
+            reset_pin(MULPLXC_PIN);
+            break;
+        case 4:
+            reset_pin(MULPLXA_PIN);
+            reset_pin(MULPLXB_PIN);
+            set_pin(MULPLXC_PIN);
+            break;
+        case 5:
+            set_pin(MULPLXA_PIN);
+            reset_pin(MULPLXB_PIN);
+            set_pin(MULPLXC_PIN);
+            break;
+        case 6:
+            reset_pin(MULPLXA_PIN);
+            set_pin(MULPLXB_PIN);
+            set_pin(MULPLXC_PIN);
+            break;
+        case 7:
+            set_pin(MULPLXA_PIN);
+            set_pin(MULPLXB_PIN);
+            set_pin(MULPLXC_PIN);
+            break;
+    }
 }
 /*!
-*   @brief void ADC_Multiplexer_Get()
+*   @brief ADC_Multiplexer_Get() - get data from multiplexer
 *
 */
-void ADC_Multiplexer_Get(ADC_TypeDef *ADCx)
+#define Single_Test     (0)
+int NumPort = 0;
+void ADC_Multiplexer_Get(ADC_TypeDef *ADCx, bool isConvert)
 {
-//    static int NumPort = 0;
-//    if(Multi_In[NumPort][1] == 0) { NumPort++; if(NumPort == 8) NumPort = 0; return; }
-//    SetMulriplexer_State(Multi_In[NumPort][0]);
-//    ADCStatus.Multiplexer_1[NumPort] = ADCx->JDR1;
-//    if(NumPort == 8) NumPort = 0;
-//    else NumPort++;
+#if(Single_Test == 1)
+SetMulriplexer_State(0);
+ADCStatus.Multiplexer1[0] = ADCx->JDR1;
+#else /*Single_Test*/
+    while(true)
+    {
+        SetMulriplexer_State(NumPort);
+        if( delay_ms(4) == false) return;
+        if(NumPort == 8)
+            {
+                NumPort = 0;
+                break;
+            }
+        ADCStatus.Multiplexer1[NumPort] = ADCx->JDR1;
+        NumPort++;
+    }
+#endif /*Single_Test*/
 }
 #endif /*__configADC_Mode*/
+////////////////////////////////////////////////////////////////////////////
+void AnalogReadRegular(void)
+{
+// Convert in Volts
+#if(__configCONVERT_Volts == 1)
+#if(__configADC_Mode != 2 || __configADC_Mode != 5)
+    ADCStatus.adc_data[0] = ((float)ADC1->DR) * 3.3 / K_RESOLUTION;
+#endif /*__configADC_Mode*/
+//////////////////////////////////////////////////////////////////////////
+// Non convert Volts
+#elif(__configCONVERT_Volts == 0)
+#if(__configADC_Mode != 2 || __configADC_Mode != 5)
+    ADCStatus.adc_data[0] = ADC1->DR;
+#endif /*__configADC_Mode*/
+#endif /*__configCONVERT_Volts*/
+}
+
+void AnalogReadInjected(ADC_TypeDef *ADCx)
+{
+// Convert in Volts
+#if(__configCONVERT_Volts == 1)
+    ADC_Multiplexer_Get(ADCx,true);
+//////////////////////////////////////////////////////////////////////////
+// Non convert Volts
+#elif(__configCONVERT_Volts == 0)
+    ADC_Multiplexer_Get(ADCx,false);
+#endif /*__configCONVERT_Volts*/
+}
 #endif /*configUSE_ADC*/

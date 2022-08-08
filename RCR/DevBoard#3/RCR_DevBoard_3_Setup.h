@@ -24,6 +24,7 @@
 /*!
 *   @note [RCR] Timers configuration
 */
+
 #define __config_TIM1_PSC        (84 - 1)
 #define __config_TIM1_ARR        (200)
 #define __config_TIM1_CH1        1
@@ -31,15 +32,16 @@
 #define __config_TIM1_CH3        0
 #define __config_TIM1_CH4        0
 
-#define __config_TIM2_PSC        (420 - 1)
-#define __config_TIM2_ARR        (2000)
-#define __config_TIM2_CH1        1
-#define __config_TIM2_CH2        0
-#define __config_TIM2_CH3        0
-#define __config_TIM2_CH4        0
+
+#define __config_TIM5_PSC        (420 - 1)
+#define __config_TIM5_ARR        (4000)
+#define __config_TIM5_CH1        1
+#define __config_TIM5_CH2        0
+#define __config_TIM5_CH3        0
+#define __config_TIM5_CH4        0
 
 #define MAX_PWM         __config_TIM1_ARR
-#define MAX_PWM_SERVO   __config_TIM2_ARR
+#define MAX_PWM_SERVO   __config_TIM5_ARR
 
 /*!
 *   @note [RCR] Regulator configuration { Car's engine }
@@ -90,7 +92,7 @@
 *                           5 - Developer Mode (All Manually)
 */
 #define __configADC_Mode                (4)
-#define __configCONVERT_Volts           (1)
+#define __configCONVERT_Volts           (0)
 #define __configUSE_Battery_Charging    (0)
 #define __configUSE_Temperature_Sensor  (0)
 // custom variables
@@ -109,7 +111,26 @@
 #define __configUSE_SENSOR_10           (-1)
 
 #define __configADC_InterruptRequest    (1)
+/*!
+*   @info Supported resolution ADC data
+*       @arg 12[bit]
+*       @arg 10[bit]
+*       @arg 8[bit]
+*       @arg 6[bit]
+*/
 #define __configADC_RESOLUTION          (12)        // 12-bit resolution
+/*!
+*   @info Supported cycles mode ADC
+*       @arg 480[cycles]
+*       @arg 144[cycles]
+*       @arg 112[cycles]
+*       @arg 84[cycles]
+*       @arg 56[cycles]
+*       @arg 28[cycles]
+*       @arg 15[cycles]
+*       @arg 3[cycles]
+*/
+#define __configADC_CYCLES              (ADC_480_CYCLES)
 /*!
 *   @note [RCR] IIC(I2C) configuration
 */
@@ -125,9 +146,9 @@
     SetGPIOB;               \
     SetGPIOC;               \
     SetTIM1;                \
-    SetTIM2;                \
     SetTIM3;                \
     SetTIM4;                \
+    SetTIM5;                \
     SetDMA2;                \
     SetADC1;                \
     SetUSART1;              \
@@ -138,7 +159,7 @@
     InitTimers;             \
     InitUSART;              \
     InitInterrupts;         \
-    SysTick_Config(__config_SysTick_Counter);  }
+    SysTick_Config(__config_SysTick_Counter);}
 
 /*!
 *   @brief Initialization pins
@@ -151,7 +172,7 @@
     conf_pin(INT_PIN,  GENERAL, PUSH_PULL, FAST_S, NO_PULL_UP);\
     conf_pin(LED_PIN,  GENERAL, PUSH_PULL, FAST_S, NO_PULL_UP);\
     conf_pin(ADC_TOP, ANALOG, PUSH_PULL, FAST_S, NO_PULL_UP);\
-    conf_pin(POT_PIN, ANALOG, PUSH_PULL, FAST_S, NO_PULL_UP);\
+    conf_pin(POT_PIN, ANALOG, PUSH_PULL, FAST_S, PULL_DOWN);\
     conf_pin(EXTI1_PIN, INPUT, PUSH_PULL, FAST_S, PULL_DOWN);\
     conf_pin(EXTI2_PIN, INPUT, PUSH_PULL, FAST_S, PULL_DOWN);\
     conf_pin(EXTI3_PIN, INPUT, PUSH_PULL, FAST_S, PULL_DOWN);\
@@ -161,6 +182,10 @@
     conf_af(BTN1_PWM_PIN, AF1);\
     conf_pin(BTN2_PWM_PIN, ALTERNATE, PUSH_PULL, FAST_S, NO_PULL_UP);\
     conf_af(BTN2_PWM_PIN, AF1);\
+    conf_pin(ENCODER1A_PIN, ALTERNATE, PUSH_PULL, FAST_S, NO_PULL_UP);\
+    conf_af(ENCODER1A_PIN, AF2);\
+    conf_pin(ENCODER1B_PIN, ALTERNATE, PUSH_PULL, FAST_S, NO_PULL_UP);\
+    conf_af(ENCODER1B_PIN, AF2);\
     conf_pin(ENCODER2A_PIN, ALTERNATE, PUSH_PULL, LOW_S, PULL_UP);\
     conf_af(ENCODER2A_PIN, AF2);\
     conf_pin(ENCODER2B_PIN, ALTERNATE, PUSH_PULL, LOW_S, PULL_UP);\
@@ -179,17 +204,17 @@
 *               @file TIM.c
 *       @arg TIM4 - Encoder monitoring
 */
-#define InitTimers {\
-    TimPWMConfigure(TIM1,__config_TIM1_PSC,__config_TIM1_ARR,1,1,0,0);\
-    TimPWMConfigure(TIM2,__config_TIM2_PSC,0x1,1,1,1,1);\
-    TimEncoderConfigure(TIM3);\
-    TimPIDConfigureAutomatic(TIM4,__config_Regulator_FREQ);}
+#define InitTimers                                                                                                                     {\
+    TimPWMConfigure(TIM1,__config_TIM1_PSC,__config_TIM1_ARR,__config_TIM1_CH1,__config_TIM1_CH2,__config_TIM1_CH3,__config_TIM1_CH4);  \
+    TimPWMConfigure(TIM5,__config_TIM5_PSC,__config_TIM5_ARR,__config_TIM5_CH1,__config_TIM5_CH2,__config_TIM5_CH3,__config_TIM5_CH4);  \
+    TimEncoderConfigure(TIM4);                                                                                                          \
+    TimPIDConfigureAutomatic(TIM3,__config_Regulator_FREQ);                                                                             }
 
 /*!
 *   @brief Initialization interrupts
 */
 #define InitInterrupts {\
-    NVIC_EnableIRQ(TIM4_IRQn);\
+    NVIC_EnableIRQ(TIM3_IRQn);\
     NVIC_EnableIRQ(ADC_IRQn);}
 
 /*!

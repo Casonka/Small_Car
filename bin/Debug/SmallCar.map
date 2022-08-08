@@ -21,7 +21,7 @@ xQueueRegistry      0x40              obj\debug\fil_lib\freertos_lib\queue.o
 TIMStatus           0x18              obj\debug\fil_lib\adc.o
 Motor_Coord         0x4               obj\debug\fil_lib\regulators.o
 EncData             0x2               obj\debug\fil_lib\regulators.o
-ADCStatus           0x60              obj\debug\fil_lib\adc.o
+ADCStatus           0x32              obj\debug\fil_lib\adc.o
 EngineReg           0x40              obj\debug\fil_lib\adc.o
 Clocks              0x14              obj\debug\fil_lib\adc.o
 
@@ -46,16 +46,13 @@ Discarded input sections
  .bss           0x00000000        0x0 obj\debug\fil_lib\adc.o
  .data.PrescalerTable
                 0x00000000       0x10 obj\debug\fil_lib\adc.o
- .data.Multi_In
-                0x00000000       0x10 obj\debug\fil_lib\adc.o
+ .bss.distance  0x00000000        0x4 obj\debug\fil_lib\adc.o
  .data.ADC_CurrentTabs
                 0x00000000        0xa obj\debug\fil_lib\adc.o
- .text.AnalogRead
-                0x00000000       0x14 obj\debug\fil_lib\adc.o
- .text.SetMulriplexer_State
-                0x00000000       0x70 obj\debug\fil_lib\adc.o
- .text.ADC_Multiplexer_Get
-                0x00000000       0x14 obj\debug\fil_lib\adc.o
+ .bss.RCH       0x00000000        0x1 obj\debug\fil_lib\adc.o
+ .bss.JCH       0x00000000        0x1 obj\debug\fil_lib\adc.o
+ .text.ADC_Init
+                0x00000000      0x4e0 obj\debug\fil_lib\adc.o
  .text          0x00000000        0x0 obj\debug\fil_lib\dma.o
  .data          0x00000000        0x0 obj\debug\fil_lib\dma.o
  .bss           0x00000000        0x0 obj\debug\fil_lib\dma.o
@@ -600,7 +597,7 @@ LOAD d:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/../../../../arm-non
                 0x08000000                g_pfnVectors
                 0x08000194                . = ALIGN (0x4)
 
-.text           0x08000194     0x13e8
+.text           0x08000194     0x13bc
                 0x08000194                . = ALIGN (0x4)
  *(.text)
  .text          0x08000194       0x40 d:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/thumb/v7e-m+fp/hard/crtbegin.o
@@ -661,156 +658,167 @@ LOAD d:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/../../../../arm-non
  .text.ADC_IRQHandler
                 0x08000224       0x1c obj\debug\fil_lib\adc.o
                 0x08000224                ADC_IRQHandler
- .text.ADC_Init
-                0x08000240      0x2b8 obj\debug\fil_lib\adc.o
-                0x08000240                ADC_Init
+ .text.SetMulriplexer_State
+                0x08000240      0x118 obj\debug\fil_lib\adc.o
+ .text.ADC_Multiplexer_Get
+                0x08000358       0x68 obj\debug\fil_lib\adc.o
+                0x08000358                ADC_Multiplexer_Get
+ .text.AnalogReadRegular
+                0x080003c0       0x20 obj\debug\fil_lib\adc.o
+                0x080003c0                AnalogReadRegular
+ .text.AnalogReadInjected
+                0x080003e0       0x18 obj\debug\fil_lib\adc.o
+                0x080003e0                AnalogReadInjected
  .text.EXTI0_IRQHandler
-                0x080004f8       0x18 obj\debug\fil_lib\exti.o
-                0x080004f8                EXTI0_IRQHandler
+                0x080003f8       0x18 obj\debug\fil_lib\exti.o
+                0x080003f8                EXTI0_IRQHandler
  .text.EXTI1_IRQHandler
-                0x08000510       0x18 obj\debug\fil_lib\exti.o
-                0x08000510                EXTI1_IRQHandler
+                0x08000410       0x18 obj\debug\fil_lib\exti.o
+                0x08000410                EXTI1_IRQHandler
  .text.EXTI2_IRQHandler
-                0x08000528       0x18 obj\debug\fil_lib\exti.o
-                0x08000528                EXTI2_IRQHandler
+                0x08000428       0x18 obj\debug\fil_lib\exti.o
+                0x08000428                EXTI2_IRQHandler
  .text.EXTI3_IRQHandler
-                0x08000540       0x18 obj\debug\fil_lib\exti.o
-                0x08000540                EXTI3_IRQHandler
+                0x08000440       0x18 obj\debug\fil_lib\exti.o
+                0x08000440                EXTI3_IRQHandler
  .text.EXTI4_IRQHandler
-                0x08000558       0x18 obj\debug\fil_lib\exti.o
-                0x08000558                EXTI4_IRQHandler
+                0x08000458       0x18 obj\debug\fil_lib\exti.o
+                0x08000458                EXTI4_IRQHandler
  .text.EXTI9_5_IRQHandler
-                0x08000570       0x60 obj\debug\fil_lib\exti.o
-                0x08000570                EXTI9_5_IRQHandler
+                0x08000470       0x60 obj\debug\fil_lib\exti.o
+                0x08000470                EXTI9_5_IRQHandler
  .text.EXTI15_10_IRQHandler
-                0x080005d0       0x28 obj\debug\fil_lib\exti.o
-                0x080005d0                EXTI15_10_IRQHandler
+                0x080004d0       0x28 obj\debug\fil_lib\exti.o
+                0x080004d0                EXTI15_10_IRQHandler
  .text.I2C1_EV_IRQHandler
-                0x080005f8        0xe obj\debug\fil_lib\i2c.o
-                0x080005f8                I2C1_EV_IRQHandler
+                0x080004f8        0xe obj\debug\fil_lib\i2c.o
+                0x080004f8                I2C1_EV_IRQHandler
  .text.I2C1_ER_IRQHandler
-                0x08000606        0xe obj\debug\fil_lib\i2c.o
-                0x08000606                I2C1_ER_IRQHandler
+                0x08000506        0xe obj\debug\fil_lib\i2c.o
+                0x08000506                I2C1_ER_IRQHandler
  .text.I2C2_EV_IRQHandler
-                0x08000614        0xe obj\debug\fil_lib\i2c.o
-                0x08000614                I2C2_EV_IRQHandler
+                0x08000514        0xe obj\debug\fil_lib\i2c.o
+                0x08000514                I2C2_EV_IRQHandler
  .text.I2C2_ER_IRQHandler
-                0x08000622        0xe obj\debug\fil_lib\i2c.o
-                0x08000622                I2C2_ER_IRQHandler
+                0x08000522        0xe obj\debug\fil_lib\i2c.o
+                0x08000522                I2C2_ER_IRQHandler
  .text.I2C3_EV_IRQHandler
-                0x08000630        0xe obj\debug\fil_lib\i2c.o
-                0x08000630                I2C3_EV_IRQHandler
+                0x08000530        0xe obj\debug\fil_lib\i2c.o
+                0x08000530                I2C3_EV_IRQHandler
  .text.I2C3_ER_IRQHandler
-                0x0800063e        0xe obj\debug\fil_lib\i2c.o
-                0x0800063e                I2C3_ER_IRQHandler
+                0x0800053e        0xe obj\debug\fil_lib\i2c.o
+                0x0800053e                I2C3_ER_IRQHandler
  .text.CalcRCCClocks
-                0x0800064c      0x134 obj\debug\fil_lib\rcc.o
-                0x0800064c                CalcRCCClocks
+                0x0800054c      0x134 obj\debug\fil_lib\rcc.o
+                0x0800054c                CalcRCCClocks
  .text.SysTick_Handler
-                0x08000780       0x20 obj\debug\fil_lib\tim.o
-                0x08000780                SysTick_Handler
+                0x08000680       0x20 obj\debug\fil_lib\tim.o
+                0x08000680                SysTick_Handler
+ .text.delay_ms
+                0x080006a0       0x48 obj\debug\fil_lib\tim.o
+                0x080006a0                delay_ms
  .text.TIM2_IRQHandler
-                0x080007a0       0x16 obj\debug\fil_lib\tim.o
-                0x080007a0                TIM2_IRQHandler
- *fill*         0x080007b6        0x2 
+                0x080006e8       0x16 obj\debug\fil_lib\tim.o
+                0x080006e8                TIM2_IRQHandler
+ *fill*         0x080006fe        0x2 
  .text.TIM3_IRQHandler
-                0x080007b8       0x18 obj\debug\fil_lib\tim.o
-                0x080007b8                TIM3_IRQHandler
+                0x08000700       0x18 obj\debug\fil_lib\tim.o
+                0x08000700                TIM3_IRQHandler
  .text.TIM4_IRQHandler
-                0x080007d0       0x18 obj\debug\fil_lib\tim.o
-                0x080007d0                TIM4_IRQHandler
+                0x08000718       0x18 obj\debug\fil_lib\tim.o
+                0x08000718                TIM4_IRQHandler
  .text.TIM5_IRQHandler
-                0x080007e8       0x18 obj\debug\fil_lib\tim.o
-                0x080007e8                TIM5_IRQHandler
+                0x08000730       0x18 obj\debug\fil_lib\tim.o
+                0x08000730                TIM5_IRQHandler
  .text.CalcTimStatus
-                0x08000800      0x104 obj\debug\fil_lib\tim.o
-                0x08000800                CalcTimStatus
+                0x08000748      0x104 obj\debug\fil_lib\tim.o
+                0x08000748                CalcTimStatus
  .text.CalcTimPIDFrequency
-                0x08000904       0x98 obj\debug\fil_lib\tim.o
-                0x08000904                CalcTimPIDFrequency
+                0x0800084c       0x98 obj\debug\fil_lib\tim.o
+                0x0800084c                CalcTimPIDFrequency
  .text.CalcTimClockSourse
-                0x0800099c       0x8c obj\debug\fil_lib\tim.o
-                0x0800099c                CalcTimClockSourse
+                0x080008e4       0x8c obj\debug\fil_lib\tim.o
+                0x080008e4                CalcTimClockSourse
  .text.CalcUSARTBaudrate
-                0x08000a28       0x70 obj\debug\fil_lib\usart.o
-                0x08000a28                CalcUSARTBaudrate
+                0x08000970       0x70 obj\debug\fil_lib\usart.o
+                0x08000970                CalcUSARTBaudrate
  .text.__NVIC_EnableIRQ
-                0x08000a98       0x3c obj\debug\src\main.o
+                0x080009e0       0x3c obj\debug\src\main.o
  .text.__NVIC_SetPriority
-                0x08000ad4       0x54 obj\debug\src\main.o
+                0x08000a1c       0x54 obj\debug\src\main.o
  .text.SysTick_Config
-                0x08000b28       0x44 obj\debug\src\main.o
- .text.main     0x08000b6c      0x898 obj\debug\src\main.o
-                0x08000b6c                main
+                0x08000a70       0x44 obj\debug\src\main.o
+ .text.main     0x08000ab4      0x924 obj\debug\src\main.o
+                0x08000ab4                main
  .text.SystemInit
-                0x08001404       0x6c obj\debug\src\system_stm32f4xx.o
-                0x08001404                SystemInit
+                0x080013d8       0x6c obj\debug\src\system_stm32f4xx.o
+                0x080013d8                SystemInit
  .text.SetSysClock
-                0x08001470       0xf4 obj\debug\src\system_stm32f4xx.o
+                0x08001444       0xf4 obj\debug\src\system_stm32f4xx.o
  *(.glue_7)
- .glue_7        0x08001564        0x0 linker stubs
+ .glue_7        0x08001538        0x0 linker stubs
  *(.glue_7t)
- .glue_7t       0x08001564        0x0 linker stubs
+ .glue_7t       0x08001538        0x0 linker stubs
  *(.eh_frame)
- .eh_frame      0x08001564        0x0 d:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/thumb/v7e-m+fp/hard/crtbegin.o
+ .eh_frame      0x08001538        0x0 d:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/thumb/v7e-m+fp/hard/crtbegin.o
  *(.init)
- .init          0x08001564        0x4 d:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/thumb/v7e-m+fp/hard/crti.o
-                0x08001564                _init
- .init          0x08001568        0x8 d:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/thumb/v7e-m+fp/hard/crtn.o
+ .init          0x08001538        0x4 d:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/thumb/v7e-m+fp/hard/crti.o
+                0x08001538                _init
+ .init          0x0800153c        0x8 d:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/thumb/v7e-m+fp/hard/crtn.o
  *(.fini)
- .fini          0x08001570        0x4 d:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/thumb/v7e-m+fp/hard/crti.o
-                0x08001570                _fini
- .fini          0x08001574        0x8 d:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/thumb/v7e-m+fp/hard/crtn.o
-                0x0800157c                . = ALIGN (0x4)
-                0x0800157c                _etext = .
+ .fini          0x08001544        0x4 d:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/thumb/v7e-m+fp/hard/crti.o
+                0x08001544                _fini
+ .fini          0x08001548        0x8 d:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/thumb/v7e-m+fp/hard/crtn.o
+                0x08001550                . = ALIGN (0x4)
+                0x08001550                _etext = .
 
-.vfp11_veneer   0x0800157c        0x0
- .vfp11_veneer  0x0800157c        0x0 linker stubs
+.vfp11_veneer   0x08001550        0x0
+ .vfp11_veneer  0x08001550        0x0 linker stubs
 
-.v4_bx          0x0800157c        0x0
- .v4_bx         0x0800157c        0x0 linker stubs
+.v4_bx          0x08001550        0x0
+ .v4_bx         0x08001550        0x0 linker stubs
 
-.iplt           0x0800157c        0x0
- .iplt          0x0800157c        0x0 d:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/thumb/v7e-m+fp/hard/crtbegin.o
+.iplt           0x08001550        0x0
+ .iplt          0x08001550        0x0 d:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/thumb/v7e-m+fp/hard/crtbegin.o
 
-.rel.dyn        0x0800157c        0x0
- .rel.iplt      0x0800157c        0x0 d:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/thumb/v7e-m+fp/hard/crtbegin.o
+.rel.dyn        0x08001550        0x0
+ .rel.iplt      0x08001550        0x0 d:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/thumb/v7e-m+fp/hard/crtbegin.o
 
-.rodata         0x0800157c        0x0
-                0x0800157c                . = ALIGN (0x4)
+.rodata         0x08001550        0x0
+                0x08001550                . = ALIGN (0x4)
  *(.rodata)
  *(.rodata*)
-                0x0800157c                . = ALIGN (0x4)
+                0x08001550                . = ALIGN (0x4)
 
 .ARM.extab
  *(.ARM.extab* .gnu.linkonce.armextab.*)
 
-.ARM            0x0800157c        0x0
-                0x0800157c                __exidx_start = .
+.ARM            0x08001550        0x0
+                0x08001550                __exidx_start = .
  *(.ARM.exidx*)
-                0x0800157c                __exidx_end = .
+                0x08001550                __exidx_end = .
 
-.preinit_array  0x0800157c        0x0
-                0x0800157c                PROVIDE (__preinit_array_start = .)
+.preinit_array  0x08001550        0x0
+                0x08001550                PROVIDE (__preinit_array_start = .)
  *(.preinit_array*)
-                0x0800157c                PROVIDE (__preinit_array_end = .)
+                0x08001550                PROVIDE (__preinit_array_end = .)
 
-.init_array     0x0800157c        0x4
-                0x0800157c                PROVIDE (__init_array_start = .)
+.init_array     0x08001550        0x4
+                0x08001550                PROVIDE (__init_array_start = .)
  *(SORT_BY_NAME(.init_array.*))
  *(.init_array*)
- .init_array    0x0800157c        0x4 d:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/thumb/v7e-m+fp/hard/crtbegin.o
-                0x08001580                PROVIDE (__init_array_end = .)
+ .init_array    0x08001550        0x4 d:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/thumb/v7e-m+fp/hard/crtbegin.o
+                0x08001554                PROVIDE (__init_array_end = .)
 
-.fini_array     0x08001580        0x4
+.fini_array     0x08001554        0x4
                 [!provide]                PROVIDE (__fini_array_start = .)
  *(SORT_BY_NAME(.fini_array.*))
  *(.fini_array*)
- .fini_array    0x08001580        0x4 d:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/thumb/v7e-m+fp/hard/crtbegin.o
+ .fini_array    0x08001554        0x4 d:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/thumb/v7e-m+fp/hard/crtbegin.o
                 [!provide]                PROVIDE (__fini_array_end = .)
-                0x08001584                _sidata = LOADADDR (.data)
+                0x08001558                _sidata = LOADADDR (.data)
 
-.data           0x20000000       0x10 load address 0x08001584
+.data           0x20000000       0x10 load address 0x08001558
                 0x20000000                . = ALIGN (0x4)
                 0x20000000                _sdata = .
  *(.data)
@@ -820,41 +828,43 @@ LOAD d:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/../../../../arm-non
                 0x20000010                . = ALIGN (0x4)
                 0x20000010                _edata = .
 
-.igot.plt       0x20000010        0x0 load address 0x08001594
+.igot.plt       0x20000010        0x0 load address 0x08001568
  .igot.plt      0x20000010        0x0 d:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/thumb/v7e-m+fp/hard/crtbegin.o
                 0x20000010                . = ALIGN (0x4)
 
-.bss            0x20000010      0x108 load address 0x08001594
+.bss            0x20000010       0xe0 load address 0x08001568
                 0x20000010                _sbss = .
                 0x20000010                __bss_start__ = _sbss
  *(.bss)
  .bss           0x20000010       0x1c d:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/thumb/v7e-m+fp/hard/crtbegin.o
  *(.bss*)
- .bss.JCH.7222  0x2000002c        0x1 obj\debug\fil_lib\adc.o
- .bss.JCH.7223  0x2000002d        0x1 obj\debug\fil_lib\adc.o
- *fill*         0x2000002e        0x2 
+ .bss.NumPort   0x2000002c        0x4 obj\debug\fil_lib\adc.o
+                0x2000002c                NumPort
  .bss.globalTime
                 0x20000030        0x4 obj\debug\fil_lib\tim.o
                 0x20000030                globalTime
+ .bss.startTick
+                0x20000034        0x4 obj\debug\fil_lib\tim.o
+                0x20000034                startTick
  *(COMMON)
- COMMON         0x20000034       0xe4 obj\debug\fil_lib\adc.o
-                0x20000034                Servo1
-                0x2000004c                TIMStatus
-                0x20000064                ADCStatus
-                0x200000c4                EngineReg
-                0x20000104                Clocks
-                0x20000118                . = ALIGN (0x4)
-                0x20000118                _ebss = .
-                0x20000118                __bss_end__ = _ebss
+ COMMON         0x20000038       0xb8 obj\debug\fil_lib\adc.o
+                0x20000038                Servo1
+                0x20000050                TIMStatus
+                0x20000068                ADCStatus
+                0x2000009c                EngineReg
+                0x200000dc                Clocks
+                0x200000f0                . = ALIGN (0x4)
+                0x200000f0                _ebss = .
+                0x200000f0                __bss_end__ = _ebss
 
-.heap           0x20000118        0x0 load address 0x08001594
-                0x20000118                . = ALIGN (0x4)
+.heap           0x200000f0        0x0 load address 0x08001568
+                0x200000f0                . = ALIGN (0x4)
                 [!provide]                PROVIDE (end = .)
                 [!provide]                PROVIDE (_end = .)
  *(.heap*)
-                0x20000118                . = (. + _Min_Heap_Size)
-                0x20000118                __HeapLimit = .
-                0x20000118                . = ALIGN (0x4)
+                0x200000f0                . = (. + _Min_Heap_Size)
+                0x200000f0                __HeapLimit = .
+                0x200000f0                . = ALIGN (0x4)
 
 .ARM.attributes
                 0x00000000       0x30
@@ -928,88 +938,88 @@ LOAD d:/2.30/share/armgcc/bin/../lib/gcc/arm-none-eabi/9.3.1/thumb/v7e-m+fp/hard
 OUTPUT(bin\Debug\SmallCar.elf elf32-littlearm)
 LOAD linker stubs
 
-.debug_line     0x00000000     0x121d
+.debug_line     0x00000000     0x1304
  .debug_line    0x00000000       0x77 obj\debug\src\startup_stm32f401xc.o
- .debug_line    0x00000077      0x244 obj\debug\fil_lib\adc.o
- .debug_line    0x000002bb      0x20f obj\debug\fil_lib\exti.o
- .debug_line    0x000004ca      0x17a obj\debug\fil_lib\i2c.o
- .debug_line    0x00000644      0x204 obj\debug\fil_lib\rcc.o
- .debug_line    0x00000848      0x411 obj\debug\fil_lib\tim.o
- .debug_line    0x00000c59      0x159 obj\debug\fil_lib\usart.o
- .debug_line    0x00000db2      0x1e8 obj\debug\src\main.o
- .debug_line    0x00000f9a      0x283 obj\debug\src\system_stm32f4xx.o
+ .debug_line    0x00000077      0x2ec obj\debug\fil_lib\adc.o
+ .debug_line    0x00000363      0x20f obj\debug\fil_lib\exti.o
+ .debug_line    0x00000572      0x17a obj\debug\fil_lib\i2c.o
+ .debug_line    0x000006ec      0x204 obj\debug\fil_lib\rcc.o
+ .debug_line    0x000008f0      0x445 obj\debug\fil_lib\tim.o
+ .debug_line    0x00000d35      0x159 obj\debug\fil_lib\usart.o
+ .debug_line    0x00000e8e      0x1f3 obj\debug\src\main.o
+ .debug_line    0x00001081      0x283 obj\debug\src\system_stm32f4xx.o
 
-.debug_info     0x00000000     0x3a4e
+.debug_info     0x00000000     0x39ac
  .debug_info    0x00000000       0x22 obj\debug\src\startup_stm32f401xc.o
- .debug_info    0x00000022      0x6d8 obj\debug\fil_lib\adc.o
- .debug_info    0x000006fa      0x4fb obj\debug\fil_lib\exti.o
- .debug_info    0x00000bf5      0x479 obj\debug\fil_lib\i2c.o
- .debug_info    0x0000106e      0x627 obj\debug\fil_lib\rcc.o
- .debug_info    0x00001695      0x85d obj\debug\fil_lib\tim.o
- .debug_info    0x00001ef2      0x549 obj\debug\fil_lib\usart.o
- .debug_info    0x0000243b      0xfab obj\debug\src\main.o
- .debug_info    0x000033e6      0x668 obj\debug\src\system_stm32f4xx.o
+ .debug_info    0x00000022      0x728 obj\debug\fil_lib\adc.o
+ .debug_info    0x0000074a      0x4fb obj\debug\fil_lib\exti.o
+ .debug_info    0x00000c45      0x479 obj\debug\fil_lib\i2c.o
+ .debug_info    0x000010be      0x627 obj\debug\fil_lib\rcc.o
+ .debug_info    0x000016e5      0x899 obj\debug\fil_lib\tim.o
+ .debug_info    0x00001f7e      0x549 obj\debug\fil_lib\usart.o
+ .debug_info    0x000024c7      0xe7d obj\debug\src\main.o
+ .debug_info    0x00003344      0x668 obj\debug\src\system_stm32f4xx.o
 
-.debug_abbrev   0x00000000      0xb92
+.debug_abbrev   0x00000000      0xbe6
  .debug_abbrev  0x00000000       0x12 obj\debug\src\startup_stm32f401xc.o
- .debug_abbrev  0x00000012      0x19c obj\debug\fil_lib\adc.o
- .debug_abbrev  0x000001ae      0x130 obj\debug\fil_lib\exti.o
- .debug_abbrev  0x000002de       0xf0 obj\debug\fil_lib\i2c.o
- .debug_abbrev  0x000003ce      0x130 obj\debug\fil_lib\rcc.o
- .debug_abbrev  0x000004fe      0x1de obj\debug\fil_lib\tim.o
- .debug_abbrev  0x000006dc      0x145 obj\debug\fil_lib\usart.o
- .debug_abbrev  0x00000821      0x1f9 obj\debug\src\main.o
- .debug_abbrev  0x00000a1a      0x178 obj\debug\src\system_stm32f4xx.o
+ .debug_abbrev  0x00000012      0x1d2 obj\debug\fil_lib\adc.o
+ .debug_abbrev  0x000001e4      0x130 obj\debug\fil_lib\exti.o
+ .debug_abbrev  0x00000314       0xf0 obj\debug\fil_lib\i2c.o
+ .debug_abbrev  0x00000404      0x130 obj\debug\fil_lib\rcc.o
+ .debug_abbrev  0x00000534      0x1fc obj\debug\fil_lib\tim.o
+ .debug_abbrev  0x00000730      0x145 obj\debug\fil_lib\usart.o
+ .debug_abbrev  0x00000875      0x1f9 obj\debug\src\main.o
+ .debug_abbrev  0x00000a6e      0x178 obj\debug\src\system_stm32f4xx.o
 
-.debug_aranges  0x00000000      0x228
+.debug_aranges  0x00000000      0x238
  .debug_aranges
                 0x00000000       0x28 obj\debug\src\startup_stm32f401xc.o
  .debug_aranges
-                0x00000028       0x40 obj\debug\fil_lib\adc.o
+                0x00000028       0x48 obj\debug\fil_lib\adc.o
  .debug_aranges
-                0x00000068       0x50 obj\debug\fil_lib\exti.o
+                0x00000070       0x50 obj\debug\fil_lib\exti.o
  .debug_aranges
-                0x000000b8       0x48 obj\debug\fil_lib\i2c.o
+                0x000000c0       0x48 obj\debug\fil_lib\i2c.o
  .debug_aranges
-                0x00000100       0x20 obj\debug\fil_lib\rcc.o
+                0x00000108       0x20 obj\debug\fil_lib\rcc.o
  .debug_aranges
-                0x00000120       0x80 obj\debug\fil_lib\tim.o
+                0x00000128       0x88 obj\debug\fil_lib\tim.o
  .debug_aranges
-                0x000001a0       0x20 obj\debug\fil_lib\usart.o
+                0x000001b0       0x20 obj\debug\fil_lib\usart.o
  .debug_aranges
-                0x000001c0       0x38 obj\debug\src\main.o
+                0x000001d0       0x38 obj\debug\src\main.o
  .debug_aranges
-                0x000001f8       0x30 obj\debug\src\system_stm32f4xx.o
+                0x00000208       0x30 obj\debug\src\system_stm32f4xx.o
 
-.debug_str      0x00000000      0xdb3
+.debug_str      0x00000000      0xe05
  .debug_str     0x00000000       0x66 obj\debug\src\startup_stm32f401xc.o
- .debug_str     0x00000066      0x3a8 obj\debug\fil_lib\adc.o
-                                0x46f (size before relaxing)
- .debug_str     0x0000040e       0xa9 obj\debug\fil_lib\exti.o
+ .debug_str     0x00000066      0x3ed obj\debug\fil_lib\adc.o
+                                0x4b4 (size before relaxing)
+ .debug_str     0x00000453       0xa9 obj\debug\fil_lib\exti.o
                                 0x442 (size before relaxing)
- .debug_str     0x000004b7       0x80 obj\debug\fil_lib\i2c.o
+ .debug_str     0x000004fc       0x80 obj\debug\fil_lib\i2c.o
                                 0x419 (size before relaxing)
- .debug_str     0x00000537      0x138 obj\debug\fil_lib\rcc.o
+ .debug_str     0x0000057c      0x138 obj\debug\fil_lib\rcc.o
                                 0x4d6 (size before relaxing)
- .debug_str     0x0000066f      0x1b5 obj\debug\fil_lib\tim.o
-                                0x59a (size before relaxing)
- .debug_str     0x00000824       0x53 obj\debug\fil_lib\usart.o
+ .debug_str     0x000006b4      0x1c8 obj\debug\fil_lib\tim.o
+                                0x5b3 (size before relaxing)
+ .debug_str     0x0000087c       0x53 obj\debug\fil_lib\usart.o
                                 0x432 (size before relaxing)
- .debug_str     0x00000877      0x481 obj\debug\src\main.o
-                                0xa45 (size before relaxing)
- .debug_str     0x00000cf8       0xbb obj\debug\src\system_stm32f4xx.o
+ .debug_str     0x000008cf      0x47b obj\debug\src\main.o
+                                0x9ed (size before relaxing)
+ .debug_str     0x00000d4a       0xbb obj\debug\src\system_stm32f4xx.o
                                 0x410 (size before relaxing)
 
-.debug_ranges   0x00000000      0x1a0
+.debug_ranges   0x00000000      0x1b0
  .debug_ranges  0x00000000       0x20 obj\debug\src\startup_stm32f401xc.o
- .debug_ranges  0x00000020       0x30 obj\debug\fil_lib\adc.o
- .debug_ranges  0x00000050       0x40 obj\debug\fil_lib\exti.o
- .debug_ranges  0x00000090       0x38 obj\debug\fil_lib\i2c.o
- .debug_ranges  0x000000c8       0x10 obj\debug\fil_lib\rcc.o
- .debug_ranges  0x000000d8       0x70 obj\debug\fil_lib\tim.o
- .debug_ranges  0x00000148       0x10 obj\debug\fil_lib\usart.o
- .debug_ranges  0x00000158       0x28 obj\debug\src\main.o
- .debug_ranges  0x00000180       0x20 obj\debug\src\system_stm32f4xx.o
+ .debug_ranges  0x00000020       0x38 obj\debug\fil_lib\adc.o
+ .debug_ranges  0x00000058       0x40 obj\debug\fil_lib\exti.o
+ .debug_ranges  0x00000098       0x38 obj\debug\fil_lib\i2c.o
+ .debug_ranges  0x000000d0       0x10 obj\debug\fil_lib\rcc.o
+ .debug_ranges  0x000000e0       0x78 obj\debug\fil_lib\tim.o
+ .debug_ranges  0x00000158       0x10 obj\debug\fil_lib\usart.o
+ .debug_ranges  0x00000168       0x28 obj\debug\src\main.o
+ .debug_ranges  0x00000190       0x20 obj\debug\src\system_stm32f4xx.o
 
 .comment        0x00000000       0x4c
  .comment       0x00000000       0x4c obj\debug\fil_lib\adc.o
@@ -1022,12 +1032,12 @@ LOAD linker stubs
  .comment       0x0000004c       0x4d obj\debug\src\main.o
  .comment       0x0000004c       0x4d obj\debug\src\system_stm32f4xx.o
 
-.debug_frame    0x00000000      0x5ec
- .debug_frame   0x00000000       0xd4 obj\debug\fil_lib\adc.o
- .debug_frame   0x000000d4       0xf0 obj\debug\fil_lib\exti.o
- .debug_frame   0x000001c4       0xd0 obj\debug\fil_lib\i2c.o
- .debug_frame   0x00000294       0x30 obj\debug\fil_lib\rcc.o
- .debug_frame   0x000002c4      0x1d4 obj\debug\fil_lib\tim.o
- .debug_frame   0x00000498       0x34 obj\debug\fil_lib\usart.o
- .debug_frame   0x000004cc       0xa4 obj\debug\src\main.o
- .debug_frame   0x00000570       0x7c obj\debug\src\system_stm32f4xx.o
+.debug_frame    0x00000000      0x628
+ .debug_frame   0x00000000       0xe8 obj\debug\fil_lib\adc.o
+ .debug_frame   0x000000e8       0xf0 obj\debug\fil_lib\exti.o
+ .debug_frame   0x000001d8       0xd0 obj\debug\fil_lib\i2c.o
+ .debug_frame   0x000002a8       0x30 obj\debug\fil_lib\rcc.o
+ .debug_frame   0x000002d8      0x1fc obj\debug\fil_lib\tim.o
+ .debug_frame   0x000004d4       0x34 obj\debug\fil_lib\usart.o
+ .debug_frame   0x00000508       0xa4 obj\debug\src\main.o
+ .debug_frame   0x000005ac       0x7c obj\debug\src\system_stm32f4xx.o

@@ -18,10 +18,18 @@ uint32_t globalTime = 0;
 void SysTick_Handler(void)
 {
 
-    CalcTimStatus(TIM1);
+    CalcTimStatus(TIM5);
     globalTime++;
 }
 
+uint32_t startTick = 0;
+bool delay_ms(uint32_t ticks)
+{
+    if(startTick == 0) startTick = globalTime;
+    if((globalTime - startTick) < (ticks)) { return false;}
+    else startTick  = 0;
+    return true;
+}
 //---------------------------------------------------------//
 //----------------------Timer Interrupts-------------------//
 //---------------------------------------------------------//
@@ -45,14 +53,14 @@ ResetTimSR(TIM3);
 
 void TIM4_IRQHandler(void)
 {
-    //SetVoltage(EnginePWM);
-    //PID_Low_Level();
+
 ResetTimSR(TIM4);
 }
 
 void TIM5_IRQHandler(void)
 {
-
+    //SetVoltage(EnginePWM);
+    //PID_Low_Level();
 ResetTimSR(TIM5);
 }
 

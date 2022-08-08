@@ -21,8 +21,8 @@
 #define ENCODER2A_PIN           pin_id(PORTA,6)
 #define ENCODER2B_PIN           pin_id(PORTA,7)
 
-#define  ENCODER1_CNT           ((uint32_t *)&(TIM3->CNT))
-#define  ENCODER2_CNT           ((uint32_t *)&(TIM4->CNT))
+#define ENCODER1_CNT           ((uint32_t *)&(TIM3->CNT))
+#define ENCODER2_CNT           ((uint32_t *)&(TIM4->CNT))
 /////////////////////////////////////////////////////////////////////////////
 //_____________________________ADC_PIN_____________________________________//
 /////////////////////////////////////////////////////////////////////////////

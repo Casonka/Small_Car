@@ -32,7 +32,6 @@
 #define __config_TIM1_CH3        0
 #define __config_TIM1_CH4        0
 
-
 #define __config_TIM5_PSC        (420 - 1)
 #define __config_TIM5_ARR        (4000)
 #define __config_TIM5_CH1        1
@@ -121,16 +120,26 @@
 #define __configADC_RESOLUTION          (12)        // 12-bit resolution
 /*!
 *   @info Supported cycles mode ADC
-*       @arg 480[cycles]
-*       @arg 144[cycles]
-*       @arg 112[cycles]
-*       @arg 84[cycles]
-*       @arg 56[cycles]
-*       @arg 28[cycles]
-*       @arg 15[cycles]
-*       @arg 3[cycles]
+*       @arg ADC_480_CYCLES - 480[cycles]
+*       @arg ADC_144_CYCLES - 144[cycles]
+*       @arg ADC_112_CYCLES - 112[cycles]
+*       @arg ADC_84_CYCLES  -  84[cycles]
+*       @arg ADC_56_CYCLES  -  56[cycles]
+*       @arg ADC_28_CYCLES  -  28[cycles]
+*       @arg ADC_15_CYCLES  -  15[cycles]
+*       @arg ADC_3_CYCLES   -   3[cycles]
 */
 #define __configADC_CYCLES              (ADC_480_CYCLES)
+
+/*!
+*   @info Supported divider for ADC bus
+*   @note [RCR] ADC Freq = APB2(example 84 MHz) / __configADC_DIVIDER
+*       @arg 0 - divided by 2
+*       @arg 1 - divided by 4
+*       @arg 2 - divided by 6
+*       @arg 3 - divided by 8
+*/
+#define __configADC_DIVIDER             (3)
 /*!
 *   @note [RCR] IIC(I2C) configuration
 */
@@ -138,7 +147,8 @@
 #define SSD1305_ADDR                (0x00)     // LCD monitor
 //-----------------------------------------------------------------//
 /*!
-*   @brief General Initialization
+*   @brief General Initialization. This sector is custom adding by author.
+*          You can modify and use some new functions that you need.
 */
 #define Board_Config       {\
     SetPWR;                 \
@@ -198,7 +208,7 @@
 /*!
 *   @brief Initialization timers
 *       @arg TIM1 - Wheels engine
-*       @arg TIM2 - Servo management
+*       @arg TIM5 - Servo management
 *       @arg TIM3 - PID Calculating (Interrupt)
 *           @attention check interrupts file for TIM
 *               @file TIM.c
@@ -223,10 +233,5 @@
 #define InitUSART {\
     USARTBothConfigure(USART1,__config_USART1_Baudrate, 0, 0); \
     USARTTransmitterConfigure(USART6, __config_USART6_Baudrate, 0);}
-
-/*!
-*   @brief Initialization servomotors
-*/
-#define InitServo   setServo(&Servo1, BIG_BLACK_SERVA, 20, 0x500, 0x100, 20)
 
 #endif /*STM32F401xx*/

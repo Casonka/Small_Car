@@ -42,8 +42,8 @@ __attribute__((unused)) static char RCH = 0;
 __attribute__((unused)) static char JCH = 0;
 void ADC_Init(ADC_TypeDef *ADCx)
 {
-    //prescaler divided by 8
-    ADC->CCR |= (0x3 << 16);
+    //divider set
+    ADC->CCR |= (__configADC_DIVIDER << 16);
 ////////////////////////////////////////////
 #if(__configADC_RESOLUTION == 12)
     ConfADCResolution(ADCx,0);

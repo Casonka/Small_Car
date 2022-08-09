@@ -18,7 +18,7 @@
 	</File>
 	<File name="Fil_lib\ADC.c" open="1" top="0" tabpos="8" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="6857" topLine="186" />
+			<Cursor1 position="2017" topLine="22" />
 		</Cursor>
 	</File>
 	<File name="Fil_lib\ADC.h" open="1" top="0" tabpos="9" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
@@ -48,7 +48,7 @@
 	</File>
 	<File name="Fil_lib\FilConfig.h" open="1" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="601" topLine="11" />
+			<Cursor1 position="601" topLine="0" />
 		</Cursor>
 	</File>
 	<File name="Fil_lib\freertos_lib\FreeRTOSConfig.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
@@ -88,7 +88,7 @@
 	</File>
 	<File name="Fil_lib\Regulators.c" open="1" top="0" tabpos="6" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="3223" topLine="71" />
+			<Cursor1 position="3223" topLine="0" />
 		</Cursor>
 	</File>
 	<File name="Fil_lib\Regulators.h" open="0" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
@@ -103,7 +103,7 @@
 	</File>
 	<File name="Fil_lib\TIM.h" open="1" top="0" tabpos="10" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="13907" topLine="195" />
+			<Cursor1 position="13907" topLine="182" />
 		</Cursor>
 	</File>
 	<File name="inc\main.h" open="1" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
@@ -123,7 +123,7 @@
 	</File>
 	<File name="RCR\DevBoard#3\RCR_DevBoard_3_Setup.h" open="1" top="1" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="1104" topLine="25" />
+			<Cursor1 position="1104" topLine="109" />
 		</Cursor>
 	</File>
 	<File name="RCR\RCR_BoardSelection.h" open="1" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
@@ -133,7 +133,7 @@
 	</File>
 	<File name="src\main.c" open="1" top="0" tabpos="7" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="40" topLine="0" />
+			<Cursor1 position="310" topLine="0" />
 		</Cursor>
 	</File>
 	<File name="src\startup_stm32f401xc.S" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">

@@ -10,7 +10,7 @@
 #pragma once
 #include "FilConfig.h"
 
-#if(configUSE_I2C == 1)
+#if(FIL_I2C == 1)
 
     /*!
     *   @brief I2CMasterReceiverConfigure(I2C,SPEED) - configuration I2C for receiving messages
@@ -80,4 +80,4 @@
 #define SetI2CMasterModeSlow(I2C) { I2C->CCR &= (~I2C_CCR_FS);}
 
 
-#endif /*configUSE_I2C*/
+#endif /*FIL_I2C*/

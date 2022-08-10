@@ -1,6 +1,6 @@
 #include "Robot_tasks.h"
 
-#if (configUSE_FREERTOS == 1)
+#if (FIL_FREERTOS == 1)
 
 void vApplicationTickHook(void)
 {
@@ -43,4 +43,4 @@ void vBlinkTest(void *pvParameters)
 vTaskDelete(NULL);
 }
 
-#endif /*configUSE_FREERTOS*/
+#endif /*FIL_FREERTOS*/

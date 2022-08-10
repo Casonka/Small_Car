@@ -8,7 +8,8 @@
     *       @note [FIL:RCC] RCC Source file. Include calculating functions
     */
 #include "RCC.h"
-#if (_configCALC_RCC == 1)
+#if (FIL_CALC_RCC == 1)
+
 void CalcRCCClocks(void)
 {
     if( GetPLLSRC == 1)    Clocks.PLLVCO = ((uint32_t)((HSE_VALUE) * (((float)GetPLLN) / GetPLLM)));
@@ -22,4 +23,5 @@ void CalcRCCClocks(void)
     Clocks.CurrentAPB1 = ((uint32_t)(Clocks.CurrentAHB >> PrescalerTable[GetPPRE1]));
     Clocks.CurrentAPB2 = ((uint32_t)(Clocks.CurrentAHB >> PrescalerTable[GetPPRE2]));
 }
-#endif /*_configCALC_RCC*/
+
+#endif /*FIL_CALC_RCC*/

@@ -8,7 +8,6 @@
     *       @note [FIL:ADC] ADC Source file.
     */
 #include "ADC.h"
-
 //--------------------------------------------------------------------------------//
 //---------------------------ADC Interrupts---------------------------------------//
 //--------------------------------------------------------------------------------//
@@ -22,7 +21,7 @@ void ADC_IRQHandler(void)
     AnalogReadInjected(ADC1);
     ADC1->SR = 0;
 }
-#if(configUSE_ADC == 1)
+#if(FIL_ADC == 1)
     __attribute__((unused)) static uint8_t ADC_CurrentTabs[10] =   {ADC_IN_0,
                                                                     ADC_IN_1,
                                                                     ADC_IN_2,
@@ -43,7 +42,7 @@ __attribute__((unused)) static char JCH = 0;
 void ADC_Init(ADC_TypeDef *ADCx)
 {
     //prescaler divided by 8
-    ADC->CCR |= (0x3 << 16);
+    ADC->CCR |= (__configADC_Divider << 16);
 ////////////////////////////////////////////
 #if(__configADC_RESOLUTION == 12)
     ConfADCResolution(ADCx,0);
@@ -237,4 +236,4 @@ void AnalogReadInjected(ADC_TypeDef *ADCx)
     ADC_Multiplexer_Get(ADCx,false);
 #endif /*__configCONVERT_Volts*/
 }
-#endif /*configUSE_ADC*/
+#endif /*FIL_ADC*/

@@ -22,14 +22,6 @@ void SysTick_Handler(void)
     globalTime++;
 }
 
-uint32_t startTick = 0;
-bool delay_ms(uint32_t ticks)
-{
-    if(startTick == 0) startTick = globalTime;
-    if((globalTime - startTick) < (ticks)) { return false;}
-    else startTick  = 0;
-    return true;
-}
 //---------------------------------------------------------//
 //----------------------Timer Interrupts-------------------//
 //---------------------------------------------------------//
@@ -84,7 +76,18 @@ void TIM8_UP_TIM13_IRQHandler(void)
 ResetTimSR(TIM13);
 }
 #endif /*STM32F40_41xxx*/
-#if (_configCALC_TIM == 1)
+#if (FIL_CALC_TIM == 1)
+
+uint32_t startTick = 0;
+bool delay_ms(uint32_t ticks)
+{
+    if(ticks == 0) return true;
+    if(startTick == 0) startTick = globalTime;
+    if((globalTime - startTick) < (ticks)) { return false;}
+    else startTick  = 0;
+    return true;
+}
+
     /*!
     *   @brief CalcTimStatus(TIM_TypeDef *TIMx) - Calculating Timer Status
     *       @arg TIMx - number of timer
@@ -191,35 +194,43 @@ void CalcTimClockSourse(TIM_TypeDef *TIMx)
         return false;
     }
 
-    void SetServo(Servomotor* Servo, char servoType, uint8_t mAngle, uint32_t CCR, uint32_t ARR, uint16_t ms)
+    void ServoInit(Servomotor* Servo, char servoType,TIM_TypeDef *TIMx, uint16_t ms)
     {
-        Servo->maxAngle = mAngle;
-        *Servo->CCR = CCR;
-        Servo->ARR = ARR;
+        Servo->CCR = &TIMx->CCR1;
+        Servo->ARR = TIMx->ARR;
         Servo->ms = ms;
 
-        if(servoType == BIG_BLACK_SERVA)
+        if(servoType == PDI6225MG_300)
         {
-            (*Servo).min_ms = 0.8;
-            (*Servo).max_ms = 2.2;
+            Servo->maxAngle = 300;
+            (*Servo).min_ms = 0.5;
+            (*Servo).max_ms = 2.5;
         }
-        else if(servoType == SMALL_BLUE_SERVA)
+        else if(servoType == MG996R)
         {
-            (*Servo).min_ms = 0.4;
-            (*Servo).max_ms = 2.45;
+            Servo->maxAngle = 180;
+            (*Servo).min_ms = 1.0;
+            (*Servo).max_ms = 2.0;
         }
     }
 
-
-    void SetServoAngle(Servomotor* Servo, uint8_t angle)
+    void ServoSetRange(Servomotor* Servo, uint16_t min_angle, uint16_t max_angle)
     {
+        if(min_angle >= max_angle) return;
+        Servo->Range_min = min_angle;
+        Servo->Range_max = max_angle;
+    }
+
+    void SetServoAngle(Servomotor* Servo, uint16_t angle)
+    {
+        if(Servo->Range_min != 0 && angle < Servo->Range_min) angle = Servo->Range_min;
+        if(Servo->Range_max != 0 && angle > Servo->Range_max) angle = Servo->Range_max;
         if(angle > (*Servo).maxAngle) angle = (*Servo).maxAngle;
         if(angle < 0)   angle = 0;
 
-        float min_PWM = (float)(((*Servo).ARR * (*Servo).min_ms) / (*Servo).ms);
-        float max_PWM = (float)(((*Servo).ARR * (*Servo).max_ms) / (*Servo).ms);
+        float min_PWM = (float)(((Servo->ARR) * (*Servo).min_ms) / (*Servo).ms);
+        float max_PWM = (float)(((Servo->ARR) * (*Servo).max_ms) / (*Servo).ms);
 
         *(*Servo).CCR = (uint32_t)(angle * ((max_PWM - min_PWM) / (*Servo).maxAngle) + min_PWM);
     }
-
-#endif /*_configCALC_TIM*/
+#endif /*FIL_CALC_TIM*/

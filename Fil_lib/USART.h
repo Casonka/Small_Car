@@ -10,7 +10,7 @@
 #pragma once
 #include "FilConfig.h"
 
-#if (configUSE_USART == 1)
+#if (FIL_USART == 1)
 
     /*!
     *   @brief USARTReceiverConfigure() - configuration timer with encoder interface
@@ -55,9 +55,9 @@
     #define SetUSARTOver8(USART)                (USART->CR1 |= USART_CR1_OVER8)
     #define SetUSART_DR(USART,Data)             (USART->DR = ((uint8_t)(Data)))
 //-----------------------Simple commands reset and set the state------------------------------------------------------------------------------//
-#if (_configCALC_USART == 0)
+#if (FIL_CALC_USART == 0)
     #define ConfUSARTBaud(USART,BAUD)           {USART->BRR = ((uint32_t)((USART->BRR)&(~0xFFFF))|((uint16_t)(BAUD)));}
-#elif (_configCALC_USART == 1)
+#elif (FIL_CALC_USART == 1)
     #define ConfUSARTBaud(USART,BAUD)           {USART->BRR = ((uint32_t)CalcUSARTBaudrate(USART, BAUD));}
 #else
 #error [FIL:UART/USART] Invalid arg Calc USART
@@ -71,10 +71,10 @@
     #define GetUSARTData(USART)                      ((uint8_t)(USART->DR))
     #define CheckUSARTFramingError(USART)            (USART->SR & USART_SR_FE)
     #define CheckUSARTParityError(USART)             (USART->SR & USART_SR_PE)
-#if (_configCALC_USART == 1)
+#if (FIL_CALC_USART == 1)
 //---------------------------------------Calculating---------------------------------------------------//
 
 uint16_t CalcUSARTBaudrate(USART_TypeDef *USARTx, uint32_t BaudRate);
 
-#endif /*_configCALC_USART*/
-#endif /*configUSE_USART*/
+#endif /*FIL_CALC_USART*/
+#endif /*FIL_USART*/

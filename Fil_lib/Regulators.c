@@ -9,7 +9,7 @@
     */
 #include "FilConfig.h"
 
-#if (_configCALC_Regulators == 1)
+#if (CALC_REGULATOR == 1)
 #include "Regulators.h"
 
 /*!
@@ -114,4 +114,4 @@ void PID_Low_Level(void)
     SetVoltage(EngineReg.output);
 }
 
-#endif /*_configCALC_Regulators*/
+#endif /*CALC_REGULATOR*/

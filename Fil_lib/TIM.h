@@ -10,7 +10,7 @@
 #pragma once
 #include "FilConfig.h"
 
-#if (configUSE_TIM == 1)
+#if (FIL_TIM == 1)
     /*!
     *   @brief TimPWMConfigure(TIM,prescaler,autoreset,ch1,ch2,ch3,ch4) - configuration timer in PWM mode
     *       @arg TIM - number of timer
@@ -41,7 +41,7 @@
         ConfTimARR(TIM,AUTORESET);                      \
         SetTimUpdateInterrupt(TIM);                     \
         TimStart(TIM);                                  }
-#if (_configCALC_TIM == 1)
+#if (FIL_CALC_TIM == 1)
 
     /*!
     *   @brief TimPIDConfigureAutomatic(TIM,frequency) - configuration timer in calculating mode (auto-mode)
@@ -181,7 +181,7 @@
     #define SetTimMainOutput(TIM)                           ( TIM->BDTR |= ((uint32_t)(1 << 15)))
     #define SetTimAutomaticOutput(TIM)                      ( TIM->BDTR |= ((uint32_t)(1 << 14)))
     #define SetTimUpdateGeneration(TIM)                     ( TIM->EGR |= 1)
-#if (_configCALC_TIM == 1)
+#if (FIL_CALC_TIM == 1)
 //---------------------------------------Calculating---------------------------------------------------//
 struct {
     uint32_t SourseClock;
@@ -216,26 +216,31 @@ void CalcTimPIDFrequency(TIM_TypeDef *TIMx, uint16_t freq);
 
 bool SetVoltage(float Duty);
 
-#define BIG_BLACK_SERVA   0
-#define SMALL_BLUE_SERVA  1
+#define PDI6225MG_300   0
+#define MG996R          1
 
 typedef struct
 {
-    uint32_t *CCR,
-              ARR;
+    volatile uint32_t *CCR,
+                       ARR;
     uint16_t  ms;
     float     min_ms,
               max_ms;
-    uint8_t maxAngle;
+    uint16_t maxAngle;
+    uint16_t Range_min, Range_max;
 } Servomotor;
 
-Servomotor Servo1;
-void SetServo(Servomotor* Servo, char servoType, uint8_t mAngle, uint32_t CCR, uint32_t ARR, uint16_t ms);
+void ServoInit(Servomotor* Servo, char servoType, TIM_TypeDef *TIMx, uint16_t ms);
 
-void SetServoAngle(Servomotor* Servo, uint8_t angle);
+void ServoSetRange(Servomotor* Servo, uint16_t min_angle, uint16_t max_angle);
+
+void SetServoAngle(Servomotor* Servo, uint16_t angle);
 
 bool delay_ms(uint32_t ticks);
 
-#endif /*_configCALC_TIM*/
-
-#endif /*configUSE_TIM*/
+#elif(FIL_CALC_TIM > 1)
+#error Invalid argument FIL_CALC_TIM
+#endif /*FIL_CALC_TIM*/
+#elif(FIL_TIM > 1)
+#error Invalid argument FIL_TIM
+#endif /*FIL_TIM*/

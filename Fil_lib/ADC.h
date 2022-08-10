@@ -10,7 +10,7 @@
 #pragma once
 #include "FilConfig.h"
 
-#if(configUSE_ADC == 1)
+#if(FIL_ADC == 1)
 //----------------------------------------ADC Length-------------------------------------------------------------//
 #define ADC_3_CYCLES    0
 #define ADC_15_CYCLES   1
@@ -40,6 +40,8 @@
     #define K_RESOLUTION    256.0
 #elif(__configADC_RESOLUTION == 6)
     #define K_RESOLUTION    64.0
+#else
+#error Invalid ADC Resolution argument
 #endif /*__configADC_RESOLUTION*/
 //----------------------------------------ADC Functions----------------------------------------------------------//
     /*!
@@ -210,6 +212,7 @@
     #define ADCSmpr2(CYCLES)                                    ((uint32_t)(CYCLES << 27) | (CYCLES << 24) | (CYCLES << 21) | (CYCLES << 18) | (CYCLES << 15) | (CYCLES << 12) | (CYCLES << 9) | (CYCLES << 6) | (CYCLES << 3) | (CYCLES))
     #define ADCResolution(RES)                                  ((uint32_t)(RES << 24))
 
+#ifdef __configCONVERT_Volts
 #if(__configCONVERT_Volts == 1)
 struct {
     unsigned char ADCSource[4];
@@ -231,7 +234,9 @@ struct {
 #else
 #error Invalid argument __configCONVERT_Volts
 #endif /*__configCONVERT_Volts*/
+#endif /*__configCONVERT_Volts*/
 
+#ifdef __configADC_MODE
 #if (__configADC_Mode == 3 || __configADC_Mode == 4)
 
     /*!
@@ -256,9 +261,10 @@ struct {
 #else
 #error Invalig argument __configADC_Mode
 #endif /*__configADC_Mode*/
+#endif /*__configADC_MODE*/
     void ADC_Init(ADC_TypeDef *ADCx);
 
     void AnalogReadRegular(void);
 
     void AnalogReadInjected(ADC_TypeDef *ADCx);
-#endif /*configUSE_ADC*/
+#endif /*FIL_ADC*/

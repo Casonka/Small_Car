@@ -10,6 +10,7 @@
 #pragma once
 #include "FilConfig.h"
 
+#if(FIL_RCC == 1)
     #define PORTA 0
     #define PORTB 1
     #define PORTC 2
@@ -223,3 +224,5 @@
     *       @value pin
     */
     #define pin_out(pin) ((*((uint32_t *)(GPIO_base(pin) + 0x14)))&((uint32_t)1<<(pin&0xf)))
+
+#endif /*FIL_RCC*/

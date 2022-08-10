@@ -1,6 +1,6 @@
 #include "Matrix.h"
 
-#if (_configCALC_Matrix == 1)
+#if (CALC_MATRIX == 1)
 void matrixCopy(float *m, char rows, char columns, float *new_m)
 {
   char i,j;
@@ -242,5 +242,5 @@ float mod( TVector a)
 {
   return pow(a.x * a.x + a.y * a.y, 0.5);
 }
-#endif /*_configCALC_Matrix*/
+#endif /*CALC_MATRIX*/
 

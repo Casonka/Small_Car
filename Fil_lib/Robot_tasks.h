@@ -1,7 +1,7 @@
 #pragma once
-#if (configUSE_FREERTOS == 1)
-
 #include "FilConfig.h"
+#if (FIL_FREERTOS == 1)
+
 /*!
 *   @brief vBlinkTest(void *pvParameters) - тест нормальной работы операционной системы FreeRTOS
 *       @arg nothing
@@ -10,4 +10,4 @@
 xTaskHandle xBlinkHandle;
 void vBlinkTest(void *pvParameters);
 
-#endif /*configUSE_FREERTOS*/
+#endif /*FIL_FREERTOS*/

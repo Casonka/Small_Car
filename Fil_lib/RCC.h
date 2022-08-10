@@ -9,8 +9,7 @@
     */
 #pragma once
 #include "FilConfig.h"
-
-#if (configUSE_RCC == 1)
+#if (FIL_RCC == 1)
     /*!
     *   @list Dma
     */
@@ -108,7 +107,7 @@
     */
     #define SetSYSCFG       (RCC->APB2ENR |= ((uint32_t)(1 << 14)))
 
-#if (_configCALC_RCC == 1)
+#if (FIL_CALC_RCC == 1)
     /*!
      *   @brief Get{name} - get clock part of the peripheral
      *
@@ -143,6 +142,5 @@
     }Clocks;
 
     void CalcRCCClocks(void);
-
-#endif /*_configCALC_RCC*/
-#endif /*configUSE_RCC */
+#endif /*FIL_CALC_RCC*/
+#endif /*FIL_RCC*/

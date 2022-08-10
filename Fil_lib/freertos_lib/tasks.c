@@ -28,7 +28,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-#if(configUSE_FREERTOS == 1)
+#if(FIL_FREERTOS == 1)
 /* Defining MPU_WRAPPERS_INCLUDED_FROM_API_FILE prevents task.h from redefining
  * all the API functions to use the MPU wrappers.  That should only be done when
  * task.h is included from an application file. */
@@ -5395,4 +5395,4 @@ static void prvAddCurrentTaskToDelayedList( TickType_t xTicksToWait,
 
 #endif /* if ( configINCLUDE_FREERTOS_TASK_C_ADDITIONS_H == 1 ) */
 
-#endif /*configUSE_FREERTOS*/
+#endif /*FIL_FREERTOS*/

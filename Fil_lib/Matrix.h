@@ -8,7 +8,7 @@
     *
     *       @note [RCR:Matrix] Configuration file Matrix
     */
-#if (_configCALC_Matrix == 1)
+#if (CALC_MATRIX == 1)
 
  typedef struct  {
 	float x;
@@ -33,4 +33,4 @@ TVector addition( TVector a,  TVector b);
 float mod( TVector a);
 TVector scale( TVector a, float k);
 
-#endif /*_configCALC_Matrix*/
+#endif /*CALC_MATRIX*/

@@ -9,7 +9,7 @@
     */
 #include "FilConfig.h"
 
-#if(configUSE_EXTI == 1)
+#if(FIL_EXTI == 1)
 
 //----------------------------EXTI edges------------------------------------//
 #define EXTI_RISING_EDGE    1
@@ -46,4 +46,4 @@
               }                                                                         \
         }                                                                               }
 
-#endif /*configUSE_EXTI*/
+#endif /*FIL_EXTI*/

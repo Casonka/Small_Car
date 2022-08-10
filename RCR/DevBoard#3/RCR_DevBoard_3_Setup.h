@@ -11,9 +11,34 @@
 #pragma once
 
 #include "FilConfig.h"
+/*!
+*   Custom includes
+*/
 #include "RCR_DevBoard_3.h"
-
+////////////////////////////////
 #if defined(STM32F401xx)
+/*!
+*   @note [RCR] This settings transport to FIL Driver
+*/
+#define __configUSE_RCC                   1
+#define __configUSE_GPIO                  1
+#define __configUSE_TIM                   1
+#define __configUSE_USART                 1
+#define __configUSE_DMA                   0
+#define __configUSE_I2C                   0
+#define __configUSE_ADC                   1
+#define __configUSE_EXTI                  1
+#define __configUSE_RTC                   0
+#define __configUSE_FREERTOS              0
+#define __configUSE_DeprecatedFunctions   0   // !Deprecated
+
+#define __configCALC_RCC                  1
+#define __configCALC_TIM                  1
+#define __configCALC_USART                1
+#define __configCALC_Regulators           1
+#define __configCALC_Matrix               0
+#define __configCALC_Kinematics           0
+
 //-----------------------------------------------------------------//
 /*!
 *   @note [RCR] Configuration Development Board #3
@@ -32,7 +57,6 @@
 #define __config_TIM1_CH3        0
 #define __config_TIM1_CH4        0
 
-
 #define __config_TIM5_PSC        (420 - 1)
 #define __config_TIM5_ARR        (4000)
 #define __config_TIM5_CH1        1
@@ -47,6 +71,7 @@
 *   @note [RCR] Regulator configuration { Car's engine }
 */
 #define __config_Regulator_ON           (1)
+#define __config_Regulator_Source       (TIM3)
 #define __config_Regulator_FREQ         (100)
 #define __config_Regulator_P_K          (5.0)
 #define __config_Regulator_I_K          (1.5)
@@ -67,6 +92,24 @@
 #define COMPENSATE_VALUE                (0.9)
 #define DISK_TO_REAL                    ((float)(WHEEL_LENGTH / DISKETS_ON_ROTATE * COMPENSATE_VALUE))
 #define TIME                            ((float)(1.0 / __config_Regulator_FREQ))
+/*!
+*   @brief __configKINEMATIC_CAR - Автомобильная кинематика(1 двигатель, 1 серва )
+*/
+#define __configKINEMATIC_CAR            1
+/*!
+*   @brief __configKINEMATIC_TRICYCLE - Трехколесная кинематика
+*/
+#define __configKINEMATIC_TRICYCLE       2
+/*!
+*   @brief __configKINEMATIC_FOUR_WHELLED - Четырехколесная кинематика кинематика
+*/
+#define __configKINEMATIC_FOUR_WHELLED   3
+
+/*!
+*   @note [RCR] Для использования необходимо добавить существующую конфигурацию
+*/
+#define __configKINEMATIC_TYPE          (__configKINEMATIC_CAR)
+
 /*!
 *   @note [RCR] UART/USART configuration
 */
@@ -111,6 +154,15 @@
 #define __configUSE_SENSOR_10           (-1)
 
 #define __configADC_InterruptRequest    (1)
+/*!
+*   @info Supported divider ADC frequency
+*       @note [RCR] ADC Freq = APB2 Clock (exmp. 84 MHz) / divider
+*       @arg 0 - divided by 2
+*       @arg 1 - divided by 4
+*       @arg 2 - divided by 6
+*       @arg 3 - divided by 8
+*/
+#define __configADC_Divider              (3)
 /*!
 *   @info Supported resolution ADC data
 *       @arg 12[bit]
@@ -208,7 +260,7 @@
     TimPWMConfigure(TIM1,__config_TIM1_PSC,__config_TIM1_ARR,__config_TIM1_CH1,__config_TIM1_CH2,__config_TIM1_CH3,__config_TIM1_CH4);  \
     TimPWMConfigure(TIM5,__config_TIM5_PSC,__config_TIM5_ARR,__config_TIM5_CH1,__config_TIM5_CH2,__config_TIM5_CH3,__config_TIM5_CH4);  \
     TimEncoderConfigure(TIM4);                                                                                                          \
-    TimPIDConfigureAutomatic(TIM3,__config_Regulator_FREQ);                                                                             }
+    TimPIDConfigureAutomatic(__config_Regulator_Source,__config_Regulator_FREQ);                                                        }
 
 /*!
 *   @brief Initialization interrupts

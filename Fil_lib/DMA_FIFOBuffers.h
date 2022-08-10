@@ -10,6 +10,7 @@
 #pragma once
 #include "FilConfig.h"
 
+#if(FIL_DMA == 1)
 /*!
 *   @note [FIL:DMA] This place configuration sizes of buffers
 *
@@ -102,3 +103,5 @@ extern uint8_t UART5TX_Data[UART5TX_NUMB];
 */
 extern uint8_t USART6RX_Data[USART6RX_NUMB];
 extern uint8_t USART6TX_Data[USART6TX_NUMB];
+
+#endif /*FIL_DMA*/

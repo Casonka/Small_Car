@@ -9,7 +9,7 @@
     */
 #pragma once
 #include "RCR_DevBoard_3_Setup.h"
-#if(_configCALC_Regulators == 1)
+#if(CALC_REGULATOR == 1)
 
     /*!
     *   @list P_Regulator Settings
@@ -84,4 +84,4 @@ void init_PI_Regulator(PI_Regulator Regulator);
 
     void PID_Low_Level(void);
 
-#endif /*_configCALC_Regulators*/
+#endif /*CALC_REGULATOR*/

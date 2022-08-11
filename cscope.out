@@ -1,4 +1,4 @@
-cscope 15 $HOME\Desktop\projects\RCR\4. RCR_SmallCar\small-car"               0001528418
+cscope 15 $HOME\Desktop\projects\RCR\4. RCR_SmallCar\small-car"               0001548324
 	@C:\Users\Caska\Desktop\projects\RCR\48531~1.RCR\SMALL-~1\DEV_EX~1\dev_ws.h
 
 1 #¥agm®
@@ -15,23 +15,39 @@ cscope 15 $HOME\Desktop\projects\RCR\4. RCR_SmallCar\small-car"               00
 	~"ADC.h
 "
 
-15 
+14 
 	gdi°™˚
  = 0.0;
 
-19 
+18 
 	$ADC_IRQH™dÀr
 ()
 
-24 
+20 
+	`A«logRódReguœr
+();
+
+21 
+	`A«logRódInje˘ed
+(
+ADC1
+);
+
+22 
+ADC1
+->
+SR
+ = 0;
+
+23 
 	}
 }
 
-25 #if(
+24 #if(
 FIL_ADC
  == 1)
 
-26 
+25 
 __©åibuã__
 ((
 unu£d
@@ -43,43 +59,43 @@ uöt8_t
 ADC_IN_0
 ,
 
-27 
+26 
 ADC_IN_1
 ,
 
-28 
+27 
 ADC_IN_2
 ,
 
-29 
+28 
 ADC_IN_3
 ,
 
-30 
+29 
 ADC_IN_4
 ,
 
-31 
+30 
 ADC_IN_5
 ,
 
-32 
+31 
 ADC_IN_6
 ,
 
-33 
+32 
 ADC_IN_7
 ,
 
-34 
+33 
 ADC_IN_8
 ,
 
-35 
+34 
 ADC_IN_9
 };
 
-41 
+40 
 __©åibuã__
 ((
 unu£d
@@ -87,7 +103,7 @@ unu£d
 	gRCH
  = 0;
 
-42 
+41 
 __©åibuã__
 ((
 unu£d
@@ -95,7 +111,7 @@ unu£d
 	gJCH
  = 0;
 
-43 
+42 
 	$ADC_Inô
 (
 ADC_Ty≥Def
@@ -103,7 +119,7 @@ ADC_Ty≥Def
 ADCx
 )
 
-46 
+45 
 ADC
 ->
 CCR
@@ -111,47 +127,47 @@ CCR
 __c⁄figADC_Dividî
  << 16);
 
-48 #if(
+47 #if(
 __c⁄figADC_RESOLUTION
  == 12)
 
-49 
+48 
 	`C⁄fADCResﬁuti⁄
 (
 ADCx
 ,0);
 
-50 #ñif(
+49 #ñif(
 __c⁄figADC_RESOLUTION
  == 10)
 
-51 
+50 
 	`C⁄fADCResﬁuti⁄
 (
 ADCx
 ,1);
 
-52 #ñif(
+51 #ñif(
 __c⁄figADC_RESOLUTION
  == 8)
 
-53 
+52 
 	`C⁄fADCResﬁuti⁄
 (
 ADCx
 ,2);
 
-54 #ñif(
+53 #ñif(
 __c⁄figADC_RESOLUTION
  == 6)
 
-55 
+54 
 	`C⁄fADCResﬁuti⁄
 (
 ADCx
 ,3);
 
-57 #îr‹ 
+56 #îr‹ 
 InvÆid
  
 ¨gumít
@@ -161,25 +177,25 @@ Resﬁuti⁄
 ADC
 
 
-60 #ifde‡
+59 #ifde‡
 STM32F401xx
 
 
-62 if–
+61 if–
 ADCx
  =
 ADC1
 )
 
-64 
+63 
 Buf
 [4] = {'A','D','C','1'};
 
-65 
+64 
 i
  = 0; i <= 3; i++)
 
-67 
+66 
 ADCSètus
 .
 ADCSour˚
@@ -189,15 +205,15 @@ i
 Buf
 [i];
 
-72 
+71 
 Buf
 [4] = {'A','D','C','2'};
 
-73 
+72 
 i
  = 0; i <= 3; i++)
 
-75 
+74 
 ADCSètus
 .
 ADCSour˚
@@ -207,15 +223,15 @@ i
 Buf
 [i];
 
-80 #if(
+79 #if(
 __c⁄figADC_Mode
  == 1)
 
-81 if(
+80 if(
 ADC_IN_0
  >= 0)
 
-83 
+82 
 	`ADCAddReguœrCh™√l
 (
 ADCx
@@ -227,57 +243,57 @@ ADC_480_CYCLES
 RCH
 );
 
-84 #if(
+83 #if(
 __c⁄figUSE_B©ãry_Ch¨gög
  == 1)
 
-85 #unde‡
+84 #unde‡
 __c⁄figUSE_Tem≥øtuª_Sís‹
 
 
-86 
+85 
 	`ADCAddInje˘edGroup
 (
 ADCx
 ,1,18,0,0,0);
 
-87 
+86 
 ADC
 ->
 CCR
  |= (0x1 << 22);
 
-89 #if(
+88 #if(
 __c⁄figUSE_Tem≥øtuª_Sís‹
  == 1)
 
-90 
+89 
 	`ADCAddInje˘edGroup
 (
 ADCx
 ,1,18,0,0,0);
 
-91 
+90 
 ADC
 ->
 CCR
  |= (0x1 << 23);
 
-93 
+92 
 	`ADCSim∂eC⁄figuª
 (
 ADCx
 );
 
-96 #ñif(
+95 #ñif(
 __c⁄figADC_Mode
  == 2)
 
-99 #ñif(
+98 #ñif(
 __c⁄figADC_Mode
  == 3 || __configADC_Mode == 4)
 
-100 
+99 
 	`ADCAddSögÀCh™√l
 (
 ADCx
@@ -287,11 +303,11 @@ ADC_IN_0
 ADC_480_CYCLES
 );
 
-101 if(
+100 if(
 ADC_CuºítTabs
 [1] >= 0)
 
-103 
+102 
 	`ADCAddInje˘edCh™√l
 (
 ADCx
@@ -303,15 +319,15 @@ ADC_480_CYCLES
 JCH
 );
 
-104 #if(
+103 #if(
 __c⁄figADC_Mode
  == 4)
 
-105 if(
+104 if(
 ADC_CuºítTabs
 [2] <= 16)
 
-107 
+106 
 	`ADCAddInje˘edCh™√l
 (
 ADCx
@@ -323,11 +339,11 @@ ADC_480_CYCLES
 JCH
 );
 
-108 if(
+107 if(
 ADC_CuºítTabs
 [3] <= 16)
 
-110 
+109 
 	`ADCAddInje˘edCh™√l
 (
 ADCx
@@ -339,11 +355,11 @@ ADC_480_CYCLES
 JCH
 );
 
-111 if(
+110 if(
 ADC_CuºítTabs
 [4] <= 16)
 
-113 
+112 
 	`ADCAddInje˘edCh™√l
 (
 ADCx
@@ -355,15 +371,15 @@ ADC_480_CYCLES
 JCH
 );
 
-119 #if(
+118 #if(
 __c⁄figUSE_B©ãry_Ch¨gög
  == 1)
 
-120 #unde‡
+119 #unde‡
 __c⁄figUSE_Tem≥øtuª_Sís‹
 
 
-121 
+120 
 	`ADCAddInje˘edCh™√l
 (
 ADCx
@@ -373,17 +389,17 @@ ADC_480_CYCLES
 JCH
 );
 
-122 
+121 
 ADC
 ->
 CCR
  |= (1 << 22);
 
-124 #if(
+123 #if(
 __c⁄figUSE_Tem≥øtuª_Sís‹
  == 1)
 
-125 
+124 
 	`ADCAddInje˘edCh™√l
 (
 ADCx
@@ -393,7 +409,7 @@ ADC_480_CYCLES
 JCH
 );
 
-126 
+125 
 ADC
 ->
 CCR
@@ -401,27 +417,27 @@ CCR
 ADC_CCR_VBATE
 ;
 
-128 
+127 
 	`SëADCC⁄tInje˘ed
 (
 ADCx
 );
 
-129 
+128 
 	`ADCSim∂eC⁄figuª
 (
 ADCx
 );
 
-131 
+130 
 	}
 }
 
-137 #if(
+136 #if(
 __c⁄figADC_Mode
  == 3 || __configADC_Mode == 4)
 
-139 
+138 
 	$SëMuÃùÀxî_Sèã
 (
 uöt16_t
@@ -429,169 +445,169 @@ uöt16_t
 Sèã
 )
 
-141 
+140 
 Sèã
 )
+
+143 
+	`ª£t_pö
+(
+MULPLXA_PIN
+);
 
 144 
 	`ª£t_pö
 (
-MULPLXA_PIN
+MULPLXB_PIN
 );
 
 145 
 	`ª£t_pö
 (
-MULPLXB_PIN
-);
-
-146 
-	`ª£t_pö
-(
 MULPLXC_PIN
 );
 
-149 
+148 
 	`£t_pö
 (
 MULPLXA_PIN
+);
+
+149 
+	`ª£t_pö
+(
+MULPLXB_PIN
 );
 
 150 
 	`ª£t_pö
 (
-MULPLXB_PIN
-);
-
-151 
-	`ª£t_pö
-(
 MULPLXC_PIN
 );
 
-154 
+153 
 	`ª£t_pö
 (
 MULPLXA_PIN
 );
 
-155 
+154 
 	`£t_pö
 (
 MULPLXB_PIN
 );
 
-156 
+155 
 	`ª£t_pö
 (
 MULPLXC_PIN
+);
+
+158 
+	`£t_pö
+(
+MULPLXA_PIN
 );
 
 159 
 	`£t_pö
 (
-MULPLXA_PIN
-);
-
-160 
-	`£t_pö
-(
 MULPLXB_PIN
 );
 
-161 
+160 
 	`ª£t_pö
 (
 MULPLXC_PIN
+);
+
+163 
+	`ª£t_pö
+(
+MULPLXA_PIN
 );
 
 164 
 	`ª£t_pö
 (
-MULPLXA_PIN
+MULPLXB_PIN
 );
 
 165 
-	`ª£t_pö
-(
-MULPLXB_PIN
-);
-
-166 
 	`£t_pö
 (
 MULPLXC_PIN
+);
+
+168 
+	`£t_pö
+(
+MULPLXA_PIN
 );
 
 169 
-	`£t_pö
-(
-MULPLXA_PIN
-);
-
-170 
 	`ª£t_pö
 (
 MULPLXB_PIN
 );
 
-171 
+170 
 	`£t_pö
 (
 MULPLXC_PIN
 );
 
-174 
+173 
 	`ª£t_pö
 (
 MULPLXA_PIN
+);
+
+174 
+	`£t_pö
+(
+MULPLXB_PIN
 );
 
 175 
 	`£t_pö
 (
-MULPLXB_PIN
-);
-
-176 
-	`£t_pö
-(
 MULPLXC_PIN
 );
 
-179 
+178 
 	`£t_pö
 (
 MULPLXA_PIN
 );
 
-180 
+179 
 	`£t_pö
 (
 MULPLXB_PIN
 );
 
-181 
+180 
 	`£t_pö
 (
 MULPLXC_PIN
 );
 
-184 
+183 
 	}
 }
 
-189 
+188 
 	#SögÀ_Te°
  (0)
 
 	)
 
-190 
+189 
 	gNumP‹t
  = 0;
 
-191 
+190 
 	$ADC_Mu…ùÀxî_Gë
 (
 ADC_Ty≥Def
@@ -603,15 +619,15 @@ boﬁ
 isC⁄vît
 )
 
-193 #if(
+192 #if(
 SögÀ_Te°
  == 1)
 
-194 
+193 
 	`SëMuÃùÀxî_Sèã
 (0);
 
-195 
+194 
 ADCSètus
 .
 Mu…ùÀxî1
@@ -621,31 +637,31 @@ ADCx
 JDR1
 ;
 
-197 
+196 
 åue
 )
 
-199 
+198 
 	`SëMuÃùÀxî_Sèã
 (
 NumP‹t
 );
 
-200 if–
+199 if–
 	`dñay_ms
 (4Ë=
 Ál£
 ) ;
 
-201 if(
+200 if(
 NumP‹t
  == 8)
 
-203 
+202 
 NumP‹t
  = 0;
 
-206 
+205 
 ADCSètus
 .
 Mu…ùÀxî1
@@ -657,27 +673,27 @@ ADCx
 JDR1
 ;
 
-207 
+206 
 NumP‹t
 ++;
 
-210 
+209 
 	}
 }
 
-213 
+212 
 	$A«logRódReguœr
 ()
 
-216 #if(
+215 #if(
 __c⁄figCONVERT_Vﬁts
  == 1)
 
-217 #if(
+216 #if(
 __c⁄figADC_Mode
  != 2 || __configADC_Mode != 5)
 
-218 
+217 
 ADCSètus
 .
 adc_d©a
@@ -689,15 +705,15 @@ DR
 K_RESOLUTION
 ;
 
-222 #ñif(
+221 #ñif(
 __c⁄figCONVERT_Vﬁts
  == 0)
 
-223 #if(
+222 #if(
 __c⁄figADC_Mode
  != 2 || __configADC_Mode != 5)
 
-224 
+223 
 ADCSètus
 .
 adc_d©a
@@ -707,11 +723,11 @@ ADC1
 DR
 ;
 
-227 
+226 
 	}
 }
 
-229 
+228 
 	$A«logRódInje˘ed
 (
 ADC_Ty≥Def
@@ -719,11 +735,11 @@ ADC_Ty≥Def
 ADCx
 )
 
-232 #if(
+231 #if(
 __c⁄figCONVERT_Vﬁts
  == 1)
 
-233 
+232 
 	`ADC_Mu…ùÀxî_Gë
 (
 ADCx
@@ -731,11 +747,11 @@ ADCx
 åue
 );
 
-236 #ñif(
+235 #ñif(
 __c⁄figCONVERT_Vﬁts
  == 0)
 
-237 
+236 
 	`ADC_Mu…ùÀxî_Gë
 (
 ADCx
@@ -743,7 +759,7 @@ ADCx
 Ál£
 );
 
-239 
+238 
 	}
 }
 
@@ -2223,20 +2239,6 @@ ADC_Ty≥Def
 ADCx
 );
 
-270 #ñi‡(
-FIL_ADC
- > 1)
-
-271 #îr‹ 
-InvÆid
- 
-ö˛ude
- 
-RCC
- 
-¨gumít
-
-
 	@C:\Users\Caska\Desktop\projects\RCR\48531~1.RCR\SMALL-~1\Fil_lib\DMA.c
 
 11 
@@ -2378,7 +2380,7 @@ c⁄figUSE_DMA
 "
 
 13 #i‡(
-c⁄figUSE_DMA
+FIL_DMA
  == 1)
 
 16 
@@ -4301,109 +4303,113 @@ DMA_SxCR_PINC
 	~"FûC⁄fig.h
 "
 
-17 
+13 #if(
+FIL_DMA
+ == 1)
+
+18 
 	#ADC1_NUMB
  1
 
 	)
 
-19 #i‡
+20 #i‡
 deföed
 (
 STM32F40_41xxx
 )
 
-20 
+21 
 	#ADC2_NUMB
  2
 
 	)
 
-21 
+22 
 	#ADC3_NUMB
  3
 
 	)
 
-24 
+25 
 	#USART1RX_NUMB
  8
 
 	)
 
-25 
+26 
 	#USART1TX_NUMB
  8
 
 	)
 
-26 
+27 
 	#USART2RX_NUMB
  8
 
 	)
 
-27 
+28 
 	#USART2TX_NUMB
  8
 
 	)
 
-29 #i‡
+30 #i‡
 deföed
 (
 STM32F40_41xxx
 )
 
-30 
+31 
 	#USART3RX_NUMB
  8
 
 	)
 
-31 
+32 
 	#USART3TX_NUMB
  8
 
 	)
 
-32 
+33 
 	#UART4RX_NUMB
  8
 
 	)
 
-33 
+34 
 	#UART4TX_NUMB
  8
 
 	)
 
-34 
+35 
 	#UART5RX_NUMB
  8
 
 	)
 
-35 
+36 
 	#UART5TX_NUMB
  8
 
 	)
 
-38 
+39 
 	#USART6RX_NUMB
  8
 
 	)
 
-39 
+40 
 	#USART6TX_NUMB
  8
 
 	)
 
-46 
+47 
 uöt16_t
  
 ADC1_D©a
@@ -4411,13 +4417,13 @@ ADC1_D©a
 ADC1_NUMB
 ];
 
-48 #i‡
+49 #i‡
 deföed
 (
 STM32F40_41xxx
 )
 
-53 
+54 
 uöt16_t
  
 ADC2_D©a
@@ -4425,7 +4431,7 @@ ADC2_D©a
 ADC2_NUMB
 ];
 
-59 
+60 
 uöt16_t
  
 ADC3_D©a
@@ -4433,7 +4439,7 @@ ADC3_D©a
 ADC3_NUMB
 ];
 
-66 
+67 
 uöt8_t
  
 USART1RX_D©a
@@ -4441,7 +4447,7 @@ USART1RX_D©a
 USART1RX_NUMB
 ];
 
-67 
+68 
 uöt8_t
  
 USART1TX_D©a
@@ -4449,7 +4455,7 @@ USART1TX_D©a
 USART1TX_NUMB
 ];
 
-73 
+74 
 uöt8_t
  
 USART2RX_D©a
@@ -4457,7 +4463,7 @@ USART2RX_D©a
 USART2RX_NUMB
 ];
 
-74 
+75 
 uöt8_t
  
 USART2TX_D©a
@@ -4465,13 +4471,13 @@ USART2TX_D©a
 USART2TX_NUMB
 ];
 
-76 #i‡
+77 #i‡
 deföed
 (
 STM32F40_41xxx
 )
 
-81 
+82 
 uöt8_t
  
 USART3RX_D©a
@@ -4479,7 +4485,7 @@ USART3RX_D©a
 USART3RX_NUMB
 ];
 
-82 
+83 
 uöt8_t
  
 USART3TX_D©a
@@ -4487,7 +4493,7 @@ USART3TX_D©a
 USART3TX_NUMB
 ];
 
-88 
+89 
 uöt8_t
  
 UART4RX_D©a
@@ -4495,7 +4501,7 @@ UART4RX_D©a
 UART4RX_NUMB
 ];
 
-89 
+90 
 uöt8_t
  
 UART4TX_D©a
@@ -4503,7 +4509,7 @@ UART4TX_D©a
 UART4TX_NUMB
 ];
 
-95 
+96 
 uöt8_t
  
 UART5RX_D©a
@@ -4511,7 +4517,7 @@ UART5RX_D©a
 UART5RX_NUMB
 ];
 
-96 
+97 
 uöt8_t
  
 UART5TX_D©a
@@ -4519,7 +4525,7 @@ UART5TX_D©a
 UART5TX_NUMB
 ];
 
-103 
+104 
 uöt8_t
  
 USART6RX_D©a
@@ -4527,7 +4533,7 @@ USART6RX_D©a
 USART6RX_NUMB
 ];
 
-104 
+105 
 uöt8_t
  
 USART6TX_D©a
@@ -4698,7 +4704,7 @@ PR
 "
 
 12 #if(
-c⁄figUSE_EXTI
+FIL_EXTI
  == 1)
 
 15 
@@ -4822,72 +4828,94 @@ PIN
 "
 
 18 
-	~"RCR_BﬂrdSñe˘i⁄.h
+	~"BﬂrdSñe˘i⁄.h
 "
 
 20 
 	#FIL_RCC
- 1
+ 
+__c⁄figUSE_RCC
+
 
 	)
 
 21 
 	#FIL_GPIO
- 1
+ 
+__c⁄figUSE_GPIO
+
 
 	)
 
 22 
 	#FIL_TIM
- 0
+ 
+__c⁄figUSE_TIM
+
 
 	)
 
 23 
 	#FIL_USART
- 0
+ 
+__c⁄figUSE_USART
+
 
 	)
 
 24 
 	#FIL_DMA
- 0
+ 
+__c⁄figUSE_DMA
+
 
 	)
 
 25 
 	#FIL_I2C
- 0
+ 
+__c⁄figUSE_I2C
+
 
 	)
 
 26 
 	#FIL_ADC
- 0
+ 
+__c⁄figUSE_ADC
+
 
 	)
 
 27 
 	#FIL_EXTI
- 0
+ 
+__c⁄figUSE_EXTI
+
 
 	)
 
 28 
 	#FIL_RTC
- 0
+ 
+__c⁄figUSE_RTC
+
 
 	)
 
 29 
 	#FIL_FREERTOS
- 0
+ 
+__c⁄figUSE_FREERTOS
+
 
 	)
 
 30 
 	#FIL_Dïªˇãd
- 0
+ 
+__c⁄figUSE_DïªˇãdFun˘i⁄s
+
 
 31 
 
@@ -4895,37 +4923,49 @@ PIN
 
 32 
 	#FIL_CALC_RCC
- 1
+ 
+__c⁄figCALC_RCC
+
 
 	)
 
 33 
 	#FIL_CALC_TIM
- 0
+ 
+__c⁄figCALC_TIM
+
 
 	)
 
 34 
 	#FIL_CALC_USART
- 0
+ 
+__c⁄figCALC_USART
+
 
 	)
 
 35 
 	#CALC_REGULATOR
- 0
+ 
+__c⁄figCALC_Reguœt‹s
+
 
 	)
 
 36 
 	#CALC_MATRIX
- 0
+ 
+__c⁄figCALC_M©rix
+
 
 	)
 
 37 
 	#CALC_KINEMATICS
- 0
+ 
+__c⁄figCALC_Köem©ics
+
 
 	)
 
@@ -5002,7 +5042,7 @@ FIL_FREERTOS
 "
 
 70 
-	~"Tasks.h
+	~"RobŸ_èsks.h
 "
 
 74 #if(
@@ -5013,89 +5053,221 @@ FIL_RCC
 	~"RCC.h
 "
 
-77 #if(
+76 #ñif(
+FIL_RCC
+ > 1 || FIL_RCC < 0)
+
+77 #îr‹ 
+InvÆid
+ 
+¨gumít
+ 
+FIL_RCC
+
+
+79 #if(
 FIL_GPIO
  == 1)
 
-78 
+80 
 	~"GPIO.h
 "
 
-80 #if(
+81 #ñif(
+FIL_GPIO
+ > 1 || FIL_GPIO < 0)
+
+82 #îr‹ 
+InvÆid
+ 
+¨gumít
+ 
+FIL_GPIO
+
+
+84 #if(
 FIL_TIM
  == 1)
 
-81 
+85 
 	~"TIM.h
 "
 
-83 #if(
+86 #ñif(
+FIL_TIM
+ > 1 || FIL_TIM < 0)
+
+87 #îr‹ 
+InvÆid
+ 
+¨gumít
+ 
+FIL_TIM
+
+
+89 #if(
 FIL_USART
  == 1)
 
-84 
+90 
 	~"USART.h
 "
 
-86 #if(
+91 #ñif(
+FIL_USART
+ > 1 || FIL_USART < 0)
+
+92 #îr‹ 
+InvÆid
+ 
+¨gumít
+ 
+FIL_USART
+
+
+94 #if(
 FIL_DMA
  == 1)
 
-87 
+95 
 	~"DMA.h
 "
 
-88 
+96 
 	~"DMA_FIFOBuf„rs.h
 "
 
-90 #if(
-c⁄figUSE_ADC
+97 #ñif(
+FIL_DMA
+ > 1 || FIL_DMA < 0)
+
+98 #îr‹ 
+InvÆid
+ 
+¨gumít
+ 
+FIL_DMA
+
+
+100 #if(
+FIL_ADC
  == 1)
 
-91 
+101 
 	~"ADC.h
 "
 
-93 #if(
+102 #ñif(
+FIL_ADC
+ > 1 || FIL_ADC < 0)
+
+103 #îr‹ 
+InvÆid
+ 
+¨gumít
+ 
+FIL_ADC
+
+
+105 #if(
 FIL_I2C
  == 1)
 
-94 
+106 
 	~"I2C.h
 "
 
-96 #if(
+107 #ñif(
+FIL_I2C
+ > 1 || FIL_I2C < 0)
+
+108 #îr‹ 
+InvÆid
+ 
+¨gumít
+ 
+FIL_I2C
+
+
+110 #if(
 FIL_EXTI
  == 1)
 
-97 
+111 
 	~"EXTI.h
 "
 
-99 #if(
+112 #ñif(
+FIL_EXTI
+ > 1 || FIL_EXTI < 0)
+
+113 #îr‹ 
+InvÆid
+ 
+¨gumít
+ 
+FIL_EXTI
+
+
+115 #if(
 CALC_MATRIX
  == 1)
 
-100 
+116 
 	~"M©rix.h
 "
 
-102 #if(
+117 #ñif(
+CALC_MATRIX
+ > 1 || CALC_MATRIX < 0)
+
+118 #îr‹ 
+InvÆid
+ 
+¨gumít
+ 
+CALC_MATRIX
+
+
+120 #if(
 CALC_REGULATOR
  == 1)
 
-103 
+121 
 	~"Reguœt‹s.h
 "
 
-105 #if(
+122 #ñif(
+CALC_REGULATOR
+ > 1 || CALC_REGULATOR < 0)
+
+123 #îr‹ 
+InvÆid
+ 
+¨gumít
+ 
+CALC_REGULATOR
+
+
+125 #if(
 CALC_KINEMATICS
  == 1)
 
-106 
+126 
 	~"KINEMATICS.h
 "
+
+127 #ñif(
+CALC_KINEMATICS
+ > 1 || CALC_KINEMATICS < 0)
+
+128 #îr‹ 
+InvÆid
+ 
+¨gumít
+ 
+CALC_KINEMATICS
+
 
 	@C:\Users\Caska\Desktop\projects\RCR\48531~1.RCR\SMALL-~1\Fil_lib\FREERT~1\DEPREC~1.H
 
@@ -35882,7 +36054,7 @@ __˝lu•lus
 >
 
 31 #if(
-c⁄figUSE_FREERTOS
+FIL_FREERTOS
  == 1)
 
 35 
@@ -51591,51 +51763,55 @@ uöt32_t
 	~"I2C.h
 "
 
-14 
+14 #if(
+FIL_I2C
+ == 1)
+
+15 
 	$I2C1_EV_IRQH™dÀr
 ()
 
-17 
+18 
 	}
 }
 
-19 
+20 
 	$I2C1_ER_IRQH™dÀr
 ()
 
-22 
+23 
 	}
 }
 
-24 
+25 
 	$I2C2_EV_IRQH™dÀr
 ()
 
-27 
+28 
 	}
 }
 
-29 
+30 
 	$I2C2_ER_IRQH™dÀr
 ()
 
-32 
+33 
 	}
 }
 
-34 
+35 
 	$I2C3_EV_IRQH™dÀr
 ()
 
-37 
+38 
 	}
 }
 
-39 
+40 
 	$I2C3_ER_IRQH™dÀr
 ()
 
-42 
+43 
 	}
 }
 
@@ -51650,11 +51826,11 @@ uöt32_t
 "
 
 13 #if(
-c⁄figUSE_I2C
+FIL_I2C
  == 1)
 
 24 
-	#I2CMa°îRe˚ivîC⁄figuª
+	#I2CMa°îC⁄figuª
 (
 I2C
 , 
@@ -51680,40 +51856,34 @@ SPEED
 ); \
 
 27 
-	`SëI2CPîùhE«bÀ
+	`Re£tI2CPîùhE«bÀ
 (
 I2C
 ); \
 
-28 (
+28 if(
 SPEED
  =
 I2C_Slow
-Ë? 
-	`SëI2CMa°îModeFa°
-(
-I2C
-) : \
-
-29 
+Ë{ 
 	`SëI2CMa°îModeSlow
 (
 I2C
 ); \
 
-30 (
-SPEED
- =
-I2C_Slow
-Ë? 
+29 
 	`C⁄fI2CTri£
 (
 I2C
 ,
 Ri£TimeDeÁu…SM
-): \
+);}\
 
-31 
+30 if(
+SPEED
+ =
+I2C_Fa°
+Ë{
 	`C⁄fI2CTri£
 (
 I2C
@@ -51721,7 +51891,19 @@ I2C
 Ri£TimeDeÁu…FM
 ); \
 
+31 
+	`SëI2CMa°îModeFa°
+(
+I2C
+);} \
+
 32 
+	`SëI2CPîùhE«bÀ
+(
+I2C
+); \
+
+33 
 	`C⁄fI2CAddªss
 (
 I2C
@@ -51731,31 +51913,25 @@ ADDRESS
 
 	)
 
-41 
-	#I2CMa°îTønsmôãrC⁄figuª
-()
+42 
+	#I2CSœveC⁄figuª
+(
+I2C
+, 
+SPEED
+, 
+ADDRESS
+)
 
 	)
 
-50 
-	#I2CSœveRe˚ivîC⁄figuª
-()
-
-	)
-
-59 
-	#I2CSœveTønsmôãrC⁄figuª
-()
-
-	)
-
-62 
+45 
 	#I2CDeÁu…FREQ
  ((
 uöt16_t
 )(0x2A))
 
-63 
+46 
 	#C⁄fI2CFªq
 (
 I2C
@@ -51771,7 +51947,7 @@ I2C_CR2_FREQ
 
 	)
 
-65 
+48 
 	#Ri£TimeDeÁu…SM
  ((
 uöt16_t
@@ -51779,7 +51955,7 @@ uöt16_t
 
 	)
 
-66 
+49 
 	#Ri£TimeDeÁu…FM
  ((
 uöt16_t
@@ -51787,21 +51963,23 @@ uöt16_t
 
 	)
 
-67 
+50 
 	#C⁄fI2CTri£
 (
 I2C
 ,
+vTRISE
+Ë{ I2C->
 TRISE
-Ë{ I2C->TRISE = ((
+ = ((
 uöt32_t
 )(I2C->TRISE & ((uöt32_t)(~
 I2C_TRISE_TRISE
-))Ë| ((uöt32_t)TRISE));}
+))Ë| ((uöt32_t)vTRISE));}
 
 	)
 
-69 
+52 
 	#C⁄fI2CAddªss
 (
 I2C
@@ -51817,31 +51995,35 @@ I2C_OAR1_ADD1_7
 
 	)
 
-71 
+54 
 	#I2C_Slow
  (420)
 
 	)
 
-72 
+55 
 	#I2C_Fa°
  (105)
 
 	)
 
-73 
+56 
 	#C⁄fI2CCCR
 (
 I2C
 ,
+SPEED
+Ë{ I2C->
 CCR
-Ë{ I2C->CCR = ((
+ = ((
 uöt32_t
-)(I2C->CCR & ((uöt32_t)(~0x3F))Ë| ((uöt32_t)CCR));}
+)(I2C->CCR & ((uöt32_t)(~
+I2C_CCR_CCR
+))Ë| ((uöt32_t)SPEED));}
 
 	)
 
-76 
+59 
 	#SëI2CMa°îModeFa°
 (
 I2C
@@ -51853,7 +52035,7 @@ I2C_CCR_FS
 
 	)
 
-77 
+60 
 	#SëI2CPîùhE«bÀ
 (
 I2C
@@ -51865,7 +52047,7 @@ I2C_CR1_PE
 
 	)
 
-78 
+61 
 	#I2CSèπ
 (
 I2C
@@ -51877,7 +52059,7 @@ I2C_CR1_START
 
 	)
 
-80 
+63 
 	#SëI2CMa°îModeSlow
 (
 I2C
@@ -51889,6 +52071,88 @@ I2C_CCR_FS
 
 	)
 
+64 
+	#Re£tI2CPîùhE«bÀ
+(
+I2C
+Ë{ I2C->
+CR1
+ &(~
+I2C_CR1_PE
+);}
+
+	)
+
+66 
+	#I2CBusyEvít
+(
+I2C
+Ë((I2C->
+SR2
+ & 
+I2C_SR2_BUSY
+Ë=1)
+
+	)
+
+67 
+	#I2CSèπBôEvít
+(
+I2C
+Ë((I2C->
+SR1
+ & 
+I2C_SR1_SB
+Ë=1)
+
+	)
+
+68 
+	#I2CAddªssSítEvít
+(
+I2C
+Ë((I2C->
+SR1
+ & 
+I2C_SR1_ADDR
+Ë=1)
+
+	)
+
+69 
+	#I2CMa°îModeEvít
+(
+I2C
+Ë((I2C->
+SR2
+ & 
+I2C_SR2_MSL
+Ë=1)
+
+	)
+
+70 
+	#I2CD©aEm±yEvít
+(
+I2C
+Ë((I2C->
+SR1
+ & 
+I2C_SR1_TxE
+Ë=1)
+
+	)
+
+72 #i‚de‡
+__c⁄figI2C_TIMEOUT
+
+
+73 
+	#__c⁄figI2C_TIMEOUT
+ 20000
+
+	)
+
 	@C:\Users\Caska\Desktop\projects\RCR\48531~1.RCR\SMALL-~1\Fil_lib\Matrix.c
 
 1 
@@ -51896,7 +52160,7 @@ I2C_CCR_FS
 "
 
 3 #i‡(
-_c⁄figCALC_M©rix
+CALC_MATRIX
  == 1)
 
 4 
@@ -53060,7 +53324,7 @@ y
 
 
 11 #i‡(
-_c⁄figCALC_M©rix
+CALC_MATRIX
  == 1)
 
 14 
@@ -53383,13 +53647,13 @@ GëPPRE2
 
 	@C:\Users\Caska\Desktop\projects\RCR\48531~1.RCR\SMALL-~1\Fil_lib\RCC.h
 
-10 
-	~"FûC⁄fig.h
-"
-
-11 #¥agm®
+10 #¥agm®
 ⁄˚
 
+
+11 
+	~"FûC⁄fig.h
+"
 
 12 #i‡(
 FIL_RCC
@@ -54810,7 +55074,7 @@ PID_Low_Levñ
 "
 
 3 #i‡(
-c⁄figUSE_FREERTOS
+FIL_FREERTOS
  == 1)
 
 5 
@@ -54873,13 +55137,13 @@ NULL
 ⁄˚
 
 
-2 #i‡(
-c⁄figUSE_FREERTOS
- == 1)
-
-4 
+2 
 	~"FûC⁄fig.h
 "
+
+3 #i‡(
+FIL_FREERTOS
+ == 1)
 
 10 
 xTaskH™dÀ
@@ -54899,41 +55163,159 @@ pvP¨amëîs
 	~"TIM.h
 "
 
-11 
+12 
 uöt32_t
  
 	gglobÆTime
  = 0;
 
-12 #i‡(
-FIL_CALC_TIM
- == 1)
-
-18 
+19 
 	$SysTick_H™dÀr
 ()
 
-21 
+22 
 	`CÆcTimSètus
 (
 TIM5
 );
 
-22 
+23 
 globÆTime
 ++;
 
-23 
+24 
 	}
 }
 
-25 
+25 #i‡(
+FIL_CALC_TIM
+ == 1)
+
+29 
+	$TIM1_IRQH™dÀr
+()
+
+32 
+	`Re£tTimSR
+(
+TIM1
+);
+
+33 
+	}
+}
+
+35 
+	$TIM2_IRQH™dÀr
+()
+
+38 
+	`Re£tTimSR
+(
+TIM2
+);
+
+39 
+	}
+}
+
+41 
+	$TIM3_IRQH™dÀr
+()
+
+44 
+	`Re£tTimSR
+(
+TIM3
+);
+
+45 
+	}
+}
+
+47 
+	$TIM4_IRQH™dÀr
+()
+
+50 
+	`Re£tTimSR
+(
+TIM4
+);
+
+51 
+	}
+}
+
+53 
+	$TIM5_IRQH™dÀr
+()
+
+57 
+	`Re£tTimSR
+(
+TIM5
+);
+
+58 
+	}
+}
+
+60 #i‡
+deföed
+(
+STM32F40_41xxx
+)
+
+61 
+	$TIM6_DAC_IRQH™dÀr
+()
+
+64 
+	`Re£tTimSR
+(
+TIM6
+);
+
+65 
+	}
+}
+
+68 
+	$TIM7_IRQH™dÀr
+()
+
+71 
+	`Re£tTimSR
+(
+TIM7
+);
+
+72 
+	}
+}
+
+74 
+	$TIM8_UP_TIM13_IRQH™dÀr
+()
+
+77 
+	`Re£tTimSR
+(
+TIM13
+);
+
+78 
+	}
+}
+
+80 
 uöt32_t
  
 	g°¨tTick
  = 0;
 
-26 
+81 
 boﬁ
  
 	$dñay_ms
@@ -54943,19 +55325,19 @@ uöt32_t
 ticks
 )
 
-28 if(
+83 if(
 ticks
  =0Ë 
 åue
 ;
 
-29 if(
+84 if(
 °¨tTick
  =0Ë°¨tTick = 
 globÆTime
 ;
 
-30 if((
+85 if((
 globÆTime
  - 
 °¨tTick
@@ -54965,137 +55347,19 @@ ticks
 Ál£
 ;}
 
-31 
+86 
 °¨tTick
  = 0;
 
-32  
+87  
 åue
 ;
 
-33 
+88 
 	}
 }
 
-37 
-	$TIM1_IRQH™dÀr
-()
-
-40 
-	`Re£tTimSR
-(
-TIM1
-);
-
-41 
-	}
-}
-
-43 
-	$TIM2_IRQH™dÀr
-()
-
-46 
-	`Re£tTimSR
-(
-TIM2
-);
-
-47 
-	}
-}
-
-49 
-	$TIM3_IRQH™dÀr
-()
-
-52 
-	`Re£tTimSR
-(
-TIM3
-);
-
-53 
-	}
-}
-
-55 
-	$TIM4_IRQH™dÀr
-()
-
-58 
-	`Re£tTimSR
-(
-TIM4
-);
-
-59 
-	}
-}
-
-61 
-	$TIM5_IRQH™dÀr
-()
-
-65 
-	`Re£tTimSR
-(
-TIM5
-);
-
-66 
-	}
-}
-
-68 #i‡
-deföed
-(
-STM32F40_41xxx
-)
-
-69 
-	$TIM6_DAC_IRQH™dÀr
-()
-
-72 
-	`Re£tTimSR
-(
-TIM6
-);
-
-73 
-	}
-}
-
-76 
-	$TIM7_IRQH™dÀr
-()
-
-79 
-	`Re£tTimSR
-(
-TIM7
-);
-
-80 
-	}
-}
-
-82 
-	$TIM8_UP_TIM13_IRQH™dÀr
-()
-
-85 
-	`Re£tTimSR
-(
-TIM13
-);
-
-86 
-	}
-}
-
-93 
+95 
 	$CÆcTimSètus
 (
 TIM_Ty≥Def
@@ -55103,13 +55367,13 @@ TIM_Ty≥Def
 TIMx
 )
 
-95 
+97 
 	`CÆcTimClockSour£
 (
 TIMx
 );
 
-97 
+99 
 TIMSètus
 .
 DutyCH1
@@ -55123,7 +55387,7 @@ CCR1
 ARR
  * 100));
 
-98 
+100 
 TIMSètus
 .
 DutyCH2
@@ -55137,7 +55401,7 @@ CCR2
 ARR
  * 100));
 
-99 
+101 
 TIMSètus
 .
 DutyCH3
@@ -55151,7 +55415,7 @@ CCR3
 ARR
  * 100));
 
-100 
+102 
 TIMSètus
 .
 DutyCH4
@@ -55165,7 +55429,7 @@ CCR4
 ARR
  * 100));
 
-101 
+103 
 TIMSètus
 .
 Fªquícy
@@ -55179,11 +55443,11 @@ PSC
 ARR
 ));
 
-102 
+104 
 	}
 }
 
-109 
+111 
 	$CÆcTimPIDFªquícy
 (
 TIM_Ty≥Def
@@ -55195,13 +55459,13 @@ uöt16_t
 ‰eq
 )
 
-111 
+113 
 	`CÆcTimClockSour£
 (
 TIMx
 );
 
-113 
+115 
 TIMx
 ->
 PSC
@@ -55215,7 +55479,7 @@ TIMSètus
 Sour£Clock
  / 1000000)) :
 
-114 (
+116 (
 ‰eq
  >10000Ë? ((
 uöt32_t
@@ -55225,7 +55489,7 @@ TIMSètus
 Sour£Clock
  / 10000)) : ((uint32_t)(TIMStatus.SourseClock / 100000));
 
-115 
+117 
 TIMx
 ->
 ARR
@@ -55241,17 +55505,17 @@ PSC
 ‰eq
 )));
 
-116 
+118 
 TIMx
 ->
 PSC
  -= 1;
 
-117 
+119 
 	}
 }
 
-124 
+126 
 	$CÆcTimClockSour£
 (
 TIM_Ty≥Def
@@ -55259,17 +55523,17 @@ TIM_Ty≥Def
 TIMx
 )
 
-126 
+128 
 	`CÆcRCCClocks
 ();
 
-127 #i‡
+129 #i‡
 	`deföed
 (
 STM32F401xx
 )
 
-128 if(
+130 if(
 TIMx
  =
 TIM1
@@ -55281,7 +55545,7 @@ TIM10
 TIM11
 )
 
-130 
+132 
 TIMSètus
 .
 Sour£Clock
@@ -55291,7 +55555,7 @@ Clocks
 CuºítAPB2
 ;
 
-132 if(
+134 if(
 TIMx
  =
 TIM2
@@ -55303,7 +55567,7 @@ TIM4
 TIM5
 )
 
-134 
+136 
 TIMSètus
 .
 Sour£Clock
@@ -55313,13 +55577,13 @@ Clocks
 CuºítAPB1
 ;
 
-136 #ñi‡
+138 #ñi‡
 	`deföed
 (
 STM32F40_41xxx
 )
 
-137 if(
+139 if(
 TIMx
  =
 TIM1
@@ -55333,7 +55597,7 @@ TIM10
 TIM11
 )
 
-139 
+141 
 TIMSètus
 .
 Sour£Clock
@@ -55343,7 +55607,7 @@ Clocks
 CuºítAPB2
 ;
 
-141 if(
+143 if(
 TIMx
  =
 TIM2
@@ -55365,7 +55629,7 @@ TIM13
 TIM14
 )
 
-143 
+145 
 TIMSètus
 .
 Sour£Clock
@@ -55375,11 +55639,11 @@ Clocks
 CuºítAPB1
 ;
 
-146 
+148 
 	}
 }
 
-154 
+156 
 boﬁ
  
 	$SëPWM
@@ -55391,19 +55655,19 @@ CCR_Pö
 Duty
 )
 
-156 if(
+158 if(
 Duty
  > 1.0) Duty = 1.0;
 
-157 if(
+159 if(
 Duty
  < -1.0) Duty = -1.0;
 
-158 if(
+160 if(
 Duty
  >= 0)
 
-160 *
+162 *
 CCR_Pö
  = ((
 öt32_t
@@ -55413,11 +55677,11 @@ Duty
 MAX_PWM
 ));
 
-161  
+163  
 åue
 ;
 
-165 *
+167 *
 CCR_Pö
  = ((
 öt32_t
@@ -55427,19 +55691,19 @@ MAX_PWM
 Duty
  * MAX_PWM)));
 
-166  
+168  
 åue
 ;
 
-168  
+170  
 Ál£
 ;
 
-169 
+171 
 	}
 }
 
-177 
+179 
 boﬁ
  
 	$SëVﬁège
@@ -55447,17 +55711,17 @@ boﬁ
 Duty
 )
 
-179 if(
+181 if(
 Duty
  >= 0)
 
-181 
+183 
 	`ª£t_pö
 (
 BTN1_DIR_PIN
 );
 
-182 
+184 
 	`SëPWM
 (
 BTN1_CCR
@@ -55465,17 +55729,17 @@ BTN1_CCR
 Duty
 );
 
-183  
+185  
 åue
 ;
 
-187 
+189 
 	`£t_pö
 (
 BTN1_DIR_PIN
 );
 
-188 
+190 
 	`SëPWM
 (
 BTN1_CCR
@@ -55483,19 +55747,19 @@ BTN1_CCR
 Duty
 );
 
-189  
+191  
 åue
 ;
 
-191  
+193  
 Ál£
 ;
 
-192 
+194 
 	}
 }
 
-194 
+196 
 	$SîvoInô
 (
 SîvomŸ‹
@@ -55513,7 +55777,7 @@ uöt16_t
 ms
 )
 
-196 
+198 
 Sîvo
 ->
 CCR
@@ -55523,7 +55787,7 @@ TIMx
 CCR1
 ;
 
-197 
+199 
 Sîvo
 ->
 ARR
@@ -55531,65 +55795,65 @@ ARR
 TIMx
 ->ARR;
 
-198 
+200 
 Sîvo
 ->
 ms
  = ms;
 
-200 if(
+202 if(
 £rvoTy≥
  =
 PDI6225MG_300
 )
 
-202 
+204 
 Sîvo
 ->
 maxAngÀ
  = 300;
 
-203 (*
+205 (*
 Sîvo
 ).
 mö_ms
  = 0.5;
 
-204 (*
+206 (*
 Sîvo
 ).
 max_ms
  = 2.5;
 
-206 if(
+208 if(
 £rvoTy≥
  =
 MG996R
 )
 
-208 
+210 
 Sîvo
 ->
 maxAngÀ
  = 180;
 
-209 (*
+211 (*
 Sîvo
 ).
 mö_ms
  = 1.0;
 
-210 (*
+212 (*
 Sîvo
 ).
 max_ms
  = 2.0;
 
-212 
+214 
 	}
 }
 
-214 
+216 
 	$SîvoSëR™ge
 (
 SîvomŸ‹
@@ -55603,13 +55867,13 @@ mö_™gÀ
 max_™gÀ
 )
 
-216 if(
+218 if(
 mö_™gÀ
  >
 max_™gÀ
 ) ;
 
-217 
+219 
 Sîvo
 ->
 R™ge_mö
@@ -55617,7 +55881,7 @@ R™ge_mö
 mö_™gÀ
 ;
 
-218 
+220 
 Sîvo
 ->
 R™ge_max
@@ -55625,11 +55889,11 @@ R™ge_max
 max_™gÀ
 ;
 
-219 
+221 
 	}
 }
 
-221 
+223 
 	$SëSîvoAngÀ
 (
 SîvomŸ‹
@@ -55641,7 +55905,7 @@ uöt16_t
 ™gÀ
 )
 
-223 if(
+225 if(
 Sîvo
 ->
 R™ge_mö
@@ -55649,7 +55913,7 @@ R™ge_mö
 ™gÀ
  < Servo->Range_min)ángle = Servo->Range_min;
 
-224 if(
+226 if(
 Sîvo
 ->
 R™ge_max
@@ -55657,7 +55921,7 @@ R™ge_max
 ™gÀ
  > Servo->Range_max)ángle = Servo->Range_max;
 
-225 if(
+227 if(
 ™gÀ
  > (*
 Sîvo
@@ -55665,11 +55929,11 @@ Sîvo
 maxAngÀ
 )ángle = (*Servo).maxAngle;
 
-226 if(
+228 if(
 ™gÀ
  < 0)ángle = 0;
 
-228 
+230 
 mö_PWM
  = ()(((
 Sîvo
@@ -55681,7 +55945,7 @@ mö_ms
 ms
 );
 
-229 
+231 
 max_PWM
  = ()(((
 Sîvo
@@ -55693,7 +55957,7 @@ max_ms
 ms
 );
 
-231 *(*
+233 *(*
 Sîvo
 ).
 CCR
@@ -55709,7 +55973,7 @@ mö_PWM
 maxAngÀ
 ) + min_PWM);
 
-232 
+234 
 	}
 }
 
@@ -57151,6 +57415,18 @@ uöt32_t
 ticks
 );
 
+241 #ñif(
+FIL_CALC_TIM
+ > 1)
+
+242 #îr‹ 
+InvÆid
+ 
+¨gumít
+ 
+FIL_CALC_TIM
+
+
 	@C:\Users\Caska\Desktop\projects\RCR\48531~1.RCR\SMALL-~1\Fil_lib\USART.c
 
 1 
@@ -57743,6 +58019,74 @@ uöt32_t
 BaudR©e
 );
 
+	@C:\Users\Caska\Desktop\projects\RCR\48531~1.RCR\SMALL-~1\RCR\BOARDS~1.H
+
+1 #¥agm®
+⁄˚
+
+
+17 
+	#_c⁄figUSEBﬂrds
+ 3
+
+	)
+
+19 #i‡(
+_c⁄figUSEBﬂrds
+ != 0 )
+
+20 #i‡(
+_c⁄figUSEBﬂrds
+ == 1)
+
+21 
+	~"RCR_DevBﬂrd_1.h
+"
+
+22 
+	~"RCR_DevBﬂrd_1_Sëup.h
+"
+
+24 #i‡(
+_c⁄figUSEBﬂrds
+ == 2)
+
+25 
+	~"RCR_DevBﬂrd_2.h
+"
+
+26 
+	~"RCR_DevBﬂrd_2_Sëup.h
+"
+
+28 #i‡(
+_c⁄figUSEBﬂrds
+ == 3)
+
+29 
+	~"RCR_DevBﬂrd_3_Sëup.h
+"
+
+31 #i‡(
+_c⁄figUSEBﬂrds
+ == 4)
+
+34 #i‡((
+_c⁄figUSEBﬂrds
+ < 0) || (_configUSEBoards > 4))
+
+35 #îr‹ 
+InvÆid
+ 
+¨gumít
+ 
+of
+ 
+Devñ›mít
+ 
+Bﬂrd
+
+
 	@C:\Users\Caska\Desktop\projects\RCR\48531~1.RCR\SMALL-~1\RCR\DEVBOA~1\RCR_DE~1.H
 
 1 #¥agm®
@@ -58119,7 +58463,7 @@ STM32F401xx
 
 25 
 	#__c⁄figUSE_I2C
- 0
+ 1
 
 	)
 
@@ -58622,106 +58966,132 @@ ADC_480_CYCLES
 	)
 
 186 
+	#__c⁄figI2C_TIMEOUT
+ (18000)
+
+	)
+
+187 
+	#__c⁄figUSE_LCD
+ (0)
+
+	)
+
+188 
+	#__c⁄figUSE_LVGL
+ (0)
+
+	)
+
+190 
 	#MPU9250_ADDR
  (0x34)
 
-187 
-	#SSD1305_ADDR
- (0x00)
-
-189 
+191 
 
 	)
 
 192 
-	#Bﬂrd_C⁄fig
- {\
+	#SSD1305_ADDR
+ (0x15)
 
-193 
-SëPWR
-; \
-
-194 
-SëGPIOA
-; \
-
-195 
-SëGPIOB
-; \
-
-196 
-SëGPIOC
-; \
-
-197 
-SëTIM1
-; \
-
-198 
-SëTIM3
-; \
-
-199 
-SëTIM4
-; \
-
-200 
-SëTIM5
-; \
-
-201 
-SëDMA2
-; \
-
-202 
-SëADC1
-; \
-
-203 
-SëUSART1
-; \
-
-204 
-SëUSART6
-; \
-
-205 
-SëI2C1
-; \
-
-206 
-SëSYSCFG
-; \
-
-207 
-InôPîùh
-; \
-
-208 
-InôTimîs
-; \
-
-209 
-InôUSART
-; \
-
-210 
-InôI¡îru±s
-; \
-
-211 
-	`SysTick_C⁄fig
-(
-__c⁄fig_SysTick_Cou¡î
-);}
+193 
+	#__c⁄figI2C_LCD_SOURCE
+ (
+I2C1
+)
 
 	)
 
-216 
+198 
+	#Bﬂrd_C⁄fig
+ {\
+
+199 
+SëPWR
+; \
+
+200 
+SëGPIOA
+; \
+
+201 
+SëGPIOB
+; \
+
+202 
+SëGPIOC
+; \
+
+203 
+SëTIM1
+; \
+
+204 
+SëTIM3
+; \
+
+205 
+SëTIM4
+; \
+
+206 
+SëTIM5
+; \
+
+207 
+SëDMA2
+; \
+
+208 
+SëADC1
+; \
+
+209 
+SëUSART1
+; \
+
+210 
+SëUSART6
+; \
+
+211 
+SëSYSCFG
+; \
+
+212 
+InôPîùh
+; \
+
+213 
+InôTimîs
+; \
+
+214 
+InôUSART
+; \
+
+215 
+InôI¡îru±s
+; \
+
+216 
+	`SysTick_C⁄fig
+(
+__c⁄fig_SysTick_Cou¡î
+);\
+
+217 
+SëI2C1
+; }
+
+	)
+
+222 
 	#InôPîùh
  {\
 
-217 
+223 
 	`c⁄f_pö
 (
 BTN1_DIR_PIN
@@ -58735,7 +59105,7 @@ FAST_S
 NO_PULL_UP
 );\
 
-218 
+224 
 	`c⁄f_pö
 (
 MULPLXA_PIN
@@ -58749,7 +59119,7 @@ FAST_S
 PULL_DOWN
 );\
 
-219 
+225 
 	`c⁄f_pö
 (
 MULPLXB_PIN
@@ -58763,7 +59133,7 @@ FAST_S
 PULL_DOWN
 );\
 
-220 
+226 
 	`c⁄f_pö
 (
 MULPLXC_PIN
@@ -58777,7 +59147,7 @@ FAST_S
 PULL_DOWN
 );\
 
-221 
+227 
 	`c⁄f_pö
 (
 INT_PIN
@@ -58791,7 +59161,7 @@ FAST_S
 NO_PULL_UP
 );\
 
-222 
+228 
 	`c⁄f_pö
 (
 LED_PIN
@@ -58805,7 +59175,7 @@ FAST_S
 NO_PULL_UP
 );\
 
-223 
+229 
 	`c⁄f_pö
 (
 ADC_TOP
@@ -58819,7 +59189,7 @@ FAST_S
 NO_PULL_UP
 );\
 
-224 
+230 
 	`c⁄f_pö
 (
 POT_PIN
@@ -58833,7 +59203,7 @@ FAST_S
 PULL_DOWN
 );\
 
-225 
+231 
 	`c⁄f_pö
 (
 EXTI1_PIN
@@ -58847,7 +59217,7 @@ FAST_S
 PULL_DOWN
 );\
 
-226 
+232 
 	`c⁄f_pö
 (
 EXTI2_PIN
@@ -58861,7 +59231,7 @@ FAST_S
 PULL_DOWN
 );\
 
-227 
+233 
 	`c⁄f_pö
 (
 EXTI3_PIN
@@ -58875,7 +59245,7 @@ FAST_S
 PULL_DOWN
 );\
 
-228 
+234 
 	`c⁄f_pö
 (
 EXTI4_PIN
@@ -58889,7 +59259,7 @@ FAST_S
 PULL_DOWN
 );\
 
-229 
+235 
 	`c⁄f_pö
 (
 EXTI5_PIN
@@ -58903,76 +59273,10 @@ FAST_S
 PULL_DOWN
 );\
 
-230 
-	`c⁄f_pö
-(
-BTN1_PWM_PIN
-, 
-ALTERNATE
-, 
-PUSH_PULL
-, 
-FAST_S
-, 
-NO_PULL_UP
-);\
-
-231 
-	`c⁄f_af
-(
-BTN1_PWM_PIN
-, 
-AF1
-);\
-
-232 
-	`c⁄f_pö
-(
-BTN2_PWM_PIN
-, 
-ALTERNATE
-, 
-PUSH_PULL
-, 
-FAST_S
-, 
-NO_PULL_UP
-);\
-
-233 
-	`c⁄f_af
-(
-BTN2_PWM_PIN
-, 
-AF1
-);\
-
-234 
-	`c⁄f_pö
-(
-ENCODER1A_PIN
-, 
-ALTERNATE
-, 
-PUSH_PULL
-, 
-FAST_S
-, 
-NO_PULL_UP
-);\
-
-235 
-	`c⁄f_af
-(
-ENCODER1A_PIN
-, 
-AF2
-);\
-
 236 
 	`c⁄f_pö
 (
-ENCODER1B_PIN
+BTN1_PWM_PIN
 , 
 ALTERNATE
 , 
@@ -58986,14 +59290,80 @@ NO_PULL_UP
 237 
 	`c⁄f_af
 (
-ENCODER1B_PIN
+BTN1_PWM_PIN
 , 
-AF2
+AF1
 );\
 
 238 
 	`c⁄f_pö
 (
+BTN2_PWM_PIN
+, 
+ALTERNATE
+, 
+PUSH_PULL
+, 
+FAST_S
+, 
+NO_PULL_UP
+);\
+
+239 
+	`c⁄f_af
+(
+BTN2_PWM_PIN
+, 
+AF1
+);\
+
+240 
+	`c⁄f_pö
+(
+ENCODER1A_PIN
+, 
+ALTERNATE
+, 
+PUSH_PULL
+, 
+FAST_S
+, 
+NO_PULL_UP
+);\
+
+241 
+	`c⁄f_af
+(
+ENCODER1A_PIN
+, 
+AF2
+);\
+
+242 
+	`c⁄f_pö
+(
+ENCODER1B_PIN
+, 
+ALTERNATE
+, 
+PUSH_PULL
+, 
+FAST_S
+, 
+NO_PULL_UP
+);\
+
+243 
+	`c⁄f_af
+(
+ENCODER1B_PIN
+, 
+AF2
+);\
+
+244 
+	`c⁄f_pö
+(
 ENCODER2A_PIN
 , 
 ALTERNATE
@@ -59005,7 +59375,7 @@ LOW_S
 PULL_UP
 );\
 
-239 
+245 
 	`c⁄f_af
 (
 ENCODER2A_PIN
@@ -59013,7 +59383,7 @@ ENCODER2A_PIN
 AF2
 );\
 
-240 
+246 
 	`c⁄f_pö
 (
 ENCODER2B_PIN
@@ -59027,7 +59397,7 @@ LOW_S
 PULL_UP
 );\
 
-241 
+247 
 	`c⁄f_af
 (
 ENCODER2B_PIN
@@ -59035,7 +59405,7 @@ ENCODER2B_PIN
 AF2
 );\
 
-242 
+248 
 	`c⁄f_pö
 (
 I2C_SDA_PIN
@@ -59046,10 +59416,10 @@ PUSH_PULL
 , 
 FAST_S
 , 
-PULL_UP
+NO_PULL_UP
 );\
 
-243 
+249 
 	`c⁄f_af
 (
 I2C_SDA_PIN
@@ -59057,7 +59427,7 @@ I2C_SDA_PIN
 AF4
 );\
 
-244 
+250 
 	`c⁄f_pö
 (
 I2C_SCL_PIN
@@ -59068,10 +59438,10 @@ PUSH_PULL
 , 
 FAST_S
 , 
-PULL_UP
+NO_PULL_UP
 );\
 
-245 
+251 
 	`c⁄f_af
 (
 I2C_SCL_PIN
@@ -59081,11 +59451,11 @@ AF4
 
 	)
 
-256 
+262 
 	#InôTimîs
  {\
 
-257 
+263 
 	`TimPWMC⁄figuª
 (
 TIM1
@@ -59103,7 +59473,7 @@ __c⁄fig_TIM1_CH3
 __c⁄fig_TIM1_CH4
 ); \
 
-258 
+264 
 	`TimPWMC⁄figuª
 (
 TIM5
@@ -59121,13 +59491,13 @@ __c⁄fig_TIM5_CH3
 __c⁄fig_TIM5_CH4
 ); \
 
-259 
+265 
 	`TimEncodîC⁄figuª
 (
 TIM4
 ); \
 
-260 
+266 
 	`TimPIDC⁄figuªAutom©ic
 (
 __c⁄fig_Reguœt‹_Sour˚
@@ -59137,17 +59507,17 @@ __c⁄fig_Reguœt‹_FREQ
 
 	)
 
-265 
+271 
 	#InôI¡îru±s
  {\
 
-266 
+272 
 	`NVIC_E«bÀIRQ
 (
 TIM3_IRQn
 );\
 
-267 
+273 
 	`NVIC_E«bÀIRQ
 (
 ADC_IRQn
@@ -59155,11 +59525,11 @@ ADC_IRQn
 
 	)
 
-272 
+278 
 	#InôUSART
  {\
 
-273 
+279 
 	`USARTBŸhC⁄figuª
 (
 USART1
@@ -59167,7 +59537,7 @@ USART1
 __c⁄fig_USART1_Baudøã
 , 0, 0); \
 
-274 
+280 
 	`USARTTønsmôãrC⁄figuª
 (
 USART6
@@ -59177,7 +59547,7 @@ __c⁄fig_USART6_Baudøã
 
 	)
 
-279 
+285 
 	#InôSîvo
  
 	`£tSîvo
@@ -59188,74 +59558,6 @@ BIG_BLACK_SERVA
 , 20, 0x500, 0x100, 20)
 
 	)
-
-	@C:\Users\Caska\Desktop\projects\RCR\48531~1.RCR\SMALL-~1\RCR\RCR_BO~1.H
-
-1 #¥agm®
-⁄˚
-
-
-17 
-	#_c⁄figUSEBﬂrds
- 3
-
-	)
-
-19 #i‡(
-_c⁄figUSEBﬂrds
- != 0 )
-
-20 #i‡(
-_c⁄figUSEBﬂrds
- == 1)
-
-21 
-	~"RCR_DevBﬂrd_1.h
-"
-
-22 
-	~"RCR_DevBﬂrd_1_Sëup.h
-"
-
-24 #i‡(
-_c⁄figUSEBﬂrds
- == 2)
-
-25 
-	~"RCR_DevBﬂrd_2.h
-"
-
-26 
-	~"RCR_DevBﬂrd_2_Sëup.h
-"
-
-28 #i‡(
-_c⁄figUSEBﬂrds
- == 3)
-
-29 
-	~"RCR_DevBﬂrd_3_Sëup.h
-"
-
-31 #i‡(
-_c⁄figUSEBﬂrds
- == 4)
-
-34 #i‡((
-_c⁄figUSEBﬂrds
- < 0) || (_configUSEBoards > 4))
-
-35 #îr‹ 
-InvÆid
- 
-¨gumít
- 
-of
- 
-Devñ›mít
- 
-Bﬂrd
-
 
 	@C:\Users\Caska\Desktop\projects\RCR\48531~1.RCR\SMALL-~1\STM32F~1.LD
 
@@ -155357,7 +155659,23 @@ __˝lu•lus
 	~"FûC⁄fig.h
 "
 
-13 #ifde‡
+13 
+	~"f⁄ts.h
+"
+
+14 
+	~"images.h
+"
+
+16 
+	~"ssd1306_i2c.h
+"
+
+17 
+	~"ssd1306.h
+"
+
+19 #ifde‡
 __˝lu•lus
 
 
@@ -159807,16 +160125,3322 @@ tm¥eg
 Bﬂrd_C⁄fig
 ;
 
-17 
+6 
+	`SSD1306_Inô
+();
+
+7 
+	`SSD1306_GŸoXY
+(1, 5);
+
+8 
+	`SSD1306_Puts
+("RCR-DSTU RobŸV1.0", &
+F⁄t_7x10
+, 
+SSD1306_COLOR_WHITE
+);
+
+9 
+	`ssd1306_image
+(
+logo_RCR_40x40
+, 40, 40, 80, 20);
+
+10 
+	`ssd1306_image
+(
+logo_DSTU_40x40
+, 40, 40, 5, 20);
+
+11 
+	`SSD1306_Upd©eS¸ìn
+();
+
+21 
 	}
 }
+
+	@C:\Users\Caska\Desktop\projects\RCR\48531~1.RCR\SMALL-~1\ssd1306\SSD130~1.C
+
+23 
+	~"ssd1306_i2c.h
+"
+
+26 
+uöt32_t
+ 
+	gssd1306_I2C_Timeout
+;
+
+29 
+	#I2C_TRANSMITTER_MODE
+ 0
+
+	)
+
+30 
+	#I2C_RECEIVER_MODE
+ 1
+
+	)
+
+31 
+	#I2C_ACK_ENABLE
+ 1
+
+	)
+
+32 
+	#I2C_ACK_DISABLE
+ 0
+
+	)
+
+35 
+	$ssd1306_I2C_WrôeMu…i
+(
+I2C_Ty≥Def
+* 
+I2Cx
+, 
+uöt8_t
+ 
+addªss
+, uöt8_à
+ªg
+, uöt8_t* 
+d©a
+, 
+uöt16_t
+ 
+cou¡
+) {
+
+36 
+uöt8_t
+ 
+i
+;
+
+37 
+	`ssd1306_I2C_Sèπ
+(
+I2Cx
+, 
+addªss
+, 
+I2C_TRANSMITTER_MODE
+, 
+I2C_ACK_DISABLE
+);
+
+38 
+	`ssd1306_I2C_WrôeD©a
+(
+I2Cx
+, 
+ªg
+);
+
+39 
+i
+ = 0; i < 
+cou¡
+; i++) {
+
+40 
+	`ssd1306_I2C_WrôeD©a
+(
+I2Cx
+, 
+d©a
+[
+i
+]);
+
+42 
+	`ssd1306_I2C_St›
+(
+I2Cx
+);
+
+43 
+	}
+}
+
+49 
+öt16_t
+ 
+	$ssd1306_I2C_Sèπ
+(
+I2C_Ty≥Def
+* 
+I2Cx
+, 
+uöt8_t
+ 
+addªss
+, uöt8_à
+dúe˘i⁄
+, uöt8_à
+ack
+) {
+
+51 
+I2Cx
+->
+CR1
+ |
+I2C_CR1_START
+;
+
+54 
+ssd1306_I2C_Timeout
+ = 
+__c⁄figI2C_TIMEOUT
+;
+
+55 !(
+I2Cx
+->
+SR1
+ & 
+I2C_SR1_SB
+)) {
+
+56 i‡(--
+ssd1306_I2C_Timeout
+ == 0x00) {
+
+62 i‡(
+ack
+) {
+
+63 
+I2Cx
+->
+CR1
+ |
+I2C_CR1_ACK
+;
+
+67 i‡(
+dúe˘i⁄
+ =
+I2C_TRANSMITTER_MODE
+) {
+
+69 
+I2Cx
+->
+DR
+ = 
+addªss
+ & ~
+I2C_OAR1_ADD0
+;
+
+72 
+ssd1306_I2C_Timeout
+ = 
+__c⁄figI2C_TIMEOUT
+;
+
+73 !(
+I2Cx
+->
+SR1
+ & 
+I2C_SR1_ADDR
+)) {
+
+74 i‡(--
+ssd1306_I2C_Timeout
+ == 0x00) {
+
+79 i‡(
+dúe˘i⁄
+ =
+I2C_RECEIVER_MODE
+) {
+
+81 
+I2Cx
+->
+DR
+ = 
+addªss
+ | 
+I2C_OAR1_ADD0
+;
+
+84 
+ssd1306_I2C_Timeout
+ = 
+__c⁄figI2C_TIMEOUT
+;
+
+86 
+	`I2CBusyEvít
+(
+I2Cx
+Ë&& 
+	`I2CMa°îModeEvít
+(I2CxË&& 
+	`I2CAddªssSítEvít
+(I2Cx)) {
+
+87 i‡(--
+ssd1306_I2C_Timeout
+ == 0x00) {
+
+94 
+I2Cx
+->
+SR2
+;
+
+98 
+	}
+}
+
+100 
+	$ssd1306_I2C_WrôeD©a
+(
+I2C_Ty≥Def
+* 
+I2Cx
+, 
+uöt8_t
+ 
+d©a
+) {
+
+102 
+ssd1306_I2C_Timeout
+ = 
+__c⁄figI2C_TIMEOUT
+;
+
+103 !(
+I2Cx
+->
+SR1
+ & 
+I2C_SR1_TXE
+Ë&& 
+ssd1306_I2C_Timeout
+) {
+
+104 
+ssd1306_I2C_Timeout
+--;
+
+108 
+I2Cx
+->
+DR
+ = 
+d©a
+;
+
+109 
+	}
+}
+
+111 
+	$ssd1306_I2C_Wrôe
+(
+I2C_Ty≥Def
+* 
+I2Cx
+, 
+uöt8_t
+ 
+addªss
+, uöt8_à
+ªg
+, uöt8_à
+d©a
+) {
+
+112 
+	`ssd1306_I2C_Sèπ
+(
+I2Cx
+, 
+addªss
+, 
+I2C_TRANSMITTER_MODE
+, 
+I2C_ACK_DISABLE
+);
+
+113 
+	`ssd1306_I2C_WrôeD©a
+(
+I2Cx
+, 
+ªg
+);
+
+114 
+	`ssd1306_I2C_WrôeD©a
+(
+I2Cx
+, 
+d©a
+);
+
+115 
+	`ssd1306_I2C_St›
+(
+I2Cx
+);
+
+116 
+	}
+}
+
+119 
+uöt8_t
+ 
+	$ssd1306_I2C_St›
+(
+I2C_Ty≥Def
+* 
+I2Cx
+) {
+
+121 
+ssd1306_I2C_Timeout
+ = 
+__c⁄figI2C_TIMEOUT
+;
+
+122 ((!(
+I2Cx
+->
+SR1
+ & 
+I2C_SR1_TXE
+)Ë|| (!(I2Cx->SR1 & 
+I2C_SR1_BTF
+)))) {
+
+123 i‡(--
+ssd1306_I2C_Timeout
+ == 0x00) {
+
+129 
+I2Cx
+->
+CR1
+ |
+I2C_CR1_STOP
+;
+
+133 
+	}
+}
+
+135 
+uöt8_t
+ 
+	$ssd1306_I2C_IsDevi˚C⁄√˘ed
+(
+I2C_Ty≥Def
+* 
+I2Cx
+, 
+uöt8_t
+ 
+addªss
+) {
+
+136 
+uöt8_t
+ 
+c⁄√˘ed
+ = 0;
+
+138 i‡(!
+	`ssd1306_I2C_Sèπ
+(
+I2Cx
+, 
+addªss
+, 
+I2C_TRANSMITTER_MODE
+, 
+I2C_ACK_ENABLE
+)) {
+
+139 
+c⁄√˘ed
+ = 1;
+
+143 
+	`ssd1306_I2C_St›
+(
+I2Cx
+);
+
+146  
+c⁄√˘ed
+;
+
+147 
+	}
+}
+
+	@C:\Users\Caska\Desktop\projects\RCR\48531~1.RCR\SMALL-~1\ssd1306\SSD130~1.H
+
+23 #i‚de‡
+ssd1306_I2C_H
+
+
+24 
+	#ssd1306_I2C_H
+ 161
+
+	)
+
+26 
+	~"maö.h
+"
+
+28 
+ssd1306_I2C_Inô
+();
+
+38 
+ssd1306_I2C_Wrôe
+(
+I2C_Ty≥Def
+* 
+I2Cx
+, 
+uöt8_t
+ 
+addªss
+, uöt8_à
+ªg
+, uöt8_à
+d©a
+);
+
+49 
+ssd1306_I2C_WrôeMu…i
+(
+I2C_Ty≥Def
+* 
+I2Cx
+, 
+uöt8_t
+ 
+addªss
+, uöt8_à
+ªg
+, uöt8_à*
+d©a
+, 
+uöt16_t
+ 
+cou¡
+);
+
+60 
+öt16_t
+ 
+ssd1306_I2C_Sèπ
+(
+I2C_Ty≥Def
+* 
+I2Cx
+, 
+uöt8_t
+ 
+addªss
+, uöt8_à
+dúe˘i⁄
+, uöt8_à
+ack
+);
+
+68 
+uöt8_t
+ 
+ssd1306_I2C_St›
+(
+I2C_Ty≥Def
+* 
+I2Cx
+);
+
+77 
+ssd1306_I2C_WrôeD©a
+(
+I2C_Ty≥Def
+* 
+I2Cx
+, 
+uöt8_t
+ 
+d©a
+);
+
+79 
+uöt8_t
+ 
+ssd1306_I2C_IsDevi˚C⁄√˘ed
+(
+I2C_Ty≥Def
+* 
+I2Cx
+, uöt8_à
+addªss
+);
+
+	@C:\Users\Caska\Desktop\projects\RCR\48531~1.RCR\SMALL-~1\ssd1306\fonts.c
+
+23 
+	~"f⁄ts.h
+"
+
+25 c⁄° 
+uöt16_t
+ 
+	gF⁄t7x10
+ [] = {
+
+123 c⁄° 
+uöt16_t
+ 
+	gF⁄t11x18
+ [] = {
+
+221 c⁄° 
+uöt16_t
+ 
+	gF⁄t16x26
+ [] = {
+
+320 
+F⁄tDef_t
+ 
+	gF⁄t_7x10
+ = {
+
+323 
+F⁄t7x10
+
+
+326 
+F⁄tDef_t
+ 
+	gF⁄t_11x18
+ = {
+
+329 
+F⁄t11x18
+
+
+332 
+F⁄tDef_t
+ 
+	gF⁄t_16x26
+ = {
+
+335 
+F⁄t16x26
+
+
+338 * 
+	$FONTS_GëSåögSize
+(* 
+°r
+, 
+FONTS_SIZE_t
+* 
+SizeSåu˘
+, 
+F⁄tDef_t
+* 
+F⁄t
+) {
+
+340 
+SizeSåu˘
+->
+Height
+ = 
+F⁄t
+->
+F⁄tHeight
+;
+
+341 
+SizeSåu˘
+->
+Lígth
+ = 
+F⁄t
+->
+F⁄tWidth
+ * 
+	`°æí
+(
+°r
+);
+
+344  
+°r
+;
+
+345 
+	}
+}
+
+	@C:\Users\Caska\Desktop\projects\RCR\48531~1.RCR\SMALL-~1\ssd1306\fonts.h
+
+23 #i‚de‡
+FONTS_H
+
+
+24 
+	#FONTS_H
+ 120
+
+	)
+
+27 #ifde‡
+__˝lu•lus
+
+
+28 
+C
+ {
+
+43 
+	~"°m32f4xx.h
+"
+
+44 
+	~"°rög.h
+"
+
+56 
+uöt8_t
+ 
+F⁄tWidth
+;
+
+57 
+uöt8_t
+ 
+F⁄tHeight
+;
+
+58 c⁄° 
+uöt16_t
+ *
+d©a
+;
+
+59 } 
+	tF⁄tDef_t
+;
+
+65 
+uöt16_t
+ 
+Lígth
+;
+
+66 
+uöt16_t
+ 
+Height
+;
+
+67 } 
+	tFONTS_SIZE_t
+;
+
+82 
+F⁄tDef_t
+ 
+F⁄t_7x10
+;
+
+87 
+F⁄tDef_t
+ 
+F⁄t_11x18
+;
+
+92 
+F⁄tDef_t
+ 
+F⁄t_16x26
+;
+
+111 * 
+FONTS_GëSåögSize
+(* 
+°r
+, 
+FONTS_SIZE_t
+* 
+SizeSåu˘
+, 
+F⁄tDef_t
+* 
+F⁄t
+);
+
+126 #ifde‡
+__˝lu•lus
+
+
+	@C:\Users\Caska\Desktop\projects\RCR\48531~1.RCR\SMALL-~1\ssd1306\images.c
+
+1 
+	~"ssd1306.h
+"
+
+2 
+uöt8_t
+ 
+	glogo_RCR_50x50
+ [350] =
+
+56 
+uöt8_t
+ 
+	glogo_RCR_20x20
+[60] =
+
+79 c⁄° 
+uöt8_t
+ 
+	glogo_RCR_40x40
+ [200] =
+
+125 c⁄° 
+uöt8_t
+ 
+	glogo_DSTU_40x40
+ [200] =
+
+	@C:\Users\Caska\Desktop\projects\RCR\48531~1.RCR\SMALL-~1\ssd1306\images.h
+
+1 #i‚de‡
+IMAGES_H_INCLUDED
+
+
+2 
+	#IMAGES_H_INCLUDED
+
+
+	)
+
+4 
+	~"ssd1306.h
+"
+
+5 
+uöt8_t
+ 
+	glogo_RCR_50x50
+ [350];
+
+6 
+uöt8_t
+ 
+	glogo_RCR_20x20
+[60];
+
+7 c⁄° 
+uöt8_t
+ 
+	glogo_RCR_40x40
+[200];
+
+8 c⁄° 
+uöt8_t
+ 
+	glogo_DSTU_40x40
+ [200];
+
+	@C:\Users\Caska\Desktop\projects\RCR\48531~1.RCR\SMALL-~1\ssd1306\ssd1306.c
+
+23 
+	~"ssd1306.h
+"
+
+24 
+	~"images.h
+"
+
+27 
+	#SSD1306_WRITECOMMAND
+(
+comm™d
+Ë
+	`ssd1306_I2C_Wrôe
+(
+SSD1306_I2C
+, 
+SSD1306_I2C_ADDR
+, 0x00, (comm™d))
+
+	)
+
+29 
+	#SSD1306_WRITEDATA
+(
+d©a
+Ë
+	`ssd1306_I2C_Wrôe
+(
+SSD1306_I2C
+, 
+SSD1306_I2C_ADDR
+, 0x40, (d©a))
+
+	)
+
+31 
+	#ABS
+(
+x
+Ë((xË> 0 ? (xË: -(x))
+
+	)
+
+37 
+uöt8_t
+ 
+	gSSD1306_Buf„r
+[
+SSD1306_WIDTH
+ * 
+SSD1306_HEIGHT
+ / 8];
+
+41 
+uöt16_t
+ 
+	mCuºítX
+;
+
+42 
+uöt16_t
+ 
+	mCuºítY
+;
+
+43 
+uöt8_t
+ 
+	mInvîãd
+;
+
+44 
+uöt8_t
+ 
+	mInôülized
+;
+
+45 } 
+	tSSD1306_t
+;
+
+48 
+SSD1306_t
+ 
+	gSSD1306
+;
+
+50 
+uöt8_t
+ 
+	$SSD1306_Inô
+() {
+
+52 
+	`I2CMa°îC⁄figuª
+(
+__c⁄figI2C_LCD_SOURCE
+, 
+I2C_Fa°
+, 
+SSD1305_ADDR
+);
+
+54 i‡(!
+	`ssd1306_I2C_IsDevi˚C⁄√˘ed
+(
+SSD1306_I2C
+, 
+SSD1306_I2C_ADDR
+)) {
+
+60 
+uöt32_t
+ 
+p
+ = 2500;
+
+61 
+p
+>0)
+
+62 
+p
+--;
+
+65 
+	`SSD1306_WRITECOMMAND
+(0xAE);
+
+66 
+	`SSD1306_WRITECOMMAND
+(0x20);
+
+67 
+	`SSD1306_WRITECOMMAND
+(0x10);
+
+68 
+	`SSD1306_WRITECOMMAND
+(0xB0);
+
+69 
+	`SSD1306_WRITECOMMAND
+(0xC8);
+
+70 
+	`SSD1306_WRITECOMMAND
+(0x00);
+
+71 
+	`SSD1306_WRITECOMMAND
+(0x10);
+
+72 
+	`SSD1306_WRITECOMMAND
+(0x40);
+
+73 
+	`SSD1306_WRITECOMMAND
+(0x81);
+
+74 
+	`SSD1306_WRITECOMMAND
+(0xFF);
+
+75 
+	`SSD1306_WRITECOMMAND
+(0xA1);
+
+76 
+	`SSD1306_WRITECOMMAND
+(0xA6);
+
+77 
+	`SSD1306_WRITECOMMAND
+(0xA8);
+
+78 
+	`SSD1306_WRITECOMMAND
+(0x3F);
+
+79 
+	`SSD1306_WRITECOMMAND
+(0xA4);
+
+80 
+	`SSD1306_WRITECOMMAND
+(0xD3);
+
+81 
+	`SSD1306_WRITECOMMAND
+(0x00);
+
+82 
+	`SSD1306_WRITECOMMAND
+(0xD5);
+
+83 
+	`SSD1306_WRITECOMMAND
+(0xF0);
+
+84 
+	`SSD1306_WRITECOMMAND
+(0xD9);
+
+85 
+	`SSD1306_WRITECOMMAND
+(0x22);
+
+86 
+	`SSD1306_WRITECOMMAND
+(0xDA);
+
+87 
+	`SSD1306_WRITECOMMAND
+(0x12);
+
+88 
+	`SSD1306_WRITECOMMAND
+(0xDB);
+
+89 
+	`SSD1306_WRITECOMMAND
+(0x20);
+
+90 
+	`SSD1306_WRITECOMMAND
+(0x8D);
+
+91 
+	`SSD1306_WRITECOMMAND
+(0x14);
+
+92 
+	`SSD1306_WRITECOMMAND
+(0xAF);
+
+95 
+	`SSD1306_Fûl
+(
+SSD1306_COLOR_BLACK
+);
+
+98 
+	`SSD1306_Upd©eS¸ìn
+();
+
+101 
+SSD1306
+.
+CuºítX
+ = 0;
+
+102 
+SSD1306
+.
+CuºítY
+ = 0;
+
+105 
+SSD1306
+.
+Inôülized
+ = 1;
+
+109 
+	}
+}
+
+111 
+	$SSD1306_Upd©eS¸ìn
+() {
+
+112 
+uöt8_t
+ 
+m
+;
+
+114 
+m
+ = 0; m < 8; m++) {
+
+115 
+	`SSD1306_WRITECOMMAND
+(0xB0 + 
+m
+);
+
+116 
+	`SSD1306_WRITECOMMAND
+(0x00);
+
+117 
+	`SSD1306_WRITECOMMAND
+(0x10);
+
+120 
+	`ssd1306_I2C_WrôeMu…i
+(
+SSD1306_I2C
+, 
+SSD1306_I2C_ADDR
+, 0x40, &
+SSD1306_Buf„r
+[
+SSD1306_WIDTH
+ * 
+m
+], SSD1306_WIDTH);
+
+122 
+	}
+}
+
+124 
+	$SSD1306_ToggÀInvît
+() {
+
+125 
+uöt16_t
+ 
+i
+;
+
+128 
+SSD1306
+.
+Invîãd
+ = !SSD1306.Inverted;
+
+131 
+i
+ = 0; i < (
+SSD1306_Buf„r
+); i++) {
+
+132 
+SSD1306_Buf„r
+[
+i
+] = ~SSD1306_Buffer[i];
+
+134 
+	}
+}
+
+136 
+	$SSD1306_Fûl
+(
+SSD1306_COLOR_t
+ 
+cﬁ‹
+) {
+
+138 
+	`mem£t
+(
+SSD1306_Buf„r
+, (
+cﬁ‹
+ =
+SSD1306_COLOR_BLACK
+) ? 0x00 : 0xFF, (SSD1306_Buffer));
+
+139 
+	}
+}
+
+141 
+	$SSD1306_DøwPixñ
+(
+uöt16_t
+ 
+x
+, uöt16_à
+y
+, 
+SSD1306_COLOR_t
+ 
+cﬁ‹
+) {
+
+143 
+x
+ >
+SSD1306_WIDTH
+ ||
+
+144 
+y
+ >
+SSD1306_HEIGHT
+
+
+151 i‡(
+SSD1306
+.
+Invîãd
+) {
+
+152 
+cﬁ‹
+ = (
+SSD1306_COLOR_t
+)!color;
+
+156 i‡(
+cﬁ‹
+ =
+SSD1306_COLOR_WHITE
+) {
+
+157 
+SSD1306_Buf„r
+[
+x
+ + (
+y
+ / 8Ë* 
+SSD1306_WIDTH
+] |= 1 << (y % 8);
+
+159 
+SSD1306_Buf„r
+[
+x
+ + (
+y
+ / 8Ë* 
+SSD1306_WIDTH
+] &= ~(1 << (y % 8));
+
+161 
+	}
+}
+
+163 
+	$SSD1306_GŸoXY
+(
+uöt16_t
+ 
+x
+, uöt16_à
+y
+) {
+
+165 
+SSD1306
+.
+CuºítX
+ = 
+x
+;
+
+166 
+SSD1306
+.
+CuºítY
+ = 
+y
+;
+
+167 
+	}
+}
+
+169 
+	$SSD1306_Putc
+(
+ch
+, 
+F⁄tDef_t
+* 
+F⁄t
+, 
+SSD1306_COLOR_t
+ 
+cﬁ‹
+) {
+
+170 
+uöt32_t
+ 
+i
+, 
+b
+, 
+j
+;
+
+174 
+SSD1306_WIDTH
+ <(
+SSD1306
+.
+CuºítX
+ + 
+F⁄t
+->
+F⁄tWidth
+) ||
+
+175 
+SSD1306_HEIGHT
+ <(
+SSD1306
+.
+CuºítY
+ + 
+F⁄t
+->
+F⁄tHeight
+)
+
+182 
+i
+ = 0; i < 
+F⁄t
+->
+F⁄tHeight
+; i++) {
+
+183 
+b
+ = 
+F⁄t
+->
+d©a
+[(
+ch
+ - 32Ë* F⁄t->
+F⁄tHeight
+ + 
+i
+];
+
+184 
+j
+ = 0; j < 
+F⁄t
+->
+F⁄tWidth
+; j++) {
+
+185 i‡((
+b
+ << 
+j
+) & 0x8000) {
+
+186 
+	`SSD1306_DøwPixñ
+(
+SSD1306
+.
+CuºítX
+ + 
+j
+, (SSD1306.
+CuºítY
+ + 
+i
+), (
+SSD1306_COLOR_t
+Ë
+cﬁ‹
+);
+
+188 
+	`SSD1306_DøwPixñ
+(
+SSD1306
+.
+CuºítX
+ + 
+j
+, (SSD1306.
+CuºítY
+ + 
+i
+), (
+SSD1306_COLOR_t
+)!
+cﬁ‹
+);
+
+194 
+SSD1306
+.
+CuºítX
+ +
+F⁄t
+->
+F⁄tWidth
+;
+
+197  
+ch
+;
+
+198 
+	}
+}
+
+200 
+	$SSD1306_Puts
+(* 
+°r
+, 
+F⁄tDef_t
+* 
+F⁄t
+, 
+SSD1306_COLOR_t
+ 
+cﬁ‹
+) {
+
+202 *
+°r
+) {
+
+204 i‡(
+	`SSD1306_Putc
+(*
+°r
+, 
+F⁄t
+, 
+cﬁ‹
+) != *str) {
+
+206  *
+°r
+;
+
+210 
+°r
+++;
+
+214  *
+°r
+;
+
+215 
+	}
+}
+
+218 
+	$SSD1306_DøwLöe
+(
+uöt16_t
+ 
+x0
+, uöt16_à
+y0
+, uöt16_à
+x1
+, uöt16_à
+y1
+, 
+SSD1306_COLOR_t
+ 
+c
+) {
+
+219 
+öt16_t
+ 
+dx
+, 
+dy
+, 
+sx
+, 
+sy
+, 
+îr
+, 
+e2
+, 
+i
+, 
+tmp
+;
+
+222 i‡(
+x0
+ >
+SSD1306_WIDTH
+) {
+
+223 
+x0
+ = 
+SSD1306_WIDTH
+ - 1;
+
+225 i‡(
+x1
+ >
+SSD1306_WIDTH
+) {
+
+226 
+x1
+ = 
+SSD1306_WIDTH
+ - 1;
+
+228 i‡(
+y0
+ >
+SSD1306_HEIGHT
+) {
+
+229 
+y0
+ = 
+SSD1306_HEIGHT
+ - 1;
+
+231 i‡(
+y1
+ >
+SSD1306_HEIGHT
+) {
+
+232 
+y1
+ = 
+SSD1306_HEIGHT
+ - 1;
+
+235 
+dx
+ = (
+x0
+ < 
+x1
+) ? (x1 - x0) : (x0 - x1);
+
+236 
+dy
+ = (
+y0
+ < 
+y1
+) ? (y1 - y0) : (y0 - y1);
+
+237 
+sx
+ = (
+x0
+ < 
+x1
+) ? 1 : -1;
+
+238 
+sy
+ = (
+y0
+ < 
+y1
+) ? 1 : -1;
+
+239 
+îr
+ = ((
+dx
+ > 
+dy
+) ? dx : -dy) / 2;
+
+241 i‡(
+dx
+ == 0) {
+
+242 i‡(
+y1
+ < 
+y0
+) {
+
+243 
+tmp
+ = 
+y1
+;
+
+244 
+y1
+ = 
+y0
+;
+
+245 
+y0
+ = 
+tmp
+;
+
+248 i‡(
+x1
+ < 
+x0
+) {
+
+249 
+tmp
+ = 
+x1
+;
+
+250 
+x1
+ = 
+x0
+;
+
+251 
+x0
+ = 
+tmp
+;
+
+255 
+i
+ = 
+y0
+; i <
+y1
+; i++) {
+
+256 
+	`SSD1306_DøwPixñ
+(
+x0
+, 
+i
+, 
+c
+);
+
+263 i‡(
+dy
+ == 0) {
+
+264 i‡(
+y1
+ < 
+y0
+) {
+
+265 
+tmp
+ = 
+y1
+;
+
+266 
+y1
+ = 
+y0
+;
+
+267 
+y0
+ = 
+tmp
+;
+
+270 i‡(
+x1
+ < 
+x0
+) {
+
+271 
+tmp
+ = 
+x1
+;
+
+272 
+x1
+ = 
+x0
+;
+
+273 
+x0
+ = 
+tmp
+;
+
+277 
+i
+ = 
+x0
+; i <
+x1
+; i++) {
+
+278 
+	`SSD1306_DøwPixñ
+(
+i
+, 
+y0
+, 
+c
+);
+
+286 
+	`SSD1306_DøwPixñ
+(
+x0
+, 
+y0
+, 
+c
+);
+
+287 i‡(
+x0
+ =
+x1
+ && 
+y0
+ =
+y1
+) {
+
+290 
+e2
+ = 
+îr
+;
+
+291 i‡(
+e2
+ > -
+dx
+) {
+
+292 
+îr
+ -
+dy
+;
+
+293 
+x0
+ +
+sx
+;
+
+295 i‡(
+e2
+ < 
+dy
+) {
+
+296 
+îr
+ +
+dx
+;
+
+297 
+y0
+ +
+sy
+;
+
+300 
+	}
+}
+
+302 
+	$SSD1306_DøwRe˘™gÀ
+(
+uöt16_t
+ 
+x
+, uöt16_à
+y
+, uöt16_à
+w
+, uöt16_à
+h
+, 
+SSD1306_COLOR_t
+ 
+c
+) {
+
+305 
+x
+ >
+SSD1306_WIDTH
+ ||
+
+306 
+y
+ >
+SSD1306_HEIGHT
+
+
+313 i‡((
+x
+ + 
+w
+Ë>
+SSD1306_WIDTH
+) {
+
+314 
+w
+ = 
+SSD1306_WIDTH
+ - 
+x
+;
+
+316 i‡((
+y
+ + 
+h
+Ë>
+SSD1306_HEIGHT
+) {
+
+317 
+h
+ = 
+SSD1306_HEIGHT
+ - 
+y
+;
+
+321 
+	`SSD1306_DøwLöe
+(
+x
+, 
+y
+, x + 
+w
+, y, 
+c
+);
+
+322 
+	`SSD1306_DøwLöe
+(
+x
+, 
+y
+ + 
+h
+, x + 
+w
+, y + h, 
+c
+);
+
+323 
+	`SSD1306_DøwLöe
+(
+x
+, 
+y
+, x, y + 
+h
+, 
+c
+);
+
+324 
+	`SSD1306_DøwLöe
+(
+x
+ + 
+w
+, 
+y
+, x + w, y + 
+h
+, 
+c
+);
+
+325 
+	}
+}
+
+327 
+	$SSD1306_DøwFûÀdRe˘™gÀ
+(
+uöt16_t
+ 
+x
+, uöt16_à
+y
+, uöt16_à
+w
+, uöt16_à
+h
+, 
+SSD1306_COLOR_t
+ 
+c
+) {
+
+328 
+uöt8_t
+ 
+i
+;
+
+332 
+x
+ >
+SSD1306_WIDTH
+ ||
+
+333 
+y
+ >
+SSD1306_HEIGHT
+
+
+340 i‡((
+x
+ + 
+w
+Ë>
+SSD1306_WIDTH
+) {
+
+341 
+w
+ = 
+SSD1306_WIDTH
+ - 
+x
+;
+
+343 i‡((
+y
+ + 
+h
+Ë>
+SSD1306_HEIGHT
+) {
+
+344 
+h
+ = 
+SSD1306_HEIGHT
+ - 
+y
+;
+
+348 
+i
+ = 0; i <
+h
+; i++) {
+
+350 
+	`SSD1306_DøwLöe
+(
+x
+, 
+y
+ + 
+i
+, x + 
+w
+, y + i, 
+c
+);
+
+352 
+	}
+}
+
+354 
+	$SSD1306_DøwTrüngÀ
+(
+uöt16_t
+ 
+x1
+, uöt16_à
+y1
+, uöt16_à
+x2
+, uöt16_à
+y2
+, uöt16_à
+x3
+, uöt16_à
+y3
+, 
+SSD1306_COLOR_t
+ 
+cﬁ‹
+) {
+
+356 
+	`SSD1306_DøwLöe
+(
+x1
+, 
+y1
+, 
+x2
+, 
+y2
+, 
+cﬁ‹
+);
+
+357 
+	`SSD1306_DøwLöe
+(
+x2
+, 
+y2
+, 
+x3
+, 
+y3
+, 
+cﬁ‹
+);
+
+358 
+	`SSD1306_DøwLöe
+(
+x3
+, 
+y3
+, 
+x1
+, 
+y1
+, 
+cﬁ‹
+);
+
+359 
+	}
+}
+
+362 
+	$SSD1306_DøwFûÀdTrüngÀ
+(
+uöt16_t
+ 
+x1
+, uöt16_à
+y1
+, uöt16_à
+x2
+, uöt16_à
+y2
+, uöt16_à
+x3
+, uöt16_à
+y3
+, 
+SSD1306_COLOR_t
+ 
+cﬁ‹
+) {
+
+363 
+öt16_t
+ 
+dñèx
+ = 0, 
+dñèy
+ = 0, 
+x
+ = 0, 
+y
+ = 0, 
+xöc1
+ = 0, 
+xöc2
+ = 0,
+
+364 
+yöc1
+ = 0, 
+yöc2
+ = 0, 
+dí
+ = 0, 
+num
+ = 0, 
+numadd
+ = 0, 
+numpixñs
+ = 0,
+
+365 
+cuΩixñ
+ = 0;
+
+367 
+dñèx
+ = 
+	`ABS
+(
+x2
+ - 
+x1
+);
+
+368 
+dñèy
+ = 
+	`ABS
+(
+y2
+ - 
+y1
+);
+
+369 
+x
+ = 
+x1
+;
+
+370 
+y
+ = 
+y1
+;
+
+372 i‡(
+x2
+ >
+x1
+) {
+
+373 
+xöc1
+ = 1;
+
+374 
+xöc2
+ = 1;
+
+376 
+xöc1
+ = -1;
+
+377 
+xöc2
+ = -1;
+
+380 i‡(
+y2
+ >
+y1
+) {
+
+381 
+yöc1
+ = 1;
+
+382 
+yöc2
+ = 1;
+
+384 
+yöc1
+ = -1;
+
+385 
+yöc2
+ = -1;
+
+388 i‡(
+dñèx
+ >
+dñèy
+){
+
+389 
+xöc1
+ = 0;
+
+390 
+yöc2
+ = 0;
+
+391 
+dí
+ = 
+dñèx
+;
+
+392 
+num
+ = 
+dñèx
+ / 2;
+
+393 
+numadd
+ = 
+dñèy
+;
+
+394 
+numpixñs
+ = 
+dñèx
+;
+
+396 
+xöc2
+ = 0;
+
+397 
+yöc1
+ = 0;
+
+398 
+dí
+ = 
+dñèy
+;
+
+399 
+num
+ = 
+dñèy
+ / 2;
+
+400 
+numadd
+ = 
+dñèx
+;
+
+401 
+numpixñs
+ = 
+dñèy
+;
+
+404 
+cuΩixñ
+ = 0; cuΩixñ <
+numpixñs
+; curpixel++) {
+
+405 
+	`SSD1306_DøwLöe
+(
+x
+, 
+y
+, 
+x3
+, 
+y3
+, 
+cﬁ‹
+);
+
+407 
+num
+ +
+numadd
+;
+
+408 i‡(
+num
+ >
+dí
+) {
+
+409 
+num
+ -
+dí
+;
+
+410 
+x
+ +
+xöc1
+;
+
+411 
+y
+ +
+yöc1
+;
+
+413 
+x
+ +
+xöc2
+;
+
+414 
+y
+ +
+yöc2
+;
+
+416 
+	}
+}
+
+418 
+	$SSD1306_DøwCú˛e
+(
+öt16_t
+ 
+x0
+, i¡16_à
+y0
+, i¡16_à
+r
+, 
+SSD1306_COLOR_t
+ 
+c
+) {
+
+419 
+öt16_t
+ 
+f
+ = 1 - 
+r
+;
+
+420 
+öt16_t
+ 
+ddF_x
+ = 1;
+
+421 
+öt16_t
+ 
+ddF_y
+ = -2 * 
+r
+;
+
+422 
+öt16_t
+ 
+x
+ = 0;
+
+423 
+öt16_t
+ 
+y
+ = 
+r
+;
+
+425 
+	`SSD1306_DøwPixñ
+(
+x0
+, 
+y0
+ + 
+r
+, 
+c
+);
+
+426 
+	`SSD1306_DøwPixñ
+(
+x0
+, 
+y0
+ - 
+r
+, 
+c
+);
+
+427 
+	`SSD1306_DøwPixñ
+(
+x0
+ + 
+r
+, 
+y0
+, 
+c
+);
+
+428 
+	`SSD1306_DøwPixñ
+(
+x0
+ - 
+r
+, 
+y0
+, 
+c
+);
+
+430 
+x
+ < 
+y
+) {
+
+431 i‡(
+f
+ >= 0) {
+
+432 
+y
+--;
+
+433 
+ddF_y
+ += 2;
+
+434 
+f
+ +
+ddF_y
+;
+
+436 
+x
+++;
+
+437 
+ddF_x
+ += 2;
+
+438 
+f
+ +
+ddF_x
+;
+
+440 
+	`SSD1306_DøwPixñ
+(
+x0
+ + 
+x
+, 
+y0
+ + 
+y
+, 
+c
+);
+
+441 
+	`SSD1306_DøwPixñ
+(
+x0
+ - 
+x
+, 
+y0
+ + 
+y
+, 
+c
+);
+
+442 
+	`SSD1306_DøwPixñ
+(
+x0
+ + 
+x
+, 
+y0
+ - 
+y
+, 
+c
+);
+
+443 
+	`SSD1306_DøwPixñ
+(
+x0
+ - 
+x
+, 
+y0
+ - 
+y
+, 
+c
+);
+
+445 
+	`SSD1306_DøwPixñ
+(
+x0
+ + 
+y
+, 
+y0
+ + 
+x
+, 
+c
+);
+
+446 
+	`SSD1306_DøwPixñ
+(
+x0
+ - 
+y
+, 
+y0
+ + 
+x
+, 
+c
+);
+
+447 
+	`SSD1306_DøwPixñ
+(
+x0
+ + 
+y
+, 
+y0
+ - 
+x
+, 
+c
+);
+
+448 
+	`SSD1306_DøwPixñ
+(
+x0
+ - 
+y
+, 
+y0
+ - 
+x
+, 
+c
+);
+
+450 
+	}
+}
+
+452 
+	$SSD1306_DøwFûÀdCú˛e
+(
+öt16_t
+ 
+x0
+, i¡16_à
+y0
+, i¡16_à
+r
+, 
+SSD1306_COLOR_t
+ 
+c
+) {
+
+453 
+öt16_t
+ 
+f
+ = 1 - 
+r
+;
+
+454 
+öt16_t
+ 
+ddF_x
+ = 1;
+
+455 
+öt16_t
+ 
+ddF_y
+ = -2 * 
+r
+;
+
+456 
+öt16_t
+ 
+x
+ = 0;
+
+457 
+öt16_t
+ 
+y
+ = 
+r
+;
+
+459 
+	`SSD1306_DøwPixñ
+(
+x0
+, 
+y0
+ + 
+r
+, 
+c
+);
+
+460 
+	`SSD1306_DøwPixñ
+(
+x0
+, 
+y0
+ - 
+r
+, 
+c
+);
+
+461 
+	`SSD1306_DøwPixñ
+(
+x0
+ + 
+r
+, 
+y0
+, 
+c
+);
+
+462 
+	`SSD1306_DøwPixñ
+(
+x0
+ - 
+r
+, 
+y0
+, 
+c
+);
+
+463 
+	`SSD1306_DøwLöe
+(
+x0
+ - 
+r
+, 
+y0
+, x0 +Ñ, y0, 
+c
+);
+
+465 
+x
+ < 
+y
+) {
+
+466 i‡(
+f
+ >= 0) {
+
+467 
+y
+--;
+
+468 
+ddF_y
+ += 2;
+
+469 
+f
+ +
+ddF_y
+;
+
+471 
+x
+++;
+
+472 
+ddF_x
+ += 2;
+
+473 
+f
+ +
+ddF_x
+;
+
+475 
+	`SSD1306_DøwLöe
+(
+x0
+ - 
+x
+, 
+y0
+ + 
+y
+, x0 + x, y0 + y, 
+c
+);
+
+476 
+	`SSD1306_DøwLöe
+(
+x0
+ + 
+x
+, 
+y0
+ - 
+y
+, x0 - x, y0 - y, 
+c
+);
+
+478 
+	`SSD1306_DøwLöe
+(
+x0
+ + 
+y
+, 
+y0
+ + 
+x
+, x0 - y, y0 + x, 
+c
+);
+
+479 
+	`SSD1306_DøwLöe
+(
+x0
+ + 
+y
+, 
+y0
+ - 
+x
+, x0 - y, y0 - x, 
+c
+);
+
+481 
+	}
+}
+
+483 
+	$ssd1306_image
+(
+uöt8_t
+ *
+img
+, uöt8_à
+hight
+,uöt8_à
+wight
+,uöt8_à
+x
+, uöt8_à
+y
+)
+
+485 
+uöt32_t
+ 
+i
+, 
+b
+, 
+j
+,
+c
+;
+
+486 
+	`__©åibuã__
+((
+unu£d
+)Ë
+uöt8_t
+ 
+byãs_x
+, 
+byãs_y
+, 
+ãmp
+, 
+co‹d_x
+,
+co‹d_y
+;
+
+488 if((
+hight
+%8)!=0Ë
+byãs_y
+=(hight/8+1)*8;
+
+489 
+byãs_y
+=
+hight
+;
+
+491 if((
+wight
+%8)!=0Ë
+byãs_x
+=(wight/8+1)*8;
+
+492 
+byãs_x
+=
+wight
+;
+
+493 
+b
+ = 0;
+
+496 
+i
+=0; i<
+hight
+; i++){
+
+497 
+j
+=0; j<
+byãs_x
+; j++)
+
+500 
+co‹d_x
+=
+x
++
+j
+;
+
+501 
+co‹d_y
+=
+y
++
+i
+;
+
+502 
+	`SSD1306_DøwPixñ
+(
+co‹d_x
+, 
+co‹d_y
+, (
+uöt8_t
+Ë(
+img
+[
+c
+/8] & 1<<(7-
+b
+))>>(7-b) );
+
+504 if(
+b
+<7)
+
+505 
+b
+++;
+
+507 
+b
+=0;
+
+508 
+c
+++;
+
+523 
+	}
+}
+
+526 
+	$SSD1306_ON
+() {
+
+527 
+	`SSD1306_WRITECOMMAND
+(0x8D);
+
+528 
+	`SSD1306_WRITECOMMAND
+(0x14);
+
+529 
+	`SSD1306_WRITECOMMAND
+(0xAF);
+
+530 
+	}
+}
+
+531 
+	$SSD1306_OFF
+() {
+
+532 
+	`SSD1306_WRITECOMMAND
+(0x8D);
+
+533 
+	`SSD1306_WRITECOMMAND
+(0x10);
+
+534 
+	`SSD1306_WRITECOMMAND
+(0xAE);
+
+535 
+	}
+}
+
+	@C:\Users\Caska\Desktop\projects\RCR\48531~1.RCR\SMALL-~1\ssd1306\ssd1306.h
+
+23 #i‚de‡
+SSD1306_H
+
+
+24 
+	#SSD1306_H
+ 100
+
+	)
+
+27 #ifde‡
+__˝lu•lus
+
+
+28 
+C
+ {
+
+48 
+	~"maö.h
+"
+
+50 
+	~"°dlib.h
+"
+
+51 
+	~"°rög.h
+"
+
+54 #i‚de‡
+SSD1306_I2C
+
+
+55 
+	#SSD1306_I2C
+ 
+I2C1
+
+
+	)
+
+59 #i‚de‡
+SSD1306_I2C_ADDR
+
+
+60 
+	#SSD1306_I2C_ADDR
+ 0x78
+
+	)
+
+66 #i‚de‡
+SSD1306_WIDTH
+
+
+67 
+	#SSD1306_WIDTH
+ 128
+
+	)
+
+70 #i‚de‡
+SSD1306_HEIGHT
+
+
+71 
+	#SSD1306_HEIGHT
+ 64
+
+	)
+
+78 
+SSD1306_COLOR_BLACK
+ = 0x00,
+
+79 
+SSD1306_COLOR_WHITE
+ = 0x01
+
+80 } 
+	tSSD1306_COLOR_t
+;
+
+91 
+uöt8_t
+ 
+SSD1306_Inô
+();
+
+99 
+SSD1306_Upd©eS¸ìn
+();
+
+107 
+SSD1306_ToggÀInvît
+();
+
+115 
+SSD1306_Fûl
+(
+SSD1306_COLOR_t
+ 
+Cﬁ‹
+);
+
+125 
+SSD1306_DøwPixñ
+(
+uöt16_t
+ 
+x
+, uöt16_à
+y
+, 
+SSD1306_COLOR_t
+ 
+cﬁ‹
+);
+
+133 
+SSD1306_GŸoXY
+(
+uöt16_t
+ 
+x
+, uöt16_à
+y
+);
+
+143 
+SSD1306_Putc
+(
+ch
+, 
+F⁄tDef_t
+* 
+F⁄t
+, 
+SSD1306_COLOR_t
+ 
+cﬁ‹
+);
+
+153 
+SSD1306_Puts
+(* 
+°r
+, 
+F⁄tDef_t
+* 
+F⁄t
+, 
+SSD1306_COLOR_t
+ 
+cﬁ‹
+);
+
+165 
+SSD1306_DøwLöe
+(
+uöt16_t
+ 
+x0
+, uöt16_à
+y0
+, uöt16_à
+x1
+, uöt16_à
+y1
+, 
+SSD1306_COLOR_t
+ 
+c
+);
+
+177 
+SSD1306_DøwRe˘™gÀ
+(
+uöt16_t
+ 
+x
+, uöt16_à
+y
+, uöt16_à
+w
+, uöt16_à
+h
+, 
+SSD1306_COLOR_t
+ 
+c
+);
+
+189 
+SSD1306_DøwFûÀdRe˘™gÀ
+(
+uöt16_t
+ 
+x
+, uöt16_à
+y
+, uöt16_à
+w
+, uöt16_à
+h
+, 
+SSD1306_COLOR_t
+ 
+c
+);
+
+203 
+SSD1306_DøwTrüngÀ
+(
+uöt16_t
+ 
+x1
+, uöt16_à
+y1
+, uöt16_à
+x2
+, uöt16_à
+y2
+, uöt16_à
+x3
+, uöt16_à
+y3
+, 
+SSD1306_COLOR_t
+ 
+cﬁ‹
+);
+
+214 
+SSD1306_DøwCú˛e
+(
+öt16_t
+ 
+x0
+, i¡16_à
+y0
+, i¡16_à
+r
+, 
+SSD1306_COLOR_t
+ 
+c
+);
+
+225 
+SSD1306_DøwFûÀdCú˛e
+(
+öt16_t
+ 
+x0
+, i¡16_à
+y0
+, i¡16_à
+r
+, 
+SSD1306_COLOR_t
+ 
+c
+);
+
+228 
+ssd1306_image
+(
+uöt8_t
+ *
+img
+, uöt8_à
+hight
+,uöt8_à
+wight
+,uöt8_à
+x
+, uöt8_à
+y
+);
+
+231 #ifde‡
+__˝lu•lus
+
 
 	@
 1
 .
 0
-74
-5719
+82
+6315
 C:\Users\Caska\Desktop\projects\RCR\48531~1.RCR\SMALL-~1\DEV_EX~1\dev_ws.h
 C:\Users\Caska\Desktop\projects\RCR\48531~1.RCR\SMALL-~1\Fil_lib\ADC.c
 C:\Users\Caska\Desktop\projects\RCR\48531~1.RCR\SMALL-~1\Fil_lib\ADC.h
@@ -159871,9 +163495,9 @@ C:\Users\Caska\Desktop\projects\RCR\48531~1.RCR\SMALL-~1\Fil_lib\TIM.c
 C:\Users\Caska\Desktop\projects\RCR\48531~1.RCR\SMALL-~1\Fil_lib\TIM.h
 C:\Users\Caska\Desktop\projects\RCR\48531~1.RCR\SMALL-~1\Fil_lib\USART.c
 C:\Users\Caska\Desktop\projects\RCR\48531~1.RCR\SMALL-~1\Fil_lib\USART.h
+C:\Users\Caska\Desktop\projects\RCR\48531~1.RCR\SMALL-~1\RCR\BOARDS~1.H
 C:\Users\Caska\Desktop\projects\RCR\48531~1.RCR\SMALL-~1\RCR\DEVBOA~1\RCR_DE~1.H
 C:\Users\Caska\Desktop\projects\RCR\48531~1.RCR\SMALL-~1\RCR\DEVBOA~1\RCR_DE~2.H
-C:\Users\Caska\Desktop\projects\RCR\48531~1.RCR\SMALL-~1\RCR\RCR_BO~1.H
 C:\Users\Caska\Desktop\projects\RCR\48531~1.RCR\SMALL-~1\STM32F~1.LD
 C:\Users\Caska\Desktop\projects\RCR\48531~1.RCR\SMALL-~1\STM32F~1.SVD
 C:\Users\Caska\Desktop\projects\RCR\48531~1.RCR\SMALL-~1\STM32F~2.LD
@@ -159891,3 +163515,11 @@ C:\Users\Caska\Desktop\projects\RCR\48531~1.RCR\SMALL-~1\inc\main.h
 C:\Users\Caska\Desktop\projects\RCR\48531~1.RCR\SMALL-~1\src\STARTU~1.S
 C:\Users\Caska\Desktop\projects\RCR\48531~1.RCR\SMALL-~1\src\SYSTEM~1.C
 C:\Users\Caska\Desktop\projects\RCR\48531~1.RCR\SMALL-~1\src\main.c
+C:\Users\Caska\Desktop\projects\RCR\48531~1.RCR\SMALL-~1\ssd1306\SSD130~1.C
+C:\Users\Caska\Desktop\projects\RCR\48531~1.RCR\SMALL-~1\ssd1306\SSD130~1.H
+C:\Users\Caska\Desktop\projects\RCR\48531~1.RCR\SMALL-~1\ssd1306\fonts.c
+C:\Users\Caska\Desktop\projects\RCR\48531~1.RCR\SMALL-~1\ssd1306\fonts.h
+C:\Users\Caska\Desktop\projects\RCR\48531~1.RCR\SMALL-~1\ssd1306\images.c
+C:\Users\Caska\Desktop\projects\RCR\48531~1.RCR\SMALL-~1\ssd1306\images.h
+C:\Users\Caska\Desktop\projects\RCR\48531~1.RCR\SMALL-~1\ssd1306\ssd1306.c
+C:\Users\Caska\Desktop\projects\RCR\48531~1.RCR\SMALL-~1\ssd1306\ssd1306.h

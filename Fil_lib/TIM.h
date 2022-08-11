@@ -241,6 +241,4 @@ bool delay_ms(uint32_t ticks);
 #elif(FIL_CALC_TIM > 1)
 #error Invalid argument FIL_CALC_TIM
 #endif /*FIL_CALC_TIM*/
-#elif(FIL_TIM > 1)
-#error Invalid argument FIL_TIM
 #endif /*FIL_TIM*/

@@ -79,13 +79,17 @@
 
 1658119829 source:c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car\src\startup_stm32f401xc.s
 
-1660133158 source:c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car\src\main.c
+1660221085 source:c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car\src\main.c
 	"main.h"
 
-1659602857 c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car\inc\main.h
+1660218708 c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car\inc\main.h
 	"stm32f4xx.h"
 	<stdbool.h>
 	"FilConfig.h"
+	"fonts.h"
+	"images.h"
+	"ssd1306_i2c.h"
+	"ssd1306.h"
 
 1658119829 c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car\inc\stm32f4xx.h
 	"core_cm4.h"
@@ -117,9 +121,9 @@
 
 1658119829 c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car\inc\system_stm32f4xx.h
 
-1660131126 c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car\fil_lib\filconfig.h
+1660137107 c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car\fil_lib\filconfig.h
 	"main.h"
-	"RCR_BoardSelection.h"
+	"BoardSelection.h"
 	"FreeRTOS.h"
 	"FreeRTOSConfig.h"
 	"task.h"
@@ -129,7 +133,7 @@
 	"timers.h"
 	"event_groups.h"
 	"stream_buffer.h"
-	"Tasks.h"
+	"Robot_tasks.h"
 	"RCC.h"
 	"GPIO.h"
 	"TIM.h"
@@ -151,7 +155,7 @@
 1660125777 c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car\fil_lib\gpio.h
 	"FilConfig.h"
 
-1660129109 c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car\fil_lib\tim.h
+1660195800 c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car\fil_lib\tim.h
 	"FilConfig.h"
 
 1660126171 c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car\fil_lib\usart.h
@@ -170,7 +174,7 @@
 1660128869 source:c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car\fil_lib\rcc.c
 	"RCC.h"
 
-1660130537 c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car\rcr\devboard#3\rcr_devboard_3_setup.h
+1660222389 c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car\rcr\devboard#3\rcr_devboard_3_setup.h
 	"FilConfig.h"
 	"RCR_DevBoard_3.h"
 	"ModBus_conf.h"
@@ -179,19 +183,19 @@
 1658985435 source:c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car\fil_lib\interrupts.c
 	"FilConfig.h"
 
-1660129766 source:c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car\fil_lib\tim.c
+1660201418 source:c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car\fil_lib\tim.c
 	"TIM.h"
 
 1660126141 source:c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car\fil_lib\usart.c
 	"USART.h"
 
-1658119829 c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car\fil_lib\dma.h
+1660135056 c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car\fil_lib\dma.h
 	"FilConfig.h"
 
-1658119829 c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car\fil_lib\dma_fifobuffers.h
+1660135097 c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car\fil_lib\dma_fifobuffers.h
 	"FilConfig.h"
 
-1660130349 c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car\fil_lib\adc.h
+1660135895 c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car\fil_lib\adc.h
 	"FilConfig.h"
 
 1658119829 source:c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car\fil_lib\dma.c
@@ -199,7 +203,7 @@
 	"DMA.h"
 	"DMA_FIFOBuffers.h"
 
-1658123304 c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car\fil_lib\exti.h
+1660135122 c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car\fil_lib\exti.h
 	"FilConfig.h"
 
 1659592353 c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car\rcr\rcr_boardselection.h
@@ -373,13 +377,13 @@
 1659340260 source:c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car\fil_lib\src\tim.c
 	"TIM.h"
 
-1659339227 c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car\fil_lib\robot_tasks.h
+1660135604 c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car\fil_lib\robot_tasks.h
 	"FilConfig.h"
 
-1659334670 source:c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car\fil_lib\matrix.c
+1660135156 source:c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car\fil_lib\matrix.c
 	"Matrix.h"
 
-1659334755 c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car\fil_lib\matrix.h
+1660135148 c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car\fil_lib\matrix.h
 
 1660126181 source:c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car\fil_lib\regulators.c
 	"FilConfig.h"
@@ -388,13 +392,13 @@
 1660126187 c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car\fil_lib\regulators.h
 	"RCR_DevBoard_3_Setup.h"
 
-1659339123 source:c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car\fil_lib\robot_tasks.c
+1660135606 source:c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car\fil_lib\robot_tasks.c
 	"Robot_tasks.h"
 
-1659442159 c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car\fil_lib\i2c.h
+1660221644 c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car\fil_lib\i2c.h
 	"FilConfig.h"
 
-1659442499 source:c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car\fil_lib\i2c.c
+1660216720 source:c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car\fil_lib\i2c.c
 	"I2C.h"
 
 1655441001 source:c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car\fil_lib\freertos_lib\croutine.c
@@ -438,7 +442,7 @@
 	"task.h"
 	"stream_buffer.h"
 
-1659438153 source:c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car\fil_lib\freertos_lib\tasks.c
+1660135248 source:c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car\fil_lib\freertos_lib\tasks.c
 	<stdlib.h>
 	<string.h>
 	"FreeRTOS.h"
@@ -1870,6 +1874,41 @@
 	"lv_hal_tick.h"
 	<stddef.h>
 
-1660132931 source:c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car\fil_lib\adc.c
+1660135540 source:c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car\fil_lib\adc.c
 	"ADC.h"
+
+1659592353 c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car\rcr\boardselection.h
+	"RCR_DevBoard_1.h"
+	"RCR_DevBoard_1_Setup.h"
+	"RCR_DevBoard_2.h"
+	"RCR_DevBoard_2_Setup.h"
+	"RCR_DevBoard_3_Setup.h"
+
+1660198795 c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car\ssd1306\fonts.h
+	"stm32f4xx.h"
+	"string.h"
+
+1660219362 c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car\ssd1306\images.h
+	"stdint.h"
+
+1660222504 c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car\ssd1306\ssd1306.h
+	"main.h"
+	"stdlib.h"
+	"string.h"
+
+1660219056 c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car\ssd1306\ssd1306_i2c.h
+	"main.h"
+
+1612853456 source:c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car\ssd1306\fonts.c
+	"fonts.h"
+
+1660219367 source:c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car\ssd1306\images.c
+	"images.h"
+
+1660220168 source:c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car\ssd1306\ssd1306.c
+	"ssd1306.h"
+	"images.h"
+
+1660221532 source:c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car\ssd1306\ssd1306_i2c.c
+	"ssd1306_i2c.h"
 

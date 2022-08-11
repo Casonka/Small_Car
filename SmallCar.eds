@@ -2,8 +2,8 @@
 <EmBitz_debug_session>
 	<debuggerLastSession>
 		<watches>
-			<watch key="Clocks" format="0" array="0" start="0" count="0" expanded="0" live="1" />
-			<watch key="ADCStatus" format="0" array="0" start="0" count="0" expanded="1" live="1" />
+			<watch key="Clocks" format="0" array="0" start="0" count="0" expanded="1" live="1" />
+			<watch key="ADCStatus" format="0" array="0" start="0" count="0" expanded="0" live="1" />
 			<watch key="TIMStatus" format="0" array="0" start="0" count="0" expanded="0" live="1" />
 			<watch key="Servo1" format="0" array="0" start="0" count="0" expanded="0" live="0" />
 		</watches>

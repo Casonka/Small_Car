@@ -8,6 +8,7 @@
     *       @note [FIL:TIM] TIM Source file.
     */
 #include "TIM.h"
+
 uint32_t globalTime = 0;
 
 /*!
@@ -21,7 +22,7 @@ void SysTick_Handler(void)
     CalcTimStatus(TIM5);
     globalTime++;
 }
-
+#if (FIL_CALC_TIM == 1)
 //---------------------------------------------------------//
 //----------------------Timer Interrupts-------------------//
 //---------------------------------------------------------//
@@ -76,8 +77,6 @@ void TIM8_UP_TIM13_IRQHandler(void)
 ResetTimSR(TIM13);
 }
 #endif /*STM32F40_41xxx*/
-#if (FIL_CALC_TIM == 1)
-
 uint32_t startTick = 0;
 bool delay_ms(uint32_t ticks)
 {

@@ -11,11 +11,8 @@
 #pragma once
 
 #include "FilConfig.h"
-/*!
-*   Custom includes
-*/
 #include "RCR_DevBoard_3.h"
-////////////////////////////////
+
 #if defined(STM32F401xx)
 /*!
 *   @note [RCR] This settings transport to FIL Driver
@@ -25,7 +22,7 @@
 #define __configUSE_TIM                   1
 #define __configUSE_USART                 1
 #define __configUSE_DMA                   0
-#define __configUSE_I2C                   0
+#define __configUSE_I2C                   1
 #define __configUSE_ADC                   1
 #define __configUSE_EXTI                  1
 #define __configUSE_RTC                   0
@@ -186,8 +183,14 @@
 /*!
 *   @note [RCR] IIC(I2C) configuration
 */
+#define __configI2C_TIMEOUT         (20000)
+#define __configUSE_LCD              (0)
+#define __configUSE_LVGL             (0)
+
 #define MPU9250_ADDR                (0x34)     // Gyro Accelerometer Magnetometer
-#define SSD1305_ADDR                (0x00)     // LCD monitor
+
+#define SSD1306_ADDR                (0x15)     // LCD monitor
+#define __configI2C_LCD_SOURCE      (I2C1)
 //-----------------------------------------------------------------//
 /*!
 *   @brief General Initialization
@@ -205,13 +208,13 @@
     SetADC1;                \
     SetUSART1;              \
     SetUSART6;              \
-    SetI2C1;                \
     SetSYSCFG;              \
     InitPeriph;             \
     InitTimers;             \
     InitUSART;              \
     InitInterrupts;         \
-    SysTick_Config(__config_SysTick_Counter);}
+    SysTick_Config(__config_SysTick_Counter);\
+    SetI2C1;                }
 
 /*!
 *   @brief Initialization pins
@@ -242,9 +245,9 @@
     conf_af(ENCODER2A_PIN, AF2);\
     conf_pin(ENCODER2B_PIN, ALTERNATE, PUSH_PULL, LOW_S, PULL_UP);\
     conf_af(ENCODER2B_PIN, AF2);\
-    conf_pin(I2C_SDA_PIN, ALTERNATE, PUSH_PULL, FAST_S, PULL_UP);\
+    conf_pin(I2C_SDA_PIN, ALTERNATE, PUSH_PULL, FAST_S, NO_PULL_UP);\
     conf_af(I2C_SDA_PIN, AF4);\
-    conf_pin(I2C_SCL_PIN, ALTERNATE, PUSH_PULL, FAST_S, PULL_UP);\
+    conf_pin(I2C_SCL_PIN, ALTERNATE, PUSH_PULL, FAST_S, NO_PULL_UP);\
     conf_af(I2C_SCL_PIN, AF4);}
 
 /*!

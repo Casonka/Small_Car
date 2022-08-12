@@ -91,7 +91,7 @@ int16_t ssd1306_I2C_Start(I2C_TypeDef* I2Cx, uint8_t address, uint8_t direction,
 	}
 
 	/* Read status register to clear ADDR flag */
-	I2Cx->SR2;
+	(void)I2Cx->SR2;
 
 	/* Return 0, everything ok */
 	return 0;

@@ -24,7 +24,7 @@
 #define ssd1306_I2C_H 161
 
 #include "main.h"
-
+#if(__configUSE_LCD == 1)
 void ssd1306_I2C_Init();
 
 /**
@@ -77,6 +77,8 @@ uint8_t ssd1306_I2C_Stop(I2C_TypeDef* I2Cx);
 void ssd1306_I2C_WriteData(I2C_TypeDef* I2Cx, uint8_t data);
 
 uint8_t ssd1306_I2C_IsDeviceConnected(I2C_TypeDef* I2Cx, uint8_t address);
+
+#endif /*__configUSE_LCD == 1*/
 
 #endif
 

@@ -127,6 +127,5 @@ char* FONTS_GetStringSize(char* str, FONTS_SIZE_t* SizeStruct, FontDef_t* Font);
 }
 #endif
 
-
 #endif
 

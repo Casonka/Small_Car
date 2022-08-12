@@ -21,8 +21,8 @@
    ----------------------------------------------------------------------
  */
 #include "ssd1306.h"
-#include "images.h"
 
+#if(__configUSE_LCD == 1)
 /* Write command */
 #define SSD1306_WRITECOMMAND(command)      ssd1306_I2C_Write(SSD1306_I2C, SSD1306_I2C_ADDR, 0x00, (command))
 /* Write data */
@@ -491,16 +491,12 @@ void ssd1306_image(uint8_t *img, uint8_t hight,uint8_t wight,uint8_t x, uint8_t 
     if((wight%8)!=0) bytes_x=(wight/8+1)*8;
     else bytes_x=wight;
     	b = 0;
-
-
     for(i=0; i<hight; i++){
         for (j=0; j<bytes_x; j++)
         {
-           // temp=(uint8_t) ((img[j/8]));
             coord_x=x+j;
             coord_y=y+i;
             SSD1306_DrawPixel(coord_x, coord_y, (uint8_t) (img[c/8] & 1<<(7-b))>>(7-b) );
-//            SSD1306_UpdateScreen();
             if(b<7)
                 b++;
             else
@@ -508,19 +504,7 @@ void ssd1306_image(uint8_t *img, uint8_t hight,uint8_t wight,uint8_t x, uint8_t 
             c++;
         }
     }
-//
-//	if(frame >= img[2])
-//		return;
-//	uint32_t start = (frame * (img[3] + (img[4] << 8)));
-//
-//	/* Go through font */
-//	for (i = 0; i < img[1]; i++) {
-//		for (j = 0; j < img[0]; j++) {
-//
-//			SSD1306_DrawPixel(x + j, (y + i), (uint8_t) (img[b/8 + 5 + start] >> (b%8)) & 1);
-//			b++;
-//		}
-	}
+}
 
 
 void SSD1306_ON(void) {
@@ -533,3 +517,5 @@ void SSD1306_OFF(void) {
 	SSD1306_WRITECOMMAND(0x10);
 	SSD1306_WRITECOMMAND(0xAE);
 }
+
+#endif /*__configUSE_LCD*/

@@ -15,6 +15,8 @@
 
 #pragma once
 #include "main.h"
+#include <stdbool.h>
+
 #include "BoardSelection.h"
 
 #define FIL_RCC                   __configUSE_RCC
@@ -35,7 +37,7 @@
 #define CALC_REGULATOR            __configCALC_Regulators
 #define CALC_MATRIX               __configCALC_Matrix
 #define CALC_KINEMATICS           __configCALC_Kinematics
-
+#define CALC_I2C_SCANNING         __configCALC_I2C_SCANNING
 /*!
 *   Version control
 *

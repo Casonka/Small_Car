@@ -339,7 +339,8 @@ char* FONTS_GetStringSize(char* str, FONTS_SIZE_t* SizeStruct, FontDef_t* Font) 
 	/* Fill settings */
 	SizeStruct->Height = Font->FontHeight;
 	SizeStruct->Length = Font->FontWidth * strlen(str);
-	
+
 	/* Return pointer */
 	return str;
 }
+

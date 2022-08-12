@@ -183,14 +183,23 @@
 /*!
 *   @note [RCR] IIC(I2C) configuration
 */
+#define __configCALC_I2C_SCANNING    (1)
+#define __configI2C_FindListSize     (5)
 #define __configI2C_TIMEOUT         (20000)
-#define __configUSE_LCD              (0)
+#define __configUSE_LCD              (1)
+#define __configI2C_LCD_SOURCE      (I2C1)
 #define __configUSE_LVGL             (0)
 
-#define MPU9250_ADDR                (0x34)     // Gyro Accelerometer Magnetometer
+#define MPU9250_ADDR                (0xD0)     // Gyro Accelerometer Magnetometer
 
-#define SSD1306_ADDR                (0x15)     // LCD monitor
-#define __configI2C_LCD_SOURCE      (I2C1)
+#define SSD1306_ADDR                (0x78)     // LCD monitor
+#if(__configUSE_LCD == 1)
+    #include "fonts.h"
+    #include "images.h"
+
+    #include "ssd1306_i2c.h"
+    #include "ssd1306.h"
+#endif /*__configUSE_LCD*/
 //-----------------------------------------------------------------//
 /*!
 *   @brief General Initialization
@@ -224,7 +233,7 @@
     conf_pin(MULPLXA_PIN,  GENERAL, PUSH_PULL, FAST_S, PULL_DOWN);\
     conf_pin(MULPLXB_PIN,  GENERAL, PUSH_PULL, FAST_S, PULL_DOWN);\
     conf_pin(MULPLXC_PIN,  GENERAL, PUSH_PULL, FAST_S, PULL_DOWN);\
-    conf_pin(INT_PIN,  GENERAL, PUSH_PULL, FAST_S, NO_PULL_UP);\
+    conf_pin(INT_PIN,  GENERAL, PUSH_PULL, FAST_S, PULL_DOWN);\
     conf_pin(LED_PIN,  GENERAL, PUSH_PULL, FAST_S, NO_PULL_UP);\
     conf_pin(ADC_TOP, ANALOG, PUSH_PULL, FAST_S, NO_PULL_UP);\
     conf_pin(POT_PIN, ANALOG, PUSH_PULL, FAST_S, PULL_DOWN);\

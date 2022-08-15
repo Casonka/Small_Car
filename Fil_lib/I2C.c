@@ -77,7 +77,7 @@ uint8_t I2CFindDevices(I2C_TypeDef* I2Cx)
 
         if ((I2Cx->CR1 & I2C_CR1_ACK) == 0) SetI2CAsk(I2Cx);
 
-        I2Cx->DR = address & ~I2C_OAR1_ADD0;
+        I2Cx->DR = (address << 1) & ~I2C_OAR1_ADD0;
 
         I2C_timeout = __configI2C_TIMEOUT;
         while(!I2CAddressSentEvent(I2Cx))

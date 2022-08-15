@@ -1,15 +1,16 @@
 #include "main.h"
 //Servomotor Servo1;
-    uint8_t finds = 0;
+
 int main(void)
 {
     Board_Config;
-    I2CSimpleConfigure(I2C1,I2C_Fast);
-
-    I2C1->CR1 |= I2C_CR1_ACK;
-
-    I2CStart(I2C1);
-    I2C1->DR = 0x68;
+    //set_pin(INT_PIN);
+    MPU_Init(__configI2C_MPU_SOURCE);
+//
+//    I2C1->CR1 |= I2C_CR1_ACK;
+//
+//    I2CStart(I2C1);
+//    I2C1->DR = (0x68 << 1);
 
 
     //finds = I2CFindDevices(I2C1);

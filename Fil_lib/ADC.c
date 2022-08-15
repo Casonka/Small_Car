@@ -17,9 +17,9 @@ float distance = 0.0;
 */
 void ADC_IRQHandler(void)
 {
-    AnalogReadRegular();
-    AnalogReadInjected(ADC1);
-    ADC1->SR = 0;
+//    AnalogReadRegular();
+//    AnalogReadInjected(ADC1);
+//    ADC1->SR = 0;
 }
 #if(FIL_ADC == 1)
     __attribute__((unused)) static uint8_t ADC_CurrentTabs[10] =   {ADC_IN_0,

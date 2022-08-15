@@ -143,6 +143,26 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="dev_examples\dev_ws.h" />
+		<Unit filename="External\mpu9250\mpu9250.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="External\mpu9250\mpu9250.h" />
+		<Unit filename="External\ssd1306\fonts.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="External\ssd1306\fonts.h" />
+		<Unit filename="External\ssd1306\images.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="External\ssd1306\images.h" />
+		<Unit filename="External\ssd1306\ssd1306.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="External\ssd1306\ssd1306.h" />
+		<Unit filename="External\ssd1306\ssd1306_i2c.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="External\ssd1306\ssd1306_i2c.h" />
 		<Unit filename="Fil_lib\ADC.c">
 			<Option compilerVar="CC" />
 		</Unit>
@@ -241,6 +261,7 @@
 		<Unit filename="RCR\BoardSelection.h" />
 		<Unit filename="RCR\DevBoard#3\RCR_DevBoard_3.h" />
 		<Unit filename="RCR\DevBoard#3\RCR_DevBoard_3_Setup.h" />
+		<Unit filename="RCR\MinimalKit.h" />
 		<Unit filename="src\main.c">
 			<Option compilerVar="CC" />
 		</Unit>
@@ -251,22 +272,6 @@
 		<Unit filename="src\system_stm32f4xx.c">
 			<Option compilerVar="CC" />
 		</Unit>
-		<Unit filename="ssd1306\fonts.c">
-			<Option compilerVar="CC" />
-		</Unit>
-		<Unit filename="ssd1306\fonts.h" />
-		<Unit filename="ssd1306\images.c">
-			<Option compilerVar="CC" />
-		</Unit>
-		<Unit filename="ssd1306\images.h" />
-		<Unit filename="ssd1306\ssd1306.c">
-			<Option compilerVar="CC" />
-		</Unit>
-		<Unit filename="ssd1306\ssd1306.h" />
-		<Unit filename="ssd1306\ssd1306_i2c.c">
-			<Option compilerVar="CC" />
-		</Unit>
-		<Unit filename="ssd1306\ssd1306_i2c.h" />
 		<Unit filename="STM32F401.svd" />
 		<Unit filename="stm32f401cc_flash.ld" />
 		<Unit filename="stm32f401cc_sram.ld" />

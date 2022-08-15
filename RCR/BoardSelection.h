@@ -16,6 +16,9 @@
 */
 #define _configUSEBoards                3
 
+#if (_configUSEBoards == 0)
+    #include "MinimalKit.h"
+#endif /*_configUSEBoards*/
 #if (_configUSEBoards != 0 )
     #if (_configUSEBoards == 1) // Development Board №1(Custom project - STM32F407 big)
         #include "RCR_DevBoard_1.h"

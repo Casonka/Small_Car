@@ -48,7 +48,6 @@
     #pragma message "STM32F407VGT6, STM32F407VET6"
     #pragma message "STM32F401CCU6"
 #endif /*Supporting device securing end*/
-
 /*!
 *   @note [FIL:FreeRTOS] Include FreeRTOS in project
 */

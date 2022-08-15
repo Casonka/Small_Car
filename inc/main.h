@@ -9,6 +9,13 @@ extern "C" {
 
 #include "FilConfig.h"
 
+#ifdef INCLUDED_I2C
+#include "ssd1306.h"
+#include "ssd1306_i2c.h"
+#include "fonts.h"
+#include "images.h"
+#include "mpu9250.h"
+#endif /*INCLUDED_I2C*/
 
 #ifdef __cplusplus
 }

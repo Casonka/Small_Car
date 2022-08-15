@@ -186,20 +186,16 @@
 #define __configCALC_I2C_SCANNING    (1)
 #define __configI2C_FindListSize     (5)
 #define __configI2C_TIMEOUT         (20000)
-#define __configUSE_LCD              (1)
+
+
 #define __configI2C_LCD_SOURCE      (I2C1)
 #define __configUSE_LVGL             (0)
-
-#define MPU9250_ADDR                (0xD0)     // Gyro Accelerometer Magnetometer
-
 #define SSD1306_ADDR                (0x78)     // LCD monitor
-#if(__configUSE_LCD == 1)
-    #include "fonts.h"
-    #include "images.h"
 
-    #include "ssd1306_i2c.h"
-    #include "ssd1306.h"
-#endif /*__configUSE_LCD*/
+#define __configI2C_MPU_SOURCE      (I2C1)
+#define __configIS_AD0               (0)
+#define MPU9250_ADDR                (__configIS_AD0 == 1) ? (0xD2)  : (0xD0)   // Gyro Accelerometer Magnetometer
+
 //-----------------------------------------------------------------//
 /*!
 *   @brief General Initialization
@@ -254,9 +250,9 @@
     conf_af(ENCODER2A_PIN, AF2);\
     conf_pin(ENCODER2B_PIN, ALTERNATE, PUSH_PULL, LOW_S, PULL_UP);\
     conf_af(ENCODER2B_PIN, AF2);\
-    conf_pin(I2C_SDA_PIN, ALTERNATE, PUSH_PULL, FAST_S, NO_PULL_UP);\
+    conf_pin(I2C_SDA_PIN, ALTERNATE, OPEN_DRAIN, FAST_S, NO_PULL_UP);\
     conf_af(I2C_SDA_PIN, AF4);\
-    conf_pin(I2C_SCL_PIN, ALTERNATE, PUSH_PULL, FAST_S, NO_PULL_UP);\
+    conf_pin(I2C_SCL_PIN, ALTERNATE, OPEN_DRAIN, FAST_S, NO_PULL_UP);\
     conf_af(I2C_SCL_PIN, AF4);}
 
 /*!

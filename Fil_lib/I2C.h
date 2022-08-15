@@ -7,6 +7,8 @@
     *
     *       @note [FIL:I2C] Configuration file I2C
     */
+#ifndef INCLUDED_I2C
+#define INCLUDED_I2C
 #pragma once
 #include "FilConfig.h"
 
@@ -74,14 +76,20 @@
 #define SetI2CMasterModeFast(I2C) { I2C->CCR |= I2C_CCR_FS;}
 #define SetI2CPeriphEnable(I2C)   { I2C->CR1 |= I2C_CR1_PE;}
 #define I2CStart(I2C)             { I2C->CR1 |= I2C_CR1_START;}
+#define I2CStop(I2C)              { I2C->CR1 |= I2C_CR1_STOP;}
 #define SetI2CAsk(I2C)            { I2C->CR1 |= I2C_CR1_ACK;}
+#define I2CSendData(I2C,Data)     { I2C->DR = Data;}
 //---------------------------------------Reset state---------------------------------------------------//
 #define SetI2CMasterModeSlow(I2C) { I2C->CCR &= (~I2C_CCR_FS);}
-#define SetI2CPeriphDisable(I2C) { I2C->CR1 &= (~I2C_CR1_PE);}
+#define SetI2CPeriphDisable(I2C)  { I2C->CR1 &= (~I2C_CR1_PE);}
+#define ResetI2CSR1(I2C)          ((void)(I2C->SR1))
+#define ResetI2CSR2(I2C)          ((void)(I2C->SR2))
+#define ResetI2CData(I2C)         { I2C->DR = 0;}
 //---------------------------------------Status flags---------------------------------------------------//
+#define I2CPeriphEnableEvent(I2C)      ((I2C->CR1 & I2C_CR1_PE))
 #define I2CBusyEvent(I2C)              ((I2C->SR2 & I2C_SR2_BUSY))
 #define I2CStartBitEvent(I2C)          ((I2C->SR1 & I2C_SR1_SB))
-#define I2CAddressSentEvent(I2C)       ((I2C->SR1 & I2C_SR1_ADDR))
+#define I2CAddressSentEvent(I2C)       ((I2C->SR1 & I2C_SR1_ADDR) == 1)
 #define I2CMasterModeEvent(I2C)        ((I2C->SR2 & I2C_SR2_MSL))
 #define I2CDataEmptyEvent(I2C)         ((I2C->SR1 & I2C_SR1_TXE))
 
@@ -98,3 +106,4 @@
     uint8_t I2CFindDevices(I2C_TypeDef* I2Cx);
 #endif /*CALC_I2C_SCANNING*/
 #endif /*FIL_I2C*/
+#endif /*INCLUDED_I2C*/

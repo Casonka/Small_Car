@@ -19,7 +19,7 @@ uint32_t globalTime = 0;
 void SysTick_Handler(void)
 {
 
-    CalcTimStatus(TIM5);
+//    CalcTimStatus(TIM5);
     globalTime++;
 }
 #if (FIL_CALC_TIM == 1)

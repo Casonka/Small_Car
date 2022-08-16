@@ -1,0 +1,13 @@
+cat .gitignore
+
+/obj
+/cmsis
+/bin
+*.ld
+*.out
+*.ebp
+*.eds
+*.elay
+*.svd
+*.depend
+*.cscope_file_list

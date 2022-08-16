@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
 <EmBitz_debug_session>
 	<debuggerLastSession>
-		<breakpoints>
-			<break type="0" enabled="1" file="External/mpu9250/mpu9250.c" line="73" />
-		</breakpoints>
 		<watches>
 			<watch key="Clocks" format="0" array="0" start="0" count="0" expanded="0" live="1" />
 			<watch key="ADCStatus" format="0" array="0" start="0" count="0" expanded="0" live="1" />
 			<watch key="TIMStatus" format="0" array="0" start="0" count="0" expanded="0" live="1" />
-			<watch key="I2CStatus" format="3" array="0" start="0" count="0" expanded="1" live="1" />
+			<watch key="I2CStatus" format="3" array="0" start="0" count="0" expanded="0" live="1" />
 			<watch key="MPU_Timeout" format="0" array="0" start="0" count="0" expanded="0" live="1" />
 			<watch key="globalTime" format="0" array="0" start="0" count="0" expanded="0" live="1" />
+			<watch key="connect" format="0" array="0" start="0" count="0" expanded="0" live="1" />
+			<watch key="MPU9250" format="0" array="0" start="0" count="0" expanded="0" live="1" />
+			<watch key="Buffer" format="3" array="1" start="0" count="0" expanded="1" live="0" />
 		</watches>
 		<memory_view address="0x0" locked="0" live="0" options="290" />
 	</debuggerLastSession>

@@ -24,8 +24,6 @@
 #define SSD1306_H 100
 #include "main.h"
 
-#if(__configUSE_LCD == 1)
-
 /* C++ detection */
 #ifdef __cplusplus
 extern C {
@@ -235,5 +233,4 @@ void ssd1306_image(uint8_t *img, uint8_t hight,uint8_t wight,uint8_t x, uint8_t 
 }
 #endif
 
-#endif /*__configUSE_LCD*/
 #endif

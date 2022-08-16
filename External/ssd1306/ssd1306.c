@@ -22,7 +22,6 @@
  */
 #include "ssd1306.h"
 
-#if(__configUSE_LCD == 1)
 /* Write command */
 #define SSD1306_WRITECOMMAND(command)      ssd1306_I2C_Write(SSD1306_I2C, SSD1306_I2C_ADDR, 0x00, (command))
 /* Write data */
@@ -518,4 +517,3 @@ void SSD1306_OFF(void) {
 	SSD1306_WRITECOMMAND(0xAE);
 }
 
-#endif /*__configUSE_LCD*/

@@ -79,16 +79,16 @@
 
 1658119829 source:c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car\src\startup_stm32f401xc.s
 
-1660564136 source:c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car\src\main.c
+1660646053 source:c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car\src\main.c
 	"main.h"
 
-1660553191 c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car\inc\main.h
+1660644050 c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car\inc\main.h
 	"stm32f4xx.h"
 	"FilConfig.h"
-	"ssd1306.h"
-	"ssd1306_i2c.h"
 	"fonts.h"
 	"images.h"
+	"ssd1306.h"
+	"ssd1306_i2c.h"
 	"mpu9250.h"
 
 1658119829 c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car\inc\stm32f4xx.h
@@ -175,7 +175,7 @@
 1660128869 source:c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car\fil_lib\rcc.c
 	"RCC.h"
 
-1660564119 c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car\rcr\devboard#3\rcr_devboard_3_setup.h
+1660640943 c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car\rcr\devboard#3\rcr_devboard_3_setup.h
 	"FilConfig.h"
 	"RCR_DevBoard_3.h"
 	"ModBus_conf.h"
@@ -396,10 +396,10 @@
 1660135606 source:c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car\fil_lib\robot_tasks.c
 	"Robot_tasks.h"
 
-1660564848 c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car\fil_lib\i2c.h
+1660643635 c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car\fil_lib\i2c.h
 	"FilConfig.h"
 
-1660568161 source:c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car\fil_lib\i2c.c
+1660647424 source:c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car\fil_lib\i2c.c
 	"I2C.h"
 
 1655441001 source:c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car\fil_lib\freertos_lib\croutine.c
@@ -1933,10 +1933,10 @@
 1660285183 c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car\external\ssd1306\images.h
 	"stdint.h"
 
-1660283275 source:c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car\external\ssd1306\ssd1306.c
+1660644069 source:c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car\external\ssd1306\ssd1306.c
 	"ssd1306.h"
 
-1660551762 c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car\external\ssd1306\ssd1306.h
+1660644021 c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car\external\ssd1306\ssd1306.h
 	"main.h"
 	"main.h"
 	"stdlib.h"
@@ -1951,10 +1951,11 @@
 1660551974 source:c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car\external\ssd1306\ssd1306_i2c.c
 	"ssd1306_i2c.h"
 
-1660568866 source:c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car\external\mpu9250\mpu9250.c
+1660647534 source:c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car\external\mpu9250\mpu9250.c
 	"mpu9250.h"
 
-1660552839 c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car\external\mpu9250\mpu9250.h
+1660646325 c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car\external\mpu9250\mpu9250.h
 	"main.h"
 	"BoardSelection.h"
+	"stdbool.h"
 

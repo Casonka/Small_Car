@@ -3,7 +3,7 @@
     *                       ///I2C initialization\\\
     *   --------------------------------------------------------------------------
     *   @author RCR group developers - Caska
-    *   @date 01/08/2022 - last update version I2C
+    *   @date 15/08/2022 - last update version I2C
     *
     *       @note [FIL:I2C] Configuration file I2C
     */
@@ -78,32 +78,64 @@
 #define I2CStart(I2C)             { I2C->CR1 |= I2C_CR1_START;}
 #define I2CStop(I2C)              { I2C->CR1 |= I2C_CR1_STOP;}
 #define SetI2CAsk(I2C)            { I2C->CR1 |= I2C_CR1_ACK;}
-#define I2CSendData(I2C,Data)     { I2C->DR = Data;}
+#define I2CSendData(I2C,DATA,DIR)  (DIR == 1) ? (I2C->DR = ((DATA << 1) & ~I2C_OAR1_ADD0)) : (I2C->DR = ((DATA << 1) | I2C_OAR1_ADD0))
 //---------------------------------------Reset state---------------------------------------------------//
-#define SetI2CMasterModeSlow(I2C) { I2C->CCR &= (~I2C_CCR_FS);}
-#define SetI2CPeriphDisable(I2C)  { I2C->CR1 &= (~I2C_CR1_PE);}
+#define SetI2CMasterModeSlow(I2C) (I2C->CCR &= (~I2C_CCR_FS))
+#define SetI2CPeriphDisable(I2C)  (I2C->CR1 &= (~I2C_CR1_PE))
+#define ResetI2CAsk(I2C)          (I2C->CR1 &= ~I2C_CR1_ACK)
 #define ResetI2CSR1(I2C)          ((void)(I2C->SR1))
 #define ResetI2CSR2(I2C)          ((void)(I2C->SR2))
-#define ResetI2CData(I2C)         { I2C->DR = 0;}
+#define ResetI2CData(I2C)         (I2C->DR = 0)
+#define ResetI2CCR1(I2C)          (I2C->CR1 = 0)
 //---------------------------------------Status flags---------------------------------------------------//
-#define I2CPeriphEnableEvent(I2C)      ((I2C->CR1 & I2C_CR1_PE))
-#define I2CBusyEvent(I2C)              ((I2C->SR2 & I2C_SR2_BUSY))
-#define I2CStartBitEvent(I2C)          ((I2C->SR1 & I2C_SR1_SB))
-#define I2CAddressSentEvent(I2C)       ((I2C->SR1 & I2C_SR1_ADDR) == 1)
-#define I2CMasterModeEvent(I2C)        ((I2C->SR2 & I2C_SR2_MSL))
-#define I2CDataEmptyEvent(I2C)         ((I2C->SR1 & I2C_SR1_TXE))
+#define I2CPeriphEnableEvent(I2C)      ((I2C->CR1 & I2C_CR1_PE) == 1)
+#define I2CBusyEvent(I2C)              (((I2C->SR2 & I2C_SR2_BUSY) >> 1) == 1)
+#define I2CStartBitEvent(I2C)          ((I2C->SR1 & I2C_SR1_SB) == 1)
+#define I2CAddressSentEvent(I2C)       (((I2C->SR1 & I2C_SR1_ADDR) >> 1) == 1)
+#define I2CMasterModeEvent(I2C)        ((I2C->SR2 & I2C_SR2_MSL) == 1)
+#define I2CDataEmptyEvent(I2C)         (((I2C->SR1 & I2C_SR1_TXE) >> 7) == 1)
+#define I2CDataNotEmptyEvent(I2C)      (((I2C->SR1 & I2C_SR1_RXNE) >> 6) == 1)
 
 #ifndef __configI2C_TIMEOUT
-#define __configI2C_TIMEOUT					20000
+#define __configI2C_TIMEOUT					10000
 #endif /*__configI2C_TIMEOUT*/
 
+/*!
+*   @brief I2C_ClearAllStats(I2C_TypeDef* I2Cx) - Clear all active flags and parameters
+*       @arg I2Cx - number of target I2C
+*           @note [FIL:I2C] Frequency and rise time current bus will not be cleared
+*/
+void I2C_ClearAllStats(I2C_TypeDef* I2Cx);
+
+/*!
+*   @brief I2C_SingleSend(I2C_TypeDef* I2Cx, uint8_t Byte, bool IsWrite) - Single Write on Bus IIC
+*       @arg I2Cx - number of target I2C
+*       @arg Byte - Sending value
+*       @arg IsWrite - necessary Write/Read bytes on next transfer:
+*                       0 - Reads next transfer
+*                       1 - Write by slave on next transfer
+*/
+bool I2C_SingleSend(I2C_TypeDef* I2Cx, uint8_t Byte, bool IsWrite);
+
+/*!
+*   @brief I2C_SingleSend(I2C_TypeDef* I2Cx, uint8_t *bufBytes) - Multiple Write on Bus IIC
+*       @arg I2Cx - number of target I2C
+*       @arg bufBytes - Sending buffer of values
+*/
+uint16_t I2C_MultipleSend(I2C_TypeDef* I2Cx, uint8_t *bufBytes);
+
+uint8_t I2C_SingleRead(I2C_TypeDef* I2Cx);
+
+uint16_t I2C_MultipleRead(I2C_TypeDef* I2Cx, uint8_t *bufBytes);
 #if(CALC_I2C_SCANNING == 1)
+    #if(__configI2C_FindListSize > 0 )
     struct
     {
         uint16_t Devices[__configI2C_FindListSize];
     }I2CStatus;
 
     uint8_t I2CFindDevices(I2C_TypeDef* I2Cx);
+    #endif /*__configI2C_FindListSize*/
 #endif /*CALC_I2C_SCANNING*/
 #endif /*FIL_I2C*/
 #endif /*INCLUDED_I2C*/

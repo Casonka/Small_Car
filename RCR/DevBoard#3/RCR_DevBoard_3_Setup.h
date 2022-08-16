@@ -89,23 +89,6 @@
 #define COMPENSATE_VALUE                (0.9)
 #define DISK_TO_REAL                    ((float)(WHEEL_LENGTH / DISKETS_ON_ROTATE * COMPENSATE_VALUE))
 #define TIME                            ((float)(1.0 / __config_Regulator_FREQ))
-/*!
-*   @brief __configKINEMATIC_CAR - Автомобильная кинематика(1 двигатель, 1 серва )
-*/
-#define __configKINEMATIC_CAR            1
-/*!
-*   @brief __configKINEMATIC_TRICYCLE - Трехколесная кинематика
-*/
-#define __configKINEMATIC_TRICYCLE       2
-/*!
-*   @brief __configKINEMATIC_FOUR_WHELLED - Четырехколесная кинематика кинематика
-*/
-#define __configKINEMATIC_FOUR_WHELLED   3
-
-/*!
-*   @note [RCR] Для использования необходимо добавить существующую конфигурацию
-*/
-#define __configKINEMATIC_TYPE          (__configKINEMATIC_CAR)
 
 /*!
 *   @note [RCR] UART/USART configuration
@@ -183,18 +166,22 @@
 /*!
 *   @note [RCR] IIC(I2C) configuration
 */
+// General IIC Configuration
 #define __configCALC_I2C_SCANNING    (1)
 #define __configI2C_FindListSize     (5)
 #define __configI2C_TIMEOUT         (20000)
 
-
+// configuration LCD
 #define __configI2C_LCD_SOURCE      (I2C1)
 #define __configUSE_LVGL             (0)
 #define SSD1306_ADDR                (0x78)     // LCD monitor
 
+// configuration Gyro
 #define __configI2C_MPU_SOURCE      (I2C1)
+#define __configMPU_USE_Calibration  (1)
+#define __configMPU_Scale            (0)
 #define __configIS_AD0               (0)
-#define MPU9250_ADDR                (__configIS_AD0 == 1) ? (0xD2)  : (0xD0)   // Gyro Accelerometer Magnetometer
+#define MPU9250_ADDR                (__configIS_AD0 == 1) ? (0x69)  : (0x68)   // Gyro Accelerometer Magnetometer
 
 //-----------------------------------------------------------------//
 /*!

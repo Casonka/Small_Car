@@ -17,6 +17,8 @@
 #include "main.h"
 #include <stdbool.h>
 
+#define OFF     (0xAC)
+
 #include "BoardSelection.h"
 
 #define FIL_RCC                   __configUSE_RCC

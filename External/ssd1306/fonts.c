@@ -22,6 +22,7 @@
  */
 #include "fonts.h"
 
+#ifdef INCLUDED_I2C
 const uint16_t Font7x10 [] = {
 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000,  // sp
 0x1000, 0x1000, 0x1000, 0x1000, 0x1000, 0x1000, 0x0000, 0x1000, 0x0000, 0x0000,  // !
@@ -344,3 +345,4 @@ char* FONTS_GetStringSize(char* str, FONTS_SIZE_t* SizeStruct, FontDef_t* Font) 
 	return str;
 }
 
+#endif /*INCLUDED_I2C*/

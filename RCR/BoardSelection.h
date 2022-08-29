@@ -9,23 +9,28 @@
 */
 
 /*!
+*   @arg 0 - Minimal Kit
 *   @arg 1 - RCR Development Board #1
 *   @arg 2 - RCR Development Board #2
 *   @arg 3 - RCR Development Board #3
 *   @arg 4 - RCR Custom project
+*   @arg 0xFF - Maximum Kit
 */
-#define _configUSEBoards                3
+#define _configUSEBoards                (3)
 
 #if (_configUSEBoards == 0)
     #include "MinimalKit.h"
 #endif /*_configUSEBoards*/
+#if (_configUSEBoards == 0xFF)
+    #include "MaxPins.h"
+    #include "MaxKit.h"
+    #include "MaxSetup.h"
+#endif /*_configUSEBoards*/
 #if (_configUSEBoards != 0 )
-    #if (_configUSEBoards == 1) // Development Board №1(Custom project - STM32F407 big)
-        #include "RCR_DevBoard_1.h"
+    #if (_configUSEBoards == 1) // Development Board №1(Custom project - STM32F407)
         #include "RCR_DevBoard_1_Setup.h"
     #endif /*Development Board №1*/
     #if (_configUSEBoards == 2) // Development Board №2 (Blue pill board - STM32F103)
-        #include "RCR_DevBoard_2.h"
         #include "RCR_DevBoard_2_Setup.h"
     #endif /*Development Board №2*/
     #if (_configUSEBoards == 3) // Development Board №3 (Green pill board - STM32F401)
@@ -34,7 +39,7 @@
     #if (_configUSEBoards == 4) // Development Board №4 (Coming soon - new project in this list)
 
     #endif /*Development Board №4*/
-    #if ((_configUSEBoards < 0) || (_configUSEBoards > 4))
+    #if ((_configUSEBoards < 0) || (_configUSEBoards > 0xFF))
         #error Invalid argument of Development Board
     #endif /*_configUSEBoards*/
 #endif /*_configUSEBoards*/

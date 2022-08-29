@@ -1,3 +1,5 @@
+#ifdef INCLUDED_I2C
+
 #ifndef IMAGES_H_INCLUDED
 #define IMAGES_H_INCLUDED
 
@@ -10,3 +12,4 @@ uint8_t Tank_60x60[510];
 uint8_t Sad_50x50[350];
 uint8_t Heart_50x50[350];
 #endif /* IMAGES_H_INCLUDED */
+#endif /*INCLUDED_I2C*/

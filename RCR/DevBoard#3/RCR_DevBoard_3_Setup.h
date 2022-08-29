@@ -25,16 +25,14 @@
 #define __configUSE_I2C                   1
 #define __configUSE_ADC                   1
 #define __configUSE_EXTI                  1
-#define __configUSE_RTC                   0
+#define __configUSE_RTC                   1
 #define __configUSE_FREERTOS              0
-#define __configUSE_DeprecatedFunctions   0   // !Deprecated
 
 #define __configCALC_RCC                  1
 #define __configCALC_TIM                  1
 #define __configCALC_USART                1
 #define __configCALC_Regulators           1
 #define __configCALC_Matrix               0
-#define __configCALC_Kinematics           0
 
 //-----------------------------------------------------------------//
 /*!
@@ -51,7 +49,7 @@
 #define __config_TIM1_ARR        (200)
 #define __config_TIM1_CH1        1
 #define __config_TIM1_CH2        0
-#define __config_TIM1_CH3        0
+#define __config_TIM1_CH3        1
 #define __config_TIM1_CH4        0
 
 #define __config_TIM5_PSC        (420 - 1)
@@ -67,6 +65,7 @@
 /*!
 *   @note [RCR] Regulator configuration { Car's engine }
 */
+
 #define __config_Regulator_ON           (1)
 #define __config_Regulator_Source       (TIM3)
 #define __config_Regulator_FREQ         (100)
@@ -115,15 +114,15 @@
 *                           5 - Developer Mode (All Manually)
 */
 #define __configADC_Mode                (4)
-#define __configCONVERT_Volts           (0)
+#define __configCONVERT_Volts           (1)
 #define __configUSE_Battery_Charging    (0)
 #define __configUSE_Temperature_Sensor  (0)
 // custom variables
 #define __configMAP_Potentiometer       (4)
 #define __configMAP_Multiplexor         (8)
 /////////////////////////////////////////////////
-#define __configUSE_SENSOR_1            __configMAP_Potentiometer
-#define __configUSE_SENSOR_2            __configMAP_Multiplexor
+#define __configUSE_SENSOR_1            (__configMAP_Potentiometer)
+#define __configUSE_SENSOR_2            (__configMAP_Multiplexor)
 #define __configUSE_SENSOR_3            (-1)
 #define __configUSE_SENSOR_4            (-1)
 #define __configUSE_SENSOR_5            (-1)
@@ -133,7 +132,7 @@
 #define __configUSE_SENSOR_9            (-1)
 #define __configUSE_SENSOR_10           (-1)
 
-#define __configADC_InterruptRequest    (1)
+#define __configADC_InterruptRequest    (0)
 /*!
 *   @info Supported divider ADC frequency
 *       @note [RCR] ADC Freq = APB2 Clock (exmp. 84 MHz) / divider
@@ -168,7 +167,9 @@
 */
 // General IIC Configuration
 #define __configCALC_I2C_SCANNING    (1)
+
 #define __configI2C_FindListSize     (5)
+
 #define __configI2C_TIMEOUT         (20000)
 
 // configuration LCD
@@ -183,6 +184,38 @@
 #define __configIS_AD0               (0)
 #define MPU9250_ADDR                (__configIS_AD0 == 1) ? (0x69)  : (0x68)   // Gyro Accelerometer Magnetometer
 
+/*!
+*   @note [RCR] RTC configuration
+*/
+#define __configRTC_YEAR             (22)
+#define __configRTC_MONTHS           (8)
+#define __configRTC_DATE             (29)
+
+#define __configRTC_HOURS            (12)
+#define __configRTC_MINUTES          (25)
+#define __configRTC_SECONDS          (0)
+/*!
+*   RTC Alarm A
+*/
+#define __configUSE_ALARM_A          (1)
+#define __configRTC_ALARM_A_YEARS    (22)
+#define __configRTC_ALARM_A_MONTHS   (8)
+#define __configRTC_ALARM_A_DATE     (29)
+
+#define __configRTC_ALARM_A_HOURS    (12)
+#define __configRTC_ALARM_A_MINUTES  (25)
+#define __configRTC_ALARM_A_SECONDS  (0)
+/*!
+*   RTC Alarm B
+*/
+#define __configUSE_ALARM_B          (0)
+#define __configRTC_ALARM_B_YEARS    (22)
+#define __configRTC_ALARM_B_MONTHS   (8)
+#define __configRTC_ALARM_B_DATE     (29)
+
+#define __configRTC_ALARM_B_HOURS    (12)
+#define __configRTC_ALARM_B_MINUTES  (25)
+#define __configRTC_ALARM_B_SECONDS  (0)
 //-----------------------------------------------------------------//
 /*!
 *   @brief General Initialization
@@ -212,35 +245,35 @@
 *   @brief Initialization pins
 */
 #define InitPeriph {\
-    conf_pin(BTN1_DIR_PIN, GENERAL, PUSH_PULL, FAST_S, NO_PULL_UP);\
-    conf_pin(MULPLXA_PIN,  GENERAL, PUSH_PULL, FAST_S, PULL_DOWN);\
-    conf_pin(MULPLXB_PIN,  GENERAL, PUSH_PULL, FAST_S, PULL_DOWN);\
-    conf_pin(MULPLXC_PIN,  GENERAL, PUSH_PULL, FAST_S, PULL_DOWN);\
-    conf_pin(INT_PIN,  GENERAL, PUSH_PULL, FAST_S, PULL_DOWN);\
-    conf_pin(LED_PIN,  GENERAL, PUSH_PULL, FAST_S, NO_PULL_UP);\
-    conf_pin(ADC_TOP, ANALOG, PUSH_PULL, FAST_S, NO_PULL_UP);\
-    conf_pin(POT_PIN, ANALOG, PUSH_PULL, FAST_S, PULL_DOWN);\
-    conf_pin(EXTI1_PIN, INPUT, PUSH_PULL, FAST_S, PULL_DOWN);\
-    conf_pin(EXTI2_PIN, INPUT, PUSH_PULL, FAST_S, PULL_DOWN);\
-    conf_pin(EXTI3_PIN, INPUT, PUSH_PULL, FAST_S, PULL_DOWN);\
-    conf_pin(EXTI4_PIN, INPUT, PUSH_PULL, FAST_S, PULL_DOWN);\
-    conf_pin(EXTI5_PIN, INPUT, PUSH_PULL, FAST_S, PULL_DOWN);\
-    conf_pin(BTN1_PWM_PIN, ALTERNATE, PUSH_PULL, FAST_S, NO_PULL_UP);\
-    conf_af(BTN1_PWM_PIN, AF1);\
-    conf_pin(BTN2_PWM_PIN, ALTERNATE, PUSH_PULL, FAST_S, NO_PULL_UP);\
-    conf_af(BTN2_PWM_PIN, AF1);\
-    conf_pin(ENCODER1A_PIN, ALTERNATE, PUSH_PULL, FAST_S, NO_PULL_UP);\
-    conf_af(ENCODER1A_PIN, AF2);\
-    conf_pin(ENCODER1B_PIN, ALTERNATE, PUSH_PULL, FAST_S, NO_PULL_UP);\
-    conf_af(ENCODER1B_PIN, AF2);\
-    conf_pin(ENCODER2A_PIN, ALTERNATE, PUSH_PULL, LOW_S, PULL_UP);\
-    conf_af(ENCODER2A_PIN, AF2);\
-    conf_pin(ENCODER2B_PIN, ALTERNATE, PUSH_PULL, LOW_S, PULL_UP);\
-    conf_af(ENCODER2B_PIN, AF2);\
-    conf_pin(I2C_SDA_PIN, ALTERNATE, OPEN_DRAIN, FAST_S, NO_PULL_UP);\
-    conf_af(I2C_SDA_PIN, AF4);\
-    conf_pin(I2C_SCL_PIN, ALTERNATE, OPEN_DRAIN, FAST_S, NO_PULL_UP);\
-    conf_af(I2C_SCL_PIN, AF4);}
+    GPIOConfPin(BTN1_DIR_PIN, GENERAL, PUSH_PULL, FAST_S, NO_PULL_UP);\
+    GPIOConfPin(MULPLXA_PIN,  GENERAL, PUSH_PULL, FAST_S, PULL_DOWN);\
+    GPIOConfPin(MULPLXB_PIN,  GENERAL, PUSH_PULL, FAST_S, PULL_DOWN);\
+    GPIOConfPin(MULPLXC_PIN,  GENERAL, PUSH_PULL, FAST_S, PULL_DOWN);\
+    GPIOConfPin(INT_PIN,  GENERAL, PUSH_PULL, FAST_S, PULL_DOWN);\
+    GPIOConfPin(LED_PIN,  GENERAL, PUSH_PULL, FAST_S, NO_PULL_UP);\
+    GPIOConfPin(ADC_TOP, ANALOG, PUSH_PULL, FAST_S, NO_PULL_UP);\
+    GPIOConfPin(POT_PIN, ANALOG, PUSH_PULL, FAST_S, PULL_DOWN);\
+    GPIOConfPin(EXTI1_PIN, INPUT, PUSH_PULL, FAST_S, PULL_DOWN);\
+    GPIOConfPin(EXTI2_PIN, INPUT, PUSH_PULL, FAST_S, PULL_DOWN);\
+    GPIOConfPin(EXTI3_PIN, INPUT, PUSH_PULL, FAST_S, PULL_DOWN);\
+    GPIOConfPin(EXTI4_PIN, INPUT, PUSH_PULL, FAST_S, PULL_DOWN);\
+    GPIOConfPin(EXTI5_PIN, INPUT, PUSH_PULL, FAST_S, PULL_DOWN);\
+    GPIOConfPin(BTN1_PWM_PIN, ALTERNATE, PUSH_PULL, FAST_S, NO_PULL_UP);\
+    GPIOConfAF(BTN1_PWM_PIN, AF1);\
+    GPIOConfPin(BTN2_PWM_PIN, ALTERNATE, PUSH_PULL, FAST_S, NO_PULL_UP);\
+    GPIOConfAF(BTN2_PWM_PIN, AF1);\
+    GPIOConfPin(ENCODER1A_PIN, ALTERNATE, PUSH_PULL, FAST_S, NO_PULL_UP);\
+    GPIOConfAF(ENCODER1A_PIN, AF2);\
+    GPIOConfPin(ENCODER1B_PIN, ALTERNATE, PUSH_PULL, FAST_S, NO_PULL_UP);\
+    GPIOConfAF(ENCODER1B_PIN, AF2);\
+    GPIOConfPin(ENCODER2A_PIN, ALTERNATE, PUSH_PULL, LOW_S, PULL_UP);\
+    GPIOConfAF(ENCODER2A_PIN, AF2);\
+    GPIOConfPin(ENCODER2B_PIN, ALTERNATE, PUSH_PULL, LOW_S, PULL_UP);\
+    GPIOConfAF(ENCODER2B_PIN, AF2);\
+    GPIOConfPin(I2C_SDA_PIN, ALTERNATE, OPEN_DRAIN, FAST_S, NO_PULL_UP);\
+    GPIOConfAF(I2C_SDA_PIN, AF4);\
+    GPIOConfPin(I2C_SCL_PIN, ALTERNATE, OPEN_DRAIN, FAST_S, NO_PULL_UP);\
+    GPIOConfAF(I2C_SCL_PIN, AF4);}
 
 /*!
 *   @brief Initialization timers

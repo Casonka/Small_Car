@@ -20,6 +20,8 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
    ----------------------------------------------------------------------
  */
+ #ifdef INCLUDED_I2C
+
 #ifndef SSD1306_H
 #define SSD1306_H 100
 #include "main.h"
@@ -234,3 +236,5 @@ void ssd1306_image(uint8_t *img, uint8_t hight,uint8_t wight,uint8_t x, uint8_t 
 #endif
 
 #endif
+
+#endif /*INCLUDED_I2C*/

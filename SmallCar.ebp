@@ -14,19 +14,20 @@
 				<Option compiler="armgcc_eb" />
 				<Option projectDeviceOptionsRelation="0" />
 				<Compiler>
-					<Add option="-g2" />
-					<Add option="-O0" />
 					<Add option="-Wall" />
 					<Add option="-fdata-sections" />
 					<Add option="-ffunction-sections" />
+					<Add option="-O0" />
+					<Add option="-g2" />
 					<Add symbol="DEBUG_TARGET" />
+					<Add directory="C:\Users\Caska\Desktop\projects\small-car — копия\External" />
 				</Compiler>
 				<Cpp>
-					<Add option="-g2" />
-					<Add option="-O0" />
 					<Add option="-Wall" />
 					<Add option="-fdata-sections" />
 					<Add option="-ffunction-sections" />
+					<Add option="-O0" />
+					<Add option="-g2" />
 				</Cpp>
 				<Assembler>
 					<Add option="-Wa,--gdwarf-2" />
@@ -143,26 +144,6 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="dev_examples\dev_ws.h" />
-		<Unit filename="External\mpu9250\mpu9250.c">
-			<Option compilerVar="CC" />
-		</Unit>
-		<Unit filename="External\mpu9250\mpu9250.h" />
-		<Unit filename="External\ssd1306\fonts.c">
-			<Option compilerVar="CC" />
-		</Unit>
-		<Unit filename="External\ssd1306\fonts.h" />
-		<Unit filename="External\ssd1306\images.c">
-			<Option compilerVar="CC" />
-		</Unit>
-		<Unit filename="External\ssd1306\images.h" />
-		<Unit filename="External\ssd1306\ssd1306.c">
-			<Option compilerVar="CC" />
-		</Unit>
-		<Unit filename="External\ssd1306\ssd1306.h" />
-		<Unit filename="External\ssd1306\ssd1306_i2c.c">
-			<Option compilerVar="CC" />
-		</Unit>
-		<Unit filename="External\ssd1306\ssd1306_i2c.h" />
 		<Unit filename="Fil_lib\ADC.c">
 			<Option compilerVar="CC" />
 		</Unit>
@@ -246,6 +227,10 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="Fil_lib\Robot_tasks.h" />
+		<Unit filename="Fil_lib\RTC.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Fil_lib\RTC.h" />
 		<Unit filename="Fil_lib\TIM.c">
 			<Option compilerVar="CC" />
 		</Unit>
@@ -259,10 +244,14 @@
 		<Unit filename="inc\system_stm32f4xx.h" />
 		<Unit filename="lvgl\src\draw\sdl\README.md" />
 		<Unit filename="RCR\BoardSelection.h" />
+		<Unit filename="RCR\DevBoard#2\RCR_DevBoard_2.h" />
+		<Unit filename="RCR\DevBoard#2\RCR_DevBoard_2_Setup.h" />
 		<Unit filename="RCR\DevBoard#3\RCR_DevBoard_3.h" />
 		<Unit filename="RCR\DevBoard#3\RCR_DevBoard_3_Setup.h" />
-		<Unit filename="RCR\MaxKit.h" />
-		<Unit filename="RCR\MinimalKit.h" />
+		<Unit filename="RCR\MaxKit\MaxKit.h" />
+		<Unit filename="RCR\MaxKit\MaxPins.h" />
+		<Unit filename="RCR\MaxKit\MaxSetup.h" />
+		<Unit filename="RCR\MinKit\MinimalKit.h" />
 		<Unit filename="src\main.c">
 			<Option compilerVar="CC" />
 		</Unit>

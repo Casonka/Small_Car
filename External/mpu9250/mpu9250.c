@@ -1,15 +1,18 @@
 #include "mpu9250.h"
 
-#ifdef INCLUDED_I2C
+#if(EXTERNAL_MPU9250 == 1)
 
 #define MPU_Reconnect_it    (100)
-bool connect = false;
 static uint32_t MPU_Timeout;
 
-uint8_t MPU_Init(I2C_TypeDef* I2Cx)
+/*!
+*   @brief Initialization MPU9250
+*/
+uint8_t MPU_Init(I2C_TypeDef* I2Cx, uint8_t aScale, uint8_t gScale)
 {
     MPU9250.status = 5;
     I2CSimpleConfigure(I2Cx,I2C_Fast);
+    bool connect = false;
 
     connect = MPU_Connect(I2Cx,true);
     if(!connect) return 1;
@@ -17,15 +20,24 @@ uint8_t MPU_Init(I2C_TypeDef* I2Cx)
 #if(CALC_I2C_SCANNING == 1)
     MPU9250.status = 1;
 #endif/*CALC_I2C_SCANNING*/
-    bool IsWrite;
+    uint8_t IsWrite, IsRead;
 
-    IsWrite = MPU_WriteRegistry(I2Cx,MPU9250_PWR,1);
+    IsRead = MPU_ReadRegistry(I2Cx,WHO_AM_I);
+
+    if(IsRead != WHO_AM_I_9250 && IsRead != WHO_AM_I_6050) return 0;
+
+    // power settings: Internal oscillator
+    IsWrite = MPU_WriteRegistry(I2Cx,PWR_MGMT_1,0);
     if(IsWrite == false) return 1;
 
+    // scale configuration
     I2CStop(I2Cx);
 return 0;
 }
 
+/*!
+*   @brief Connect to MPU9250
+*/
 bool MPU_Connect(I2C_TypeDef* I2Cx, bool IsWrite)
 {
 
@@ -75,48 +87,33 @@ for(int i = 0; i < MPU_Reconnect_it; i++)
 return false;
 }
 
-bool MPU_WriteRegistry(I2C_TypeDef* I2Cx, uint8_t Register, uint8_t Value)
+/*!
+*   @brief Write Register to MPU9250
+*/
+uint8_t MPU_WriteRegistry(I2C_TypeDef* I2Cx, uint8_t Register, uint8_t Value)
 {
-    bool status = false;
-    if(!I2CDataEmptyEvent(I2Cx)) return false;
+    if(!I2CDataEmptyEvent(I2Cx)) return 0;
 
-    status = I2C_SingleSend(I2Cx,Register,true);
-    status = I2C_SingleSend(I2Cx,Value,true);
+    I2C_SingleSend(I2Cx,Register,true);
+    I2C_SingleSend(I2Cx,Value,true);
 
-return status;
+return Register;
 }
 
-/*!
-*   @fixme
-*/
-bool MPU_ReadRegistry(I2C_TypeDef* I2Cx, uint8_t Register, uint8_t Value)
+uint8_t MPU_ReadRegistry(I2C_TypeDef* I2Cx, uint8_t Register)
 {
-    if(!I2CDataEmptyEvent(I2Cx)) return false;
+    uint8_t Data = 0;
+    if(!I2CDataEmptyEvent(I2Cx)) return 0;
 
     // Send Registry to device
-    I2CSendData(I2Cx,MPU9250_PWR,0);
+    I2Cx->DR = Register;
 
-    MPU_Timeout = __configI2C_TIMEOUT;
-    while(!I2CDataEmptyEvent(I2Cx))
-    {
-        if(--MPU_Timeout == 0x00) {
-            MPU9250.status = 2;
-            return false;
-        }
-    }
+    I2CStart(I2Cx);
 
-    //Write value
-    I2CSendData(I2Cx,1,0);
-
-    MPU_Timeout = __configI2C_TIMEOUT;
-    while(!I2CDataEmptyEvent(I2Cx))
-    {
-        if(--MPU_Timeout == 0x00) {
-            MPU9250.status = 2;
-            return false;
-        }
-    }
-return true;
+    I2Cx->DR = (MPU9250_ADDR << 1) | 0x1;
+    ResetI2CAsk(I2Cx);
+    Data = I2C_SingleRead(I2Cx);
+return Data;
 }
 
 bool MPU_ReadRawData(I2C_TypeDef* I2Cx)
@@ -127,7 +124,7 @@ uint8_t Buffer[14];
     (void)I2Cx->SR1;
     (void)I2Cx->SR2;
 
-    (void)MPU_WriteRegistry(I2Cx,MPU9250_Accel_XoutH,1);
+  //  (void)MPU_WriteRegistry(I2Cx,MPU9250_Accel_XoutH,1);
 
     (void)MPU_Connect(I2Cx,false);
     (void)I2Cx->SR1;
@@ -144,4 +141,4 @@ uint8_t Buffer[14];
 return true;
 }
 
-#endif /*INCLUDED_I2C*/
+#endif /*EXTERNAL_MPU9250*/

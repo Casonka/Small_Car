@@ -20,7 +20,6 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
    ----------------------------------------------------------------------
  */
-#ifdef INCLUDED_I2C
 
 #ifndef FONTS_H
 #define FONTS_H 120
@@ -131,4 +130,3 @@ char* FONTS_GetStringSize(char* str, FONTS_SIZE_t* SizeStruct, FontDef_t* Font);
 
 #endif
 
-#endif /*INCLUDED_I2C*/

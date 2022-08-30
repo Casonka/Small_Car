@@ -22,7 +22,7 @@
  */
 #include "ssd1306_i2c.h"
 
-#ifdef INCLUDED_I2C
+#if(EXTERNAL_SSD1306 == 1)
 /* Private variables */
 static uint32_t ssd1306_I2C_Timeout;
 
@@ -150,4 +150,4 @@ uint8_t ssd1306_I2C_IsDeviceConnected(I2C_TypeDef* I2Cx, uint8_t address) {
 	/* Return status */
 	return connected;
 }
-#endif /*INCLUDED_I2C*/
+#endif /*EXTERNAL_SSD1306*/

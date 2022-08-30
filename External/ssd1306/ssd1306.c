@@ -22,7 +22,7 @@
  */
 #include "ssd1306.h"
 
-#ifdef INCLUDED_I2C
+#if(EXTERNAL_SSD1306 == 1)
 /* Write command */
 #define SSD1306_WRITECOMMAND(command)      ssd1306_I2C_Write(SSD1306_I2C, SSD1306_I2C_ADDR, 0x00, (command))
 /* Write data */
@@ -49,7 +49,7 @@ static SSD1306_t SSD1306;
 
 uint8_t SSD1306_Init(void) {
 
-    I2CMasterConfigure(__configI2C_LCD_SOURCE, I2C_Fast, SSD1306_ADDR);
+    I2CMasterConfigure(SSD1306_I2C, I2C_Fast, SSD1306_I2C_ADDR);
 	/* Check if LCD connected to I2C */
 	if (!ssd1306_I2C_IsDeviceConnected(SSD1306_I2C, SSD1306_I2C_ADDR)) {
 		/* Return false */
@@ -517,5 +517,4 @@ void SSD1306_OFF(void) {
 	SSD1306_WRITECOMMAND(0x10);
 	SSD1306_WRITECOMMAND(0xAE);
 }
-
-#endif /*INCLUDED_I2C*/
+#endif/*EXTERNAL_SSD1306*/

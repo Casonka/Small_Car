@@ -26,7 +26,7 @@
     #include "MaxKit.h"
     #include "MaxSetup.h"
 #endif /*_configUSEBoards*/
-#if (_configUSEBoards != 0 )
+#if (_configUSEBoards > 0 && _configUSEBoards < 0xFF )
     #if (_configUSEBoards == 1) // Development Board №1(Custom project - STM32F407)
         #include "RCR_DevBoard_1_Setup.h"
     #endif /*Development Board №1*/
@@ -42,5 +42,8 @@
     #if ((_configUSEBoards < 0) || (_configUSEBoards > 0xFF))
         #error Invalid argument of Development Board
     #endif /*_configUSEBoards*/
+    #include "dev.h"
+    #include "dev_ws.h"
 #endif /*_configUSEBoards*/
+
 

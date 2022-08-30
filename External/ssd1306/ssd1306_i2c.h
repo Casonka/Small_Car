@@ -23,7 +23,8 @@
 #ifndef ssd1306_I2C_H
 #define ssd1306_I2C_H 161
 
-#include "main.h"
+#include "FilConfig.h"
+#if(EXTERNAL_SSD1306 == 1)
 #include "ssd1306.h"
 void ssd1306_I2C_Init();
 
@@ -79,4 +80,4 @@ void ssd1306_I2C_WriteData(I2C_TypeDef* I2Cx, uint8_t data);
 uint8_t ssd1306_I2C_IsDeviceConnected(I2C_TypeDef* I2Cx, uint8_t address);
 
 #endif
-
+#endif/*EXTERNAL_SSD1306*/

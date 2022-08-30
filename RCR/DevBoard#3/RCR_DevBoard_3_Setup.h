@@ -24,8 +24,8 @@
 #define __configUSE_DMA                   0
 #define __configUSE_I2C                   1
 #define __configUSE_ADC                   1
-#define __configUSE_EXTI                  1
-#define __configUSE_RTC                   1
+#define __configUSE_EXTI                  0
+#define __configUSE_RTC                   0
 #define __configUSE_FREERTOS              0
 
 #define __configCALC_RCC                  1
@@ -34,6 +34,16 @@
 #define __configCALC_Regulators           1
 #define __configCALC_Matrix               0
 
+//-----------------------------------------------------------------//
+//-----------------------External includes-------------------------//
+//-----------------------------------------------------------------//
+#define __configEXT_SSD1306               0
+#define __configEXT_MPU9250               1
+#define __configEXT_ModBus                0
+/*!
+*   @info ModBus binary - 1; ModBus ASCII - 2
+*/
+#define __configMODBUS_Type         (0)
 //-----------------------------------------------------------------//
 /*!
 *   @note [RCR] Configuration Development Board #3
@@ -95,15 +105,6 @@
 #define __config_USART1_Baudrate    (9600)
 #define __config_USART6_Baudrate    (115200)
 
-#define __configUSE_ModBus          (0)
-/*!
-*   @info ModBus binary - 1; ModBus ASCII - 2
-*/
-#define __configMODBUS_Type         (0)
-#if(__configUSE_ModBus == 1)
-    #include "ModBus_conf.h"
-    #include "ModBus.h"
-#endif /*__configUSE_ModBus*/
 /*!
 *   @note [RCR] ADC configuration
 *       @warning ADC Modes: 0 - ADC Off
@@ -175,7 +176,6 @@
 // configuration LCD
 #define __configI2C_LCD_SOURCE      (I2C1)
 #define __configUSE_LVGL             (0)
-#define SSD1306_ADDR                (0x78)     // LCD monitor
 
 // configuration Gyro
 #define __configI2C_MPU_SOURCE      (I2C1)
@@ -184,38 +184,6 @@
 #define __configIS_AD0               (0)
 #define MPU9250_ADDR                (__configIS_AD0 == 1) ? (0x69)  : (0x68)   // Gyro Accelerometer Magnetometer
 
-/*!
-*   @note [RCR] RTC configuration
-*/
-#define __configRTC_YEAR             (22)
-#define __configRTC_MONTHS           (8)
-#define __configRTC_DATE             (29)
-
-#define __configRTC_HOURS            (12)
-#define __configRTC_MINUTES          (25)
-#define __configRTC_SECONDS          (0)
-/*!
-*   RTC Alarm A
-*/
-#define __configUSE_ALARM_A          (1)
-#define __configRTC_ALARM_A_YEARS    (22)
-#define __configRTC_ALARM_A_MONTHS   (8)
-#define __configRTC_ALARM_A_DATE     (29)
-
-#define __configRTC_ALARM_A_HOURS    (12)
-#define __configRTC_ALARM_A_MINUTES  (25)
-#define __configRTC_ALARM_A_SECONDS  (0)
-/*!
-*   RTC Alarm B
-*/
-#define __configUSE_ALARM_B          (0)
-#define __configRTC_ALARM_B_YEARS    (22)
-#define __configRTC_ALARM_B_MONTHS   (8)
-#define __configRTC_ALARM_B_DATE     (29)
-
-#define __configRTC_ALARM_B_HOURS    (12)
-#define __configRTC_ALARM_B_MINUTES  (25)
-#define __configRTC_ALARM_B_SECONDS  (0)
 //-----------------------------------------------------------------//
 /*!
 *   @brief General Initialization
@@ -303,10 +271,5 @@
 #define InitUSART {\
     USARTBothConfigure(USART1,__config_USART1_Baudrate, 0, 0); \
     USARTTransmitterConfigure(USART6, __config_USART6_Baudrate, 0);}
-
-/*!
-*   @brief Initialization servomotors
-*/
-#define InitServo   setServo(&Servo1, BIG_BLACK_SERVA, 20, 0x500, 0x100, 20)
 
 #endif /*STM32F401xx*/

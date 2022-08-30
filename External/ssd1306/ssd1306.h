@@ -20,11 +20,8 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
    ----------------------------------------------------------------------
  */
- #ifdef INCLUDED_I2C
-
 #ifndef SSD1306_H
 #define SSD1306_H 100
-#include "main.h"
 
 /* C++ detection */
 #ifdef __cplusplus
@@ -47,9 +44,8 @@ GND        |GND          |
 SCL        |PB6          |Serial clock line
 SDA        |PB7          |Serial data line
  */
-
-#include "main.h"
-
+#include "FilConfig.h"
+#if(EXTERNAL_SSD1306 == 1)
 #include "stdlib.h"
 #include "string.h"
 
@@ -60,7 +56,7 @@ SDA        |PB7          |Serial data line
 
 /* I2C address */
 #ifndef SSD1306_I2C_ADDR
-#define SSD1306_I2C_ADDR          SSD1306_ADDR
+#define SSD1306_I2C_ADDR          (0x78)
 //#define SSD1306_I2C_ADDR       0x7A 0x3C
 #endif
 
@@ -236,5 +232,4 @@ void ssd1306_image(uint8_t *img, uint8_t hight,uint8_t wight,uint8_t x, uint8_t 
 #endif
 
 #endif
-
-#endif /*INCLUDED_I2C*/
+#endif/*EXTERNAL_SSD1306*/

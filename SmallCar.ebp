@@ -143,7 +143,28 @@
 		<Unit filename="dev\dev.c">
 			<Option compilerVar="CC" />
 		</Unit>
+		<Unit filename="dev\dev.h" />
 		<Unit filename="dev_examples\dev_ws.h" />
+		<Unit filename="External\mpu9250\mpu9250.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="External\mpu9250\mpu9250.h" />
+		<Unit filename="External\ssd1306\fonts.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="External\ssd1306\fonts.h" />
+		<Unit filename="External\ssd1306\images.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="External\ssd1306\images.h" />
+		<Unit filename="External\ssd1306\ssd1306.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="External\ssd1306\ssd1306.h" />
+		<Unit filename="External\ssd1306\ssd1306_i2c.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="External\ssd1306\ssd1306_i2c.h" />
 		<Unit filename="Fil_lib\ADC.c">
 			<Option compilerVar="CC" />
 		</Unit>
@@ -193,7 +214,6 @@
 		<Unit filename="Fil_lib\freertos_lib\semphr.h" />
 		<Unit filename="Fil_lib\freertos_lib\stack_macros.h" />
 		<Unit filename="Fil_lib\freertos_lib\StackMacros.h" />
-		<Unit filename="Fil_lib\freertos_lib\stdint.readme" />
 		<Unit filename="Fil_lib\freertos_lib\stream_buffer.c">
 			<Option compilerVar="CC" />
 		</Unit>
@@ -242,7 +262,6 @@
 		<Unit filename="inc\main.h" />
 		<Unit filename="inc\stm32f4xx.h" />
 		<Unit filename="inc\system_stm32f4xx.h" />
-		<Unit filename="lvgl\src\draw\sdl\README.md" />
 		<Unit filename="RCR\BoardSelection.h" />
 		<Unit filename="RCR\DevBoard#2\RCR_DevBoard_2.h" />
 		<Unit filename="RCR\DevBoard#2\RCR_DevBoard_2_Setup.h" />

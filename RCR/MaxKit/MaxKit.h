@@ -16,8 +16,8 @@
 *   @note [RCR] This settings transport to FIL Driver
 */
 
-#define __configUSE_RCC                 (0)
-#define __configUSE_GPIO                (0)
+#define __configUSE_RCC                 (1)
+#define __configUSE_GPIO                (1)
 #define __configUSE_TIM                 (0)
 #define __configUSE_USART               (0)
 #define __configUSE_DMA                 (0)
@@ -246,3 +246,30 @@
 #define __configMPU_Scale               (0)
 #define __configIS_AD0                  (0)
 #define MPU9250_ADDR                    (__configIS_AD0 == 1) ? (0x69)  : (0x68)
+
+/*!
+*   @note [RCR] RTC configuration
+*/
+#define __configRTC_YEAR             (22)
+#define __configRTC_MONTHS           (8)
+#define __configRTC_DATE             (30)
+
+#define __configRTC_HOURS            (9)
+#define __configRTC_MINUTES          (30)
+#define __configRTC_SECONDS          (0)
+/*!
+*   RTC Alarm A
+*/
+#define __configUSE_ALARM_A          (0)
+#define __configRTC_ALARM_A_DATE     (0)
+#define __configRTC_ALARM_A_HOURS    (0)
+#define __configRTC_ALARM_A_MINUTES  (0)
+#define __configRTC_ALARM_A_SECONDS  (0)
+/*!
+*   RTC Alarm B
+*/
+#define __configUSE_ALARM_B          (0)
+#define __configRTC_ALARM_B_DATE     (0)
+#define __configRTC_ALARM_B_HOURS    (0)
+#define __configRTC_ALARM_B_MINUTES  (0)
+#define __configRTC_ALARM_B_SECONDS  (0)

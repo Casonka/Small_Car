@@ -2809,7 +2809,7 @@
 
 1658119830 c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car1\inc\system_stm32f4xx.h
 
-1661855768 c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car1\rcr\boardselection.h
+1662008359 c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car1\rcr\boardselection.h
 	"MinimalKit.h"
 	"MaxPins.h"
 	"MaxKit.h"
@@ -2843,13 +2843,13 @@
 
 1660731258 c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car1\rcr\devboard#2\rcr_devboard_2.h
 
-1661857032 c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car1\rcr\devboard#3\rcr_devboard_3_setup.h
+1662019085 c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car1\rcr\devboard#3\rcr_devboard_3_setup.h
 	"FilConfig.h"
 	"RCR_DevBoard_3.h"
 
 1661183906 c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car1\rcr\devboard#3\rcr_devboard_3.h
 
-1655441002 c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car1\fil_lib\freertos_lib\freertos.h
+1662007677 c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car1\fil_lib\freertos_lib\freertos.h
 	<stddef.h>
 	<stdint.h>
 	"FreeRTOSConfig.h"
@@ -2857,11 +2857,11 @@
 	"portable.h"
 	<reent.h>
 
-1661853058 c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car1\fil_lib\freertos_lib\freertosconfig.h
+1662005825 c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car1\fil_lib\freertos_lib\freertosconfig.h
 	"stm32f4xx.h"
 	<stdint.h>
 
-1655441002 c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car1\fil_lib\freertos_lib\projdefs.h
+1662007100 c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car1\fil_lib\freertos_lib\projdefs.h
 
 1655441002 c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car1\fil_lib\freertos_lib\portable.h
 	"deprecated_definitions.h"
@@ -2927,31 +2927,31 @@
 	"../../Source/portable/IAR/78K0R/portmacro.h"
 	"../../Source/portable/IAR/78K0R/portmacro.h"
 
-1655441002 c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car1\fil_lib\freertos_lib\portmacro.h
+1662007099 c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car1\fil_lib\freertos_lib\portmacro.h
 
 1655441002 c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car1\fil_lib\freertos_lib\mpu_wrappers.h
 
-1659339520 c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car1\fil_lib\freertos_lib\task.h
+1662007261 c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car1\fil_lib\freertos_lib\task.h
 	"list.h"
 
-1655441002 c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car1\fil_lib\freertos_lib\list.h
+1662007217 c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car1\fil_lib\freertos_lib\list.h
 
-1655441002 c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car1\fil_lib\freertos_lib\queue.h
+1662007217 c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car1\fil_lib\freertos_lib\queue.h
 	"task.h"
 
-1655441002 c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car1\fil_lib\freertos_lib\semphr.h
+1662007218 c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car1\fil_lib\freertos_lib\semphr.h
 	"queue.h"
 
-1655441002 c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car1\fil_lib\freertos_lib\croutine.h
+1662007217 c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car1\fil_lib\freertos_lib\croutine.h
 	"list.h"
 
-1655441002 c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car1\fil_lib\freertos_lib\timers.h
+1662007241 c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car1\fil_lib\freertos_lib\timers.h
 	"task.h"
 
-1655441002 c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car1\fil_lib\freertos_lib\event_groups.h
+1662007217 c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car1\fil_lib\freertos_lib\event_groups.h
 	"timers.h"
 
-1655441002 c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car1\fil_lib\freertos_lib\stream_buffer.h
+1662007218 c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car1\fil_lib\freertos_lib\stream_buffer.h
 
 1660135606 c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car1\fil_lib\robot_tasks.h
 	"FilConfig.h"
@@ -2962,7 +2962,7 @@
 1661196666 c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car1\fil_lib\gpio.h
 	"FilConfig.h"
 
-1661848331 c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car1\fil_lib\tim.h
+1662005825 c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car1\fil_lib\tim.h
 	"FilConfig.h"
 
 1661260532 c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car1\fil_lib\usart.h
@@ -2974,7 +2974,7 @@
 1660135098 c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car1\fil_lib\dma_fifobuffers.h
 	"FilConfig.h"
 
-1661266446 c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car1\fil_lib\i2c.h
+1662034603 c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car1\fil_lib\i2c.h
 	"FilConfig.h"
 
 1660135124 c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car1\fil_lib\exti.h
@@ -2996,33 +2996,33 @@
 1659350172 source:c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car1\fil_lib\exti.c
 	"EXTI.h"
 
-1655441002 source:c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car1\fil_lib\freertos_lib\croutine.c
+1662006308 source:c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car1\fil_lib\freertos_lib\croutine.c
 	"FreeRTOS.h"
 	"task.h"
 	"croutine.h"
 
-1655441002 source:c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car1\fil_lib\freertos_lib\event_groups.c
+1662006330 source:c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car1\fil_lib\freertos_lib\event_groups.c
 	<stdlib.h>
 	"FreeRTOS.h"
 	"task.h"
 	"timers.h"
 	"event_groups.h"
 
-1655441002 source:c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car1\fil_lib\freertos_lib\heap_2.c
+1662007616 source:c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car1\fil_lib\freertos_lib\heap_2.c
 	<stdlib.h>
 	"FreeRTOS.h"
 	"task.h"
 
-1655441002 source:c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car1\fil_lib\freertos_lib\list.c
+1662007730 source:c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car1\fil_lib\freertos_lib\list.c
 	<stdlib.h>
 	"FreeRTOS.h"
 	"list.h"
 
-1661853058 source:c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car1\fil_lib\freertos_lib\port.c
+1662009858 source:c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car1\fil_lib\freertos_lib\port.c
 	"FreeRTOS.h"
 	"task.h"
 
-1655441002 source:c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car1\fil_lib\freertos_lib\queue.c
+1662007100 source:c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car1\fil_lib\freertos_lib\queue.c
 	<stdlib.h>
 	<string.h>
 	"FreeRTOS.h"
@@ -3030,14 +3030,14 @@
 	"queue.h"
 	"croutine.h"
 
-1655441002 source:c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car1\fil_lib\freertos_lib\stream_buffer.c
+1662007100 source:c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car1\fil_lib\freertos_lib\stream_buffer.c
 	<stdint.h>
 	<string.h>
 	"FreeRTOS.h"
 	"task.h"
 	"stream_buffer.h"
 
-1661853058 source:c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car1\fil_lib\freertos_lib\tasks.c
+1662009830 source:c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car1\fil_lib\freertos_lib\tasks.c
 	<stdlib.h>
 	<string.h>
 	"FreeRTOS.h"
@@ -3050,14 +3050,14 @@
 
 1655441002 c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car1\fil_lib\freertos_lib\stack_macros.h
 
-1655441002 source:c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car1\fil_lib\freertos_lib\timers.c
+1662006471 source:c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car1\fil_lib\freertos_lib\timers.c
 	<stdlib.h>
 	"FreeRTOS.h"
 	"task.h"
 	"queue.h"
 	"timers.h"
 
-1661865891 source:c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car1\fil_lib\i2c.c
+1662034603 source:c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car1\fil_lib\i2c.c
 	"I2C.h"
 
 1661849350 source:c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car1\fil_lib\matrix.c
@@ -3073,13 +3073,13 @@
 1660135608 source:c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car1\fil_lib\robot_tasks.c
 	"Robot_tasks.h"
 
-1661848417 source:c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car1\fil_lib\tim.c
+1662037999 source:c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car1\fil_lib\tim.c
 	"TIM.h"
 
 1660126142 source:c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car1\fil_lib\usart.c
 	"USART.h"
 
-1661863575 source:c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car1\src\main.c
+1662039355 source:c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car1\src\main.c
 	"main.h"
 
 1661851753 source:c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car1\dev\dev.c
@@ -3091,11 +3091,12 @@
 1661846448 source:c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car1\fil_lib\rtc.c
 	"RTC.h"
 
-1661866029 source:c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car1\external\mpu9250\mpu9250.c
+1662042849 source:c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car1\external\mpu9250\mpu9250.c
 	"mpu9250.h"
 
-1661863569 c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car1\external\mpu9250\mpu9250.h
+1662042979 c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car1\external\mpu9250\mpu9250.h
 	"FilConfig.h"
+	<math.h>
 	"stdbool.h"
 
 1661855818 c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car1\dev\dev.h
@@ -3133,4 +3134,8 @@
 
 1661856657 source:c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car1\external\ssd1306\ssd1306_i2c.c
 	"ssd1306_i2c.h"
+
+1662007476 c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car1\fil_lib\freertos_lib\robot_tasks.h
+	"BoardSelection.h"
+	"FilConfig.h"
 

@@ -243,10 +243,6 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="Fil_lib\Regulators.h" />
-		<Unit filename="Fil_lib\Robot_tasks.c">
-			<Option compilerVar="CC" />
-		</Unit>
-		<Unit filename="Fil_lib\Robot_tasks.h" />
 		<Unit filename="Fil_lib\RTC.c">
 			<Option compilerVar="CC" />
 		</Unit>

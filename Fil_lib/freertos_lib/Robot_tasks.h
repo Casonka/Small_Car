@@ -1,7 +1,8 @@
 #pragma once
+#include "BoardSelection.h"
 #include "FilConfig.h"
-#if (FIL_FREERTOS == 1)
 
+#if (FIL_FREERTOS == 1)
 /*!
 *   @brief vBlinkTest(void *pvParameters) - тест нормальной работы операционной системы FreeRTOS
 *       @arg nothing

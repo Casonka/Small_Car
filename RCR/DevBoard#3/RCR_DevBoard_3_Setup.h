@@ -25,7 +25,7 @@
 #define __configUSE_I2C                   1
 #define __configUSE_ADC                   1
 #define __configUSE_EXTI                  0
-#define __configUSE_RTC                   0
+#define __configUSE_RTC                   1
 #define __configUSE_FREERTOS              0
 
 #define __configCALC_RCC                  1
@@ -206,8 +206,7 @@
     InitTimers;             \
     InitUSART;              \
     InitInterrupts;         \
-    SysTick_Config(__config_SysTick_Counter);\
-    SetI2C1;                }
+    SysTick_Config(__config_SysTick_Counter);}
 
 /*!
 *   @brief Initialization pins

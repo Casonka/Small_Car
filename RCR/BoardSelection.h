@@ -30,7 +30,7 @@
     #if (_configUSEBoards == 1) // Development Board №1(Custom project - STM32F407)
         #include "RCR_DevBoard_1_Setup.h"
     #endif /*Development Board №1*/
-    #if (_configUSEBoards == 2) // Development Board №2 (Blue pill board - STM32F103)
+    #if (_configUSEBoards == 2) // Development Board №2 (Blue pill board - STM32Fxx)
         #include "RCR_DevBoard_2_Setup.h"
     #endif /*Development Board №2*/
     #if (_configUSEBoards == 3) // Development Board №3 (Green pill board - STM32F401)

@@ -39,11 +39,6 @@
 //-----------------------------------------------------------------//
 #define __configEXT_SSD1306               0
 #define __configEXT_MPU9250               1
-#define __configEXT_ModBus                0
-/*!
-*   @info ModBus binary - 1; ModBus ASCII - 2
-*/
-#define __configMODBUS_Type         (0)
 //-----------------------------------------------------------------//
 /*!
 *   @note [RCR] Configuration Development Board #3
@@ -153,40 +148,49 @@
 #define __configADC_RESOLUTION          (12)        // 12-bit resolution
 /*!
 *   @info Supported cycles mode ADC
-*       @arg 480[cycles]
-*       @arg 144[cycles]
-*       @arg 112[cycles]
-*       @arg 84[cycles]
-*       @arg 56[cycles]
-*       @arg 28[cycles]
-*       @arg 15[cycles]
-*       @arg 3[cycles]
+*       @arg ADC_480_CYCLES - 480[cycles]
+*       @arg ADC_144_CYCLES - 144[cycles]
+*       @arg ADC_112_CYCLES - 112[cycles]
+*       @arg ADC_84_CYCLES  -  84[cycles]
+*       @arg ADC_56_CYCLES  -  56[cycles]
+*       @arg ADC_28_CYCLES  -  28[cycles]
+*       @arg ADC_15_CYCLES  -  15[cycles]
+*       @arg ADC_3_CYCLES   -   3[cycles]
 */
 #define __configADC_CYCLES              (ADC_480_CYCLES)
+
+/*!
+*   @info Supported divider for ADC bus
+*   @note [RCR] ADC Freq = APB2(example 84 MHz) / __configADC_DIVIDER
+*       @arg 0 - divided by 2
+*       @arg 1 - divided by 4
+*       @arg 2 - divided by 6
+*       @arg 3 - divided by 8
+*/
+#define __configADC_DIVIDER             (3)
 /*!
 *   @note [RCR] IIC(I2C) configuration
 */
 // General IIC Configuration
-#define __configCALC_I2C_SCANNING    (1)
+#define __configCALC_I2C_SCANNING       (1)
 
-#define __configI2C_FindListSize     (5)
+#define __configI2C_FindListSize        (3)
 
-#define __configI2C_TIMEOUT         (20000)
+#define __configI2C_TIMEOUT             (5000)
 
 // configuration LCD
-#define __configI2C_LCD_SOURCE      (I2C1)
-#define __configUSE_LVGL             (0)
+#define __configI2C_LCD_SOURCE          (I2C1)
+#define __configUSE_LVGL                (0)
 
 // configuration Gyro
-#define __configI2C_MPU_SOURCE      (I2C1)
-#define __configMPU_USE_Calibration  (1)
-#define __configMPU_Scale            (0)
-#define __configIS_AD0               (0)
-#define MPU9250_ADDR                (__configIS_AD0 == 1) ? (0x69)  : (0x68)   // Gyro Accelerometer Magnetometer
+#define __configEXTMPU_SOURCE           (I2C1)
+#define __configEXTMPU_Calibration      (1)
+
 
 //-----------------------------------------------------------------//
 /*!
-*   @brief General Initialization
+*   @brief General Initialization. This sector is custom adding by author.
+*          You can modify and use some new functions that you need.
 */
 #define Board_Config       {\
     SetPWR;                 \
@@ -245,7 +249,7 @@
 /*!
 *   @brief Initialization timers
 *       @arg TIM1 - Wheels engine
-*       @arg TIM2 - Servo management
+*       @arg TIM5 - Servo management
 *       @arg TIM3 - PID Calculating (Interrupt)
 *           @attention check interrupts file for TIM
 *               @file TIM.c

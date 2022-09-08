@@ -11,9 +11,9 @@
 			<Cursor1 position="119646" topLine="2007" />
 		</Cursor>
 	</File>
-	<File name="dev\dev.c" open="0" top="0" tabpos="19" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="dev\dev.c" open="0" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="759" topLine="1" />
+			<Cursor1 position="713" topLine="4" />
 		</Cursor>
 	</File>
 	<File name="dev\dev.h" open="0" top="0" tabpos="10" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
@@ -26,19 +26,18 @@
 			<Cursor1 position="37" topLine="0" />
 		</Cursor>
 	</File>
-	<File name="External\mpu9250\mpu9250.c" open="1" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="External\mpu9250\mpu9250.c" open="1" top="1" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="2736" topLine="68" />
+			<Cursor1 position="3255" topLine="75" />
 		</Cursor>
 		<Folding>
-			<Collapse line="164" />
-			<Collapse line="226" />
-			<Collapse line="251" />
+			<Collapse line="120" />
+			<Collapse line="182" />
 		</Folding>
 	</File>
-	<File name="External\mpu9250\mpu9250.h" open="1" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="External\mpu9250\mpu9250.h" open="1" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="1276" topLine="27" />
+			<Cursor1 position="2822" topLine="56" />
 		</Cursor>
 	</File>
 	<File name="External\ssd1306\fonts.c" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
@@ -106,19 +105,19 @@
 			<Cursor1 position="2752" topLine="61" />
 		</Cursor>
 	</File>
-	<File name="Fil_lib\EXTI.c" open="0" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="Fil_lib\EXTI.c" open="1" top="0" tabpos="9" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="322" topLine="11" />
+			<Cursor1 position="322" topLine="20" />
 		</Cursor>
 	</File>
 	<File name="Fil_lib\EXTI.h" open="0" top="0" tabpos="14" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="601" topLine="0" />
+			<Cursor1 position="1196" topLine="18" />
 		</Cursor>
 	</File>
-	<File name="Fil_lib\FilConfig.h" open="1" top="0" tabpos="9" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="Fil_lib\FilConfig.h" open="1" top="0" tabpos="7" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="306" topLine="54" />
+			<Cursor1 position="3853" topLine="0" />
 		</Cursor>
 	</File>
 	<File name="Fil_lib\freertos_lib\atomic.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
@@ -256,26 +255,28 @@
 			<Cursor1 position="20389" topLine="9" />
 		</Cursor>
 	</File>
-	<File name="Fil_lib\GPIO.h" open="1" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="Fil_lib\GPIO.h" open="1" top="0" tabpos="14" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="9723" topLine="229" />
+			<Cursor1 position="9657" topLine="237" />
 		</Cursor>
 	</File>
-	<File name="Fil_lib\I2C.c" open="1" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="Fil_lib\I2C.c" open="1" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="5707" topLine="71" />
+			<Cursor1 position="4217" topLine="55" />
 		</Cursor>
 		<Folding>
 			<Collapse line="54" />
 			<Collapse line="70" />
+			<Collapse line="223" />
 			<Collapse line="304" />
 			<Collapse line="326" />
 			<Collapse line="349" />
+			<Collapse line="360" />
 			<Collapse line="383" />
 			<Collapse line="415" />
 		</Folding>
 	</File>
-	<File name="Fil_lib\I2C.h" open="1" top="0" tabpos="8" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="Fil_lib\I2C.h" open="1" top="0" tabpos="6" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
 			<Cursor1 position="5972" topLine="93" />
 		</Cursor>
@@ -295,9 +296,9 @@
 			<Cursor1 position="13907" topLine="182" />
 		</Cursor>
 	</File>
-	<File name="Fil_lib\RCC.h" open="0" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="Fil_lib\RCC.h" open="1" top="0" tabpos="11" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="1092" topLine="14" />
+			<Cursor1 position="4869" topLine="0" />
 		</Cursor>
 	</File>
 	<File name="Fil_lib\Regulators.c" open="0" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
@@ -320,14 +321,14 @@
 			<Cursor1 position="14910" topLine="220" />
 		</Cursor>
 	</File>
-	<File name="Fil_lib\TIM.c" open="1" top="0" tabpos="7" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="Fil_lib\TIM.c" open="1" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="1734" topLine="0" />
+			<Cursor1 position="395" topLine="0" />
 		</Cursor>
 	</File>
-	<File name="Fil_lib\TIM.h" open="0" top="0" tabpos="8" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="Fil_lib\TIM.h" open="1" top="0" tabpos="13" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="14374" topLine="195" />
+			<Cursor1 position="3978" topLine="45" />
 		</Cursor>
 	</File>
 	<File name="Fil_lib\USART.c" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
@@ -340,14 +341,14 @@
 			<Cursor1 position="2060" topLine="0" />
 		</Cursor>
 	</File>
-	<File name="inc\main.h" open="0" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="inc\main.h" open="1" top="0" tabpos="12" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="146" topLine="0" />
+			<Cursor1 position="111" topLine="0" />
 		</Cursor>
 	</File>
 	<File name="inc\stm32f4xx.h" open="0" top="0" tabpos="7" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="729150" topLine="9181" />
+			<Cursor1 position="92939" topLine="36" />
 		</Cursor>
 	</File>
 	<File name="inc\system_stm32f4xx.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
@@ -370,14 +371,14 @@
 			<Cursor1 position="6381" topLine="110" />
 		</Cursor>
 	</File>
-	<File name="RCR\DevBoard#3\RCR_DevBoard_3.h" open="0" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="RCR\DevBoard#3\RCR_DevBoard_3.h" open="1" top="0" tabpos="10" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="4375" topLine="2" />
+			<Cursor1 position="4375" topLine="23" />
 		</Cursor>
 	</File>
-	<File name="RCR\DevBoard#3\RCR_DevBoard_3_Setup.h" open="1" top="0" tabpos="6" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="RCR\DevBoard#3\RCR_DevBoard_3_Setup.h" open="1" top="0" tabpos="8" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="1607" topLine="27" />
+			<Cursor1 position="6981" topLine="160" />
 		</Cursor>
 	</File>
 	<File name="RCR\MaxKit\MaxKit.h" open="0" top="0" tabpos="9" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
@@ -400,9 +401,9 @@
 			<Cursor1 position="2788" topLine="15" />
 		</Cursor>
 	</File>
-	<File name="src\main.c" open="1" top="1" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="src\main.c" open="1" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="233" topLine="0" />
+			<Cursor1 position="152" topLine="0" />
 		</Cursor>
 	</File>
 	<File name="src\startup_stm32f401xc.S" open="0" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">

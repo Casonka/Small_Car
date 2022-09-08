@@ -25,7 +25,7 @@
 #define __configUSE_I2C                   1
 #define __configUSE_ADC                   1
 #define __configUSE_EXTI                  0
-#define __configUSE_RTC                   1
+#define __configUSE_RTC                   0
 #define __configUSE_FREERTOS              0
 
 #define __configCALC_RCC                  1
@@ -185,31 +185,35 @@
 // configuration Gyro
 #define __configEXTMPU_SOURCE           (I2C1)
 #define __configEXTMPU_Calibration      (1)
-
+#define __configEXTMPU_aScale           AFSR_4G
+#define __configEXTMPU_gScale           GFSR_500DPS
+#define __configEXTMPU_mScale           MRES_16BIT
+#define __configEXTMPU_mResolution
 
 //-----------------------------------------------------------------//
 /*!
 *   @brief General Initialization. This sector is custom adding by author.
 *          You can modify and use some new functions that you need.
 */
-#define Board_Config       {\
-    SetPWR;                 \
-    SetGPIOA;               \
-    SetGPIOB;               \
-    SetGPIOC;               \
-    SetTIM1;                \
-    SetTIM3;                \
-    SetTIM4;                \
-    SetTIM5;                \
-    SetDMA2;                \
-    SetADC1;                \
-    SetUSART1;              \
-    SetUSART6;              \
-    SetSYSCFG;              \
-    InitPeriph;             \
-    InitTimers;             \
-    InitUSART;              \
-    InitInterrupts;         \
+#define Board_Config                       {\
+    SetPWR;                                 \
+    SetGPIOA;                               \
+    SetGPIOB;                               \
+    SetGPIOC;                               \
+    SetTIM1;                                \
+    SetTIM3;                                \
+    SetTIM4;                                \
+    SetTIM5;                                \
+    SetDMA2;                                \
+    SetADC1;                                \
+    SetUSART1;                              \
+    SetUSART6;                              \
+    SetSYSCFG;                              \
+    InitPeriph;                             \
+    InitTimers;                             \
+    InitUSART;                              \
+    InitInterrupts;                         \
+    SetI2C1;                                \
     SysTick_Config(__config_SysTick_Counter);}
 
 /*!
@@ -256,11 +260,10 @@
 *       @arg TIM4 - Encoder monitoring
 */
 #define InitTimers                                                                                                                     {\
-    TimPWMConfigure(TIM1,__config_TIM1_PSC,__config_TIM1_ARR,__config_TIM1_CH1,__config_TIM1_CH2,__config_TIM1_CH3,__config_TIM1_CH4);  \
     TimPWMConfigure(TIM5,__config_TIM5_PSC,__config_TIM5_ARR,__config_TIM5_CH1,__config_TIM5_CH2,__config_TIM5_CH3,__config_TIM5_CH4);  \
     TimEncoderConfigure(TIM4);                                                                                                          \
     TimPIDConfigureAutomatic(__config_Regulator_Source,__config_Regulator_FREQ);                                                        }
-
+//    TimPWMConfigure(TIM1,__config_TIM1_PSC,__config_TIM1_ARR,__config_TIM1_CH1,__config_TIM1_CH2,__config_TIM1_CH3,__config_TIM1_CH4);
 /*!
 *   @brief Initialization interrupts
 */

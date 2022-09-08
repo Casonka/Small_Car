@@ -6,4 +6,4 @@ obj\debug\external\mpu9250\mpu9250.o: External\mpu9250\mpu9250.c \
  RCR\DevBoard\#3/RCR_DevBoard_3_Setup.h RCR\DevBoard\#3/RCR_DevBoard_3.h \
  dev/dev.h dev_examples/dev_ws.h Fil_lib/RCC.h Fil_lib/GPIO.h \
  Fil_lib/TIM.h Fil_lib/USART.h Fil_lib/ADC.h Fil_lib/I2C.h \
- Fil_lib/Regulators.h Fil_lib/RTC.h
+ Fil_lib/Regulators.h

@@ -3,12 +3,13 @@
 int main(void)
 {
     Board_Config;
-    SetI2C1;
+    I2CSimpleConfigure(I2C1,I2C_Fast);
     MPU_Init(AFSR_4G,GFSR_500DPS);
-    MPU_ReadRawData(I2C1);
+
+    MPU_ReadRawData();
     MPU_GyroscopeCalibration(I2C1,1500);
     while(1)
     {
-    MPU_ReadRawData(I2C1);
+        MPU_ReadRawData();
     }
 }

@@ -1,17 +1,23 @@
 #include "main.h"
-Servomotor Servo1;
+
+uint16_t ADC1_Data[ADC1_NUMB];
 int main(void)
 {
-    Board_Config;
-    ADC_Init(ADC1);
-    //ServoInit(&Servo1,PDI6225MG_300,TIM5,20);
-    //ServoSetRange(&Servo1, 0, 60);
-    //SetServoAngle(&Servo1,0);
-
-    //init_PID_Regulator();
+Board_Config;
+    ADCAddRegularChannel(ADC1,0,ADC_480_CYCLES);
+    ADCAddRegularChannel(ADC1,1,ADC_480_CYCLES);
+    ConnectADCTODMA(HIGH_P,ADC1_Data,0);
+    ADCSimpleConfigure(ADC1);
+    SetTIM4;
+    TimPIDConfigureAutomatic(TIM4,10);
+    NVIC_EnableIRQ(TIM4_IRQn);
     while(1)
     {
 
+
+
     }
 }
+
+
 

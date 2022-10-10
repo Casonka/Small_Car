@@ -12,43 +12,98 @@
 #if (CALC_REGULATOR == 1)
 #include "Regulators.h"
 
-/*!
-*   @code PID Regulator Sector
-*/
-PID_Regulator EngineReg;
-float Motor_Coord;
-float EnginePWM = 0.0;
-void init_PID_Regulator(void)  // инициализация регуляторов
+void RegulatorAdd_P_Settings(uint8_t Number, RegulatorParameters* Settings)
 {
+    if(--Number < 0 || Number > P_List) return;
 
-    /*!
-    *   @note [RCR:Regulators] Configuration PID
-    *   @file RCR_DevBoard_3_Setup.h - main configuration file
-    */
-  	EngineReg.p_k = __config_Regulator_P_K;
-  	EngineReg.i_k = __config_Regulator_I_K;
-  	EngineReg.d_k = __config_Regulator_D_K;
-  	EngineReg.pid_on = __config_Regulator_ON;
-  	EngineReg.pid_error_end  = __config_Regulator_ERROR_END;
-  	EngineReg.pid_output_end = __config_OUTPUT_END;
-  	EngineReg.max_sum_error = __config_MAX_SUM_ERROR;
-  	EngineReg.max_output = __config_MAX_OUTPUT;
-  	EngineReg.min_output = __config_MIN_OUTPUT;
+    P[Number].p_k = Settings->p_k;
+    P[Number].p_on = Settings->reg_on;
+    P[Number].p_error_end = Settings->reg_error_end;
+    P[Number].p_output_end = Settings->reg_output_end;
+    P[Number].min_output = Settings->min_output;
+    P[Number].max_output = Settings->max_output;
 
-    // zeroing errors
-    EngineReg.prev_error = 0.0;
-    EngineReg.error = 0.0;
-    EngineReg.sum_error = 0.0;
-    EngineReg.dif_error = 0.0;
-    Motor_Coord = 0.0;
+    P[Number].error = 0.0;
 }
 
 /*!
-*   @attention Static function
-*   @attention Speed must be less then 0.85 (sum error will upper that max_sum_error)
+*   @note [FIL:Regulators] PI Regulator Sector
+*/
+void RegulatorAdd_PI_Settings(uint8_t Number, RegulatorParameters* Settings)
+{
+    if(--Number < 0 || Number > PI_List) return;
+
+    PI[Number].p_k = Settings->p_k;
+    PI[Number].i_k = Settings->i_k;
+  	PI[Number].pi_on = Settings->reg_on;
+  	PI[Number].pi_error_end  = Settings->reg_error_end;
+  	PI[Number].pi_output_end = Settings->reg_output_end;
+  	PI[Number].max_sum_error = Settings->max_sum_error;
+  	PI[Number].max_output = Settings->max_output;
+  	PI[Number].min_output = Settings->min_output;
+
+    // zeroing errors
+    PI[Number].error = 0.0;
+    PI[Number].sum_error = 0.0;
+}
+
+void PI_Start(PI_Regulator* pi_control)
+{
+    pi_control->pi_on = 1;
+}
+
+void PI_Stop(PI_Regulator* pi_control)
+{
+    pi_control->pi_on = 0;
+    pi_control->error = 0.0;
+    pi_control->sum_error = 0.0;
+}
+
+/*!
+*   @note [FIL:Regulators] PID Regulator Sector
+*/
+
+/*!
+*   @brief RegulatorAdd_PID_Settings(uint8_t Number, RegulatorParameters* Settings)
+*/
+void RegulatorAdd_PID_Settings(uint8_t Number, RegulatorParameters* Settings)
+{
+    if(--Number < 0 || Number > PID_List) return;
+    PID[Number].p_k = Settings->p_k;
+    PID[Number].i_k = Settings->i_k;
+  	PID[Number].d_k = Settings->d_k;
+  	PID[Number].pid_on = Settings->reg_on;
+  	PID[Number].pid_error_end  = Settings->reg_error_end;
+  	PID[Number].pid_output_end = Settings->reg_output_end;
+  	PID[Number].max_sum_error = Settings->max_sum_error;
+  	PID[Number].max_output = Settings->max_output;
+  	PID[Number].min_output = Settings->min_output;
+
+    // zeroing errors
+    PID[Number].prev_error = 0.0;
+    PID[Number].error = 0.0;
+    PID[Number].sum_error = 0.0;
+    PID[Number].dif_error = 0.0;
+}
+
+void PID_Start(PID_Regulator* pid_control)
+{
+    pid_control->pid_on = 1;
+}
+
+void PID_Stop(PID_Regulator* pid_control)
+{
+    pid_control->pid_on = 0;
+    pid_control->prev_error = 0.0;
+    pid_control->error = 0.0;
+    pid_control->sum_error = 0.0;
+    pid_control->dif_error = 0.0;
+}
+
+/*!
 *   @brief PID_Parse_EncoderData(int32_t encoderdata) - check value from encoder and calculate speed
 */
-static void PID_Calc(PID_Regulator *pid_control)
+void PID_Calc(PID_Regulator* pid_control)
 {
   pid_control->error = pid_control->target - pid_control->current;
   pid_control->dif_error = pid_control->error - pid_control->prev_error;
@@ -85,33 +140,6 @@ static void PID_Calc(PID_Regulator *pid_control)
     pid_control->output = 0;
     pid_control->pid_finish = 0;
   }
-}
-
-/*!
-*   @attention Static function
-*   @brief PID_Parse_EncoderData(int32_t encoderdata) - check value from encoder and calculate speed
-*/
-static void PID_Parse_EncoderData(int32_t encoderdata)
-{
-    EngineReg.current = ((((float)(encoderdata)) * DISK_TO_REAL) / TIME);
-    Motor_Coord += EngineReg.current * TIME;
-}
-
-
-int16_t EncData;
-/*!
-*   @brief PID_Low_Level(void) - General PID calculating engine
-*/
-void PID_Low_Level(void)
-{
-    EncData = ((int16_t)*ENCODER1_CNT);
-    if(EnginePWM > 1.0) EnginePWM = 1.0;
-    if(EnginePWM < -1.0) EnginePWM = -1.0;
-    EngineReg.target = EnginePWM;
-    PID_Parse_EncoderData(EncData);
-    *ENCODER1_CNT = 0;
-    PID_Calc(&EngineReg);
-    SetVoltage(EngineReg.output);
 }
 
 #endif /*CALC_REGULATOR*/

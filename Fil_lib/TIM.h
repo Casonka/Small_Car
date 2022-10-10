@@ -18,42 +18,68 @@
     *       @arg autoreset - value for set the period of timer
     *       @arg ch<n> - activate/deactivate the channels of timer
     */
-    #define TimPWMConfigure(TIM,PRESCALER,AUTORESET,ch1,ch2,ch3,ch4) {\
-        ConfChannelsTim(TIM,6,6,ch1,ch2,ch3,ch4);                     \
-        ConfTimPSC(TIM,PRESCALER);                                    \
-        ConfTimARR(TIM,AUTORESET);                                    \
-        TimStart(TIM);                                                \
-        SetTimMainOutput(TIM);                                        \
-        SetTimAutomaticOutput(TIM);                                   \
-        ResetTimCCR1(TIM);                                            \
-        ResetTimCCR2(TIM);                                            }
+    #define TimPWMConfigure(TIM,PSC,ARR,ch1,ch2,ch3,ch4)       {\
+        ConfChannelsTim(TIM,6,6,ch1,ch2,ch3,ch4);               \
+        ConfTimPSC(TIM,PSC);                                    \
+        ConfTimARR(TIM,ARR);                                    \
+        TimStart(TIM);                                          \
+        SetTimMainOutput(TIM);                                  \
+        ResetTimCCR1(TIM);                                      \
+        ResetTimCCR2(TIM);                                      }
 
     /*!
-    *   @brief TimPIDConfigure(TIM,frequency) - configuration timer in calculating mode
+    *   @brief TimPIDConfigure(TIM, PSC, ARR) - configuration timer in calculating mode
     *   (P-regulation, PI - regulation, PID - regulation and other regulations)
     *       @arg TIM - number of timer
-    *       @arg PRECALER - psc timer
-    *       @arg AUTORESET - arr timer
+    *       @arg PSC - Prescaler value timer
+    *       @arg ARR - Autoreset value timer
     */
-    #define TimPIDConfigure(TIM,PRESCALER,AUTORESET)   {\
+    #define TimPIDConfigure(TIM,PSC,ARR)               {\
         ResetTimCNT(TIM);                               \
-        ConfTimPSC(TIM,PRESCALER);                      \
-        ConfTimARR(TIM,AUTORESET);                      \
+        ConfTimPSC(TIM,PSC);                            \
+        ConfTimARR(TIM,ARR);                            \
         SetTimUpdateInterrupt(TIM);                     \
         TimStart(TIM);                                  }
 #if (FIL_CALC_TIM == 1)
 
     /*!
+    *   @brief TimPWMConfigureAutomatic(TIM,FREQUENCY,ch1,ch2,ch3,ch4) - configuration timer in PWM mode (auto-mode)
+    *       @arg TIM - number of timer
+    *       @arg FREQUENCY - target frequency
+    *       @arg ch<n> - activate/deactivate the channels of timer
+    */
+    #define TimPWMConfigureAutomatic(TIM,FREQUENCY,ch1,ch2,ch3,ch4)  {\
+        ConfChannelsTim(TIM,6,6,ch1,ch2,ch3,ch4);                     \
+        CalcTimFrequency(TIM,FREQUENCY);                              \
+        TimStart(TIM);                                                \
+        SetTimMainOutput(TIM);                                        \
+        ResetTimCCR1(TIM);                                            \
+        ResetTimCCR2(TIM);                                            \
+        ResetTimCCR3(TIM);                                            \
+        ResetTimCCR4(TIM);                                            }
+
+    /*!
     *   @brief TimPIDConfigureAutomatic(TIM,frequency) - configuration timer in calculating mode (auto-mode)
     *   (P-regulation, PI - regulation, PID - regulation and other regulations)
     *       @arg TIM - number of timer
-    *       @arg freq - target frequency for calculating
+    *       @arg FREQUENCY - target frequency for calculating
     */
     #define TimPIDConfigureAutomatic(TIM,FREQUENCY)    {\
         ResetTimCNT(TIM);                               \
-        CalcTimPIDFrequency(TIM,FREQUENCY);             \
+        CalcTimFrequency(TIM,FREQUENCY);                \
         SetTimUpdateInterrupt(TIM);                     \
         TimStart(TIM);                                  }
+
+    #define TimOnePulseConfigure(TIM,ch1,ch2,POLAR1,ch3,ch4,POLAR2) {\
+        ConfChannelsTim(TIM,POLAR1,POLAR2,ch1,ch2,ch3,ch4);          \
+        SetTimOnePulseMode(TIM);                                     \
+        SetTimMainOutput(TIM);                                       }
+
+    #define TimGeneratePulse(TIM,CHANNEL,DIV,Length)  {\
+        CalcTimPulseLength(TIM,CHANNEL,DIV,Length);    \
+        ResetTimCNT(TIM);                              \
+        TimStart(TIM);                                 }
+
 #endif
     /*!
     *   @brief TimEncoderConfigure(TIM) - configuration timer with encoder interface
@@ -100,7 +126,7 @@
 
 //----------------------------High commands------------------------------------//
 
-    #define ConfChannelsTim(TIM,mode1,mode2,ch1,ch2,ch3,ch4) {\
+    #define ConfChannelsTim(TIM,mode1,mode2,ch1,ch2,ch3,ch4)             {\
         ConfTimOutputCompare1(TIM,mode1,mode2,ch1,ch2);                   \
         ConfTimOutputCompare2(TIM,mode1,mode2,ch3,ch4);                   \
         ConfTimCompareFast1(TIM,1,1,ch1,ch2);                             \
@@ -184,6 +210,7 @@
 #if (FIL_CALC_TIM == 1)
 //---------------------------------------Calculating---------------------------------------------------//
 struct {
+    char Timer[5];
     uint32_t SourseClock;
     float DutyCH1;
     float DutyCH2;
@@ -207,40 +234,26 @@ void CalcTimClockSourse(TIM_TypeDef *TIMx);
 void CalcTimStatus(TIM_TypeDef *TIMx);
 
     /*!
-    *   @brief CalcTimPIDFrequency(TIM_TypeDef *TIMx, uint16_t freq) - Calculating Timer frequency to do PID
+    *   @brief CalcTimFrequency(TIM_TypeDef *TIMx, uint32_t freq) - Calculating Timer frequency
     *       @arg TIMx - number of timer
     *       @arg freq - necessary frequency
-    *
     */
-void CalcTimPIDFrequency(TIM_TypeDef *TIMx, uint16_t freq);
+void CalcTimFrequency(TIM_TypeDef* TIMx, uint32_t freq);
 
-bool SetVoltage(float Duty);
+void CalcTimPulseLength(TIM_TypeDef* TIMx, uint8_t channel, uint8_t Degree, uint16_t Length);
 
-#define PDI6225MG_300   0
-#define MG996R          1
+bool SetPWM(uint32_t *CCR_Pin,float Duty);
 
-typedef struct
-{
-    volatile uint32_t *CCR,
-                       ARR;
-    uint16_t  ms;
-    float     min_ms,
-              max_ms;
-    uint16_t maxAngle;
-    uint16_t Range_min, Range_max;
-} Servomotor;
+void delay_ms(uint32_t ticks);
 
-void ServoInit(Servomotor* Servo, char servoType, TIM_TypeDef *TIMx, uint16_t ms);
+void delay_sec(uint32_t ticks);
 
-void ServoSetRange(Servomotor* Servo, uint16_t min_angle, uint16_t max_angle);
+uint32_t StartMeas(void);
 
-void SetServoAngle(Servomotor* Servo, uint16_t angle);
+uint32_t EndMeas(void);
 
-bool delay_ms(uint32_t ticks);
-
+uint32_t Meas(void* function);
 #elif(FIL_CALC_TIM > 1)
 #error Invalid argument FIL_CALC_TIM
 #endif /*FIL_CALC_TIM*/
-#elif(FIL_TIM > 1)
-#error Invalid argument FIL_TIM
 #endif /*FIL_TIM*/

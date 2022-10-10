@@ -2,14 +2,13 @@
     *   --------------------------------------------------------------------------
     *                       ///TIM Source file\\\
     *   --------------------------------------------------------------------------
-    *   @author RCR group developers - Caska, Evgeny Garanin
+    *   @author RCR group developers
     *   @date 13/07/2022 - last update version TIM
     *
     *       @note [FIL:TIM] TIM Source file.
     */
 #include "TIM.h"
 uint32_t globalTime = 0;
-
 /*!
 *    @brief void SysTick_Handler(void) - System 24-bit timer, increment the time value in 1Hz to 1000
 *       @note [FIL:TIM] Можно использовать для отчета времени, 1000 единиц соответствуют 1 секунде
@@ -18,10 +17,9 @@ uint32_t globalTime = 0;
 void SysTick_Handler(void)
 {
 
-    CalcTimStatus(TIM5);
     globalTime++;
 }
-
+#if (FIL_CALC_TIM == 1)
 //---------------------------------------------------------//
 //----------------------Timer Interrupts-------------------//
 //---------------------------------------------------------//
@@ -51,8 +49,7 @@ ResetTimSR(TIM4);
 
 void TIM5_IRQHandler(void)
 {
-    //SetVoltage(EnginePWM);
-    //PID_Low_Level();
+
 ResetTimSR(TIM5);
 }
 
@@ -76,18 +73,20 @@ void TIM8_UP_TIM13_IRQHandler(void)
 ResetTimSR(TIM13);
 }
 #endif /*STM32F40_41xxx*/
-#if (FIL_CALC_TIM == 1)
-
-uint32_t startTick = 0;
-bool delay_ms(uint32_t ticks)
+static uint32_t startTick;
+void delay_ms(uint32_t ticks)
 {
-    if(ticks == 0) return true;
-    if(startTick == 0) startTick = globalTime;
-    if((globalTime - startTick) < (ticks)) { return false;}
-    else startTick  = 0;
-    return true;
+    if(ticks == 0) return;
+    startTick = globalTime;
+    while((globalTime - startTick) < ticks) {}
 }
 
+void delay_sec(uint32_t ticks)
+{
+    if(ticks == 0) return;
+    startTick = globalTime / 1000;
+    while(((globalTime / 1000) - startTick) < ticks) {}
+}
     /*!
     *   @brief CalcTimStatus(TIM_TypeDef *TIMx) - Calculating Timer Status
     *       @arg TIMx - number of timer
@@ -95,6 +94,9 @@ bool delay_ms(uint32_t ticks)
     */
 void CalcTimStatus(TIM_TypeDef *TIMx)
 {
+    TIMStatus.Timer[0] = 'T';
+    TIMStatus.Timer[1] = 'I';
+    TIMStatus.Timer[2] = 'M';
     CalcTimClockSourse(TIMx);
 
     TIMStatus.DutyCH1 = ((uint32_t)(((float)TIMx->CCR1) / TIMx->ARR * 100));
@@ -104,19 +106,33 @@ void CalcTimStatus(TIM_TypeDef *TIMx)
     TIMStatus.Frequency = (TIMStatus.SourseClock / ((TIMx->PSC + 1) * TIMx->ARR));
 }
     /*!
-    *   @brief CalcTimPIDFrequency(TIM_TypeDef *TIMx, uint16_t freq) - Calculating Timer frequency
+    *   @brief CalcTimFrequency(TIM_TypeDef *TIMx, uint16_t freq) - Calculating Timer frequency
     *       @arg TIMx - number of timer
     *       @arg freq - necessary frequency
-    *           @note [FIL:TIM] Функция для расчета частоты работы прерывания по таймеру. Можно использовать для различных расчетов
+    *           @note [FIL:TIM] Функция для расчета частоты работы таймераы
     */
-void CalcTimPIDFrequency(TIM_TypeDef *TIMx, uint16_t freq)
+void CalcTimFrequency(TIM_TypeDef *TIMx, uint32_t freq)
 {
     CalcTimClockSourse(TIMx);
 
-    TIMx->PSC = (freq >= 100) ? ((uint32_t)(TIMStatus.SourseClock / 1000000)) :
+    TIMx->PSC = (freq <= 100) ? ((uint32_t)(TIMStatus.SourseClock / 10000)) :
+                (freq >= 100) ? ((uint32_t)(TIMStatus.SourseClock / 1000000)) :
                 (freq >= 10000) ? ((uint32_t)(TIMStatus.SourseClock / 10000)) : ((uint32_t)(TIMStatus.SourseClock / 100000));
     TIMx->ARR = ((uint32_t)(TIMStatus.SourseClock / ((TIMx->PSC)* freq)));
     TIMx->PSC -= 1;
+}
+
+void CalcTimPulseLength(TIM_TypeDef* TIMx, uint8_t channel, uint8_t Degree, uint16_t Length)
+{
+    uint32_t divider = 0;
+    if(Degree >= 3 && Degree < 6) { CalcTimFrequency(TIMx, 1); divider = 1000; }
+    if(Degree >= 6 && Degree < 9) { CalcTimFrequency(TIMx, 1000); divider = 1000000; }
+    if(Degree >= 9 && Degree < 12) { CalcTimFrequency(TIMx, 1000000); divider = 1000000000; }
+
+    if(channel == 1) TIMx->CCR1 = (((float)(TIMx->ARR)) * (((float)(Length)) / divider));
+    if(channel == 2) TIMx->CCR2 = (((float)(TIMx->ARR)) * (((float)(Length)) / divider));
+    if(channel == 3) TIMx->CCR3 = (((float)(TIMx->ARR)) * (((float)(Length)) / divider));
+    if(channel == 4) TIMx->CCR4 = (((float)(TIMx->ARR)) * (((float)(Length)) / divider));
 }
 
     /*!
@@ -127,7 +143,21 @@ void CalcTimPIDFrequency(TIM_TypeDef *TIMx, uint16_t freq)
 void CalcTimClockSourse(TIM_TypeDef *TIMx)
 {
     CalcRCCClocks();
-#if defined(STM32F401xx)
+    TIMStatus.Timer[3] = (TIMx == TIM1) ? 0x31 :
+                         (TIMx == TIM2) ? 0x32 :
+                         (TIMx == TIM3) ? 0x33 :
+                         (TIMx == TIM4) ? 0x34 :
+                         (TIMx == TIM5) ? 0x35 :
+                         (TIMx == TIM6) ? 0x36 :
+                         (TIMx == TIM7) ? 0x37 :
+                         (TIMx == TIM8) ? 0x38 :
+                         (TIMx == TIM9) ? 0x39 : 0x31 ;
+    TIMStatus.Timer[4] = (TIMx == TIM10) ? 0x30 :
+                         (TIMx == TIM11) ? 0x31 :
+                         (TIMx == TIM12) ? 0x32 :
+                         (TIMx == TIM13) ? 0x33 :
+                         (TIMx == TIM14) ? 0x34 : ' ';
+    #if defined(STM32F401xx)
     if(TIMx == TIM1 || TIMx == TIM9 || TIMx == TIM10 || TIMx == TIM11)
     {
         TIMStatus.SourseClock = Clocks.CurrentAPB2;
@@ -154,83 +184,33 @@ void CalcTimClockSourse(TIM_TypeDef *TIMx)
     *       @arg Duty - duty value
     *       @note [FIL:TIM] Функция предназначена для установления заполнения ШИМ.
     */
-    static bool SetPWM(uint32_t *CCR_Pin,float Duty)
+    bool SetPWM(uint32_t *CCR_Pin,float Duty)
     {
         if(Duty > 1.0) Duty = 1.0;
         if(Duty < -1.0) Duty = -1.0;
         if(Duty >= 0)
         {
-            *CCR_Pin = ((int32_t) (Duty * MAX_PWM));
+            *CCR_Pin = ((int32_t) (Duty * 2000));
             return true;
         }
         else
         {
-            *CCR_Pin = ((int32_t)(MAX_PWM +  (Duty * MAX_PWM)));
+            *CCR_Pin = ((int32_t)(2000 +  (Duty * 2000)));
             return true;
         }
         return false;
     }
 
-    /*!
-    *   @brief SetVoltage(Motor, Duty) - Установить напряжение на двигатель
-    *       @arg Motor - number of Motor
-    *       @arg Duty - duty value
-    *       @note [FIL:TIM] Функция предназначена для управления двигателями постоянного тока.
-    */
-    bool SetVoltage(float Duty)
+static uint32_t startInterval;
+static uint32_t endInterval;
+    uint32_t StartMeas(void)
     {
-        if(Duty >= 0)
-        {
-            reset_pin(BTN1_DIR_PIN);
-            SetPWM(BTN1_CCR,Duty);
-            return true;
-        }
-        else
-        {
-            set_pin(BTN1_DIR_PIN);
-            SetPWM(BTN1_CCR,Duty);
-            return true;
-        }
-        return false;
+        return startInterval = globalTime;
     }
 
-    void ServoInit(Servomotor* Servo, char servoType,TIM_TypeDef *TIMx, uint16_t ms)
+    uint32_t EndMeas(void)
     {
-        Servo->CCR = &TIMx->CCR1;
-        Servo->ARR = TIMx->ARR;
-        Servo->ms = ms;
-
-        if(servoType == PDI6225MG_300)
-        {
-            Servo->maxAngle = 300;
-            (*Servo).min_ms = 0.5;
-            (*Servo).max_ms = 2.5;
-        }
-        else if(servoType == MG996R)
-        {
-            Servo->maxAngle = 180;
-            (*Servo).min_ms = 1.0;
-            (*Servo).max_ms = 2.0;
-        }
+        return endInterval = (globalTime - startInterval);
     }
 
-    void ServoSetRange(Servomotor* Servo, uint16_t min_angle, uint16_t max_angle)
-    {
-        if(min_angle >= max_angle) return;
-        Servo->Range_min = min_angle;
-        Servo->Range_max = max_angle;
-    }
-
-    void SetServoAngle(Servomotor* Servo, uint16_t angle)
-    {
-        if(Servo->Range_min != 0 && angle < Servo->Range_min) angle = Servo->Range_min;
-        if(Servo->Range_max != 0 && angle > Servo->Range_max) angle = Servo->Range_max;
-        if(angle > (*Servo).maxAngle) angle = (*Servo).maxAngle;
-        if(angle < 0)   angle = 0;
-
-        float min_PWM = (float)(((Servo->ARR) * (*Servo).min_ms) / (*Servo).ms);
-        float max_PWM = (float)(((Servo->ARR) * (*Servo).max_ms) / (*Servo).ms);
-
-        *(*Servo).CCR = (uint32_t)(angle * ((max_PWM - min_PWM) / (*Servo).maxAngle) + min_PWM);
-    }
 #endif /*FIL_CALC_TIM*/

@@ -25,6 +25,7 @@
     #define SetGPIOE        (RCC->AHB1ENR |= ((uint32_t)(1 << 4)))
     #define SetGPIOH        (RCC->AHB1ENR |= ((uint32_t)(1 << 7)))
 
+    #define ResetGPIOB      (RCC->AHB1RSTR |= (1 << 1))
 #if defined(STM32F40_41xxx) /*--------------STM32F407------------------*/
     #define SetGPIOF        (RCC->AHB1ENR |= ((uint32_t)(1 << 5)))
     #define SetGPIOG        (RCC->AHB1ENR |= ((uint32_t)(1 << 6)))
@@ -55,12 +56,12 @@
     */
     #define SetUSART1       (RCC->APB2ENR |= ((uint32_t)(1 << 4)))
     #define SetUSART6       (RCC->APB2ENR |= ((uint32_t)(1 << 5)))
-    #define SetUSART2       (RCC->APB1ENR |= ((uint32_t)(1 << 17))
+    #define SetUSART2       (RCC->APB1ENR |= ((uint32_t)(1 << 17)))
 
 #if defined(STM32F40_41xxx) /*--------------STM32F407------------------*/
-    #define SetUSART3       (RCC->APB1ENR |= ((uint32_t)(1 << 18))
-    #define SetUSART4       (RCC->APB1ENR |= ((uint32_t)(1 << 19))
-    #define SetUSART5       (RCC->APB1ENR |= ((uint32_t)(1 << 20))
+    #define SetUSART3       (RCC->APB1ENR |= ((uint32_t)(1 << 18)))
+    #define SetUSART4       (RCC->APB1ENR |= ((uint32_t)(1 << 19)))
+    #define SetUSART5       (RCC->APB1ENR |= ((uint32_t)(1 << 20)))
 #endif
     /*!
     *   @list I2C
@@ -68,6 +69,10 @@
     #define SetI2C1         (RCC->APB1ENR |= ((uint32_t)(1 << 21)))
     #define SetI2C2         (RCC->APB1ENR |= ((uint32_t)(1 << 22)))
     #define SetI2C3         (RCC->APB1ENR |= ((uint32_t)(1 << 23)))
+
+    #define ResetI2C1       (RCC->APB1RSTR |= ((uint32_t)(1 << 21)))
+    #define ResetI2C2       (RCC->APB1RSTR |= ((uint32_t)(1 << 22)))
+    #define ResetI2C3       (RCC->APB1RSTR |= ((uint32_t)(1 << 23)))
     /*!
     *   @list ADC
     */
@@ -106,6 +111,24 @@
     *   @list SYSCFG
     */
     #define SetSYSCFG       (RCC->APB2ENR |= ((uint32_t)(1 << 14)))
+
+    /*!
+    *   @note [FIL:RCC] Prepare for RTC
+    */
+    #define LSE             (RCC_CFGR_MCO1_0 | RCC_CFGR_RTCPRE_3)
+
+    #ifdef __configMAP_MK1
+    #define FIL_MKSOURSE1   __configMAP_MK1
+    #else
+    #define FIL_MKSOURSE1   LSE
+    #endif /*__configMAP_MK1*/
+
+    #define RCC_MKOutput1   (RCC->CFGR |= FIL_MKSOURSE1)
+    #define RCC_RTCClockON  (RCC->BDCR |= (RCC_BDCR_RTCEN | RCC_BDCR_RTCSEL_0))
+    #define LSE_ON          (RCC->BDCR |= RCC_BDCR_LSEON)
+
+    #define PWRUnlockWriteProtection        (PWR->CR |= PWR_CR_DBP)
+    #define PWRLockWriteProtection          (PWR->CR &= ~PWR_CR_DBP)
 
 #if (FIL_CALC_RCC == 1)
     /*!

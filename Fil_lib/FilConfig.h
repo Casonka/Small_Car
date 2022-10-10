@@ -2,10 +2,20 @@
     *   --------------------------------------------------------------------------
     *                ///Fast Initialization Library Configuration File\\\
     *   --------------------------------------------------------------------------
-    *   @author RCR group developers - Caska.
-    *   @date 28/06/2022 - last update version FIL STM32
+    *   @author RCR group developers
+    *   @date 02/06/2022 - last update version FIL STM32
     *
     */
+
+// Example for register documentation
+/*!
+*    @brief
+*    @arg
+*    @arg
+*    @arg
+*        @attention
+*    @return
+*/
 
 /*!
 *   FIL STM32 Driver
@@ -15,6 +25,7 @@
 
 #pragma once
 #include "main.h"
+#include <stdbool.h>
 #include "BoardSelection.h"
 
 #define FIL_RCC                   __configUSE_RCC
@@ -26,7 +37,6 @@
 #define FIL_ADC                   __configUSE_ADC
 #define FIL_EXTI                  __configUSE_EXTI
 #define FIL_RTC                   __configUSE_RTC
-#define FIL_FREERTOS              __configUSE_FREERTOS
 #define FIL_Deprecated            __configUSE_DeprecatedFunctions   // !Deprecated
 
 #define FIL_CALC_RCC              __configCALC_RCC
@@ -35,18 +45,29 @@
 #define CALC_REGULATOR            __configCALC_Regulators
 #define CALC_MATRIX               __configCALC_Matrix
 #define CALC_KINEMATICS           __configCALC_Kinematics
+#define CALC_I2C_SCANNING         __configCALC_I2C_SCANNING
 
+/*!
+*   OS Configuration
+*/
+#define FIL_FREERTOS              __configUSE_FREERTOS
+#define FIL_FreeRTOS_Source       __configOS_SOURCE
+
+#define EXTERNAL_SSD1306          __configEXT_SSD1306
+#define EXTERNAL_MPU9250          __configEXT_MPU9250
+#define EXTERNAL_ModBus           __configEXT_ModBus
 /*!
 *   Version control
 *
 */
-#if  !defined(STM32F40_41xxx) && !defined(STM32F401xx)
+#define Allsupport     (STM32F401xx || STM32F40_41xxx || STM32F411xE)
+#define support_High   (STM32F40_41xxx || STM32F411xE)
+#if  !defined(Allsupport)
     #error Not supported on another devices
     #pragma message "Supported devices:"
     #pragma message "STM32F407VGT6, STM32F407VET6"
-    #pragma message "STM32F401CCU6"
+    #pragma message "STM32F401CCU6, STM32F411VET6"
 #endif /*Supporting device securing end*/
-
 /*!
 *   @note [FIL:FreeRTOS] Include FreeRTOS in project
 */
@@ -127,3 +148,28 @@
 #elif(CALC_KINEMATICS > 1 || CALC_KINEMATICS < 0)
 #error Invalid argument CALC_KINEMATICS
 #endif/*CALC_KINEMATICS*/
+#if(FIL_RTC == 1)
+    #include "RTC.h"
+#elif(FIL_RTC > 1 || FIL_RTC < 0)
+#error Invalid argument FIL_RTC
+#endif/*FIL_RTC*/
+
+//----------------------------EXTERNAl---------------------------//
+#if(EXTERNAL_SSD1306 == 1)
+    #include "fonts.h"
+    #include "images.h"
+    #include "ssd1306_i2c.h"
+    #include "ssd1306.h"
+#elif(EXTERNAL_SSD1306 > 1 || EXTERNAL_SSD1306 < 0)
+#error Invalid argument EXTERNAL_SSD1306
+#endif /*EXTERNAL_SSD1306*/
+#if(EXTERNAL_MPU9250 == 1)
+    #include "mpu9250.h"
+#elif(EXTERNAL_MPU9250 > 1 || EXTERNAL_MPU9250 < 0)
+#error Invalid argument EXTERNAL_MPU9250
+#endif/*EXTERNAL_MPU9250*/
+#if(EXTERNAL_ModBus == 1)
+    #include "ModBus_conf.h"
+#elif(EXTERNAL_ModBus > 1 || EXTERNAL_ModBus < 0)
+#error Invalid argument EXTERNAL_ModBus
+#endif /*EXTERNAL_ModBus*/

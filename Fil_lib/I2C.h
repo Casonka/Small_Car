@@ -114,8 +114,9 @@
 void I2C_ClearAllStats(I2C_TypeDef* I2Cx);
 
 uint8_t I2C_MemoryWriteSingle(I2C_TypeDef* I2Cx, uint8_t address, uint8_t Register, uint8_t Value);
+uint8_t I2C_MemoryWriteMulriple(I2C_TypeDef* I2Cx, uint8_t address, uint8_t Register, uint8_t* Buffer, uint8_t Length);
 uint8_t I2C_MemoryReadSingle(I2C_TypeDef* I2Cx, uint8_t address, uint8_t Register);
-uint8_t I2C_MemoryReadMultiple(I2C_TypeDef* I2Cx, uint8_t address, uint8_t Register, uint8_t* Bus, uint16_t length);
+uint8_t I2C_MemoryReadMultiple(I2C_TypeDef* I2Cx, uint8_t address, uint8_t Register, uint8_t* Buffer, uint16_t Length);
 /*!
 *   @brief I2C_SingleSend(I2C_TypeDef* I2Cx, uint8_t Byte, bool IsWrite) - Single Write on Bus IIC
 *       @arg I2Cx - number of target I2C
@@ -131,7 +132,7 @@ bool I2C_SingleSend(I2C_TypeDef* I2Cx, uint8_t Byte, bool IsWrite);
 *       @arg I2Cx - number of target I2C
 *       @arg bufBytes - Sending buffer of values
 */
-uint16_t I2C_MultipleSend(I2C_TypeDef* I2Cx, uint8_t *bufBytes);
+uint16_t I2C_MultipleSend(I2C_TypeDef* I2Cx, uint8_t *bufBytes, uint8_t Length);
 
 /*!
 *   @brief I2C_SingleRead(I2C_TypeDef* I2Cx) - Single read data from I2C bus
@@ -145,7 +146,7 @@ uint8_t I2C_SingleRead(I2C_TypeDef* I2Cx);
 *       @arg bufBytes - Sending buffer of values
 *       @return success received bytes
 */
-uint16_t I2C_MultipleRead(I2C_TypeDef* I2Cx, uint8_t *bufBytes);
+uint16_t I2C_MultipleRead(I2C_TypeDef* I2Cx, uint8_t *Buffer, uint8_t Length);
 
 void I2C_RestoreConnection(I2C_TypeDef* I2Cx);
 #if(CALC_I2C_SCANNING == 1)

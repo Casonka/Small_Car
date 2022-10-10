@@ -71,8 +71,14 @@
 *   @note [RCR] Regulator configuration { Car's engine }
 */
 
+#define __config_RegulatorList          (1)
+#define __config_RegulatorListP         (0)
+#define __config_RegulatorListPI        (0)
+#define __config_RegulatorListPID       (1)
+
+
 #define __config_Regulator_ON           (1)
-#define __config_Regulator_Source       (TIM3)
+#define __config_Regulator_Source       (TIM4)
 #define __config_Regulator_FREQ         (100)
 #define __config_Regulator_P_K          (5.0)
 #define __config_Regulator_I_K          (1.5)
@@ -110,13 +116,17 @@
 *                           5 - Developer Mode (All Manually)
 */
 #define __configADC_Mode                (4)
-#define __configCONVERT_Volts           (1)
+#define __configCONVERT_Volts           (0)
 #define __configUSE_Battery_Charging    (0)
 #define __configUSE_Temperature_Sensor  (0)
 // custom variables
 #define __configMAP_Potentiometer       (4)
 #define __configMAP_Multiplexor         (8)
-/////////////////////////////////////////////////
+//---------------------------------------------------------------------------//
+/*!
+*   @attention Change the pins to values like this: __configUSE_SENSOR_X    Val
+*               Val - number of ADC_IN pin (see datasheet)
+*/
 #define __configUSE_SENSOR_1            (__configMAP_Potentiometer)
 #define __configUSE_SENSOR_2            (__configMAP_Multiplexor)
 #define __configUSE_SENSOR_3            (-1)
@@ -195,26 +205,29 @@
 *   @brief General Initialization. This sector is custom adding by author.
 *          You can modify and use some new functions that you need.
 */
-#define Board_Config                       {\
-    SetPWR;                                 \
-    SetGPIOA;                               \
-    SetGPIOB;                               \
-    SetGPIOC;                               \
-    SetTIM1;                                \
-    SetTIM3;                                \
-    SetTIM4;                                \
-    SetTIM5;                                \
-    SetDMA2;                                \
-    SetADC1;                                \
-    SetUSART1;                              \
-    SetUSART6;                              \
-    SetSYSCFG;                              \
-    InitPeriph;                             \
-    InitTimers;                             \
-    InitUSART;                              \
-    InitInterrupts;                         \
-    SetI2C1;                                \
-    SysTick_Config(__config_SysTick_Counter);}
+#define Board_Config                           {\
+    SetPWR;                                     \
+    SetGPIOA;                                   \
+    SetGPIOB;                                   \
+    SetGPIOC;                                   \
+    SetTIM1;                                    \
+    SetTIM3;                                    \
+    SetTIM4;                                    \
+    SetTIM5;                                    \
+    SetDMA2;                                    \
+    SetADC1;                                    \
+    SetUSART1;                                  \
+    SetUSART6;                                  \
+    SetSYSCFG;                                  \
+    InitPeriph;                                 \
+    InitTimers;                                 \
+    InitUSART;                                  \
+    InitInterrupts;                             \
+    InitRegulators;                             \
+    SetI2C1;                                    \
+    SysTick_Config(__config_SysTick_Counter);   \
+    RegulatorAdd_PID_Settings(1, &Settings[0]); \
+    ADC_Init(ADC1);                             }
 
 /*!
 *   @brief Initialization pins
@@ -225,21 +238,25 @@
     GPIOConfPin(MULPLXB_PIN,  GENERAL, PUSH_PULL, FAST_S, PULL_DOWN);\
     GPIOConfPin(MULPLXC_PIN,  GENERAL, PUSH_PULL, FAST_S, PULL_DOWN);\
     GPIOConfPin(INT_PIN,  GENERAL, PUSH_PULL, FAST_S, PULL_DOWN);\
-    GPIOConfPin(LED_PIN,  GENERAL, PUSH_PULL, FAST_S, NO_PULL_UP);\
+    GPIOConfPin(LED1_PIN,  GENERAL, PUSH_PULL, FAST_S, NO_PULL_UP);\
+    GPIOConfPin(LED2_PIN,  GENERAL, PUSH_PULL, FAST_S, NO_PULL_UP);\
+    \
     GPIOConfPin(ADC_TOP, ANALOG, PUSH_PULL, FAST_S, NO_PULL_UP);\
     GPIOConfPin(POT_PIN, ANALOG, PUSH_PULL, FAST_S, PULL_DOWN);\
+    \
     GPIOConfPin(EXTI1_PIN, INPUT, PUSH_PULL, FAST_S, PULL_DOWN);\
     GPIOConfPin(EXTI2_PIN, INPUT, PUSH_PULL, FAST_S, PULL_DOWN);\
     GPIOConfPin(EXTI3_PIN, INPUT, PUSH_PULL, FAST_S, PULL_DOWN);\
     GPIOConfPin(EXTI4_PIN, INPUT, PUSH_PULL, FAST_S, PULL_DOWN);\
     GPIOConfPin(EXTI5_PIN, INPUT, PUSH_PULL, FAST_S, PULL_DOWN);\
+    \
     GPIOConfPin(BTN1_PWM_PIN, ALTERNATE, PUSH_PULL, FAST_S, NO_PULL_UP);\
     GPIOConfAF(BTN1_PWM_PIN, AF1);\
     GPIOConfPin(BTN2_PWM_PIN, ALTERNATE, PUSH_PULL, FAST_S, NO_PULL_UP);\
     GPIOConfAF(BTN2_PWM_PIN, AF1);\
-    GPIOConfPin(ENCODER1A_PIN, ALTERNATE, PUSH_PULL, FAST_S, NO_PULL_UP);\
+    GPIOConfPin(ENCODER1A_PIN, ALTERNATE, PUSH_PULL, LOW_S, PULL_UP);\
     GPIOConfAF(ENCODER1A_PIN, AF2);\
-    GPIOConfPin(ENCODER1B_PIN, ALTERNATE, PUSH_PULL, FAST_S, NO_PULL_UP);\
+    GPIOConfPin(ENCODER1B_PIN, ALTERNATE, PUSH_PULL, LOW_S, PULL_UP);\
     GPIOConfAF(ENCODER1B_PIN, AF2);\
     GPIOConfPin(ENCODER2A_PIN, ALTERNATE, PUSH_PULL, LOW_S, PULL_UP);\
     GPIOConfAF(ENCODER2A_PIN, AF2);\
@@ -254,21 +271,21 @@
 *   @brief Initialization timers
 *       @arg TIM1 - Wheels engine
 *       @arg TIM5 - Servo management
-*       @arg TIM3 - PID Calculating (Interrupt)
+*       @arg TIM4 - PID Calculating (Interrupt)
 *           @attention check interrupts file for TIM
 *               @file TIM.c
-*       @arg TIM4 - Encoder monitoring
+*       @arg TIM3 - Encoder monitoring
 */
-#define InitTimers                                                                                                                     {\
-    TimPWMConfigure(TIM5,__config_TIM5_PSC,__config_TIM5_ARR,__config_TIM5_CH1,__config_TIM5_CH2,__config_TIM5_CH3,__config_TIM5_CH4);  \
-    TimEncoderConfigure(TIM4);                                                                                                          \
-    TimPIDConfigureAutomatic(__config_Regulator_Source,__config_Regulator_FREQ);                                                        }
-//    TimPWMConfigure(TIM1,__config_TIM1_PSC,__config_TIM1_ARR,__config_TIM1_CH1,__config_TIM1_CH2,__config_TIM1_CH3,__config_TIM1_CH4);
+#define InitTimers                                                                                                                      {\
+    TimPWMConfigure(TIM1,__config_TIM1_PSC,__config_TIM1_ARR,__config_TIM1_CH1,__config_TIM1_CH2,__config_TIM1_CH3,__config_TIM1_CH4);   \
+    TimPWMConfigure(TIM5,__config_TIM5_PSC,__config_TIM5_ARR,__config_TIM5_CH1,__config_TIM5_CH2,__config_TIM5_CH3,__config_TIM5_CH4);   \
+    TimEncoderConfigure(TIM3);                                                                                                           \
+    TimPIDConfigureAutomatic(__config_Regulator_Source,__config_Regulator_FREQ);                                                         }
 /*!
 *   @brief Initialization interrupts
 */
 #define InitInterrupts {\
-    NVIC_EnableIRQ(TIM3_IRQn);\
+    NVIC_EnableIRQ(TIM4_IRQn);\
     NVIC_EnableIRQ(ADC_IRQn);}
 
 /*!
@@ -277,5 +294,19 @@
 #define InitUSART {\
     USARTBothConfigure(USART1,__config_USART1_Baudrate, 0, 0); \
     USARTTransmitterConfigure(USART6, __config_USART6_Baudrate, 0);}
+
+/*!
+*   @brief Initialization Regulators
+*/
+#define InitRegulators                                         {\
+    Settings[0].reg_on = __config_Regulator_ON;                 \
+    Settings[0].p_k = __config_Regulator_P_K;                   \
+    Settings[0].i_k = __config_Regulator_I_K;                   \
+    Settings[0].d_k = __config_Regulator_D_K;                   \
+    Settings[0].max_sum_error = __config_MAX_SUM_ERROR;         \
+    Settings[0].reg_output_end = __config_OUTPUT_END;           \
+    Settings[0].reg_error_end = __config_Regulator_ERROR_END;   \
+    Settings[0].min_output = __config_MIN_OUTPUT;               \
+    Settings[0].max_output = __config_MAX_OUTPUT;               }
 
 #endif /*STM32F401xx*/

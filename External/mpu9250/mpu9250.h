@@ -57,7 +57,9 @@
 */
 #define AK8963_ADDR            0x0C    //Slave address of magnetometer
 
+#define AK8963_ST1             0x02
 #define AK8963_HXL             0x03
+#define AK8963_ST2             0x09
 #define AK8963_CNTL1           0x0A
 #define AK8963_CNTL2           0x0B
 #define AK8963_ASAX            0x10
@@ -68,7 +70,7 @@ struct {
     char MPUstatus;
     char AK8963status;
     float Altitude[3];
-    int16_t Compass[3];
+    float Compass[3];
     float AnglePosition[3];
     float Accelerometer[3];
     float Gyroscope[3];
@@ -78,8 +80,12 @@ struct {
     float gScaleFactor;
     float MagnetometerScaleFactor[3];
     int16_t Raw_Data[10];
+    uint8_t Bus[21];
 }MPU9250;
 
+/*!
+*   @list Parameters for configuration range and resolution
+*/
 enum accelerometerFullScaleRange
 {
     AFSR_2G,
@@ -96,11 +102,6 @@ enum gyroscopeFullScaleRange
     GFSR_2000DPS
 };
 
-enum magnetometerFullScaleRange
-{
-
-};
-
 enum magnetometerResolutionRange
 {
     MRES_14BIT = 0,
@@ -114,7 +115,7 @@ enum magnetometerResolutionRange
 bool MPU_Connect(I2C_TypeDef* I2Cx, bool IsWrite);
 
 void MPU_ScaleCalibration(I2C_TypeDef* I2Cx, uint8_t aScale, uint8_t gScale);
-void MPU_GyroscopeCalibration(I2C_TypeDef* I2Cx, uint16_t CalPoints);
+void MPU_GyroscopeCalibration(uint16_t CalPoints);
 /*!
 *   @brief This function is writing new value to device MPUXX50
 *       @note [MPU] if end value if false then have problem with bus or device
@@ -124,6 +125,7 @@ uint8_t MPU_WriteRegistry(I2C_TypeDef* I2Cx, uint8_t Register, uint8_t Value);
 uint8_t MPU_ReadRegistry(I2C_TypeDef* I2Cx, uint8_t Register);
 
 void MPU_ReadRawData(void);
+void AK8963_ReadRawData(void);
 void MPU_parseData(void);
 /*!
 *   @brief Main Init Function for MPUxx50
@@ -131,6 +133,6 @@ void MPU_parseData(void);
 */
 #define RAD2DEG     57.2957795131
 void AK8963_Init(void);
-uint8_t MPU_Init(uint8_t aScale, uint8_t gScale);
+uint8_t MPU_Init(void);
 
 #endif/*EXTERNAL_MPU9250*/

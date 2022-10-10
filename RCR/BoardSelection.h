@@ -16,7 +16,7 @@
 *   @arg 4 - RCR Custom project
 *   @arg 0xFF - Maximum Kit
 */
-#define _configUSEBoards                (3)
+#define _configUSEBoards                (4)
 
 #if (_configUSEBoards == 0)
     #include "MinimalKit.h"
@@ -37,7 +37,8 @@
         #include "RCR_DevBoard_3_Setup.h"
     #endif /*Development Board №3*/
     #if (_configUSEBoards == 4) // Development Board №4 (Coming soon - new project in this list)
-
+        #include "Pins.h"
+        #include "Setup.h"
     #endif /*Development Board №4*/
     #if ((_configUSEBoards < 0) || (_configUSEBoards > 0xFF))
         #error Invalid argument of Development Board

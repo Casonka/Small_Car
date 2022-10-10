@@ -9,7 +9,6 @@
     */
 #include "TIM.h"
 uint32_t globalTime = 0;
-
 /*!
 *    @brief void SysTick_Handler(void) - System 24-bit timer, increment the time value in 1Hz to 1000
 *       @note [FIL:TIM] ћожно использовать дл€ отчета времени, 1000 единиц соответствуют 1 секунде
@@ -50,8 +49,7 @@ ResetTimSR(TIM4);
 
 void TIM5_IRQHandler(void)
 {
-    //SetVoltage(EnginePWM);
-    //PID_Low_Level();
+
 ResetTimSR(TIM5);
 }
 
@@ -192,12 +190,12 @@ void CalcTimClockSourse(TIM_TypeDef *TIMx)
         if(Duty < -1.0) Duty = -1.0;
         if(Duty >= 0)
         {
-            *CCR_Pin = ((int32_t) (Duty * MAX_PWM));
+            *CCR_Pin = ((int32_t) (Duty * 2000));
             return true;
         }
         else
         {
-            *CCR_Pin = ((int32_t)(MAX_PWM +  (Duty * MAX_PWM)));
+            *CCR_Pin = ((int32_t)(2000 +  (Duty * 2000)));
             return true;
         }
         return false;
@@ -207,13 +205,11 @@ static uint32_t startInterval;
 static uint32_t endInterval;
     uint32_t StartMeas(void)
     {
-        SetPin(LED_PIN);
         return startInterval = globalTime;
     }
 
     uint32_t EndMeas(void)
     {
-        ResetPin(LED_PIN);
         return endInterval = (globalTime - startInterval);
     }
 

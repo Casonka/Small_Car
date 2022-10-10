@@ -122,19 +122,68 @@ uint8_t I2C_MemoryWriteSingle(I2C_TypeDef* I2Cx, uint8_t address, uint8_t Regist
     return Value;
 }
 
+uint8_t I2C_MemoryWriteMulriple(I2C_TypeDef* I2Cx, uint8_t address, uint8_t Register, uint8_t* Buffer, uint8_t Length)
+{
+    I2C_ClearAllStats(I2Cx);
+    ResetI2CAsk(I2Cx);
+
+    I2CStart(I2Cx);
+//-------------------Wait SB-------------------------//
+    I2C_timeout = __configI2C_TIMEOUT;
+    while(!I2CStartBitEvent(I2Cx))
+    {
+        if(--I2C_timeout == 0x00)
+        {
+            return 0x00;
+        }
+    }
+//---------------------------------------------------//
+    I2CSendData(I2Cx,address,1);
+//-------------------Wait TXe&ADDR-------------------//
+    I2C_timeout = __configI2C_TIMEOUT;
+    while(!I2CAddressSentEvent(I2Cx) || !I2CDataEmptyEvent(I2Cx))
+    {
+        if(--I2C_timeout == 0x00)
+        {
+            return 0x00;
+        }
+    }
+//---------------------------------------------------//
+    I2C_ClearAllStats(I2Cx);
+    I2CSendCommand(I2Cx,Register);
+//----------------Wait TXe&BTF-----------------------//
+    uint8_t SuccessRead = 0;
+    for(int i = 0; i <= Length; i++)
+    {
+        I2C_timeout = __configI2C_TIMEOUT;
+        while(!I2CDataEmptyEvent(I2Cx) || !I2CByteTranferedEvent(I2Cx))
+        {
+            if (--I2C_timeout == 0x00)
+            {
+                return 0x00;
+            }
+        }
+        if(!I2CDataNotEmptyEvent(I2Cx)) continue;
+        I2Cx->DR = *Buffer++;
+        SuccessRead++;
+    }
+//---------------------------------------------------//
+    I2CStop(I2Cx);
+    return SuccessRead;
+}
 /*!
-*   @brief I2C_MemoryReadMultiple(I2C_TypeDef* I2Cx, uint8_t address, uint8_t Register, uint8_t* Bus, uint16_t length)
+*   @brief I2C_MemoryReadMultiple(I2C_TypeDef* I2Cx, uint8_t address, uint8_t Register, uint8_t* Buffer, uint16_t length)
 *               Read some values from slave and puts in Bus buffer
 *   @arg I2Cx - number of I2C interface
 *   @arg address - Device address
 *   @arg Register - Slave's internal register
-*   @arg Bus - Storage buffer pointer
+*   @arg Buffer - Storage buffer pointer
 *   @arg length - number of parsing values
-*       @attention Bus buffer pointer necessary puts with saving value type
+*       @attention Buffer pointer necessary puts with saving value type
 *           Example: uint8_t buffer need to put like as I2C_MemoryWriteSingle(I2Cx,address,Register,(uint8_t *)buffer,length);
 *   @return Number of success transfered to STM32 bytes
 */
-uint8_t I2C_MemoryReadMultiple(I2C_TypeDef* I2Cx, uint8_t address, uint8_t Register, uint8_t* Bus, uint16_t length)
+uint8_t I2C_MemoryReadMultiple(I2C_TypeDef* I2Cx, uint8_t address, uint8_t Register, uint8_t* Buffer, uint16_t Length)
 {
     I2C_ClearAllStats(I2Cx);
 
@@ -191,10 +240,10 @@ uint8_t I2C_MemoryReadMultiple(I2C_TypeDef* I2Cx, uint8_t address, uint8_t Regis
     (void)I2Cx->SR2;
 
     uint16_t SuccessRead = 0;
-    for(int i = 0; i <= length; i++)
+    for(int i = 0; i <= Length; i++)
     {
 
-        if(i == (length - 1)) ResetI2CAsk(I2Cx);
+        if(i == (Length - 1)) ResetI2CAsk(I2Cx);
         I2C_timeout = __configI2C_TIMEOUT;
         while(!I2CDataNotEmptyEvent(I2Cx))
         {
@@ -204,7 +253,7 @@ uint8_t I2C_MemoryReadMultiple(I2C_TypeDef* I2Cx, uint8_t address, uint8_t Regis
             }
         }
         if(!I2CDataNotEmptyEvent(I2Cx)) continue;
-        *Bus++ = I2Cx->DR;
+        *Buffer++ = I2Cx->DR;
         SuccessRead++;
     }
     I2CStop(I2Cx);
@@ -285,7 +334,6 @@ uint8_t I2C_MemoryReadSingle(I2C_TypeDef* I2Cx, uint8_t address, uint8_t Registe
         }
     }
 //---------------------------------------------------//
-
     ResetI2CAsk(I2Cx);
     I2CStop(I2Cx);
     Bus = I2Cx->DR;
@@ -319,11 +367,11 @@ return true;
 }
 
 /*!
-*   @brief I2C_SingleSend(I2C_TypeDef* I2Cx, uint8_t *bufBytes) - Multiple Write on Bus IIC
+*   @brief I2C_MultipleSend(I2C_TypeDef* I2Cx, uint8_t *bufBytes) - Multiple Write on Bus IIC
 *       @arg I2Cx - number of target I2C
 *       @arg bufBytes - Sending buffer of values
 */
-uint16_t I2C_MultipleSend(I2C_TypeDef* I2Cx, uint8_t *bufBytes)
+uint16_t I2C_MultipleSend(I2C_TypeDef* I2Cx, uint8_t *bufBytes, uint8_t Length)
 {
     uint16_t SuccessTransfer = 0;
     for(int i = 0; i < sizeof(bufBytes); i++)
@@ -357,19 +405,27 @@ uint8_t I2C_SingleRead(I2C_TypeDef* I2Cx)
 return SuccessRead;
 }
 
-uint16_t I2C_MultipleRead(I2C_TypeDef* I2Cx, uint8_t *bufBytes)
+uint16_t I2C_MultipleRead(I2C_TypeDef* I2Cx, uint8_t *Buffer, uint8_t Length)
 {
-    uint16_t SuccessRead = sizeof(bufBytes);
+    uint8_t SuccessRead = 0;
 
-    for(int i = 0; i < 14; i++)
+    for(int i = 0; i <= Length; i++)
     {
-        if(i == (sizeof(bufBytes) - 1)) ResetI2CAsk(I2Cx);
-        while(!I2CDataNotEmptyEvent(I2Cx))  {}
-        bufBytes[i] = I2Cx->DR;
+        if(i == (Length - 1)) ResetI2CAsk(I2Cx);
+        I2C_timeout = __configI2C_TIMEOUT;
+        while(!I2CDataNotEmptyEvent(I2Cx))
+        {
+            if(--I2C_timeout == 0x00)
+            {
+                break;
+            }
+        }
+        if(!I2CDataNotEmptyEvent(I2Cx)) continue;
+        *Buffer++ = I2Cx->DR;
         SuccessRead++;
     }
     I2CStop(I2Cx);
-return SuccessRead;
+    return SuccessRead;
 }
 
 /*!

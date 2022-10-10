@@ -79,6 +79,8 @@
     */
     #define ADCSimpleConfigure(ADC)                                            {\
         SetADCAdon(ADC);                                                        \
+        SetADCDDS(ADC);                                                         \
+        SetADCDMA(ADC);                                                         \
         SetADCCont(ADC);                                                        \
         SetADCScan(ADC);                                                        \
         (__configADC_InterruptRequest == 1) ? SetADCRegularInterrupt(ADC) :     \
@@ -98,7 +100,8 @@
     *       @arg CYCLES - Sample time selection
     *       @arg RCH
     */
-    #define ADCAddRegularChannel(ADC,CHANNEL,CYCLES,RCH)                                   {\
+    __attribute__((unused)) static char RCH = 0;
+    #define ADCAddRegularChannel(ADC,CHANNEL,CYCLES)                                       {\
                         ADC->SQR1 &= ~(0xF << 20);                                          \
                         ADC->SQR1 |= RCH << 20;                                             \
                         *(&ADC->SQR3 - (RCH / 6)) |= CHANNEL << ((RCH * 5) % 30);           \

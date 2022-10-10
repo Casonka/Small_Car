@@ -2735,13 +2735,13 @@
 
 1658119830 source:c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car1\src\startup_stm32f401xc.s
 
-1662129113 source:c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car1\fil_lib\adc.c
+1665122297 source:c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car1\fil_lib\adc.c
 	"ADC.h"
 
-1662129113 c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car1\fil_lib\adc.h
+1665123084 c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car1\fil_lib\adc.h
 	"FilConfig.h"
 
-1662129113 c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car1\fil_lib\filconfig.h
+1662976936 c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car1\fil_lib\filconfig.h
 	"main.h"
 	<stdbool.h>
 	"BoardSelection.h"
@@ -2775,7 +2775,7 @@
 	"mpu9250.h"
 	"ModBus_conf.h"
 
-1662129113 c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car1\inc\main.h
+1662975916 c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car1\inc\main.h
 	"stm32f4xx.h"
 	"FilConfig.h"
 
@@ -2809,7 +2809,7 @@
 
 1658119830 c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car1\inc\system_stm32f4xx.h
 
-1662129113 c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car1\rcr\boardselection.h
+1664976552 c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car1\rcr\boardselection.h
 	"MinimalKit.h"
 	"MaxPins.h"
 	"MaxKit.h"
@@ -2817,6 +2817,8 @@
 	"RCR_DevBoard_1_Setup.h"
 	"RCR_DevBoard_2_Setup.h"
 	"RCR_DevBoard_3_Setup.h"
+	"Pins.h"
+	"Setup.h"
 	"dev.h"
 	"dev_ws.h"
 
@@ -2843,11 +2845,11 @@
 
 1662129113 c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car1\rcr\devboard#2\rcr_devboard_2.h
 
-1662444140 c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car1\rcr\devboard#3\rcr_devboard_3_setup.h
+1665117724 c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car1\rcr\devboard#3\rcr_devboard_3_setup.h
 	"FilConfig.h"
 	"RCR_DevBoard_3.h"
 
-1662129113 c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car1\rcr\devboard#3\rcr_devboard_3.h
+1664807648 c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car1\rcr\devboard#3\rcr_devboard_3.h
 
 1662129113 c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car1\fil_lib\freertos_lib\freertos.h
 	<stddef.h>
@@ -2971,10 +2973,10 @@
 1660135058 c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car1\fil_lib\dma.h
 	"FilConfig.h"
 
-1660135098 c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car1\fil_lib\dma_fifobuffers.h
+1665121954 c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car1\fil_lib\dma_fifobuffers.h
 	"FilConfig.h"
 
-1662129113 c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car1\fil_lib\i2c.h
+1662807946 c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car1\fil_lib\i2c.h
 	"FilConfig.h"
 
 1660135124 c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car1\fil_lib\exti.h
@@ -2982,7 +2984,7 @@
 
 1662129113 c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car1\fil_lib\matrix.h
 
-1662129113 c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car1\fil_lib\regulators.h
+1663058255 c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car1\fil_lib\regulators.h
 	"BoardSelection.h"
 
 1662129113 c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car1\fil_lib\rtc.h
@@ -3057,7 +3059,7 @@
 	"queue.h"
 	"timers.h"
 
-1662129113 source:c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car1\fil_lib\i2c.c
+1662808682 source:c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car1\fil_lib\i2c.c
 	"I2C.h"
 
 1662129113 source:c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car1\fil_lib\matrix.c
@@ -3066,23 +3068,23 @@
 1660128870 source:c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car1\fil_lib\rcc.c
 	"RCC.h"
 
-1662129113 source:c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car1\fil_lib\regulators.c
+1663058308 source:c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car1\fil_lib\regulators.c
 	"FilConfig.h"
 	"Regulators.h"
 
 1660135608 source:c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car1\fil_lib\robot_tasks.c
 	"Robot_tasks.h"
 
-1662447046 source:c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car1\fil_lib\tim.c
+1665125093 source:c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car1\fil_lib\tim.c
 	"TIM.h"
 
 1660126142 source:c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car1\fil_lib\usart.c
 	"USART.h"
 
-1662537336 source:c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car1\src\main.c
+1665125230 source:c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car1\src\main.c
 	"main.h"
 
-1662129113 source:c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car1\dev\dev.c
+1664807738 source:c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car1\dev\dev.c
 	"dev.h"
 
 1658119830 source:c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car1\src\system_stm32f4xx.c
@@ -3091,20 +3093,19 @@
 1662129113 source:c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car1\fil_lib\rtc.c
 	"RTC.h"
 
-1662537511 source:c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car1\external\mpu9250\mpu9250.c
+1662799561 source:c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car1\external\mpu9250\mpu9250.c
 	"mpu9250.h"
 
-1662530143 c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car1\external\mpu9250\mpu9250.h
+1662728273 c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car1\external\mpu9250\mpu9250.h
 	"FilConfig.h"
 	<math.h>
 	"stdbool.h"
 
-1662129113 c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car1\dev\dev.h
+1665119914 c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car1\dev\dev.h
 	<stdbool.h>
 	"FilConfig.h"
 
-1659445538 c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car1\dev_examples\dev_ws.h
-	"FilConfig.h"
+1663071741 c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car1\dev_examples\dev_ws.h
 
 1662129113 c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car1\external\ssd1306\fonts.h
 	"stm32f4xx.h"
@@ -3138,4 +3139,8 @@
 1662007476 c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car1\fil_lib\freertos_lib\robot_tasks.h
 	"BoardSelection.h"
 	"FilConfig.h"
+
+1665120964 c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car1\rcr\devboard#4\pins.h
+
+1665125055 c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car1\rcr\devboard#4\setup.h
 

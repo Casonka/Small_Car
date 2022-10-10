@@ -34,7 +34,7 @@ void ADC_IRQHandler(void)
 *   @info Main initializing function
 */
 //------------------------------------------------------------------------------------//
-__attribute__((unused)) static char RCH = 0;
+//__attribute__((unused)) static char RCH = 0;
 __attribute__((unused)) static char JCH = 0;
 void ADC_Init(ADC_TypeDef *ADCx)
 {
@@ -88,7 +88,7 @@ void ADC_Init(ADC_TypeDef *ADCx)
     }
 ///////////////////////////////////////////
 #elif(__configADC_Mode == 2)
-
+ConnectADCTODMA(HIGH_P,ADC1_Data,0);
 ///////////////////////////////////////////
 #elif(__configADC_Mode == 3 || __configADC_Mode == 4)
     ADCAddSingleChannel(ADCx,ADC_IN_0,ADC_480_CYCLES);
@@ -191,6 +191,7 @@ ADCStatus.Multiplexer1[0] = ADCx->JDR1;
     while(true)
     {
         SetMulriplexer_State(NumPort);
+        delay_ms(5);
         if(NumPort == 8)
             {
                 NumPort = 0;
@@ -223,8 +224,4 @@ void AnalogReadRegular(void)
 #endif /*__configCONVERT_Volts*/
 }
 
-void AnalogReadInjected(ADC_TypeDef *ADCx)
-{
-    ADC_Multiplexer_Get(ADCx);
-}
 #endif /*FIL_ADC*/

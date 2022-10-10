@@ -15,7 +15,7 @@
 *   @note [FIL:DMA] This place configuration sizes of buffers
 *
 */
-#define ADC1_NUMB   1
+#define ADC1_NUMB   2
 
 #if defined(STM32F40_41xxx)
 #define ADC2_NUMB   2

@@ -1,15 +1,23 @@
 #include "main.h"
 
+uint16_t ADC1_Data[ADC1_NUMB];
 int main(void)
 {
-    Board_Config;
-    I2CSimpleConfigure(I2C1,I2C_Fast);
-    MPU_Init(AFSR_4G,GFSR_500DPS);
-
-    MPU_ReadRawData();
-    MPU_GyroscopeCalibration(I2C1,1500);
+Board_Config;
+    ADCAddRegularChannel(ADC1,0,ADC_480_CYCLES);
+    ADCAddRegularChannel(ADC1,1,ADC_480_CYCLES);
+    ConnectADCTODMA(HIGH_P,ADC1_Data,0);
+    ADCSimpleConfigure(ADC1);
+    SetTIM4;
+    TimPIDConfigureAutomatic(TIM4,10);
+    NVIC_EnableIRQ(TIM4_IRQn);
     while(1)
     {
-        MPU_ReadRawData();
+
+
+
     }
 }
+
+
+

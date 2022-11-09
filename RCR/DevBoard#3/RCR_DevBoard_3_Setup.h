@@ -21,24 +21,35 @@
 #define __configUSE_GPIO                  1
 #define __configUSE_TIM                   1
 #define __configUSE_USART                 1
-#define __configUSE_DMA                   0
-#define __configUSE_I2C                   1
+#define __configUSE_DMA                   1
+#define __configUSE_I2C                   0
 #define __configUSE_ADC                   1
-#define __configUSE_EXTI                  0
+#define __configUSE_EXTI                  1
 #define __configUSE_RTC                   0
-#define __configUSE_FREERTOS              0
 
 #define __configCALC_RCC                  1
 #define __configCALC_TIM                  1
 #define __configCALC_USART                1
-#define __configCALC_Regulators           1
-#define __configCALC_Matrix               0
-
 //-----------------------------------------------------------------//
 //-----------------------External includes-------------------------//
 //-----------------------------------------------------------------//
+#define __configEXT_FREERTOS              0
+#define __configEXT_REGULATOR             0
+#define __configEXT_MATRIX                0
+#define __configEXT_KINEMATICS            0
 #define __configEXT_SSD1306               0
-#define __configEXT_MPU9250               1
+#define __configEXT_MPU9250               0
+
+/*!
+*   @note [RCR] ModBus Slave Configuration
+*/
+#define __configEXT_ModBus                1
+#define __configMODBUS_SlaveAddress       0x01
+#define __configMODBUS_Source             USART1
+#define __configMODBUS_InterruptSource    USART1_IRQn
+#define __configMODBUS_Handler            USART1_IRQHandler
+#define __configMODBUS_MINIMAL_OFFSET     7
+#define __configMODBUS_MAXREGISTERS       5
 //-----------------------------------------------------------------//
 /*!
 *   @note [RCR] Configuration Development Board #3
@@ -53,8 +64,8 @@
 #define __config_TIM1_PSC        (84 - 1)
 #define __config_TIM1_ARR        (200)
 #define __config_TIM1_CH1        1
-#define __config_TIM1_CH2        0
-#define __config_TIM1_CH3        1
+#define __config_TIM1_CH2        1
+#define __config_TIM1_CH3        0
 #define __config_TIM1_CH4        0
 
 #define __config_TIM5_PSC        (420 - 1)
@@ -76,7 +87,7 @@
 #define __config_RegulatorListPI        (0)
 #define __config_RegulatorListPID       (1)
 
-
+/*
 #define __config_Regulator_ON           (1)
 #define __config_Regulator_Source       (TIM4)
 #define __config_Regulator_FREQ         (100)
@@ -99,6 +110,7 @@
 #define COMPENSATE_VALUE                (0.9)
 #define DISK_TO_REAL                    ((float)(WHEEL_LENGTH / DISKETS_ON_ROTATE * COMPENSATE_VALUE))
 #define TIME                            ((float)(1.0 / __config_Regulator_FREQ))
+*/
 
 /*!
 *   @note [RCR] UART/USART configuration
@@ -108,37 +120,12 @@
 
 /*!
 *   @note [RCR] ADC configuration
-*       @warning ADC Modes: 0 - ADC Off
-*                           1 - ADC Simple single channel parsing
-*                           2 - ADC Simple multi channel parsing
-*                           3 - ADC one Multiplexer parsing
-*                           4 - ADC two Multiplexer parsing(or 4 custom inputs)
-*                           5 - Developer Mode (All Manually)
 */
-#define __configADC_Mode                (4)
-#define __configCONVERT_Volts           (0)
-#define __configUSE_Battery_Charging    (0)
-#define __configUSE_Temperature_Sensor  (0)
-// custom variables
-#define __configMAP_Potentiometer       (4)
-#define __configMAP_Multiplexor         (8)
-//---------------------------------------------------------------------------//
-/*!
-*   @attention Change the pins to values like this: __configUSE_SENSOR_X    Val
-*               Val - number of ADC_IN pin (see datasheet)
-*/
-#define __configUSE_SENSOR_1            (__configMAP_Potentiometer)
-#define __configUSE_SENSOR_2            (__configMAP_Multiplexor)
-#define __configUSE_SENSOR_3            (-1)
-#define __configUSE_SENSOR_4            (-1)
-#define __configUSE_SENSOR_5            (-1)
-#define __configUSE_SENSOR_6            (-1)
-#define __configUSE_SENSOR_7            (-1)
-#define __configUSE_SENSOR_8            (-1)
-#define __configUSE_SENSOR_9            (-1)
-#define __configUSE_SENSOR_10           (-1)
-
+#define __configADCCONVERT_Volts        (0)
+#define __configUSE_Battery_Charging    (1)
+#define __configUSE_Temperature_Sensor  (1)
 #define __configADC_InterruptRequest    (0)
+#define __configADC_DMARequest          (1)
 /*!
 *   @info Supported divider ADC frequency
 *       @note [RCR] ADC Freq = APB2 Clock (exmp. 84 MHz) / divider
@@ -221,13 +208,9 @@
     SetSYSCFG;                                  \
     InitPeriph;                                 \
     InitTimers;                                 \
-    InitUSART;                                  \
     InitInterrupts;                             \
-    InitRegulators;                             \
-    SetI2C1;                                    \
-    SysTick_Config(__config_SysTick_Counter);   \
-    RegulatorAdd_PID_Settings(1, &Settings[0]); \
-    ADC_Init(ADC1);                             }
+    USARTBothConfigure(USART1,115200,1,0);      \
+    SetI2C1;                                    }
 
 /*!
 *   @brief Initialization pins
@@ -240,16 +223,17 @@
     GPIOConfPin(INT_PIN,  GENERAL, PUSH_PULL, FAST_S, PULL_DOWN);\
     GPIOConfPin(LED1_PIN,  GENERAL, PUSH_PULL, FAST_S, NO_PULL_UP);\
     GPIOConfPin(LED2_PIN,  GENERAL, PUSH_PULL, FAST_S, NO_PULL_UP);\
-    \
     GPIOConfPin(ADC_TOP, ANALOG, PUSH_PULL, FAST_S, NO_PULL_UP);\
     GPIOConfPin(POT_PIN, ANALOG, PUSH_PULL, FAST_S, PULL_DOWN);\
-    \
     GPIOConfPin(EXTI1_PIN, INPUT, PUSH_PULL, FAST_S, PULL_DOWN);\
     GPIOConfPin(EXTI2_PIN, INPUT, PUSH_PULL, FAST_S, PULL_DOWN);\
     GPIOConfPin(EXTI3_PIN, INPUT, PUSH_PULL, FAST_S, PULL_DOWN);\
     GPIOConfPin(EXTI4_PIN, INPUT, PUSH_PULL, FAST_S, PULL_DOWN);\
     GPIOConfPin(EXTI5_PIN, INPUT, PUSH_PULL, FAST_S, PULL_DOWN);\
-    \
+    GPIOConfPin(TX1_PIN, ALTERNATE, PUSH_PULL, FAST_S, PULL_UP);\
+    GPIOConfPin(RX1_PIN, ALTERNATE, PUSH_PULL, FAST_S, PULL_UP);\
+    GPIOConfAF(TX1_PIN,AF7);\
+    GPIOConfAF(RX1_PIN,AF7);\
     GPIOConfPin(BTN1_PWM_PIN, ALTERNATE, PUSH_PULL, FAST_S, NO_PULL_UP);\
     GPIOConfAF(BTN1_PWM_PIN, AF1);\
     GPIOConfPin(BTN2_PWM_PIN, ALTERNATE, PUSH_PULL, FAST_S, NO_PULL_UP);\
@@ -280,24 +264,25 @@
     TimPWMConfigure(TIM1,__config_TIM1_PSC,__config_TIM1_ARR,__config_TIM1_CH1,__config_TIM1_CH2,__config_TIM1_CH3,__config_TIM1_CH4);   \
     TimPWMConfigure(TIM5,__config_TIM5_PSC,__config_TIM5_ARR,__config_TIM5_CH1,__config_TIM5_CH2,__config_TIM5_CH3,__config_TIM5_CH4);   \
     TimEncoderConfigure(TIM3);                                                                                                           \
-    TimPIDConfigureAutomatic(__config_Regulator_Source,__config_Regulator_FREQ);                                                         }
+    TimPIDConfigureAutomatic(TIM4,100);                                                                                                  }
 /*!
 *   @brief Initialization interrupts
 */
 #define InitInterrupts {\
-    NVIC_EnableIRQ(TIM4_IRQn);\
-    NVIC_EnableIRQ(ADC_IRQn);}
+    NVIC_EnableIRQ(TIM4_IRQn);}
 
 /*!
 *   @brief Initialization uart/usart
 */
+/*
 #define InitUSART {\
     USARTBothConfigure(USART1,__config_USART1_Baudrate, 0, 0); \
-    USARTTransmitterConfigure(USART6, __config_USART6_Baudrate, 0);}
+    USARTTransmitterConfigure(USART6, __config_USART6_Baudrate, 0);} */
 
 /*!
 *   @brief Initialization Regulators
 */
+/*
 #define InitRegulators                                         {\
     Settings[0].reg_on = __config_Regulator_ON;                 \
     Settings[0].p_k = __config_Regulator_P_K;                   \
@@ -307,6 +292,6 @@
     Settings[0].reg_output_end = __config_OUTPUT_END;           \
     Settings[0].reg_error_end = __config_Regulator_ERROR_END;   \
     Settings[0].min_output = __config_MIN_OUTPUT;               \
-    Settings[0].max_output = __config_MAX_OUTPUT;               }
+    Settings[0].max_output = __config_MAX_OUTPUT;               } */
 
 #endif /*STM32F401xx*/

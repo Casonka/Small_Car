@@ -60,7 +60,6 @@ void TIM6_DAC_IRQHandler(void)
 ResetTimSR(TIM6);
 }
 
-
 void TIM7_IRQHandler(void)
 {
 
@@ -78,14 +77,14 @@ void delay_ms(uint32_t ticks)
 {
     if(ticks == 0) return;
     startTick = globalTime;
-    while((globalTime - startTick) < ticks) {}
+    while((globalTime - startTick) < ticks);
 }
 
 void delay_sec(uint32_t ticks)
 {
     if(ticks == 0) return;
     startTick = globalTime / 1000;
-    while(((globalTime / 1000) - startTick) < ticks) {}
+    while(((globalTime / 1000) - startTick) < ticks);
 }
     /*!
     *   @brief CalcTimStatus(TIM_TypeDef *TIMx) - Calculating Timer Status
@@ -97,6 +96,20 @@ void CalcTimStatus(TIM_TypeDef *TIMx)
     TIMStatus.Timer[0] = 'T';
     TIMStatus.Timer[1] = 'I';
     TIMStatus.Timer[2] = 'M';
+    TIMStatus.Timer[3] = (TIMx == TIM1) ? 0x31 :
+                         (TIMx == TIM2) ? 0x32 :
+                         (TIMx == TIM3) ? 0x33 :
+                         (TIMx == TIM4) ? 0x34 :
+                         (TIMx == TIM5) ? 0x35 :
+                         (TIMx == TIM6) ? 0x36 :
+                         (TIMx == TIM7) ? 0x37 :
+                         (TIMx == TIM8) ? 0x38 :
+                         (TIMx == TIM9) ? 0x39 : 0x31 ;
+    TIMStatus.Timer[4] = (TIMx == TIM10) ? 0x30 :
+                         (TIMx == TIM11) ? 0x31 :
+                         (TIMx == TIM12) ? 0x32 :
+                         (TIMx == TIM13) ? 0x33 :
+                         (TIMx == TIM14) ? 0x34 : ' ';
     CalcTimClockSourse(TIMx);
 
     TIMStatus.DutyCH1 = ((uint32_t)(((float)TIMx->CCR1) / TIMx->ARR * 100));
@@ -116,8 +129,7 @@ void CalcTimFrequency(TIM_TypeDef *TIMx, uint32_t freq)
     CalcTimClockSourse(TIMx);
 
     TIMx->PSC = (freq <= 100) ? ((uint32_t)(TIMStatus.SourseClock / 10000)) :
-                (freq >= 100) ? ((uint32_t)(TIMStatus.SourseClock / 1000000)) :
-                (freq >= 10000) ? ((uint32_t)(TIMStatus.SourseClock / 10000)) : ((uint32_t)(TIMStatus.SourseClock / 100000));
+                                ((uint32_t)(TIMStatus.SourseClock / 1000000));
     TIMx->ARR = ((uint32_t)(TIMStatus.SourseClock / ((TIMx->PSC)* freq)));
     TIMx->PSC -= 1;
 }
@@ -143,20 +155,6 @@ void CalcTimPulseLength(TIM_TypeDef* TIMx, uint8_t channel, uint8_t Degree, uint
 void CalcTimClockSourse(TIM_TypeDef *TIMx)
 {
     CalcRCCClocks();
-    TIMStatus.Timer[3] = (TIMx == TIM1) ? 0x31 :
-                         (TIMx == TIM2) ? 0x32 :
-                         (TIMx == TIM3) ? 0x33 :
-                         (TIMx == TIM4) ? 0x34 :
-                         (TIMx == TIM5) ? 0x35 :
-                         (TIMx == TIM6) ? 0x36 :
-                         (TIMx == TIM7) ? 0x37 :
-                         (TIMx == TIM8) ? 0x38 :
-                         (TIMx == TIM9) ? 0x39 : 0x31 ;
-    TIMStatus.Timer[4] = (TIMx == TIM10) ? 0x30 :
-                         (TIMx == TIM11) ? 0x31 :
-                         (TIMx == TIM12) ? 0x32 :
-                         (TIMx == TIM13) ? 0x33 :
-                         (TIMx == TIM14) ? 0x34 : ' ';
     #if defined(STM32F401xx)
     if(TIMx == TIM1 || TIMx == TIM9 || TIMx == TIM10 || TIMx == TIM11)
     {
@@ -179,38 +177,43 @@ void CalcTimClockSourse(TIM_TypeDef *TIMx)
 }
 
     /*!
-    *   @brief SetPWM(CCR_Pin,Duty) - Установить напряжение на двигатель
-    *       @arg CCR_Pin - selecting channel of timer
+    *   @brief SetPWM(TIM_TypeDef *TIMx, uint8_t Channel, float Duty) - Set impulse duration on channel timer
+    *       @arg TIMx - Necessary timer
+    *       @arg Channel - Channel of timer
     *       @arg Duty - duty value
-    *       @note [FIL:TIM] Функция предназначена для установления заполнения ШИМ.
+    *       @note [FIL:TIM] Function for setting PWM of timer
     */
-    bool SetPWM(uint32_t *CCR_Pin,float Duty)
+    __WEAK bool SetPWM(TIM_TypeDef *TIMx, uint8_t Channel, float Duty)
     {
+        if(Channel > 4) return false;
+        __attribute__((unused)) uint32_t *address = ((uint32_t *)TIMx);
+        address += ((uint32_t)(((uint32_t)(Channel - 1) * 0x4) + 0x34) >> 2);
         if(Duty > 1.0) Duty = 1.0;
         if(Duty < -1.0) Duty = -1.0;
         if(Duty >= 0)
         {
-            *CCR_Pin = ((int32_t) (Duty * 2000));
+            *address = ((int32_t) (Duty * TIMx->ARR));
             return true;
         }
         else
         {
-            *CCR_Pin = ((int32_t)(2000 +  (Duty * 2000)));
+            *address = ((int32_t)(TIMx->ARR +  (Duty * TIMx->ARR)));
             return true;
         }
         return false;
     }
 
-static uint32_t startInterval;
-static uint32_t endInterval;
-    uint32_t StartMeas(void)
+    /*!
+    *   @brief float CalcTimDuration(void(*Handle)(void)) - Measure function time
+    *       @arg Handle - Function
+    *       @attention Function must do not return anything and have anything type other than void
+    */
+    __WEAK float CalcTimDuration(void(*Handle)(void))
     {
-        return startInterval = globalTime;
+        uint32_t startInterval = globalTime;
+        (*Handle)();
+        return ((float)(globalTime - startInterval) / 1000);
     }
 
-    uint32_t EndMeas(void)
-    {
-        return endInterval = (globalTime - startInterval);
-    }
 
 #endif /*FIL_CALC_TIM*/

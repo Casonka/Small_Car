@@ -10,6 +10,9 @@
 
 #define DIR1_PIN         GPIOPinID(PORTA,10)
 #define DIR2_PIN         GPIOPinID(PORTA,11)
+#define DIR3_PIN         GPIOPinID(PORTA,7)
+#define DIR4_PIN         GPIOPinID(PORTA,6)
+
 
 #define SENSOR1_PIN     GPIOPinID(PORTA,0)
 #define SENSOR2_PIN     GPIOPinID(PORTA,1)

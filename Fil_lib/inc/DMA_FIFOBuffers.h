@@ -17,28 +17,27 @@
 */
 #define ADC1_NUMB   2
 
-#if defined(STM32F40_41xxx)
+#ifdef CortexM4_High
 #define ADC2_NUMB   2
 #define ADC3_NUMB   3
-#endif /*STM32F40_41xxx*/
+#endif /*CortexM4_High*/
 
 #define USART1RX_NUMB  8
 #define USART1TX_NUMB  8
 #define USART2RX_NUMB  8
 #define USART2TX_NUMB  8
 
-#if defined(STM32F40_41xxx)
+#ifdef CortexM4_High
 #define USART3RX_NUMB  8
 #define USART3TX_NUMB  8
 #define UART4RX_NUMB   8
 #define UART4TX_NUMB   8
 #define UART5RX_NUMB   8
 #define UART5TX_NUMB   8
-#endif /*STM32F40_41xxx*/
+#endif /*CortexM4_High*/
 
 #define USART6RX_NUMB  8
 #define USART6TX_NUMB  8
-
 
 /*!
 *   @brief  ADC1_Data[ADC_NUMB] - buffer ADC1 Conversions
@@ -46,7 +45,7 @@
 */
 extern uint16_t ADC1_Data[ADC1_NUMB];
 
-#if defined(STM32F40_41xxx)
+#ifdef CortexM4_High
 /*!
 *   @brief  ADC2_Data[ADC_NUMB] - buffer ADC2 Conversions
 *   @list  ADC2_Data
@@ -58,7 +57,7 @@ extern uint16_t ADC2_Data[ADC2_NUMB];
 *   @list  ADC3_Data
 */
 extern uint16_t ADC3_Data[ADC3_NUMB];
-#endif /*STM32F40_41xxx*/
+#endif /*CortexM4_High*/
 
 /*!
 *   @brief  USART1XX_Data[USART_NUMB] - UART/USART FIFO buffer RX/TX
@@ -74,7 +73,7 @@ extern uint8_t USART1TX_Data[USART1TX_NUMB];
 extern uint8_t USART2RX_Data[USART2RX_NUMB];
 extern uint8_t USART2TX_Data[USART2TX_NUMB];
 
-#if defined(STM32F40_41xxx)
+#ifdef CortexM4_High
 /*!
 *   @brief  USART3XX_Data[USART_NUMB] - UART/USART FIFO buffer RX/TX
 *   @list  USART3XX_Data
@@ -95,7 +94,7 @@ extern uint8_t UART4TX_Data[UART4TX_NUMB];
 */
 extern uint8_t UART5RX_Data[UART5RX_NUMB];
 extern uint8_t UART5TX_Data[UART5TX_NUMB];
-#endif /*STM32F40_41xxx*/
+#endif /*CortexM4_High*/
 
 /*!
 *   @brief  USART6XX_Data[USART_NUMB] - UART/USART FIFO buffer RX/TX

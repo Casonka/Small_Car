@@ -9,7 +9,6 @@
     */
 #pragma once
 #include "FilConfig.h"
-
 #if (FIL_TIM == 1)
     /*!
     *   @brief TimPWMConfigure(TIM,prescaler,autoreset,ch1,ch2,ch3,ch4) - configuration timer in PWM mode
@@ -40,6 +39,7 @@
         ConfTimARR(TIM,ARR);                            \
         SetTimUpdateInterrupt(TIM);                     \
         TimStart(TIM);                                  }
+
 #if (FIL_CALC_TIM == 1)
 
     /*!
@@ -199,9 +199,9 @@
     #define SetTimUpdateDisable(TIM)                        ( TIM->CR1 |= ((uint32_t)(1 << 1)))
     #define SetTimUpdateRequest(TIM)                        ( TIM->CR1 |= ((uint32_t)(1 << 2)))
     #define SetTimOnePulseMode(TIM)                         ( TIM->CR1 |= ((uint32_t)(1 << 3)))
-    #define SetTimDirection(TIM)                            ( TIM->CR1 |= ((uint32_t)(1 << 4)))
+    #define SetTimDirection(TIM)                            ( TIM->CR1 |= (TIM_CR1_DIR))
     #define SetTimPreloadARR(TIM,ARPE)                      ( TIM->CR1 |= ((uint32_t)(1 << 7)))
-    #define SetTimPSC(TIM,PSC)                              ( TIM->PSC |= ((uint32_t)(PSC)))
+    #define SetTimPSC(TIM,PRESC)                            ( TIM->PSC |= ((uint32_t)(PRESC)))
     #define SetTimARR(TIM,ARR)                              ( TIM->PSC &= ((uint32_t)(ARR)))
     #define SetTimUpdateInterrupt(TIM)                      ( TIM->DIER |= 1)
     #define SetTimMainOutput(TIM)                           ( TIM->BDTR |= ((uint32_t)(1 << 15)))
@@ -209,6 +209,8 @@
     #define SetTimUpdateGeneration(TIM)                     ( TIM->EGR |= 1)
 #if (FIL_CALC_TIM == 1)
 //---------------------------------------Calculating---------------------------------------------------//
+uint32_t globalTime;
+
 struct {
     char Timer[5];
     uint32_t SourseClock;
@@ -242,17 +244,26 @@ void CalcTimFrequency(TIM_TypeDef* TIMx, uint32_t freq);
 
 void CalcTimPulseLength(TIM_TypeDef* TIMx, uint8_t channel, uint8_t Degree, uint16_t Length);
 
-bool SetPWM(uint32_t *CCR_Pin,float Duty);
+    /*!
+    *   @brief SetPWM(TIM_TypeDef *TIMx, uint8_t Channel, float Duty) - Set impulse duration on channel timer
+    *       @arg TIMx - Necessary timer
+    *       @arg Channel - Channel of timer
+    *       @arg Duty - duty value
+    *       @note [FIL:TIM] Function for setting PWM of timer
+    */
+    bool SetPWM(TIM_TypeDef *TIMx, uint8_t Channel, float Duty);
 
 void delay_ms(uint32_t ticks);
 
 void delay_sec(uint32_t ticks);
 
-uint32_t StartMeas(void);
+    /*!
+    *   @brief float CalcTimDuration(void(*Handle)(void)) - Measure function time
+    *       @arg Handle - Function
+    *       @attention Function must do not return anything and have anything type other than void
+    */
+    float CalcTimDuration(void(*Handle)(void));
 
-uint32_t EndMeas(void);
-
-uint32_t Meas(void* function);
 #elif(FIL_CALC_TIM > 1)
 #error Invalid argument FIL_CALC_TIM
 #endif /*FIL_CALC_TIM*/

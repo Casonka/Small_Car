@@ -36,8 +36,8 @@
 //__________________________________USART__________________________________//
 /////////////////////////////////////////////////////////////////////////////
 //USART3 in stm32, USART1 as PCB header. AF7
-#define TX2_PIN                  GPIOPinID(PORTB,6)
-#define RX2_PIN                  GPIOPinID(PORTB,7)
+#define TX1_PIN                  GPIOPinID(PORTA,9)
+#define RX1_PIN                  GPIOPinID(PORTA,10)
 //USART1 in stm32, USART2 as PCB header. AF7
 #define TX3_PIN                  GPIOPinID(PORTA,2)
 #define RX3_PIN                  GPIOPinID(PORTA,3)

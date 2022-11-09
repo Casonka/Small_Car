@@ -1,6 +1,7 @@
 #include "USART.h"
 
 #if(FIL_USART == 1)
+
 uint16_t CalcUSARTBaudrate(USART_TypeDef *USARTx, uint32_t BaudRate)
 {
     uint32_t BAUD, REGISTER = 0;

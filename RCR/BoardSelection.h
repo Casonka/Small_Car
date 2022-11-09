@@ -16,7 +16,7 @@
 *   @arg 4 - RCR Custom project
 *   @arg 0xFF - Maximum Kit
 */
-#define _configUSEBoards                (4)
+#define _configUSEBoards                (2)
 
 #if (_configUSEBoards == 0)
     #include "MinimalKit.h"

@@ -7,6 +7,7 @@ extern "C" {
 
 #include "stm32f4xx.h"
 #include "FilConfig.h"
+#include "External_Manager.h"
 
 #ifdef __cplusplus
 }

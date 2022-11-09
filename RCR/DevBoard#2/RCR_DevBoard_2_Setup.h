@@ -21,7 +21,7 @@
 #define __configUSE_GPIO                  1
 #define __configUSE_TIM                   1
 #define __configUSE_USART                 1
-#define __configUSE_DMA                   0
+#define __configUSE_DMA                   1
 #define __configUSE_I2C                   1
 #define __configUSE_ADC                   1
 #define __configUSE_EXTI                  1
@@ -49,7 +49,7 @@
 #define __config_TIM1_PSC        (84 - 1)
 #define __config_TIM1_ARR        (200)
 #define __config_TIM1_CH1        1
-#define __config_TIM1_CH2        0
+#define __config_TIM1_CH2        1
 #define __config_TIM1_CH3        0
 #define __config_TIM1_CH4        0
 
@@ -191,7 +191,7 @@
     SetTIM5;                                    \
     InitTimers;                                 \
     SetADC1;                                    \
-    ADC_Init(ADC1);                             \
+    ADC_Init();                                 \
     SetI2C1;                                    \
     SetUSART1;                                  \
     SetUSART2;                                  \
@@ -201,45 +201,46 @@
 /*!
 *   @brief Initialization pins
 */
-#define InitPeriph                                                     {\
-    conf_pin(BTN1_DIR_PIN, GENERAL, PUSH_PULL, FAST_S, NO_PULL_UP);     \
-    conf_pin(MULPLXA_PIN,  GENERAL, PUSH_PULL, FAST_S, PULL_DOWN);      \
-    conf_pin(MULPLXB_PIN,  GENERAL, PUSH_PULL, FAST_S, PULL_DOWN);      \
-    conf_pin(MULPLXC_PIN,  GENERAL, PUSH_PULL, FAST_S, PULL_DOWN);      \
-    conf_pin(INT_PIN,  GENERAL, PUSH_PULL, FAST_S, PULL_DOWN);          \
-    conf_pin(LED_PIN,  GENERAL, PUSH_PULL, FAST_S, NO_PULL_UP);         \
-    conf_pin(ADC_TOP, ANALOG, PUSH_PULL, FAST_S, NO_PULL_UP);           \
-    conf_pin(ADC_BOTTOM, ANALOG, PUSH_PULL, FAST_S, NO_PULL_UP);        \
-    conf_pin(POT_PIN, ANALOG, PUSH_PULL, FAST_S, PULL_DOWN);            \
-    conf_pin(EXTI1_PIN, INPUT, PUSH_PULL, FAST_S, PULL_DOWN);           \
-    conf_pin(EXTI2_PIN, INPUT, PUSH_PULL, FAST_S, PULL_DOWN);           \
-    conf_pin(EXTI3_PIN, INPUT, PUSH_PULL, FAST_S, PULL_DOWN);           \
-    conf_pin(EXTI4_PIN, INPUT, PUSH_PULL, FAST_S, PULL_DOWN);           \
-    conf_pin(EXTI5_PIN, INPUT, PUSH_PULL, FAST_S, PULL_DOWN);           \
-    conf_pin(BTN1_PWM_PIN, ALTERNATE, PUSH_PULL, FAST_S, NO_PULL_UP);   \
-    conf_af(BTN1_PWM_PIN, AF1);                                         \
-    conf_pin(BTN2_PWM_PIN, ALTERNATE, PUSH_PULL, FAST_S, NO_PULL_UP);   \
-    conf_af(BTN2_PWM_PIN, AF1);                                         \
-    conf_pin(ENCODER1A_PIN, ALTERNATE, PUSH_PULL, FAST_S, NO_PULL_UP);  \
-    conf_af(ENCODER1A_PIN, AF2);                                        \
-    conf_pin(ENCODER1B_PIN, ALTERNATE, PUSH_PULL, FAST_S, NO_PULL_UP);  \
-    conf_af(ENCODER1B_PIN, AF2);                                        \
-    conf_pin(ENCODER2A_PIN, ALTERNATE, PUSH_PULL, LOW_S, PULL_UP);      \
-    conf_af(ENCODER2A_PIN, AF2);                                        \
-    conf_pin(ENCODER2B_PIN, ALTERNATE, PUSH_PULL, LOW_S, PULL_UP);      \
-    conf_af(ENCODER2B_PIN, AF2);                                        \
-    conf_pin(TX2_PIN, ALTERNATE, PUSH_PULL, FAST_S, NO_PULL_UP);        \
-    conf_af(TX2_PIN,AF7);                                               \
-    conf_pin(RX2_PIN, ALTERNATE, PUSH_PULL, FAST_S, NO_PULL_UP);        \
-    conf_af(RX2_PIN,AF7);                                               \
-    conf_pin(TX3_PIN, ALTERNATE, PUSH_PULL, FAST_S, NO_PULL_UP);        \
-    conf_af(TX3_PIN,AF7);                                               \
-    conf_pin(RX3_PIN, ALTERNATE, PUSH_PULL, FAST_S, NO_PULL_UP);        \
-    conf_af(RX3_PIN,AF7);                                               \
-    conf_pin(I2C_SDA_PIN, ALTERNATE, OPEN_DRAIN, FAST_S, NO_PULL_UP);   \
-    conf_af(I2C_SDA_PIN, AF4);                                          \
-    conf_pin(I2C_SCL_PIN, ALTERNATE, OPEN_DRAIN, FAST_S, NO_PULL_UP);   \
-    conf_af(I2C_SCL_PIN, AF4);                                          }
+#define InitPeriph                                                        {\
+    GPIOConfPin(BTN1_DIR_PIN, GENERAL, PUSH_PULL, FAST_S, NO_PULL_UP);     \
+    GPIOConfPin(BTN2_DIR_PIN, GENERAL, PUSH_PULL, FAST_S, NO_PULL_UP);     \
+    GPIOConfPin(MULPLXA_PIN,  GENERAL, PUSH_PULL, FAST_S, PULL_DOWN);      \
+    GPIOConfPin(MULPLXB_PIN,  GENERAL, PUSH_PULL, FAST_S, PULL_DOWN);      \
+    GPIOConfPin(MULPLXC_PIN,  GENERAL, PUSH_PULL, FAST_S, PULL_DOWN);      \
+    GPIOConfPin(INT_PIN,  GENERAL, PUSH_PULL, FAST_S, PULL_DOWN);          \
+    GPIOConfPin(LED_PIN,  GENERAL, PUSH_PULL, FAST_S, NO_PULL_UP);         \
+    GPIOConfPin(ADC_TOP, ANALOG, PUSH_PULL, FAST_S, NO_PULL_UP);           \
+    GPIOConfPin(ADC_BOTTOM, ANALOG, PUSH_PULL, FAST_S, NO_PULL_UP);        \
+    GPIOConfPin(POT_PIN, ANALOG, PUSH_PULL, FAST_S, PULL_DOWN);            \
+    GPIOConfPin(EXTI1_PIN, INPUT, PUSH_PULL, FAST_S, PULL_DOWN);           \
+    GPIOConfPin(EXTI2_PIN, INPUT, PUSH_PULL, FAST_S, PULL_DOWN);           \
+    GPIOConfPin(EXTI3_PIN, INPUT, PUSH_PULL, FAST_S, PULL_DOWN);           \
+    GPIOConfPin(EXTI4_PIN, INPUT, PUSH_PULL, FAST_S, PULL_DOWN);           \
+    GPIOConfPin(EXTI5_PIN, INPUT, PUSH_PULL, FAST_S, PULL_DOWN);           \
+    GPIOConfPin(BTN1_PWM_PIN, ALTERNATE, PUSH_PULL, FAST_S, NO_PULL_UP);   \
+    GPIOConfAF(BTN1_PWM_PIN, AF1);                                         \
+    GPIOConfPin(BTN2_PWM_PIN, ALTERNATE, PUSH_PULL, FAST_S, NO_PULL_UP);   \
+    GPIOConfAF(BTN2_PWM_PIN, AF1);                                         \
+    GPIOConfPin(ENCODER1A_PIN, ALTERNATE, PUSH_PULL, FAST_S, NO_PULL_UP);  \
+    GPIOConfAF(ENCODER1A_PIN, AF2);                                        \
+    GPIOConfPin(ENCODER1B_PIN, ALTERNATE, PUSH_PULL, FAST_S, NO_PULL_UP);  \
+    GPIOConfAF(ENCODER1B_PIN, AF2);                                        \
+    GPIOConfPin(ENCODER2A_PIN, ALTERNATE, PUSH_PULL, LOW_S, PULL_UP);      \
+    GPIOConfAF(ENCODER2A_PIN, AF2);                                        \
+    GPIOConfPin(ENCODER2B_PIN, ALTERNATE, PUSH_PULL, LOW_S, PULL_UP);      \
+    GPIOConfAF(ENCODER2B_PIN, AF2);                                        \
+    GPIOConfPin(TX2_PIN, ALTERNATE, PUSH_PULL, FAST_S, NO_PULL_UP);        \
+    GPIOConfAF(TX2_PIN,AF7);                                               \
+    GPIOConfPin(RX2_PIN, ALTERNATE, PUSH_PULL, FAST_S, NO_PULL_UP);        \
+    GPIOConfAF(RX2_PIN,AF7);                                               \
+    GPIOConfPin(TX3_PIN, ALTERNATE, PUSH_PULL, FAST_S, NO_PULL_UP);        \
+    GPIOConfAF(TX3_PIN,AF7);                                               \
+    GPIOConfPin(RX3_PIN, ALTERNATE, PUSH_PULL, FAST_S, NO_PULL_UP);        \
+    GPIOConfAF(RX3_PIN,AF7);                                               \
+    GPIOConfPin(I2C_SDA_PIN, ALTERNATE, OPEN_DRAIN, FAST_S, NO_PULL_UP);   \
+    GPIOConfAF(I2C_SDA_PIN, AF4);                                          \
+    GPIOConfPin(I2C_SCL_PIN, ALTERNATE, OPEN_DRAIN, FAST_S, NO_PULL_UP);   \
+    GPIOConfAF(I2C_SCL_PIN, AF4);                                          }
 
 /*!
 *   @brief Initialization timers

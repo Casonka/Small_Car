@@ -18,13 +18,13 @@ bool SetVoltage(float Duty)
     if(Duty >= 0.0)
     {
         ResetPin(BTN1_DIR_PIN);
-        SetPWM(BTN1_CCR,Duty);
+//        SetPWM(BTN1_CCR,Duty);
         return true;
     }
     else
     {
         SetPin(BTN1_DIR_PIN);
-        SetPWM(BTN1_CCR,Duty);
+//        SetPWM(BTN1_CCR,Duty);
         return true;
     }
 return false;
@@ -70,22 +70,22 @@ void ServoSetAngle(Servomotor* Servo, uint16_t angle)
     *(*Servo).CCR = (uint32_t)(angle * ((max_PWM - min_PWM) / (*Servo).maxAngle) + min_PWM);
 }
 
-static void PID_Parse_EncoderData(int32_t encoderdata)
-{
-    PID->current = ((((float)(encoderdata)) * DISK_TO_REAL) / TIME);
-    Motor_Coord += PID[0].current * TIME;
-}
+//static void PID_Parse_EncoderData(int32_t encoderdata)
+//{
+//    PID->current = ((((float)(encoderdata)) * DISK_TO_REAL) / TIME);
+//    Motor_Coord += PID[0].current * TIME;
+//}
 
-int16_t EncData;
-void RegulatorPIDLowLevel(void)
-{
-    EncData = ((int16_t)*ENCODER1_CNT);
-    if(EnginePWM > 1.0) EnginePWM = 1.0;
-    if(EnginePWM < -1.0) EnginePWM = -1.0;
-    PID->target = EnginePWM;
-    PID_Parse_EncoderData(EncData);
-    *ENCODER1_CNT = 0;
-    PID_Calc(&PID[0]);
-    SetVoltage(PID->output);
-}
+//int16_t EncData;
+//void RegulatorPIDLowLevel(void)
+//{
+//    EncData = ((int16_t)*ENCODER1_CNT);
+//    if(EnginePWM > 1.0) EnginePWM = 1.0;
+//    if(EnginePWM < -1.0) EnginePWM = -1.0;
+//    PID->target = EnginePWM;
+//    PID_Parse_EncoderData(EncData);
+//    *ENCODER1_CNT = 0;
+//    PID_Calc(&PID[0]);
+//    SetVoltage(PID->output);
+//}
 #endif /*_configUSEBoards*/

@@ -2,19 +2,17 @@
 <EmBitz_debug_session>
 	<debuggerLastSession>
 		<watches>
-			<watch key="Clocks" format="0" array="0" start="0" count="0" expanded="0" live="0" />
-			<watch key="ADCStatus" format="0" array="0" start="0" count="0" expanded="0" live="0" />
-			<watch key="TIMStatus" format="0" array="0" start="0" count="0" expanded="0" live="0" />
-			<watch key="I2CStatus" format="3" array="0" start="0" count="0" expanded="0" live="0" />
-			<watch key="globalTime" format="0" array="0" start="0" count="0" expanded="0" live="1" />
-			<watch key="MPU9250" format="0" array="0" start="0" count="0" expanded="0" live="0" />
-			<watch key="RTCStatus" format="0" array="0" start="0" count="0" expanded="0" live="0" />
-			<watch key="EnginePWM" format="0" array="0" start="0" count="0" expanded="0" live="0" />
-			<watch key="Settings" format="0" array="0" start="0" count="0" expanded="0" live="0" />
-			<watch key="PID" format="0" array="0" start="0" count="0" expanded="0" live="0" />
-			<watch key="Motor_Coord" format="0" array="0" start="0" count="0" expanded="0" live="0" />
-			<watch key="ADC1_Data" format="0" array="0" start="0" count="0" expanded="1" live="1" />
+			<watch key="UART_Buffer" format="0" array="0" start="0" count="0" expanded="0" live="1" />
+			<watch key="UART_StartMsgPointer" format="0" array="0" start="0" count="0" expanded="0" live="0" />
+			<watch key="UART_EndMsgPointer" format="0" array="0" start="0" count="0" expanded="0" live="1" />
+			<watch key="ModBus_BusyFlag" format="0" array="0" start="0" count="0" expanded="0" live="1" />
+			<watch key="UART_LRCIndexPointer" format="0" array="0" start="0" count="0" expanded="0" live="1" />
+			<watch key="UART_AddressIndexPointer" format="0" array="0" start="0" count="0" expanded="0" live="1" />
+			<watch key="UART_DataIndexPointer" format="0" array="0" start="0" count="0" expanded="0" live="1" />
+			<watch key="Value" format="0" array="0" start="0" count="0" expanded="0" live="1" />
+			<watch key="Register" format="0" array="0" start="0" count="0" expanded="0" live="0" />
+			<watch key="Registers_32BitValues" format="0" array="0" start="0" count="0" expanded="1" live="1" />
 		</watches>
-		<memory_view address="0x0" locked="0" live="0" options="290" />
+		<memory_view address="0x200001a0" locked="1" live="0" options="292" />
 	</debuggerLastSession>
 </EmBitz_debug_session>

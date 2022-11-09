@@ -50,6 +50,8 @@
         if(RXInterrupt == 1) SetUSARTRXInterrupt(USART);            \
         if(TXInterrupt == 1) SetUSARTRXInterrupt(USART);            \
         USARTStart(USART);                                          }
+
+    #define GetUSARTDR(USART)                   ((uint8_t)(USART->DR))
 //----------------------------------------Set state-------------------------------------------------------------------------------------------//
     #define USARTStart(USART)                   (USART->CR1 |= USART_CR1_UE)
     #define SetUSARTMbit(USART)                 (USART->CR1 |= USART_CR1_M)
@@ -71,12 +73,12 @@
 #endif
     #define ConfUSARTStop(USART,STOP)           {USART->CR2 = ((uint32_t)((USART->CR2)&(~USART_CR2_STOP))|((uint16_t)(STOP)));}
 //----------------------------------------Get state----------------------------------------------------//
-    #define GetUSARTSR(USART)                        ((uint16_t)(USART->SR))
-    #define CheckUSARTReceiver(USART)                (USART->SR & USART_SR_RXNE)
-    #define CheckUSARTTransmiter(USART)              (USART->SR & USART_SR_TXE)
-    #define CheckUSARTCompleteTransmission(USART)    (USART->SR & USART_SR_TC)
-    #define GetUSARTData(USART)                      ((uint8_t)(USART->DR))
-    #define CheckUSARTFramingError(USART)            (USART->SR & USART_SR_FE)
+    #define CheckUSARTSR(USART)                      ((uint16_t)(USART->SR))
+    #define CheckUSARTReceiver(USART)                ((USART->SR & USART_SR_RXNE) >> 5)
+    #define CheckUSARTTransmiter(USART)              ((USART->SR & USART_SR_TXE) >> 7)
+    #define CheckUSARTCompleteTransmission(USART)    ((USART->SR & USART_SR_TC) >> 6)
+    #define CheckUSARTData(USART)                    ((uint8_t)(USART->DR))
+    #define CheckUSARTFramingError(USART)            ((USART->SR & USART_SR_FE) >> 1)
     #define CheckUSARTParityError(USART)             (USART->SR & USART_SR_PE)
 #if (FIL_CALC_USART == 1)
 //---------------------------------------Calculating---------------------------------------------------//

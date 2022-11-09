@@ -3144,3 +3144,491 @@
 
 1665125055 c:\users\caska\desktop\projects\rcr\4. rcr_smallcar\small-car1\rcr\devboard#4\setup.h
 
+1665465012 source:c:\users\caska\desktop\projects\embitz\small_car\src\startup_stm32f401xc.s
+
+1665465012 source:c:\users\caska\desktop\projects\embitz\small_car\external\mpu9250\mpu9250.c
+	"mpu9250.h"
+
+1665465012 c:\users\caska\desktop\projects\embitz\small_car\external\mpu9250\mpu9250.h
+	"FilConfig.h"
+	<math.h>
+	"stdbool.h"
+
+1665841181 c:\users\caska\desktop\projects\embitz\small_car\fil_lib\filconfig.h
+	"main.h"
+	<stdbool.h>
+	"BoardSelection.h"
+	"FreeRTOS.h"
+	"FreeRTOSConfig.h"
+	"task.h"
+	"queue.h"
+	"semphr.h"
+	"croutine.h"
+	"timers.h"
+	"event_groups.h"
+	"stream_buffer.h"
+	"Robot_tasks.h"
+	"RCC.h"
+	"GPIO.h"
+	"TIM.h"
+	"USART.h"
+	"DMA.h"
+	"DMA_FIFOBuffers.h"
+	"ADC.h"
+	"I2C.h"
+	"EXTI.h"
+	"RTC.h"
+
+1665739797 c:\users\caska\desktop\projects\embitz\small_car\inc\main.h
+	"stm32f4xx.h"
+	"FilConfig.h"
+	"External_Manager.h"
+
+1665465012 c:\users\caska\desktop\projects\embitz\small_car\inc\stm32f4xx.h
+	"core_cm4.h"
+	"system_stm32f4xx.h"
+	<stdint.h>
+	"stm32f4xx_conf.h"
+
+1665465012 c:\users\caska\desktop\projects\embitz\small_car\cmsis\core_cm4.h
+	<stdint.h>
+	"cmsis_version.h"
+	"cmsis_compiler.h"
+	"mpu_armv7.h"
+
+1665465012 c:\users\caska\desktop\projects\embitz\small_car\cmsis\cmsis_version.h
+
+1665465012 c:\users\caska\desktop\projects\embitz\small_car\cmsis\cmsis_compiler.h
+	<stdint.h>
+	"cmsis_armcc.h"
+	"cmsis_armclang_ltm.h"
+	"cmsis_armclang.h"
+	"cmsis_gcc.h"
+	<cmsis_iccarm.h>
+	<cmsis_ccs.h>
+	<cmsis_csm.h>
+
+1665465012 c:\users\caska\desktop\projects\embitz\small_car\cmsis\cmsis_gcc.h
+
+1665465012 c:\users\caska\desktop\projects\embitz\small_car\cmsis\mpu_armv7.h
+
+1665465012 c:\users\caska\desktop\projects\embitz\small_car\inc\system_stm32f4xx.h
+
+1667472654 c:\users\caska\desktop\projects\embitz\small_car\rcr\boardselection.h
+	"MinimalKit.h"
+	"MaxPins.h"
+	"MaxKit.h"
+	"MaxSetup.h"
+	"RCR_DevBoard_1_Setup.h"
+	"RCR_DevBoard_2_Setup.h"
+	"RCR_DevBoard_3_Setup.h"
+	"Pins.h"
+	"Setup.h"
+	"dev.h"
+	"dev_ws.h"
+
+1665465012 c:\users\caska\desktop\projects\embitz\small_car\rcr\minkit\minimalkit.h
+	"FilConfig.h"
+
+1665465012 c:\users\caska\desktop\projects\embitz\small_car\rcr\maxkit\maxpins.h
+
+1665465012 c:\users\caska\desktop\projects\embitz\small_car\rcr\maxkit\maxkit.h
+	"FilConfig.h"
+	"ModBus_conf.h"
+	"ModBus.h"
+
+1665465012 c:\users\caska\desktop\projects\embitz\small_car\rcr\maxkit\maxsetup.h
+	"MaxKit.h"
+	"MaxPins.h"
+	"FilConfig.h"
+
+1665465012 c:\users\caska\desktop\projects\embitz\small_car\rcr\devboard#2\rcr_devboard_2_setup.h
+	"FilConfig.h"
+	"RCR_DevBoard_2.h"
+	"ModBus_conf.h"
+	"ModBus.h"
+
+1665465012 c:\users\caska\desktop\projects\embitz\small_car\rcr\devboard#2\rcr_devboard_2.h
+
+1667472654 c:\users\caska\desktop\projects\embitz\small_car\rcr\devboard#3\rcr_devboard_3_setup.h
+	"FilConfig.h"
+	"RCR_DevBoard_3.h"
+
+1665997816 c:\users\caska\desktop\projects\embitz\small_car\rcr\devboard#3\rcr_devboard_3.h
+
+1665827796 c:\users\caska\desktop\projects\embitz\small_car\rcr\devboard#4\pins.h
+
+1666172834 c:\users\caska\desktop\projects\embitz\small_car\rcr\devboard#4\setup.h
+
+1665465012 c:\users\caska\desktop\projects\embitz\small_car\dev\dev.h
+	<stdbool.h>
+	"FilConfig.h"
+
+1665465012 c:\users\caska\desktop\projects\embitz\small_car\dev_examples\dev_ws.h
+
+1665465012 c:\users\caska\desktop\projects\embitz\small_car\fil_lib\freertos_lib\freertos.h
+	<stddef.h>
+	<stdint.h>
+	"FreeRTOSConfig.h"
+	"projdefs.h"
+	"portable.h"
+	<reent.h>
+
+1665465012 c:\users\caska\desktop\projects\embitz\small_car\fil_lib\freertos_lib\freertosconfig.h
+	"stm32f4xx.h"
+	<stdint.h>
+
+1665465012 c:\users\caska\desktop\projects\embitz\small_car\fil_lib\freertos_lib\projdefs.h
+
+1665465012 c:\users\caska\desktop\projects\embitz\small_car\fil_lib\freertos_lib\portable.h
+	"deprecated_definitions.h"
+	"portmacro.h"
+	"mpu_wrappers.h"
+
+1665465012 c:\users\caska\desktop\projects\embitz\small_car\fil_lib\freertos_lib\deprecated_definitions.h
+	"..\..\Source\portable\owatcom\16bitdos\pc\portmacro.h"
+	"..\..\Source\portable\owatcom\16bitdos\flsh186\portmacro.h"
+	"../portable/GCC/ATMega323/portmacro.h"
+	"../portable/IAR/ATMega323/portmacro.h"
+	"../../Source/portable/MPLAB/PIC24_dsPIC/portmacro.h"
+	"../../Source/portable/MPLAB/PIC24_dsPIC/portmacro.h"
+	"../../Source/portable/MPLAB/PIC18F/portmacro.h"
+	"../../Source/portable/MPLAB/PIC32MX/portmacro.h"
+	"libFreeRTOS/Include/portmacro.h"
+	"../../Source/portable/SDCC/Cygnal/portmacro.h"
+	"../../Source/portable/GCC/ARM7_LPC2000/portmacro.h"
+	"portmacro.h"
+	"../../Source/portable/GCC/ARM7_LPC23xx/portmacro.h"
+	"..\..\Source\portable\IAR\MSP430\portmacro.h"
+	"../../Source/portable/GCC/MSP430F449/portmacro.h"
+	"../../Source/portable/Rowley/MSP430F449/portmacro.h"
+	"..\..\Source\portable\RVDS\ARM7_LPC21xx\portmacro.h"
+	"../../Source/portable/GCC/ARM7_AT91SAM7S/portmacro.h"
+	"..\..\Source\portable\IAR\AtmelSAM7S64\portmacro.h"
+	"..\..\Source\portable\IAR\AtmelSAM9XE\portmacro.h"
+	"..\..\Source\portable\IAR\LPC2000\portmacro.h"
+	"..\..\Source\portable\IAR\STR71x\portmacro.h"
+	"..\..\Source\portable\IAR\STR75x\portmacro.h"
+	"..\..\Source\portable\GCC\STR75x\portmacro.h"
+	"..\..\Source\portable\IAR\STR91x\portmacro.h"
+	"../../Source/portable/GCC/H8S2329/portmacro.h"
+	"../../Source/portable/GCC/ARM7_AT91FR40008/portmacro.h"
+	"../../Source/portable/RVDS/ARM_CM3/portmacro.h"
+	"../../Source/portable/GCC/ARM_CM3/portmacro.h"
+	"../../Source/portable/GCC/ARM_CM3/portmacro.h"
+	"../../Source/portable/IAR/ARM_CM3/portmacro.h"
+	"../../Source/portable/IAR/ARM_CM3/portmacro.h"
+	"../../Source/portable/CodeWarrior/HCS12/portmacro.h"
+	"../../Source/portable/GCC/MicroBlaze/portmacro.h"
+	"..\..\Source\portable\Paradigm\Tern_EE\small\portmacro.h"
+	"../../Source/portable/GCC/HCS12/portmacro.h"
+	"../../Source/portable/GCC/MCF5235/portmacro.h"
+	"../../../Source/portable/GCC/ColdFire_V2/portmacro.h"
+	"../../Source/portable/CodeWarrior/ColdFire_V2/portmacro.h"
+	"../../Source/portable/GCC/PPC405_Xilinx/portmacro.h"
+	"../../Source/portable/GCC/PPC440_Xilinx/portmacro.h"
+	"..\..\Source\portable\Softune\MB96340\portmacro.h"
+	"frconfig.h"
+	"..\portable\BCC\16BitDOS\PC\prtmacro.h"
+	"frconfig.h"
+	"..\portable\BCC\16BitDOS\flsh186\prtmacro.h"
+	"portmacro.h"
+	"portmacro.h"
+	"portmacro.h"
+	"portmacro.h"
+	"../../Source/portable/IAR/V850ES/portmacro.h"
+	"../../Source/portable/IAR/V850ES/portmacro.h"
+	"../../Source/portable/IAR/V850ES/portmacro.h"
+	"../../Source/portable/IAR/V850ES/portmacro.h"
+	"../../Source/portable/IAR/V850ES/portmacro.h"
+	"../../Source/portable/IAR/78K0R/portmacro.h"
+	"../../Source/portable/IAR/78K0R/portmacro.h"
+
+1665465012 c:\users\caska\desktop\projects\embitz\small_car\fil_lib\freertos_lib\portmacro.h
+
+1665465012 c:\users\caska\desktop\projects\embitz\small_car\fil_lib\freertos_lib\mpu_wrappers.h
+
+1665465012 c:\users\caska\desktop\projects\embitz\small_car\fil_lib\freertos_lib\task.h
+	"list.h"
+
+1665465012 c:\users\caska\desktop\projects\embitz\small_car\fil_lib\freertos_lib\list.h
+
+1665465012 c:\users\caska\desktop\projects\embitz\small_car\fil_lib\freertos_lib\queue.h
+	"task.h"
+
+1665465012 c:\users\caska\desktop\projects\embitz\small_car\fil_lib\freertos_lib\semphr.h
+	"queue.h"
+
+1665465012 c:\users\caska\desktop\projects\embitz\small_car\fil_lib\freertos_lib\croutine.h
+	"list.h"
+
+1665465012 c:\users\caska\desktop\projects\embitz\small_car\fil_lib\freertos_lib\timers.h
+	"task.h"
+
+1665465012 c:\users\caska\desktop\projects\embitz\small_car\fil_lib\freertos_lib\event_groups.h
+	"timers.h"
+
+1665465012 c:\users\caska\desktop\projects\embitz\small_car\fil_lib\freertos_lib\stream_buffer.h
+
+1665465012 c:\users\caska\desktop\projects\embitz\small_car\fil_lib\robot_tasks.h
+	"FilConfig.h"
+
+1665465012 c:\users\caska\desktop\projects\embitz\small_car\fil_lib\rcc.h
+	"FilConfig.h"
+
+1665465012 c:\users\caska\desktop\projects\embitz\small_car\fil_lib\gpio.h
+	"FilConfig.h"
+
+1665738588 c:\users\caska\desktop\projects\embitz\small_car\fil_lib\tim.h
+	"FilConfig.h"
+
+1665465012 c:\users\caska\desktop\projects\embitz\small_car\fil_lib\usart.h
+	"FilConfig.h"
+
+1665465012 c:\users\caska\desktop\projects\embitz\small_car\fil_lib\dma.h
+	"FilConfig.h"
+
+1665637861 c:\users\caska\desktop\projects\embitz\small_car\fil_lib\dma_fifobuffers.h
+	"FilConfig.h"
+
+1665642737 c:\users\caska\desktop\projects\embitz\small_car\fil_lib\adc.h
+	"FilConfig.h"
+
+1665465012 c:\users\caska\desktop\projects\embitz\small_car\fil_lib\i2c.h
+	"FilConfig.h"
+
+1665465012 c:\users\caska\desktop\projects\embitz\small_car\fil_lib\exti.h
+	"FilConfig.h"
+
+1665465012 c:\users\caska\desktop\projects\embitz\small_car\fil_lib\matrix.h
+
+1665465012 c:\users\caska\desktop\projects\embitz\small_car\fil_lib\regulators.h
+	"BoardSelection.h"
+
+1665465012 c:\users\caska\desktop\projects\embitz\small_car\fil_lib\rtc.h
+	"FilConfig.h"
+
+1665465012 c:\users\caska\desktop\projects\embitz\small_car\external\ssd1306\fonts.h
+	"stm32f4xx.h"
+	"string.h"
+
+1665465012 c:\users\caska\desktop\projects\embitz\small_car\external\ssd1306\images.h
+	"FilConfig.h"
+	"stdint.h"
+
+1665465012 c:\users\caska\desktop\projects\embitz\small_car\external\ssd1306\ssd1306_i2c.h
+	"FilConfig.h"
+	"ssd1306.h"
+
+1665465012 c:\users\caska\desktop\projects\embitz\small_car\external\ssd1306\ssd1306.h
+	"FilConfig.h"
+	"stdlib.h"
+	"string.h"
+
+1665465012 source:c:\users\caska\desktop\projects\embitz\small_car\external\ssd1306\fonts.c
+	"fonts.h"
+
+1665465012 source:c:\users\caska\desktop\projects\embitz\small_car\external\ssd1306\images.c
+	"images.h"
+
+1665465012 source:c:\users\caska\desktop\projects\embitz\small_car\external\ssd1306\ssd1306.c
+	"ssd1306.h"
+
+1665465012 source:c:\users\caska\desktop\projects\embitz\small_car\external\ssd1306\ssd1306_i2c.c
+	"ssd1306_i2c.h"
+
+1665738375 source:c:\users\caska\desktop\projects\embitz\small_car\fil_lib\adc.c
+	"ADC.h"
+
+1665465012 source:c:\users\caska\desktop\projects\embitz\small_car\fil_lib\dma.c
+	"stm32f4xx.h"
+	"DMA.h"
+	"DMA_FIFOBuffers.h"
+
+1665465012 source:c:\users\caska\desktop\projects\embitz\small_car\fil_lib\exti.c
+	"EXTI.h"
+
+1665465012 source:c:\users\caska\desktop\projects\embitz\small_car\fil_lib\freertos_lib\croutine.c
+	"FreeRTOS.h"
+	"task.h"
+	"croutine.h"
+
+1665465012 source:c:\users\caska\desktop\projects\embitz\small_car\fil_lib\freertos_lib\event_groups.c
+	<stdlib.h>
+	"FreeRTOS.h"
+	"task.h"
+	"timers.h"
+	"event_groups.h"
+
+1665465012 source:c:\users\caska\desktop\projects\embitz\small_car\fil_lib\freertos_lib\heap_2.c
+	<stdlib.h>
+	"FreeRTOS.h"
+	"task.h"
+
+1665465012 source:c:\users\caska\desktop\projects\embitz\small_car\fil_lib\freertos_lib\list.c
+	<stdlib.h>
+	"FreeRTOS.h"
+	"list.h"
+
+1665465012 source:c:\users\caska\desktop\projects\embitz\small_car\fil_lib\freertos_lib\port.c
+	"FreeRTOS.h"
+	"task.h"
+
+1665465012 source:c:\users\caska\desktop\projects\embitz\small_car\fil_lib\freertos_lib\queue.c
+	<stdlib.h>
+	<string.h>
+	"FreeRTOS.h"
+	"task.h"
+	"queue.h"
+	"croutine.h"
+
+1665465012 source:c:\users\caska\desktop\projects\embitz\small_car\fil_lib\freertos_lib\stream_buffer.c
+	<stdint.h>
+	<string.h>
+	"FreeRTOS.h"
+	"task.h"
+	"stream_buffer.h"
+
+1665465012 source:c:\users\caska\desktop\projects\embitz\small_car\fil_lib\freertos_lib\tasks.c
+	<stdlib.h>
+	<string.h>
+	"FreeRTOS.h"
+	"task.h"
+	"timers.h"
+	"stack_macros.h"
+	<stdio.h>
+	"tasks_test_access_functions.h"
+	"freertos_tasks_c_additions.h"
+
+1665465012 c:\users\caska\desktop\projects\embitz\small_car\fil_lib\freertos_lib\stack_macros.h
+
+1665465012 source:c:\users\caska\desktop\projects\embitz\small_car\fil_lib\freertos_lib\timers.c
+	<stdlib.h>
+	"FreeRTOS.h"
+	"task.h"
+	"queue.h"
+	"timers.h"
+
+1665465012 source:c:\users\caska\desktop\projects\embitz\small_car\fil_lib\i2c.c
+	"I2C.h"
+
+1665465012 source:c:\users\caska\desktop\projects\embitz\small_car\fil_lib\matrix.c
+	"Matrix.h"
+
+1665465012 source:c:\users\caska\desktop\projects\embitz\small_car\fil_lib\rcc.c
+	"RCC.h"
+
+1665465012 source:c:\users\caska\desktop\projects\embitz\small_car\fil_lib\regulators.c
+	"FilConfig.h"
+	"Regulators.h"
+
+1665465012 source:c:\users\caska\desktop\projects\embitz\small_car\fil_lib\rtc.c
+	"RTC.h"
+
+1665738541 source:c:\users\caska\desktop\projects\embitz\small_car\fil_lib\tim.c
+	"TIM.h"
+
+1665465012 source:c:\users\caska\desktop\projects\embitz\small_car\fil_lib\usart.c
+	"USART.h"
+
+1667472674 source:c:\users\caska\desktop\projects\embitz\small_car\src\main.c
+	"main.h"
+
+1665739408 source:c:\users\caska\desktop\projects\embitz\small_car\dev\dev.c
+	"dev.h"
+
+1665465012 source:c:\users\caska\desktop\projects\embitz\small_car\src\system_stm32f4xx.c
+	"stm32f4xx.h"
+
+1665465012 source:c:\users\caska\desktop\projects\embitz\small_car\external\matrix\matrix.c
+	"Matrix.h"
+
+1665465012 c:\users\caska\desktop\projects\embitz\small_car\external\matrix\matrix.h
+
+1667472241 source:c:\users\caska\desktop\projects\embitz\small_car\external\modbus\ascii\modbus_ascii.c
+	"ModBus_conf.h"
+
+1666342105 c:\users\caska\desktop\projects\embitz\small_car\external\modbus\modbus_conf.h
+	<stdlib.h>
+	"FilConfig.h"
+	"BoardSelection.h"
+	"ModBus_ASCII.h"
+
+1665746200 c:\users\caska\desktop\projects\embitz\small_car\external\external_manager.h
+	"BoardSelection.h"
+	"fonts.h"
+	"images.h"
+	"ssd1306_i2c.h"
+	"ssd1306.h"
+	"mpu9250.h"
+	"ModBus_conf.h"
+	"Matrix.h"
+	"Regulators.h"
+	"KINEMATICS.h"
+
+1665465012 c:\users\caska\desktop\projects\embitz\small_car\external\regulators\regulators.h
+	"BoardSelection.h"
+
+1665465012 c:\users\caska\desktop\projects\embitz\small_car\fil_lib\inc\rcc.h
+	"FilConfig.h"
+
+1665465012 c:\users\caska\desktop\projects\embitz\small_car\fil_lib\inc\gpio.h
+	"FilConfig.h"
+
+1666175779 c:\users\caska\desktop\projects\embitz\small_car\fil_lib\inc\tim.h
+	"FilConfig.h"
+
+1665835408 c:\users\caska\desktop\projects\embitz\small_car\fil_lib\inc\usart.h
+	"FilConfig.h"
+
+1665465012 c:\users\caska\desktop\projects\embitz\small_car\fil_lib\inc\dma.h
+	"FilConfig.h"
+
+1666157238 c:\users\caska\desktop\projects\embitz\small_car\fil_lib\inc\dma_fifobuffers.h
+	"FilConfig.h"
+
+1666157552 c:\users\caska\desktop\projects\embitz\small_car\fil_lib\inc\adc.h
+	"FilConfig.h"
+
+1665465012 c:\users\caska\desktop\projects\embitz\small_car\fil_lib\inc\i2c.h
+	"FilConfig.h"
+
+1665465012 c:\users\caska\desktop\projects\embitz\small_car\fil_lib\inc\exti.h
+	"FilConfig.h"
+
+1665465012 c:\users\caska\desktop\projects\embitz\small_car\fil_lib\inc\rtc.h
+	"FilConfig.h"
+
+1666341767 c:\users\caska\desktop\projects\embitz\small_car\external\modbus\ascii\modbus_ascii.h
+	"ModBus_conf.h"
+
+1665465012 source:c:\users\caska\desktop\projects\embitz\small_car\external\regulators\regulators.c
+	"FilConfig.h"
+	"Regulators.h"
+
+1667472654 source:c:\users\caska\desktop\projects\embitz\small_car\fil_lib\src\adc.c
+	"ADC.h"
+
+1665465012 source:c:\users\caska\desktop\projects\embitz\small_car\fil_lib\src\dma.c
+	"stm32f4xx.h"
+	"DMA.h"
+	"DMA_FIFOBuffers.h"
+
+1665465012 source:c:\users\caska\desktop\projects\embitz\small_car\fil_lib\src\exti.c
+	"EXTI.h"
+
+1665465012 source:c:\users\caska\desktop\projects\embitz\small_car\fil_lib\src\i2c.c
+	"I2C.h"
+
+1665465012 source:c:\users\caska\desktop\projects\embitz\small_car\fil_lib\src\rcc.c
+	"RCC.h"
+
+1665465012 source:c:\users\caska\desktop\projects\embitz\small_car\fil_lib\src\rtc.c
+	"RTC.h"
+
+1667472971 source:c:\users\caska\desktop\projects\embitz\small_car\fil_lib\src\tim.c
+	"TIM.h"
+
+1666178591 source:c:\users\caska\desktop\projects\embitz\small_car\fil_lib\src\usart.c
+	"USART.h"
+
